@@ -42,17 +42,20 @@
         .delay-500 { animation-delay: 500ms; }
         .delay-700 { animation-delay: 700ms; }
 
-        /* 이미지 부드러운 스케일 및 하단 페이드아웃 효과 */
-        .img-container img {
-            /* 이미지 하단을 자연스럽게 페이드아웃시켜 하얀 배경과 연결 */
+        /* 이미지 컨테이너 하단 자연스러운 페이드아웃 효과 */
+        .img-container {
             mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
             -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
         }
+        
+        /* 이미지 얼굴 중심 확대 및 부드러운 스케일 효과 */
         .img-zoom {
+            transform: scale(1.3);
+            transform-origin: 50% 30%; /* 얼굴 위치(위쪽)를 기준으로 확대 */
             transition: transform 1.5s ease;
         }
         .img-container:hover .img-zoom {
-            transform: scale(1.03);
+            transform: scale(1.35);
         }
     </style>
 </head>
@@ -65,74 +68,93 @@
             <div class="w-full lg:w-5/12 xl:w-1/2 animate-fade-up delay-100">
                 <div class="img-container relative w-full h-[500px] md:h-[600px] lg:h-full min-h-[600px] overflow-hidden rounded-sm bg-gray-50">
                     <img src="1000007608.jpg" alt="고목사 프로필 사진" 
-                         class="img-zoom absolute inset-0 w-full h-full object-cover object-top">
+                         class="img-zoom absolute inset-0 w-full h-full object-cover">
                 </div>
             </div>
 
             <!-- 오른쪽: 텍스트 및 정보 영역 -->
             <div class="w-full lg:w-7/12 xl:w-1/2 flex flex-col justify-center py-6 lg:py-12">
                 
-                <!-- 상단 서브타이틀 및 교회 표어 -->
-                <div class="animate-fade-up delay-300">
-                    <!-- 새로 추가된 교회 표어 -->
-                    <p class="font-serif-kr text-lg md:text-xl text-gray-600 font-medium mb-3 leading-relaxed">
-                        "예수의 제자로 함께 사는 새제천교회"
+                <!-- 1. 직함 및 이름 (최상단) -->
+                <div class="animate-fade-up delay-100 mb-8">
+                    <p class="text-gray-400 font-semibold tracking-[0.3em] uppercase text-sm mb-2">
+                        Pastor
                     </p>
-                    
-                    <p class="text-gray-400 font-semibold tracking-[0.3em] uppercase text-xs md:text-sm mb-4">
-                        Senior Pastor
-                    </p>
-                    
-                    <!-- 메인 타이틀 -->
-                    <h1 class="font-serif-kr text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight text-gray-900 mb-6">
-                        새제천교회<br>
-                        담임목사 <span class="font-bold text-black">고목사</span>
+                    <h1 class="font-serif-kr text-lg md:text-xl font-medium text-gray-700">
+                        고인국
                     </h1>
-                    
-                    <div class="w-12 h-[2px] bg-gray-900 mb-8"></div>
                 </div>
 
-                <!-- 목회 철학 / 인사말 (디자인을 위한 텍스트 추가) -->
+                <!-- 2. 임팩트 있는 메인 문구 (가장 큰 글씨) -->
+                <div class="animate-fade-up delay-300 mb-10">
+                    <div class="relative inline-block pl-4 pr-6 md:pl-6 md:pr-10">
+                        <i class="fa-solid fa-quote-left text-gray-200 text-3xl md:text-4xl absolute -top-5 -left-1 md:-left-4"></i>
+                        <p class="font-serif-kr text-3xl md:text-4xl lg:text-5xl text-gray-900 font-bold leading-[1.5] tracking-tight">
+                            주님의 심장으로<br>당신을 사랑합니다!
+                        </p>
+                        <i class="fa-solid fa-quote-right text-gray-200 text-3xl md:text-4xl absolute -bottom-5 -right-2 md:-right-6"></i>
+                    </div>
+                </div>
+
+                <!-- 3. 목회 철학 및 비전 -->
                 <div class="animate-fade-up delay-500 mb-12">
-                    <p class="text-gray-500 text-lg md:text-xl font-light leading-relaxed mb-4 font-serif-kr">
+                    <p class="text-gray-700 text-lg md:text-xl font-medium leading-relaxed mb-5 font-serif-kr">
                         "하나님의 말씀을 깊이 있게 연구하며,<br class="hidden sm:block">
                         진리에 뿌리내린 건강한 신앙 공동체를 세워갑니다."
                     </p>
-                    <p class="text-gray-400 font-light text-sm md:text-base leading-loose">
+                    <p class="text-gray-500 font-light text-sm md:text-base leading-loose">
                         새제천교회는 성도 한 사람 한 사람이 말씀 안에서 변화되고, 세상을 향해 사랑을 흘려보내는 축복의 통로가 되기를 소망합니다. 하나님이 기뻐하시는 교회, 이웃에게 희망이 되는 교회를 함께 만들어 가겠습니다.
                     </p>
                 </div>
 
-                <!-- 학력 정보 -->
-                <div class="animate-fade-up delay-500 mb-12">
-                    <h3 class="text-xs font-bold text-gray-400 tracking-widest uppercase mb-4">Profile & Education</h3>
-                    <ul class="space-y-4">
+                <!-- 4. 학력 정보 (Education) -->
+                <div class="animate-fade-up delay-500 mb-10">
+                    <h3 class="text-xs font-bold text-gray-400 tracking-widest uppercase mb-4">Education</h3>
+                    <ul class="space-y-3">
                         <li class="flex items-start text-gray-700">
                             <i class="fa-solid fa-check text-gray-300 mt-1 mr-4 text-sm"></i>
-                            <span class="text-base md:text-lg font-medium">총신대학원 <span class="text-gray-400 font-light ml-1">M.Div</span></span>
+                            <span class="text-base font-medium">총신대학원 <span class="text-gray-400 font-light ml-1">M.Div</span></span>
                         </li>
                         <li class="flex items-start text-gray-700">
                             <i class="fa-solid fa-check text-gray-300 mt-1 mr-4 text-sm"></i>
-                            <span class="text-base md:text-lg font-medium">스텔렌보쉬 대학교 구약 <span class="text-gray-400 font-light ml-1">M.TH</span></span>
+                            <span class="text-base font-medium">스텔렌보쉬 대학교 <span class="text-gray-400 font-light ml-1">M.TH</span></span>
                         </li>
                     </ul>
                 </div>
 
-                <!-- 링크 버튼 (모던하고 세련된 스타일) -->
+                <!-- 5. 직분 정보 (Church) -->
+                <div class="animate-fade-up delay-500 mb-12">
+                    <h3 class="text-xs font-bold text-gray-400 tracking-widest uppercase mb-4">Church</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start text-gray-700">
+                            <i class="fa-solid fa-check text-gray-300 mt-1 mr-4 text-sm"></i>
+                            <span class="text-base font-medium">새제천교회 담임목사</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 6. 링크 버튼 (라운드 추가: rounded-lg 적용) -->
                 <div class="animate-fade-up delay-700 flex flex-col sm:flex-row gap-4 mt-auto">
-                    <!-- 새제천교회 버튼 (솔리드 스타일 - 색상 및 호버 효과 부드럽게 변경) -->
+                    <!-- 새제천교회 버튼 -->
                     <a href="https://saejecheon.com" target="_blank" rel="noopener noreferrer" 
-                       class="group flex items-center justify-center bg-zinc-800 text-white px-8 py-4 text-sm font-medium tracking-wide transition-all duration-300 hover:bg-zinc-700 shadow-sm hover:shadow-md rounded-sm">
-                        <i class="fa-solid fa-church mr-3 opacity-70 group-hover:opacity-100 transition-opacity"></i>
+                       class="flex items-center justify-center bg-white border border-gray-300 text-gray-700 px-8 py-4 text-sm font-medium tracking-wide transition-colors duration-300 hover:bg-slate-50 hover:border-slate-400 hover:text-slate-900 rounded-lg w-full sm:w-auto shadow-sm hover:shadow">
+                        <i class="fa-solid fa-church mr-3 text-slate-500 transition-colors"></i>
                         새제천교회
                     </a>
                     
-                    <!-- 유튜브 버튼 (아웃라인 스타일 - 호버 효과 부드럽게 변경) -->
+                    <!-- 유튜브 버튼 -->
                     <a href="https://www.youtube.com/@koclass" target="_blank" rel="noopener noreferrer" 
-                       class="flex items-center justify-center border border-gray-300 text-gray-700 px-8 py-4 text-sm font-medium tracking-wide transition-all duration-300 hover:bg-gray-100 hover:border-gray-400 hover:text-gray-900 rounded-sm">
-                        <i class="fa-brands fa-youtube mr-3 text-red-600 transition-colors"></i>
+                       class="flex items-center justify-center bg-white border border-gray-300 text-gray-700 px-8 py-4 text-sm font-medium tracking-wide transition-colors duration-300 hover:bg-red-50 hover:border-red-300 hover:text-red-800 rounded-lg w-full sm:w-auto shadow-sm hover:shadow">
+                        <i class="fa-brands fa-youtube mr-3 text-red-500 transition-colors"></i>
                         고목사클라쓰
                     </a>
+                </div>
+
+                <!-- 저작권 문구 영역 -->
+                <div class="animate-fade-up delay-700 mt-16 pt-8 border-t border-gray-100">
+                    <p class="text-xs text-gray-400 tracking-wider">
+                        &copy; 2026 고인국목사. All rights reserved.
+                    </p>
                 </div>
                 
             </div>
