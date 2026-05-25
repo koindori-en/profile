@@ -48,24 +48,25 @@
             -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
         }
         
-        /* 이미지 얼굴 중심 확대 및 부드러운 스케일 효과 */
+        /* 이미지 얼굴 중심 확대 및 부드러운 스케일 효과 (하늘 부분을 줄이고 인물에 집중) */
         .img-zoom {
-            transform: scale(1.3);
-            transform-origin: 50% 30%; /* 얼굴 위치(위쪽)를 기준으로 확대 */
+            transform: scale(1.5);
+            transform-origin: 50% 70%; /* 하늘 영역을 줄이고 인물이 위치한 하단부를 기준으로 확대 */
             transition: transform 1.5s ease;
         }
         .img-container:hover .img-zoom {
-            transform: scale(1.35);
+            transform: scale(1.55);
         }
     </style>
 </head>
-<body class="min-h-screen flex items-center antialiased bg-white">
+<body class="min-h-screen flex flex-col antialiased bg-white">
 
-    <div class="max-w-[1400px] w-full mx-auto px-6 sm:px-10 lg:px-16 py-12 lg:py-24">
-        <div class="flex flex-col lg:flex-row gap-12 lg:gap-20 xl:gap-28 items-center lg:items-stretch">
+    <!-- 메인 컨텐츠 영역 (상단 여백(pt) 제거 및 남은 공간 채우기) -->
+    <div class="max-w-[1400px] w-full mx-auto px-6 sm:px-10 lg:px-16 pt-0 pb-12 lg:pb-24 flex-grow">
+        <div class="flex flex-col lg:flex-row gap-12 lg:gap-20 xl:gap-28 items-center lg:items-stretch h-full">
             
             <!-- 왼쪽: 프로필 이미지 영역 -->
-            <div class="w-full lg:w-5/12 xl:w-1/2 animate-fade-up delay-100">
+            <div class="w-full lg:w-5/12 xl:w-1/2 animate-fade-up delay-100 pt-0 lg:pt-8">
                 <div class="img-container relative w-full h-[500px] md:h-[600px] lg:h-full min-h-[600px] overflow-hidden rounded-sm bg-gray-50">
                     <img src="1000007608.jpg" alt="고목사 프로필 사진" 
                          class="img-zoom absolute inset-0 w-full h-full object-cover">
@@ -80,7 +81,7 @@
                     <p class="text-gray-400 font-semibold tracking-[0.3em] uppercase text-sm mb-2">
                         Pastor
                     </p>
-                    <h1 class="font-serif-kr text-lg md:text-xl font-medium text-gray-700">
+                    <h1 class="text-base font-medium text-gray-700">
                         고인국
                     </h1>
                 </div>
@@ -89,7 +90,7 @@
                 <div class="animate-fade-up delay-300 mb-10">
                     <div class="relative inline-block pl-4 pr-6 md:pl-6 md:pr-10">
                         <i class="fa-solid fa-quote-left text-gray-200 text-3xl md:text-4xl absolute -top-5 -left-1 md:-left-4"></i>
-                        <p class="font-serif-kr text-3xl md:text-4xl lg:text-5xl text-gray-900 font-bold leading-[1.5] tracking-tight">
+                        <p class="font-serif-kr text-3xl md:text-4xl lg:text-5xl text-gray-900 font-semibold leading-[1.8] tracking-tight">
                             주님의 심장으로<br>당신을 사랑합니다!
                         </p>
                         <i class="fa-solid fa-quote-right text-gray-200 text-3xl md:text-4xl absolute -bottom-5 -right-2 md:-right-6"></i>
@@ -149,17 +150,17 @@
                         고목사클라쓰
                     </a>
                 </div>
-
-                <!-- 저작권 문구 영역 -->
-                <div class="animate-fade-up delay-700 mt-16 pt-8 border-t border-gray-100">
-                    <p class="text-xs text-gray-400 tracking-wider">
-                        &copy; 2026 고인국목사. All rights reserved.
-                    </p>
-                </div>
                 
             </div>
         </div>
     </div>
+
+    <!-- 하단 저작권 문구 영역 (페이지 맨 아래 중앙 배치) -->
+    <footer class="w-full py-8 text-center bg-white mt-auto animate-fade-up delay-700 border-t border-gray-100">
+        <p class="text-xs text-gray-400 tracking-wider">
+            &copy; 2026 고인국목사. All rights reserved.
+        </p>
+    </footer>
 
 </body>
 </html>
