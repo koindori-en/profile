@@ -117,10 +117,14 @@
     <!-- 상단 고정형 (Sticky) 네비게이션 헤더 -->
     <header class="sticky top-0 z-50 bg-[#FAF8F5]/80 backdrop-blur-md border-b border-stone-200/40 transition-all duration-300">
         <div class="max-w-[1300px] mx-auto px-6 sm:px-10 lg:px-16 h-16 md:h-20 flex items-center justify-between">
-            <!-- 로고 영역 -->
-            <a href="#intro" class="flex items-center gap-2 group">
-                <span class="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center text-amber-800 font-serif-kr font-bold group-hover:rotate-12 transition-transform duration-300">고</span>
-                <span class="font-serif-kr text-base md:text-lg font-bold tracking-wide text-stone-800">고인국 목사</span>
+            <!-- 로고 영역 (logo2.png 반영 및 이미지 실패 시 세련된 이중화 텍스트 로고 지원) -->
+            <a href="#intro" class="flex items-center group">
+                <img src="logo2.png" alt="고인국목사 로고" class="h-8 md:h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <!-- Fallback: logo2.png 파일이 로드되지 않을 때 나타날 텍스트 로고 -->
+                <div class="hidden items-center gap-2">
+                    <span class="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center text-amber-800 font-serif-kr font-bold group-hover:rotate-12 transition-transform duration-300">고</span>
+                    <span class="font-serif-kr text-base md:text-lg font-bold tracking-wide text-stone-800">고인국 목사</span>
+                </div>
             </a>
 
             <!-- 세련된 텍스트 네비게이션 메뉴 -->
@@ -199,25 +203,27 @@
                     </div>
                 </div>
 
-                <!-- 3. 목회 철학 및 비전 -->
-                <div class="reveal delay-300 mb-10 bg-white/50 backdrop-blur-sm p-6 md:p-8 rounded-2xl border border-stone-100 shadow-[0_4px_20px_rgba(0,0,0,0.01)]">
-                    <p class="text-stone-800 text-lg md:text-xl font-medium leading-relaxed mb-4 font-serif-kr text-amber-900/90">
-                        "하나님의 말씀을 깊이 있게 연구하며,<br class="hidden sm:block">
-                        진리에 뿌리내린 건강한 신앙 공동체를 세워갑니다."
-                    </p>
-                    <p class="text-stone-600 font-light text-sm md:text-base leading-loose">
-                        새제천교회는 성도 한 사람 한 사람이 말씀 안에서 변화되고, 세상을 향해 사랑을 흘려보내는 축복의 통로가 되기를 소망합니다. 하나님이 기뻐하시는 교회, 이웃에게 희망이 되는 교회를 함께 만들어 가겠습니다.
-                    </p>
-                </div>
+                <!-- 3. 원어 헬라어와 한국어 성경 말씀 통합형 비주얼 카드 (요한복음 13:34) -->
+                <div class="reveal delay-300 mb-10 bg-white/60 backdrop-blur-md p-8 md:p-10 rounded-2xl border border-stone-200/50 shadow-[0_8px_30px_rgb(0,0,0,0.02)]">
+                    <!-- 상단: 웅장하고 선명한 그리스어 원어 구절 -->
+                    <div class="mb-6">
+                        <p class="font-serif text-2xl sm:text-3xl md:text-4xl text-amber-900/90 leading-relaxed tracking-wide italic font-medium break-normal font-playfair">
+                            Ἐντολὴν καινὴν δίδωμι ὑμῖν, ἵνα ἀγαπᾶτε ἀλλήλους, καθὼς ἠγάπησα ὑμᾶς ἵνα καὶ ὑμεῖς ἀγαπᾶτε ἀλλήλους.
+                        </p>
+                    </div>
+                    
+                    <!-- 구분선 -->
+                    <div class="h-[1px] w-full bg-gradient-to-r from-stone-200 via-amber-200/40 to-stone-200 my-6"></div>
 
-                <!-- 4. 요한복음 13:34 원어 헬라어 말씀 카드 영역 (기존 약속 영역에서 말씀으로 교체 및 폰트 확장) -->
-                <div class="reveal delay-400 bg-amber-50/55 border-l-4 border-amber-600 p-6 md:p-8 rounded-r-xl mb-6 shadow-sm">
-                    <p class="font-serif text-xl sm:text-2xl md:text-3xl text-amber-900/90 leading-relaxed tracking-wide italic font-medium break-normal">
-                        Ἐντολὴν καινὴν δίδωμι ὑμῖν, ἵνα ἀγαπᾶτε ἀλλήλους, καθὼς ἠγάπησα ὑμᾶς ἵνα καὶ ὑμεῖς ἀγαπᾶτε ἀλλήλους.
-                    </p>
-                    <p class="text-[10px] md:text-xs text-stone-400 mt-4 font-sans tracking-widest uppercase">
-                        <i class="fa-solid fa-bookmark text-amber-600/50 mr-1.5"></i> John 13:34
-                    </p>
+                    <!-- 하단: 한국어 성경 말씀 요한복음 13:34 구절 동일 포맷 적용 -->
+                    <div class="pt-2">
+                        <p class="text-[10px] md:text-xs text-stone-400 mb-3 font-sans tracking-widest uppercase flex items-center gap-1.5">
+                            <i class="fa-solid fa-bookmark text-amber-600/50"></i> 요한복음 13:34
+                        </p>
+                        <p class="font-serif-kr text-lg md:text-xl text-stone-700 leading-relaxed font-semibold">
+                            "새 계명을 너희에게 주노니 서로 사랑하라 내가 너희를 사랑한 것 같이 너희도 서로 사랑하라"
+                        </p>
+                    </div>
                 </div>
                 
             </div>
@@ -283,7 +289,7 @@
         </div>
     </section>
 
-    <!-- 4. 유튜브 쇼츠 삽입 섹션 (모바일 프레임) -->
+    <!-- 유튜브 쇼츠 삽입 섹션 (모바일 프레임) -->
     <section id="media" class="py-20 scroll-mt-24">
         <div class="max-w-[1300px] w-full mx-auto px-6 sm:px-10 lg:px-16 text-center lg:text-left">
             <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
@@ -333,7 +339,7 @@
         </div>
     </section>
 
-    <!-- 5. 학력 및 교회 정보 / 연락처 프로필 영역 -->
+    <!-- 학력 및 교회 정보 / 연락처 프로필 영역 -->
     <section id="profile" class="bg-stone-100/40 py-20 border-t border-stone-200/30 scroll-mt-24">
         <div class="max-w-[1300px] w-full mx-auto px-6 sm:px-10 lg:px-16">
             
@@ -388,7 +394,7 @@
                         </div>
                     </div>
 
-                    <!-- 7. 링크 버튼 영역 -->
+                    <!-- 링크 버튼 영역 -->
                     <div class="reveal delay-500 md:col-span-2 flex flex-col sm:flex-row gap-4 pt-8">
                         <!-- 새제천교회 버튼 -->
                         <a href="https://saejecheon.com" target="_blank" rel="noopener noreferrer" 
