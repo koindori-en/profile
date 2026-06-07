@@ -20,7 +20,7 @@
     <style>
         body {
             background-color: #FAF8F5; /* 따뜻하고 감성적인 미색 일러스트톤 백그라운드 */
-            color: #2D3A34; /* 편안하고 고급스러운 딥 그리니시 블랙 */
+            color: #4A4A4A; /* 눈이 편안한 미디엄 차콜그레이 */
             font-family: 'Noto Sans KR', sans-serif; 
             overflow-x: hidden;
             background-image: radial-gradient(#e5e0d8 1px, transparent 1px);
@@ -62,7 +62,7 @@
             -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
         }
         
-        /* 1. 마우스를 올리지 않아도 자연스럽게 살아숨쉬는 Cinematic Breathing 효과 */
+        /* 마우스를 올리지 않아도 자연스럽게 살아숨쉬는 Cinematic Breathing 효과 */
         @keyframes profileBreath {
             0%, 100% {
                 transform: scale(1.50);
@@ -85,7 +85,7 @@
             transform: scale(1.62);
         }
 
-        /* 2. 사진 위를 은은하게 떠다니는 파티클 애니메이션 */
+        /* 사진 위를 은은하게 떠다니는 파티클 애니메이션 */
         @keyframes particleFloatUp {
             0% {
                 transform: translateY(110%) translateX(0) rotate(0deg);
@@ -122,29 +122,29 @@
                 <img src="logo2.png" alt="고인국목사 로고" class="h-8 md:h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                 <!-- Fallback: logo2.png 파일이 로드되지 않을 때 나타날 텍스트 로고 -->
                 <div class="hidden items-center gap-2">
-                    <span class="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center text-amber-800 font-serif-kr font-bold group-hover:rotate-12 transition-transform duration-300">고</span>
-                    <span class="font-serif-kr text-base md:text-lg font-bold tracking-wide text-stone-800">고인국 목사</span>
+                    <span class="w-8 h-8 rounded-full bg-stone-100/60 flex items-center justify-center text-stone-600 font-sans font-bold group-hover:rotate-12 transition-transform duration-300">고</span>
+                    <span class="font-sans text-base md:text-lg font-bold tracking-wide text-stone-600">고인국 목사</span>
                 </div>
             </a>
 
-            <!-- 세련된 텍스트 네비게이션 메뉴 -->
+            <!-- 세련된 텍스트 네비게이션 메뉴 (목회 가치 -> 핵심 가치로 변경) -->
             <nav class="flex items-center gap-6 md:gap-10">
-                <a href="#intro" class="text-xs md:text-sm font-medium text-stone-600 hover:text-amber-800 tracking-wider transition-colors duration-300">소개</a>
-                <a href="#values" class="text-xs md:text-sm font-medium text-stone-600 hover:text-amber-800 tracking-wider transition-colors duration-300">목회 가치</a>
-                <a href="#media" class="text-xs md:text-sm font-medium text-stone-600 hover:text-amber-800 tracking-wider transition-colors duration-300">말씀 영상</a>
-                <a href="#profile" class="text-xs md:text-sm font-medium text-stone-600 hover:text-amber-800 tracking-wider transition-colors duration-300">프로필</a>
+                <a href="#intro" class="text-xs md:text-sm font-medium text-stone-500 hover:text-stone-800 tracking-wider transition-colors duration-300">소개</a>
+                <a href="#values" class="text-xs md:text-sm font-medium text-stone-500 hover:text-stone-800 tracking-wider transition-colors duration-300">핵심 가치</a>
+                <a href="#media" class="text-xs md:text-sm font-medium text-stone-500 hover:text-stone-800 tracking-wider transition-colors duration-300">말씀 영상</a>
+                <a href="#profile" class="text-xs md:text-sm font-medium text-stone-500 hover:text-stone-800 tracking-wider transition-colors duration-300">프로필</a>
             </nav>
         </div>
         <!-- 얇은 예술적 데코 라인 -->
-        <div class="h-[1px] w-full bg-gradient-to-r from-stone-200 via-amber-200/50 to-stone-300"></div>
+        <div class="h-[1px] w-full bg-gradient-to-r from-stone-200 via-stone-300/50 to-stone-200"></div>
     </header>
 
     <!-- 메인 감성 컨텐츠 영역 -->
     <main id="intro" class="max-w-[1300px] w-full mx-auto px-6 sm:px-10 lg:px-16 pt-8 lg:pt-16 pb-12 lg:pb-24 flex-grow relative z-10 scroll-mt-24">
         
         <!-- 배경 데코용 부드러운 일러스트레이션 도형 -->
-        <div class="absolute top-[10%] left-[-5%] w-[400px] h-[400px] bg-amber-100/30 rounded-full blur-3xl -z-10 pointer-events-none"></div>
-        <div class="absolute bottom-[20%] right-[-10%] w-[500px] h-[500px] bg-stone-200/40 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+        <div class="absolute top-[10%] left-[-5%] w-[400px] h-[400px] bg-stone-200/20 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+        <div class="absolute bottom-[20%] right-[-10%] w-[500px] h-[500px] bg-stone-200/30 rounded-full blur-3xl -z-10 pointer-events-none"></div>
 
         <div class="flex flex-col lg:flex-row gap-12 lg:gap-16 xl:gap-24 items-center lg:items-stretch h-full">
             
@@ -152,17 +152,17 @@
             <div class="w-full lg:w-5/12 xl:w-[45%] reveal pt-0 lg:pt-6">
                 <div class="relative group">
                     <!-- 이미지를 포근하게 감싸는 아티스틱한 일러스트 링 배경 -->
-                    <div class="absolute -inset-4 bg-gradient-to-tr from-amber-100/50 to-stone-200/50 rounded-2xl opacity-70 blur-md group-hover:scale-[1.02] transition-transform duration-700 ease-out -z-10"></div>
+                    <div class="absolute -inset-4 bg-gradient-to-tr from-stone-200/40 to-stone-100/40 rounded-2xl opacity-70 blur-md group-hover:scale-[1.02] transition-transform duration-700 ease-out -z-10"></div>
                     
                     <!-- 이미지 컨테이너 (여기에 파티클 효과가 오버레이됩니다) -->
-                    <div id="photoContainer" class="img-container relative w-full h-[520px] md:h-[620px] lg:h-[700px] overflow-hidden rounded-xl bg-stone-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
+                    <div id="photoContainer" class="img-container relative w-full h-[520px] md:h-[620px] lg:h-[700px] overflow-hidden rounded-xl bg-stone-100 shadow-[0_8px_30px_rgb(0,0,0,0.02)]">
                         <img src="1000007608.jpg" alt="고목사 프로필 사진" 
                              class="img-zoom absolute inset-0 w-full h-full object-cover"
                              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                         <!-- 이미지 로드 안될 때의 우아한 일러스트 대체 박스 -->
                         <div class="hidden absolute inset-0 flex-col items-center justify-center bg-stone-100 text-stone-400">
                             <i class="fa-solid fa-church text-5xl mb-4 text-stone-300"></i>
-                            <span class="text-sm font-serif-kr">새제천교회 고인국 목사</span>
+                            <span class="text-sm font-sans">새제천교회 고인국 목사</span>
                         </div>
 
                         <!-- 동적으로 흐르는 파티클 레이어 -->
@@ -170,7 +170,7 @@
                     </div>
 
                     <!-- 일러스트 풍의 숲/자연 모양 SVG 아이콘 배지 -->
-                    <div class="absolute -bottom-4 -left-4 w-16 h-16 bg-white rounded-full shadow-lg flex items-center justify-center text-amber-700/80 hover:rotate-12 transition-transform duration-500">
+                    <div class="absolute -bottom-4 -left-4 w-16 h-16 bg-white rounded-full shadow-lg flex items-center justify-center text-stone-500 hover:rotate-12 transition-transform duration-500">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M14 12a2 2 0 11-4 0 2 2 0 014 0z"></path>
                         </svg>
@@ -181,47 +181,48 @@
             <!-- 오른쪽: 텍스트 정보 및 콘텐츠 스트림 영역 -->
             <div class="w-full lg:w-7/12 xl:w-[55%] flex flex-col justify-center py-4 lg:py-8">
                 
-                <!-- 1. 직함 및 이름 -->
+                <!-- 1. 직함 및 이름 ('고인국 목사' 고딕 폰트로 '총신대학원' 폰트 스타일과 동일 적용) -->
                 <div class="reveal delay-100 mb-8 border-b border-stone-200/80 pb-6">
-                    <p class="text-amber-700 font-semibold tracking-[0.25em] uppercase text-xs mb-3 font-playfair flex items-center gap-2">
+                    <p class="text-stone-500 font-semibold tracking-[0.25em] uppercase text-xs mb-3 font-playfair flex items-center gap-2">
                         <span>P a s t o r</span>
-                        <span class="w-8 h-[1px] bg-amber-600/50 inline-block"></span>
+                        <span class="w-8 h-[1px] bg-stone-400 inline-block"></span>
                     </p>
-                    <h1 class="text-2xl font-bold text-stone-800 font-serif-kr tracking-wide flex items-baseline gap-2">
-                        고인국 <span class="text-sm font-light text-stone-500 font-sans">목사</span>
+                    <h1 class="text-2xl font-bold text-stone-700 font-sans tracking-wide flex items-baseline gap-2">
+                        고인국 <span class="text-sm font-light text-stone-400 font-sans">목사</span>
                     </h1>
                 </div>
 
-                <!-- 2. 임팩트 있는 메인 문구 (따뜻한 인용구 디자인 적용) -->
+                <!-- 2. 임팩트 있는 메인 문구 (은은하고 균형잡힌 인용구 디자인 적용) -->
                 <div class="reveal delay-200 mb-10">
                     <div class="relative inline-block pl-6 pr-6 md:pl-8 md:pr-12 py-2">
-                        <span class="font-playfair italic text-6xl text-amber-200/70 absolute -top-4 left-0 select-none">“</span>
-                        <p class="font-serif-kr text-3xl md:text-4xl text-stone-800 font-semibold leading-[1.7] tracking-tight relative z-10">
+                        <span class="font-playfair italic text-6xl text-stone-300/50 absolute -top-4 left-0 select-none">“</span>
+                        <p class="font-serif-kr text-3xl md:text-4xl text-stone-700 font-semibold leading-[1.7] tracking-tight relative z-10">
                             주님의 심장으로<br>당신을 사랑합니다!
                         </p>
-                        <span class="font-playfair italic text-6xl text-amber-200/70 absolute -bottom-10 right-0 select-none">”</span>
+                        <span class="font-playfair italic text-6xl text-stone-300/50 absolute -bottom-10 right-0 select-none">”</span>
                     </div>
                 </div>
 
                 <!-- 3. 원어 헬라어와 한국어 성경 말씀 통합형 비주얼 카드 (요한복음 13:34) -->
-                <div class="reveal delay-300 mb-10 bg-white/60 backdrop-blur-md p-8 md:p-10 rounded-2xl border border-stone-200/50 shadow-[0_8px_30px_rgb(0,0,0,0.02)]">
-                    <!-- 상단: 웅장하고 선명한 그리스어 원어 구절 -->
+                <div class="reveal delay-300 mb-10 bg-white/60 backdrop-blur-md p-8 md:p-10 rounded-2xl border border-stone-200/50 shadow-[0_8px_30px_rgb(0,0,0,0.01)]">
+                    <!-- 상단: 그리스어 원어 구절 (가독성을 확보한 은은한 톤) -->
                     <div class="mb-6">
-                        <p class="font-serif text-2xl sm:text-3xl md:text-4xl text-amber-900/90 leading-relaxed tracking-wide italic font-medium break-normal font-playfair">
+                        <p class="font-serif text-2xl sm:text-3xl md:text-4xl text-stone-600/95 leading-relaxed tracking-wide italic font-medium break-normal font-playfair">
                             Ἐντολὴν καινὴν δίδωμι ὑμῖν, ἵνα ἀγαπᾶτε ἀλλήλους, καθὼς ἠγάπησα ὑμᾶς ἵνα καὶ ὑμεῖς ἀγαπᾶτε ἀλλήλους.
                         </p>
                     </div>
                     
                     <!-- 구분선 -->
-                    <div class="h-[1px] w-full bg-gradient-to-r from-stone-200 via-amber-200/40 to-stone-200 my-6"></div>
+                    <div class="h-[1px] w-full bg-gradient-to-r from-stone-200 via-stone-300/30 to-stone-200 my-6"></div>
 
-                    <!-- 하단: 한국어 성경 말씀 요한복음 13:34 구절 동일 포맷 적용 -->
+                    <!-- 하단: 한국어 성경 말씀 (요청하신 줄바꿈과 띄어쓰기를 완벽히 적용) -->
                     <div class="pt-2">
                         <p class="text-[10px] md:text-xs text-stone-400 mb-3 font-sans tracking-widest uppercase flex items-center gap-1.5">
-                            <i class="fa-solid fa-bookmark text-amber-600/50"></i> 요한복음 13:34
+                            <i class="fa-solid fa-bookmark text-stone-400"></i> 요한복음 13:34
                         </p>
-                        <p class="font-serif-kr text-lg md:text-xl text-stone-700 leading-relaxed font-semibold">
-                            "새 계명을 너희에게 주노니 서로 사랑하라 내가 너희를 사랑한 것 같이 너희도 서로 사랑하라"
+                        <p class="font-serif-kr text-lg md:text-xl text-stone-600 leading-relaxed font-semibold">
+                            새 계명을 너희에게 주노니 서로 사랑하라<br class="hidden sm:block">
+                            내가 너희를 사랑한 것 같이 너희도 서로 사랑하라
                         </p>
                     </div>
                 </div>
@@ -234,11 +235,11 @@
     <section id="values" class="bg-stone-100/40 py-20 border-y border-stone-200/30 scroll-mt-24">
         <div class="max-w-[1300px] w-full mx-auto px-6 sm:px-10 lg:px-16">
             
-            <!-- 상단 헤더 텍스트 리뉴얼 적용 -->
+            <!-- 상단 헤더 텍스트 리뉴얼 적용 (목회 가치 -> 핵심 가치 변경) -->
             <div class="text-center max-w-2xl mx-auto mb-16 reveal">
-                <p class="text-amber-700 font-semibold tracking-wider text-xs uppercase mb-3">Ministry Core Values</p>
-                <h2 class="font-serif-kr text-3xl font-bold text-stone-800 mb-4">균형잡힌 교회(Balanced Church)</h2>
-                <div class="w-12 h-1 bg-amber-600/60 mx-auto rounded-full"></div>
+                <p class="text-stone-500 font-semibold tracking-wider text-xs uppercase mb-3">Ministry Core Values</p>
+                <h2 class="font-serif-kr text-3xl font-bold text-stone-700 mb-4">균형잡힌 교회(Balanced Church)</h2>
+                <div class="w-12 h-1 bg-stone-400/60 mx-auto rounded-full"></div>
                 <p class="text-stone-600 font-medium text-sm md:text-base mt-4 leading-relaxed">
                     건강한 교회는 하나님의 말씀 위에 서 있는 공동체 입니다!
                 </p>
@@ -247,39 +248,39 @@
             <!-- 핵심가치 3대 카드 그리드 -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- 가치 1: 진리 (Truth) -->
-                <div class="bg-white p-8 rounded-2xl shadow-[0_4px_25px_rgba(0,0,0,0.02)] border border-stone-100 hover:-translate-y-2 transition-transform duration-500 reveal delay-100">
-                    <div class="w-14 h-14 rounded-full bg-amber-50 flex items-center justify-center text-amber-700 mb-6">
+                <div class="bg-white p-8 rounded-2xl shadow-[0_4px_25px_rgba(0,0,0,0.01)] border border-stone-100 hover:-translate-y-2 transition-transform duration-500 reveal delay-100">
+                    <div class="w-14 h-14 rounded-full bg-stone-50 flex items-center justify-center text-stone-600 mb-6">
                         <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
                         </svg>
                     </div>
-                    <h3 class="font-serif-kr text-xl font-bold text-stone-800 mb-3">본질에 집중하는 예배</h3>
+                    <h3 class="font-serif-kr text-xl font-bold text-stone-700 mb-3">본질에 집중하는 예배</h3>
                     <p class="text-stone-500 text-xs md:text-sm leading-relaxed">
                         깊이 있는 성경 강해와 말씀 묵상을 사역의 뿌리로 삼아, 지성적 지혜와 뜨거운 기도가 결합된 참된 영성 회복을 돕습니다.
                     </p>
                 </div>
 
                 <!-- 가치 2: 다음 세대 (Generation) -->
-                <div class="bg-white p-8 rounded-2xl shadow-[0_4px_25px_rgba(0,0,0,0.02)] border border-stone-100 hover:-translate-y-2 transition-transform duration-500 reveal delay-200">
-                    <div class="w-14 h-14 rounded-full bg-amber-50 flex items-center justify-center text-amber-700 mb-6">
+                <div class="bg-white p-8 rounded-2xl shadow-[0_4px_25px_rgba(0,0,0,0.01)] border border-stone-100 hover:-translate-y-2 transition-transform duration-500 reveal delay-200">
+                    <div class="w-14 h-14 rounded-full bg-stone-50 flex items-center justify-center text-stone-600 mb-6">
                         <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
                         </svg>
                     </div>
-                    <h3 class="font-serif-kr text-xl font-bold text-stone-800 mb-3">세대를 이어주는 믿음의 가교</h3>
+                    <h3 class="font-serif-kr text-xl font-bold text-stone-700 mb-3">세대를 이어주는 믿음의 가교</h3>
                     <p class="text-stone-500 text-xs md:text-sm leading-relaxed">
                         아이들부터 어르신까지 모든 세대가 진리 안에서 유기적으로 소통하며, 주님의 군사로 바로 서는 건강한 양육 생태계를 만듭니다.
                     </p>
                 </div>
 
                 <!-- 가치 3: 이웃과 세상 (Love) -->
-                <div class="bg-white p-8 rounded-2xl shadow-[0_4px_25px_rgba(0,0,0,0.02)] border border-stone-100 hover:-translate-y-2 transition-transform duration-500 reveal delay-300">
-                    <div class="w-14 h-14 rounded-full bg-amber-50 flex items-center justify-center text-amber-700 mb-6">
+                <div class="bg-white p-8 rounded-2xl shadow-[0_4px_25px_rgba(0,0,0,0.01)] border border-stone-100 hover:-translate-y-2 transition-transform duration-500 reveal delay-300">
+                    <div class="w-14 h-14 rounded-full bg-stone-50 flex items-center justify-center text-stone-600 mb-6">
                         <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
                         </svg>
                     </div>
-                    <h3 class="font-serif-kr text-xl font-bold text-stone-800 mb-3">세상의 빛과 소금</h3>
+                    <h3 class="font-serif-kr text-xl font-bold text-stone-700 mb-3">세상의 빛과 소금</h3>
                     <p class="text-stone-500 text-xs md:text-sm leading-relaxed">
                         말뿐인 사역이 아닌, 삶의 현장과 이웃을 향해 따뜻한 사랑의 손길을 흘려보내는 실천적 그리스도인 공동체를 완성합니다.
                     </p>
@@ -295,16 +296,16 @@
             <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
                 
                 <div class="w-full lg:w-1/2 reveal">
-                    <p class="text-amber-700 font-semibold tracking-wider text-xs uppercase mb-3">Sermon & Shorts</p>
-                    <h2 class="font-serif-kr text-3xl font-bold text-stone-800 mb-6 leading-snug">모바일에 맞춤화된<br>선명한 생명의 말씀 메세지</h2>
+                    <p class="text-stone-500 font-semibold tracking-wider text-xs uppercase mb-3">Sermon & Shorts</p>
+                    <h2 class="font-serif-kr text-3xl font-bold text-stone-700 mb-6 leading-snug">모바일에 맞춤화된<br>선명한 생명의 말씀 메세지</h2>
                     <p class="text-stone-600 text-sm md:text-base leading-relaxed mb-6">
                         '고목사클라쓰' 유튜브 채널을 통해 일상의 언어로 핵심 복음을 간결하고 깊이 있게 전합니다. 바쁜 하루 속에서 마음을 깨우는 영성의 1분을 선물합니다.
                     </p>
                     <div class="inline-flex items-center gap-4 bg-white px-6 py-4 rounded-xl border border-stone-200/50 shadow-sm">
-                        <i class="fa-brands fa-youtube text-red-500 text-2xl"></i>
+                        <i class="fa-brands fa-youtube text-stone-400 text-2xl"></i>
                         <div class="text-left">
                             <p class="text-xs text-stone-400">공식 말씀 플랫폼</p>
-                            <p class="text-sm font-bold text-stone-700">고목사클라쓰 유튜브 shorts</p>
+                            <p class="text-sm font-bold text-stone-600">고목사클라쓰 유튜브 shorts</p>
                         </div>
                     </div>
                 </div>
@@ -331,7 +332,7 @@
                         </div>
                         
                         <!-- 후방 장식 일러스트레이션 낙서 라인 -->
-                        <div class="absolute -right-6 -bottom-6 w-20 h-20 border-r-2 border-b-2 border-dashed border-amber-300/60 rounded-br-2xl -z-10"></div>
+                        <div class="absolute -right-6 -bottom-6 w-20 h-20 border-r-2 border-b-2 border-dashed border-stone-300/40 rounded-br-2xl -z-10"></div>
                     </div>
                 </div>
 
@@ -347,8 +348,8 @@
                 
                 <!-- 왼쪽 컬럼: 타이틀 소개 -->
                 <div class="reveal">
-                    <p class="text-amber-700 font-semibold tracking-wider text-xs uppercase mb-3">Pastor Profile</p>
-                    <h2 class="font-serif-kr text-3xl font-bold text-stone-800 mb-4">함께 소통하는 길</h2>
+                    <p class="text-stone-500 font-semibold tracking-wider text-xs uppercase mb-3">Pastor Profile</p>
+                    <h2 class="font-serif-kr text-3xl font-bold text-stone-700 mb-4">함께 소통하는 길</h2>
                     <p class="text-stone-500 text-sm leading-relaxed">
                         하나님의 부르심에 믿음으로 답해온 사역의 발자취와 따뜻한 마음의 문을 열어 연락할 수 있는 통로입니다.
                     </p>
@@ -361,12 +362,12 @@
                     <div class="reveal delay-200">
                         <h3 class="text-xs font-bold text-stone-400 tracking-widest uppercase mb-6 border-b border-stone-200/60 pb-2">Education</h3>
                         <ul class="space-y-4">
-                            <li class="flex items-center text-stone-700 group">
-                                <span class="w-2 h-2 rounded-full bg-amber-400 mr-3 group-hover:scale-150 transition-transform duration-300"></span>
+                            <li class="flex items-center text-stone-600 group">
+                                <span class="w-2 h-2 rounded-full bg-stone-400 mr-3 group-hover:scale-150 transition-transform duration-300"></span>
                                 <span class="text-sm md:text-base font-medium">총신대학원 <span class="text-stone-400 font-light ml-1 font-playfair">M.Div</span></span>
                             </li>
-                            <li class="flex items-center text-stone-700 group">
-                                <span class="w-2 h-2 rounded-full bg-amber-400 mr-3 group-hover:scale-150 transition-transform duration-300"></span>
+                            <li class="flex items-center text-stone-600 group">
+                                <span class="w-2 h-2 rounded-full bg-stone-400 mr-3 group-hover:scale-150 transition-transform duration-300"></span>
                                 <span class="text-sm md:text-base font-medium">스텔렌보쉬 대학교 <span class="text-stone-400 font-light ml-1 font-playfair">M.TH</span></span>
                             </li>
                         </ul>
@@ -376,7 +377,7 @@
                     <div class="reveal delay-300">
                         <h3 class="text-xs font-bold text-stone-400 tracking-widest uppercase mb-6 border-b border-stone-200/60 pb-2">Church</h3>
                         <ul class="space-y-4">
-                            <li class="flex items-center text-stone-700 group">
+                            <li class="flex items-center text-stone-600 group">
                                 <span class="w-2 h-2 rounded-full bg-stone-400 mr-3 group-hover:scale-150 transition-transform duration-300"></span>
                                 <span class="text-sm md:text-base font-medium">새제천교회 담임목사</span>
                             </li>
@@ -386,28 +387,28 @@
                     <!-- 연락처 정보 -->
                     <div class="reveal delay-400 md:col-span-2 pt-6">
                         <h3 class="text-xs font-bold text-stone-400 tracking-widest uppercase mb-4">Contact</h3>
-                        <div class="flex items-center text-stone-700">
+                        <div class="flex items-center text-stone-600">
                             <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center mr-4 text-stone-400 shadow-sm border border-stone-200/20">
                                 <i class="fa-regular fa-envelope text-sm"></i>
                             </div>
-                            <a href="mailto:koindori@naver.com" class="text-sm md:text-base font-medium hover:text-amber-800 transition-colors duration-300">koindori@naver.com</a>
+                            <a href="mailto:koindori@naver.com" class="text-sm md:text-base font-medium hover:text-stone-800 transition-colors duration-300">koindori@naver.com</a>
                         </div>
                     </div>
 
-                    <!-- 링크 버튼 영역 -->
+                    <!-- 링크 버튼 영역 (새제천교회 홈페이지 & 고목사클라쓰 통일감 극대화) -->
                     <div class="reveal delay-500 md:col-span-2 flex flex-col sm:flex-row gap-4 pt-8">
-                        <!-- 새제천교회 버튼 -->
+                        <!-- 새제천교회 홈페이지 버튼 (화이트 테마) -->
                         <a href="https://saejecheon.com" target="_blank" rel="noopener noreferrer" 
-                           class="flex items-center justify-center bg-white text-stone-700 px-8 py-4 text-sm font-medium tracking-wide transition-all duration-300 ease-out hover:bg-stone-100 hover:text-stone-900 rounded-lg w-full sm:w-auto shadow-[0_4px_12px_rgba(0,0,0,0.02)] hover:shadow-[0_10px_20px_rgba(0,0,0,0.06)] hover:-translate-y-0.5 border border-stone-200/40">
-                            <i class="fa-solid fa-church mr-3 text-stone-400 transition-colors group-hover:text-stone-700"></i>
-                            새제천교회 공식 홈페이지
+                           class="flex items-center justify-center bg-white text-stone-600 px-8 py-4 text-sm font-medium tracking-wide transition-all duration-300 ease-out hover:bg-stone-100 hover:text-stone-800 rounded-lg w-full sm:w-auto shadow-[0_4px_12px_rgba(0,0,0,0.02)] hover:shadow-[0_10px_20px_rgba(0,0,0,0.06)] hover:-translate-y-0.5 border border-stone-200/40">
+                            <i class="fa-solid fa-church mr-3 text-stone-400 transition-colors"></i>
+                            새제천교회 홈페이지
                         </a>
                         
-                        <!-- 유튜브 버튼 -->
+                        <!-- 고목사클라쓰 버튼 (붉은색 배경 제거하고 하얀색 배경으로 변경, 마우스 오버 효과 통일) -->
                         <a href="https://www.youtube.com/@koclass" target="_blank" rel="noopener noreferrer" 
-                           class="flex items-center justify-center bg-red-50/40 text-stone-700 px-8 py-4 text-sm font-medium tracking-wide transition-all duration-300 ease-out hover:bg-red-100/50 hover:text-red-800 rounded-lg w-full sm:w-auto shadow-[0_4px_12px_rgba(0,0,0,0.02)] hover:shadow-[0_10px_20px_rgba(0,0,0,0.06)] hover:-translate-y-0.5 border border-red-100/10">
-                            <i class="fa-brands fa-youtube mr-3 text-red-500 transition-colors"></i>
-                            유튜브 '고목사클라쓰' 구독
+                           class="flex items-center justify-center bg-white text-stone-600 px-8 py-4 text-sm font-medium tracking-wide transition-all duration-300 ease-out hover:bg-stone-100 hover:text-stone-800 rounded-lg w-full sm:w-auto shadow-[0_4px_12px_rgba(0,0,0,0.02)] hover:shadow-[0_10px_20px_rgba(0,0,0,0.06)] hover:-translate-y-0.5 border border-stone-200/40">
+                            <i class="fa-brands fa-youtube mr-3 text-stone-400 transition-colors"></i>
+                            고목사클라쓰
                         </a>
                     </div>
 
