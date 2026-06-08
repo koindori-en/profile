@@ -62,64 +62,66 @@
             -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
         }
         
-        /* 마우스를 올리지 않아도 자연스럽게 살아숨쉬는 Cinematic Breathing 효과 */
+        /* [마우스 롤오버 완벽 구동] 마운트된 최외곽 줌 래퍼: 롤오버 시 정밀하게 스케일 업 */
+        .img-zoom-wrapper {
+            transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform;
+            transform-origin: 50% 70%;
+        }
+        
+        /* 마우스 호버(롤오버) 상태일 때 래퍼 자체를 약 12% 더 부드럽게 확대시킴 */
+        .img-container:hover .img-zoom-wrapper {
+            transform: scale(1.12) translate3d(0,0,0);
+        }
+
+        /* 기본적으로 살아숨쉬는 Cinematic Breathing 애니메이션 효과 */
         @keyframes profileBreath {
             0%, 100% {
-                transform: scale(1.50) translate3d(0,0,0);
+                transform: scale(1.36) translate3d(0,0,0);
             }
             50% {
-                transform: scale(1.56) translate3d(0,0,0);
+                transform: scale(1.42) translate3d(0,0,0);
             }
         }
         
-        .img-zoom {
+        .img-breathing {
             transform-origin: 50% 70%;
-            animation: profileBreath 18s ease-in-out infinite;
-            transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+            animation: profileBreath 16s ease-in-out infinite;
             will-change: transform;
             -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
         }
         
-        /* 호버 시에도 부드럽게 한 층 더 스케일 반응 연계 */
-        .img-container:hover .img-zoom {
-            animation-play-state: paused; /* 호버 시에는 브리딩 정지 후 세련되게 고정 확대 */
-            transform: scale(1.62) translate3d(0,0,0);
+        /* 롤오버 시 브리딩을 자연스럽게 멈춰서 흔들림 없이 고정 확대 상태 유지 */
+        .img-container:hover .img-breathing {
+            animation-play-state: paused;
         }
 
-        /* 사진 위를 은은하게 떠다니는 파티클 애니메이션 (Mac/Safari 가속 최적화) */
-        @keyframes particleFloatUp {
+        /* [요청사항] 중앙에서 밖으로 서서히 퍼져나가는 화이트 파티클 애니메이션 */
+        @keyframes particleSpreadOut {
             0% {
-                bottom: -20px;
-                transform: translateX(0) rotate(0deg) translate3d(0,0,0);
+                transform: translate(-50%, -50%) translate(0, 0) scale(0.2);
                 opacity: 0;
             }
             15% {
-                opacity: var(--max-opacity, 0.5);
-            }
-            85% {
-                opacity: var(--max-opacity, 0.5);
+                opacity: var(--max-opacity, 0.85);
             }
             100% {
-                bottom: 110%;
-                transform: translateX(var(--drift-x, 40px)) rotate(var(--drift-rot, 180deg)) translate3d(0,0,0);
+                transform: translate(-50%, -50%) translate(var(--tx, 150px), var(--ty, 150px)) scale(var(--end-scale, 1.2));
                 opacity: 0;
             }
         }
 
-        .floating-particle {
+        .spreading-particle {
             position: absolute;
+            left: 50%; /* 이미지 정중앙 */
+            top: 55%;  /* 피사체의 얼굴/가슴 부근을 중심점으로 정밀 보정 */
+            transform: translate(-50%, -50%);
             pointer-events: none;
-            will-change: transform, opacity, bottom;
-            animation: particleFloatUp var(--float-duration, 12s) linear infinite;
+            will-change: transform, opacity;
+            animation: particleSpreadOut var(--float-duration, 6s) cubic-bezier(0.1, 0.8, 0.25, 1) infinite;
             -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
-        }
-
-        /* 마우스 오버 시 파티클 가속 및 활성화 반응 효과를 위한 CSS 변수 조정 */
-        .img-container:hover .floating-particle {
-            animation-duration: calc(var(--float-duration, 12s) * 0.5); /* 상승 속도 2배 가속 */
-            --drift-x: calc(var(--drift-x-raw, 30px) * 1.5); /* 흔들림 확대 */
         }
 
         /* 핵심 가치 카드 아이콘들의 고급 미디움 루프 애니메이션 */
@@ -192,17 +194,20 @@
                     
                     <!-- 이미지 컨테이너 (여기에 파티클 효과가 오버레이됩니다) -->
                     <div id="photoContainer" class="img-container relative w-full h-[520px] md:h-[620px] lg:h-[700px] overflow-hidden rounded-xl bg-stone-100 shadow-[0_8px_30px_rgb(0,0,0,0.02)]">
-                        <img src="1000007608.jpg" alt="고목사 프로필 사진" 
-                             class="img-zoom absolute inset-0 w-full h-full object-cover"
-                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <!-- 이미지 로드 안될 때의 우아한 일러스트 대체 박스 -->
-                        <div class="hidden absolute inset-0 flex-col items-center justify-center bg-stone-100 text-stone-400">
-                            <i class="fa-solid fa-church text-5xl mb-4 text-stone-300"></i>
-                            <span class="text-sm font-sans">새제천교회 고인국 목사</span>
+                        <!-- 롤오버 확대 레이어를 마크업 분리하여 100% 동작 보장 -->
+                        <div class="img-zoom-wrapper absolute inset-0 w-full h-full">
+                            <img src="1000007608.jpg" alt="고목사 프로필 사진" 
+                                 class="img-breathing absolute inset-0 w-full h-full object-cover"
+                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <!-- 이미지 로드 안될 때의 우아한 일러스트 대체 박스 -->
+                            <div class="hidden absolute inset-0 flex-col items-center justify-center bg-stone-100 text-stone-400">
+                                <i class="fa-solid fa-church text-5xl mb-4 text-stone-300"></i>
+                                <span class="text-sm font-sans">새제천교회 고인국 목사</span>
+                            </div>
                         </div>
 
-                        <!-- 동적으로 흐르는 파티클 레이어 -->
-                        <div id="particleOverlay" class="absolute inset-0 pointer-events-none z-20"></div>
+                        <!-- [요청사항 반영] 동적으로 중앙에서 퍼져나가는 화이트 순백 파티클 레이어 -->
+                        <div id="particleOverlay" class="absolute inset-0 pointer-events-none z-20 overflow-hidden"></div>
                     </div>
 
                     <!-- 일러스트 풍의 숲/자연 모양 SVG 아이콘 배지 (그린/골드 포인트 유지) -->
@@ -230,7 +235,7 @@
 
                 <!-- 2. 원어 헬라어와 한국어 성경 말씀 통합형 비주얼 카드 (요한복음 13:34) -->
                 <div class="reveal delay-200 mb-10 bg-white/60 backdrop-blur-md p-8 md:p-10 rounded-2xl border border-stone-200/50 shadow-[0_8px_30px_rgb(0,0,0,0.01)]">
-                    <!-- 상단: 그리스어 원어 구절 (두 단계 축소 및 정교한 줄바꿈) -->
+                    <!-- 상단: 그리스어 원어 구절 (두 단계 축소 및 정교한 줄바꿈 없음) -->
                     <div class="mb-6">
                         <p class="font-serif text-lg sm:text-xl md:text-2xl text-stone-500/90 leading-relaxed tracking-wide italic font-medium break-normal font-playfair">
                             Ἐντολὴν καινὴν δίδωμι ὑμῖν, ἵνα ἀγαπᾶτε ἀλλήλους, καθὼς ἠγάπησα ὑμᾶς ἵνα καὶ ὑμεῖς ἀγαπᾶτε ἀλλήλους.
@@ -488,70 +493,67 @@
                 revealOnScrollObserver.observe(el);
             });
 
-            // 2. 동적 파티클(골드 먼지 및 골드 미니 십자가 조각) 생성 엔진 구현
+            // 2. 동적 파티클(중앙에서 퍼져나가는 순백색 원형 및 사각형 조각) 생성 엔진 구현
             const particleOverlay = document.getElementById("particleOverlay");
             
-            // 파티클 생성 함수
             function spawnParticle() {
                 if (!particleOverlay) return;
                 
-                // 불필요하게 파티클이 너무 많이 늘어나는 것 방지 (동시 실행 최대 12개 제한)
-                if (particleOverlay.children.length > 12) return;
+                // 동시 렌더링 최대 개수를 제어하여 렉 유발 및 디바이스 과열 방지
+                if (particleOverlay.children.length > 25) return;
 
                 const particle = document.createElement("div");
-                particle.className = "floating-particle";
+                particle.className = "spreading-particle";
 
-                // 60% 확률로 동그랗고 뽀얀 골드빛 먼지 입자, 40% 확률로 은은한 미니 십자가 형태 생성
-                const isCross = Math.random() > 0.6;
-                const size = isCross ? (10 + Math.random() * 8) : (4 + Math.random() * 6);
-                const leftPos = Math.random() * 100;
-                const duration = 10 + Math.random() * 12; // 10초 ~ 22초 동안 느긋하고 편안하게 상승
-                const driftX = (Math.random() * 60 - 30) + "px"; // 좌우 드리프트 범위 (-30px ~ 30px)
-                const driftRot = (Math.random() * 180 + 90) + "deg"; // 회전 각도 조정
-                const maxOpacity = (0.25 + Math.random() * 0.4); // 은은한 비주얼 확보를 위한 투명도 설정
-
-                // 파티클 스타일 속성 설정 (Mac Safari 완벽 대응을 위해 변수 전송 보강)
-                particle.style.left = `${leftPos}%`;
-                particle.style.setProperty("--float-duration", `${duration}s`);
-                particle.style.setProperty("--drift-x", driftX);
-                particle.style.setProperty("--drift-x-raw", `${parseFloat(driftX)}px`);
-                particle.style.setProperty("--drift-rot", driftRot);
-                particle.style.setProperty("--max-opacity", maxOpacity);
-
-                if (isCross) {
-                    // 미니멀하고 고급스러운 앤틱 골드 십자가 모양 실루엣 (Drop-shadow 추가하여 이미지 대비 가시성 완벽 확보)
-                    const goldColor = "rgba(212, 175, 55, 0.85)";
-                    particle.innerHTML = `
-                        <svg style="color: ${goldColor}; fill: currentColor; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));" width="${size}" height="${size}" viewBox="0 0 24 24">
-                            <path d="M11 2h2v6h6v2h-6v12h-2v-12h-6v-2h6V2z"/>
-                        </svg>
-                    `;
+                // [요청사항 반영] 십자가를 완전히 지우고, 50% 확률로 동그라미(원형) 또는 정사각형 설정
+                const isSquare = Math.random() > 0.5;
+                const size = 6 + Math.random() * 8; // 6px ~ 14px 사이의 조화로운 크기
+                
+                // [요청사항 반영] 100% 순백색 조각 및 화사하게 빛나는 아웃라인 처리
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.backgroundColor = "rgba(255, 255, 255, 0.9)";
+                particle.style.boxShadow = "0 0 10px rgba(255, 255, 255, 0.75), 0 0 3px rgba(255, 255, 255, 0.9)";
+                
+                if (isSquare) {
+                    particle.style.borderRadius = "2px"; // 귀여운 모서리를 가진 정사각형
                 } else {
-                    // 따뜻하게 피어오르는 미세 블러 블렌딩 골드 먼지 입자
-                    const goldColor = "rgba(212, 175, 55, 0.75)";
-                    particle.style.width = `${size}px`;
-                    particle.style.height = `${size}px`;
-                    particle.style.backgroundColor = goldColor;
-                    particle.style.borderRadius = "50%";
-                    particle.style.boxShadow = `0 0 8px ${goldColor}`;
-                    particle.style.filter = "blur(1px)";
+                    particle.style.borderRadius = "50%"; // 부드러운 동그라미
                 }
+
+                // [요청사항 반영] 중앙에서 사방 바깥쪽으로 퍼져나가는 벡터 연산
+                const angle = Math.random() * Math.PI * 2; // 무작위 사방 각도 (0 ~ 360도)
+                const distance = 120 + Math.random() * 260; // 퍼져나갈 무작위 방사 거리 (120px ~ 380px)
+                const tx = Math.cos(angle) * distance;
+                const ty = Math.sin(angle) * distance;
+                
+                // 마이크로 인터랙션 최적화 수치 분배
+                const duration = 3.5 + Math.random() * 4; // 3.5초 ~ 7.5초 간 스르륵 소멸
+                const endScale = 0.4 + Math.random() * 1.4; // 퍼지면서 크기 역시 자연스럽게 변화
+                const maxOpacity = 0.45 + Math.random() * 0.45; // 투명도 무작위 밸런싱
+
+                // CSS 커스텀 변수 바인딩
+                particle.style.setProperty("--tx", `${tx}px`);
+                particle.style.setProperty("--ty", `${ty}px`);
+                particle.style.setProperty("--float-duration", `${duration}s`);
+                particle.style.setProperty("--end-scale", endScale);
+                particle.style.setProperty("--max-opacity", maxOpacity);
 
                 particleOverlay.appendChild(particle);
 
-                // 애니메이션이 끝나면 수거하여 메모리 및 성능 누수 차단
+                // 애니메이션이 완수되면 엘리먼트를 소거하여 가비지 컬렉터 메모리 반환
                 setTimeout(() => {
                     particle.remove();
                 }, duration * 1000);
             }
 
-            // 초기 파티클 몇 개 선배치하여 진입 시 자연스럽게 보이게 함
-            for(let i = 0; i < 5; i++) {
-                setTimeout(spawnParticle, i * 1500);
+            // 초기 렌더링 시 은은하게 차오른 상태를 연출하기 위해 먼저 6개 스폰
+            for(let i = 0; i < 6; i++) {
+                setTimeout(spawnParticle, i * 600);
             }
 
-            // 주기를 가지고 지속적으로 생성 및 피어오르게 제어
-            setInterval(spawnParticle, 1800);
+            // 1.4초 주기로 중앙에서 정밀하게 파티클 분출 루프 시작
+            setInterval(spawnParticle, 1400);
 
             // 3. 이메일 클립보드 복사 & 상호작용 툴팁 엔진 구현
             const emailContainer = document.getElementById("emailContainer");
