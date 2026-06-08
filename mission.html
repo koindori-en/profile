@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 크롬창 제목을 IK 선교의 자취로 전격 변경 -->
     <title>IK 선교의 자취</title>
     
     <!-- 브라우저 탭 아이콘 (파비콘) 적용 -->
@@ -61,7 +62,7 @@
             transform: translateY(0);
         }
 
-        /* 매거진 이미지 호버 액션 */
+        /* 매거진 이미지 호버 액션 및 클릭 시 확대될 수 있는 돋보기 커서 적용 */
         .img-card {
             position: relative;
             overflow: hidden;
@@ -69,6 +70,7 @@
             background-color: #f5f5f4;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
             border: 1px solid rgba(229, 224, 216, 0.5);
+            cursor: zoom-in;
         }
 
         .img-card img {
@@ -77,6 +79,11 @@
 
         .img-card:hover img {
             transform: scale(1.06);
+        }
+
+        /* 라이트박스 캡션 및 모달 스무스 트랜지션 전용 */
+        #lightboxModal {
+            transition: opacity 0.3s ease, visibility 0.3s ease;
         }
     </style>
 </head>
@@ -123,16 +130,15 @@
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-6">
                     <!-- 사진 1 -->
                     <div class="img-card md:col-span-4 aspect-[3/4]">
-                        <img src="티벳 중간.jpeg" alt="티벳 사역 풍경 1" class="w-full h-full object-cover" onerror="handleImageError(this, '티벳 풍경 1')">
+                        <img src="티벳 중간.jpeg" alt="티벳 사역 풍경 1 - 척박한 땅 위에서의 첫 걸음" class="w-full h-full object-cover" onerror="handleImageError(this, '티벳 풍경 1')">
                     </div>
-                    <!-- 사진 2 (요청에 따라 구도를 왼쪽으로 살짝 이동) -->
-                    <!-- [팁] object-[X축_Y축] 백분율 수치를 낮출수록(예: 30% -> 20%) 화면이 왼쪽으로 더 부드럽게 이동합니다. -->
+                    <!-- 사진 2 -->
                     <div class="img-card md:col-span-8 aspect-[4/3] md:aspect-auto">
-                        <img src="티벳2 중간.jpeg" alt="티벳 사역 풍경 2" class="w-full h-full object-cover object-[35%_50%]" onerror="handleImageError(this, '티벳 풍경 2')">
+                        <img src="티벳2 중간.jpeg" alt="티벳 사역 풍경 2 - 주님을 경배하는 자매들" class="w-full h-full object-cover object-[35%_50%]" onerror="handleImageError(this, '티벳 풍경 2')">
                     </div>
                     <!-- 사진 3 -->
                     <div class="img-card md:col-span-12 aspect-[21/9]">
-                        <img src="티벳3 중간.jpeg" alt="티벳 사역 풍경 3" class="w-full h-full object-cover" onerror="handleImageError(this, '티벳 풍경 3')">
+                        <img src="티벳3 중간.jpeg" alt="티벳 사역 풍경 3 - 하늘과 가장 맞닿은 공동체" class="w-full h-full object-cover" onerror="handleImageError(this, '티벳 풍경 3')">
                     </div>
                 </div>
 
@@ -162,15 +168,15 @@
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-6">
                     <!-- 사진 1 (넓은 파노라마) -->
                     <div class="img-card md:col-span-12 aspect-[21/9]">
-                        <img src="필리핀 중간.jpeg" alt="필리핀 사역 풍경 1" class="w-full h-full object-cover" onerror="handleImageError(this, '필리핀 풍경 1')">
+                        <img src="필리핀 중간.jpeg" alt="필리핀 사역 풍경 1 - 마을 복음 축제 현장" class="w-full h-full object-cover" onerror="handleImageError(this, '필리핀 풍경 1')">
                     </div>
                     <!-- 사진 2 -->
                     <div class="img-card md:col-span-6 aspect-[4/3]">
-                        <img src="필리핀2 중간.jpeg" alt="필리핀 사역 풍경 2" class="w-full h-full object-cover" onerror="handleImageError(this, '필리핀 풍경 2')">
+                        <img src="필리핀2 중간.jpeg" alt="필리핀 사역 풍경 2 - 해맑은 아이들과 함께" class="w-full h-full object-cover" onerror="handleImageError(this, '필리핀 풍경 2')">
                     </div>
                     <!-- 사진 3 -->
                     <div class="img-card md:col-span-6 aspect-[4/3]">
-                        <img src="필리핀3 중간.jpeg" alt="필리핀 사역 풍경 3" class="w-full h-full object-cover" onerror="handleImageError(this, '필리핀 풍경 3')">
+                        <img src="필리핀3 중간.jpeg" alt="필리핀 사역 풍경 3 - 초가 움막 속 은혜의 예배" class="w-full h-full object-cover" onerror="handleImageError(this, '필리핀 풍경 3')">
                     </div>
                 </div>
 
@@ -200,15 +206,15 @@
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-6">
                     <!-- 사진 1 -->
                     <div class="img-card md:col-span-6 aspect-[4/3]">
-                        <img src="아프리카 중간.jpeg" alt="아프리카 사역 풍경 1" class="w-full h-full object-cover" onerror="handleImageError(this, '아프리카 풍경 1')">
+                        <img src="아프리카 중간.jpeg" alt="아프리카 사역 풍경 1 - 천진난만한 아이들과 함께 부른 찬가" class="w-full h-full object-cover" onerror="handleImageError(this, '아프리카 풍경 1')">
                     </div>
                     <!-- 사진 2 -->
                     <div class="img-card md:col-span-6 aspect-[4/3]">
-                        <img src="아프리카2 중간.jpeg" alt="아프리카 사역 풍경 2" class="w-full h-full object-cover" onerror="handleImageError(this, '아프리카 풍경 2')">
+                        <img src="아프리카2 중간.jpeg" alt="아프리카 사역 풍경 2 - 거리 복음 전도단 사역" class="w-full h-full object-cover" onerror="handleImageError(this, '아프리카 풍경 2')">
                     </div>
                     <!-- 사진 3 -->
                     <div class="img-card md:col-span-12 aspect-[21/9]">
-                        <img src="아프리카3 중간.jpeg" alt="아프리카 사역 풍경 3" class="w-full h-full object-cover" onerror="handleImageError(this, '아프리카 풍경 3')">
+                        <img src="아프리카3 중간.jpeg" alt="아프리카 사역 풍경 3 - 흙바닥 위 모인 영광스러운 성전" class="w-full h-full object-cover" onerror="handleImageError(this, '아프리카 풍경 3')">
                     </div>
                 </div>
 
@@ -236,17 +242,17 @@
 
                 <!-- 사진 3장 에디토리얼 그리드 배치 -->
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-6">
-                    <!-- 사진 1 (요청에 따라 구도를 왼쪽으로 살짝 이동) -->
+                    <!-- 사진 1 (요청에 따라 구도 정렬) -->
                     <div class="img-card md:col-span-8 aspect-[4/3] md:aspect-auto">
-                        <img src="우즈베키스탄 중간.jpeg" alt="우즈베키스탄 사역 풍경 1" class="w-full h-full object-cover object-[35%_50%]" onerror="handleImageError(this, '우즈베키스탄 풍경 1')">
+                        <img src="우즈베키스탄 중간.jpeg" alt="우즈베키스탄 사역 풍경 1 - 설산 배경의 생명수 프로젝트" class="w-full h-full object-cover object-[35%_50%]" onerror="handleImageError(this, '우즈베키스탄 풍경 1')">
                     </div>
-                    <!-- 사진 2 (요청에 따라 구도를 왼쪽으로 살짝 이동) -->
+                    <!-- 사진 2 (요청에 따라 사람 중심의 중앙으로 다시 정렬 적용) -->
                     <div class="img-card md:col-span-4 aspect-[3/4]">
-                        <img src="우즈베키스탄2 중간.jpeg" alt="우즈베키스탄 사역 풍경 2" class="w-full h-full object-cover object-[35%_50%]" onerror="handleImageError(this, '우즈베키스탄 풍경 2')">
+                        <img src="우즈베키스탄2 중간.jpeg" alt="우즈베키스탄 사역 풍경 2 - 평화로운 이슬람 유적지 탐방" class="w-full h-full object-cover object-[50%_50%]" onerror="handleImageError(this, '우즈베키스탄 풍경 2')">
                     </div>
                     <!-- 사진 3 -->
                     <div class="img-card md:col-span-12 aspect-[21/9]">
-                        <img src="우즈베키스탄3 중간.jpeg" alt="우즈베키스탄 사역 풍경 3" class="w-full h-full object-cover" onerror="handleImageError(this, '우즈베키스탄 풍경 3')">
+                        <img src="우즈베키스탄3 중간.jpeg" alt="우즈베키스탄 사역 풍경 3 - 시골 마을 주민들과 나눈 온정" class="w-full h-full object-cover" onerror="handleImageError(this, '우즈베키스탄 풍경 3')">
                     </div>
                 </div>
 
@@ -261,6 +267,44 @@
                 </div>
             </section>
 
+            <!-- 5. 몽골 (다섯 번째) -->
+            <section class="reveal">
+                <!-- 섹션 헤더 -->
+                <div class="flex flex-col md:flex-row md:items-baseline justify-between border-b border-stone-200/60 pb-4 mb-8">
+                    <div class="flex items-center gap-3">
+                        <span class="text-2xl font-playfair italic text-emerald-700/80">05</span>
+                        <h3 class="font-sans text-base md:text-lg font-semibold text-stone-600">몽골 <span class="text-xs md:text-sm font-light text-stone-400 font-sans">(Mongolia)</span></h3>
+                    </div>
+                    <span class="text-xs text-stone-400 font-sans tracking-widest mt-1 md:mt-0 uppercase">Mongolia Mission</span>
+                </div>
+
+                <!-- 사진 3장 에디토리얼 그리드 배치 -->
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-6">
+                    <!-- 사진 1 -->
+                    <div class="img-card md:col-span-6 aspect-[4/3]">
+                        <img src="몽골 크게.jpeg" alt="몽골 사역 풍경 1 - 온 교회가 함께 주님의 십자가 밑에서" class="w-full h-full object-cover" onerror="handleImageError(this, '몽골 풍경 1')">
+                    </div>
+                    <!-- 사진 2 -->
+                    <div class="img-card md:col-span-6 aspect-[4/3]">
+                        <img src="몽골2 크게.jpg" alt="몽골 사역 풍경 2 - 광활한 초원 속 생명을 구하러 나선 행렬" class="w-full h-full object-cover" onerror="handleImageError(this, '몽골 풍경 2')">
+                    </div>
+                    <!-- 사진 3 -->
+                    <div class="img-card md:col-span-12 aspect-[21/9]">
+                        <img src="몽골3 크게.jpg" alt="몽골 사역 풍경 3 - 몽골 전통 게르 속에 핀 은혜와 풍선 아트 축제" class="w-full h-full object-cover" onerror="handleImageError(this, '몽골 풍경 3')">
+                    </div>
+                </div>
+
+                <!-- 사역 코멘터리 -->
+                <div class="max-w-3xl">
+                    <p class="font-serif-kr text-base md:text-lg text-stone-600 leading-relaxed mb-4">
+                        "끝없이 펼쳐진 초원 위에 심겨진 하늘나라의 씨앗, 소망으로 가득한 미래를 함께 세워갑니다."
+                    </p>
+                    <p class="text-stone-500 font-light text-xs md:text-sm leading-relaxed">
+                        바람과 구름의 나라 몽골의 광활한 대지 속에서 잊지 못할 영혼들을 마주했습니다. 전통 천막 가옥 게르(Ger)에 옹기종기 모여 풍선을 불며 가르친 말씀과 나눈 대화는 주님의 따뜻한 사랑 안에서 국경과 언어를 초월한 깊은 형제애를 느끼게 해 주었습니다. 맑은 아이들의 눈망울과 드넓은 벌판을 달리던 말들처럼, 그들의 고귀한 믿음 또한 거침없이 무럭무럭 자라나길 소원합니다.
+                    </p>
+                </div>
+            </section>
+
         </div>
     </main>
 
@@ -271,9 +315,24 @@
         </p>
     </footer>
 
-    <!-- 스크롤 리빌 애니메이션 구동 스크립트 -->
+    <!-- [요청사항 반영] 클릭 시 확대되는 세련된 무한 라이트박스 뷰어 모달 마크업 -->
+    <div id="lightboxModal" class="fixed inset-0 z-[100] bg-stone-950/90 backdrop-blur-md hidden opacity-0 flex items-center justify-center p-4 cursor-zoom-out select-none">
+        <!-- 닫기 버튼 -->
+        <button id="closeModalBtn" class="absolute top-6 right-6 text-white/80 hover:text-white text-3xl transition-colors cursor-pointer z-50 p-2" aria-label="닫기">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="relative max-w-5xl max-h-[85vh] flex flex-col items-center justify-center pointer-events-none">
+            <!-- 확대 이미지 -->
+            <img id="modalImg" src="" alt="확대 이미지" class="max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl pointer-events-auto cursor-default border border-stone-800/50">
+            <!-- 설명 캡션 -->
+            <p id="modalCaption" class="text-stone-300 text-xs md:text-sm mt-4 font-sans tracking-wide text-center pointer-events-auto bg-stone-900/60 px-5 py-2.5 rounded-full border border-stone-800/30"></p>
+        </div>
+    </div>
+
+    <!-- 스크롤 리빌 애니메이션 & 라이트박스 뷰어 구동 스크립트 -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
+            // 1. 스크롤 리빌 감지엔진
             const revealElements = document.querySelectorAll(".reveal");
 
             const revealOnScrollObserver = new IntersectionObserver((entries, observer) => {
@@ -290,6 +349,52 @@
 
             revealElements.forEach(el => {
                 revealOnScrollObserver.observe(el);
+            });
+
+            // 2. [요청사항 반영] 라이트박스 뷰어 엔진
+            const modal = document.getElementById("lightboxModal");
+            const modalImg = document.getElementById("modalImg");
+            const modalCaption = document.getElementById("modalCaption");
+            const closeBtn = document.getElementById("closeModalBtn");
+
+            // 모든 이미지에 대해 클릭 이벤트 바인딩
+            document.querySelectorAll(".img-card img").forEach(img => {
+                img.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    modalImg.src = img.src;
+                    modalCaption.textContent = img.alt || "선교의 자취";
+                    
+                    // 모달 나타내기 애니메이션
+                    modal.classList.remove("hidden");
+                    // 브라우저 렌더 레이아웃 동기화 트리거
+                    modal.offsetHeight; 
+                    modal.classList.add("opacity-100");
+                });
+            });
+
+            // 모달 닫기 공통 함수
+            const closeModal = () => {
+                modal.classList.remove("opacity-100");
+                setTimeout(() => {
+                    modal.classList.add("hidden");
+                    modalImg.src = "";
+                    modalCaption.textContent = "";
+                }, 300);
+            };
+
+            // 바깥 빈 공간 누르면 소멸
+            modal.addEventListener("click", closeModal);
+            // 닫기 버튼 누르면 소멸
+            closeBtn.addEventListener("click", (e) => {
+                e.stopPropagation();
+                closeModal();
+            });
+
+            // ESC 키 누르면 소멸
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "Escape" && !modal.classList.contains("hidden")) {
+                    closeModal();
+                }
             });
         });
     </script>
