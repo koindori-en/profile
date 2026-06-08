@@ -90,7 +90,8 @@
         /* 사진 위를 은은하게 떠다니는 파티클 애니메이션 (Mac/Safari 가속 최적화) */
         @keyframes particleFloatUp {
             0% {
-                transform: translateY(110%) translateX(0) rotate(0deg) translate3d(0,0,0);
+                bottom: -20px;
+                transform: translateX(0) rotate(0deg) translate3d(0,0,0);
                 opacity: 0;
             }
             15% {
@@ -100,16 +101,16 @@
                 opacity: var(--max-opacity, 0.5);
             }
             100% {
-                transform: translateY(-20%) translateX(var(--drift-x, 40px)) rotate(var(--drift-rot, 180deg)) translate3d(0,0,0);
+                bottom: 110%;
+                transform: translateX(var(--drift-x, 40px)) rotate(var(--drift-rot, 180deg)) translate3d(0,0,0);
                 opacity: 0;
             }
         }
 
         .floating-particle {
             position: absolute;
-            bottom: 0;
             pointer-events: none;
-            will-change: transform, opacity;
+            will-change: transform, opacity, bottom;
             animation: particleFloatUp var(--float-duration, 12s) linear infinite;
             -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
@@ -121,7 +122,6 @@
             --drift-x: calc(var(--drift-x-raw, 30px) * 1.5); /* 흔들림 확대 */
         }
 
-        /* */
         /* 핵심 가치 카드 아이콘들의 고급 미디움 루프 애니메이션 */
         @keyframes cameraShutter {
             0%, 100% {
@@ -233,8 +233,7 @@
                     <!-- 상단: 그리스어 원어 구절 (두 단계 축소 및 정교한 줄바꿈) -->
                     <div class="mb-6">
                         <p class="font-serif text-lg sm:text-xl md:text-2xl text-stone-500/90 leading-relaxed tracking-wide italic font-medium break-normal font-playfair">
-                            Ἐντολὴν καινὴν δίδωμι ὑμῖν, ἵνα ἀγαπᾶτε ἀλλήλους, <br class="hidden sm:block">
-                            καθὼς ἠγάπησα ὑμᾶς ἵνα καὶ ὑμεῖς ἀγαπᾶτε ἀλλήลους.
+                            Ἐντολὴν καινὴν δίδωμι ὑμῖν, ἵνα ἀγαπᾶτε ἀλλήλους, καθὼς ἠγάπησα ὑμᾶς ἵνα καὶ ὑμεῖς ἀγαπᾶτε ἀλλήλους.
                         </p>
                     </div>
                     
