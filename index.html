@@ -234,7 +234,7 @@
                     <div class="mb-6">
                         <p class="font-serif text-lg sm:text-xl md:text-2xl text-stone-500/90 leading-relaxed tracking-wide italic font-medium break-normal font-playfair">
                             Ἐντολὴν καινὴν δίδωμι ὑμῖν, ἵνα ἀγαπᾶτε ἀλλήλους, <br class="hidden sm:block">
-                            καθὼς ἠγάπησα ὑμᾶς ἵνα καὶ ὑμεῖς ἀγαπᾶτε ἀλλήλους.
+                            καθὼς ἠγάπησα ὑμᾶς ἵνα καὶ ὑμεῖς ἀγαπᾶτε ἀλλήลους.
                         </p>
                     </div>
                     
@@ -419,14 +419,20 @@
                         </ul>
                     </div>
 
-                    <!-- 연락처 정보 (메일 아이콘 색상 딥블루 변경 및 구글 메일 반영) -->
+                    <!-- 연락처 정보 (메일 복사 기능 및 귀여운 툴팁 인터랙션 적용) -->
                     <div class="reveal delay-400 md:col-span-2 pt-6">
                         <h3 class="text-xs font-bold text-amber-600 tracking-widest uppercase mb-4 font-sans">Contact</h3>
-                        <div class="flex items-center text-stone-600">
-                            <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center mr-4 text-slate-700/90 shadow-sm border border-stone-200/20">
+                        <div id="emailContainer" class="relative inline-flex items-center text-stone-600 group cursor-pointer select-none">
+                            <div id="emailIcon" class="w-10 h-10 rounded-full bg-white flex items-center justify-center mr-4 text-slate-700/90 shadow-sm border border-stone-200/20 transition-all duration-300 group-hover:bg-amber-100 group-hover:text-amber-800 group-hover:scale-110">
                                 <i class="fa-regular fa-envelope text-sm"></i>
                             </div>
-                            <a href="mailto:koindori@gmail.com" class="text-sm md:text-base font-medium hover:text-stone-800 transition-colors duration-300">koindori@gmail.com</a>
+                            <span class="text-sm md:text-base font-medium hover:text-stone-800 transition-colors duration-300 border-b border-dashed border-stone-300 group-hover:border-stone-800">koindori@gmail.com</span>
+                            
+                            <!-- 귀여운 인터랙티브 복사 말풍선 -->
+                            <div id="emailTooltip" class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-3 px-3 py-2 bg-stone-800/95 text-white text-xs rounded-xl opacity-0 pointer-events-none transition-all duration-300 shadow-lg whitespace-nowrap z-50 flex items-center gap-1.5 font-sans">
+                                <span>📬 클릭하면 메일 주소가 복사됩니다</span>
+                                <div class="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-stone-800/95"></div>
+                            </div>
                         </div>
                     </div>
 
@@ -547,6 +553,56 @@
 
             // 주기를 가지고 지속적으로 생성 및 피어오르게 제어
             setInterval(spawnParticle, 1800);
+
+            // 3. 이메일 클립보드 복사 & 상호작용 툴팁 엔진 구현
+            const emailContainer = document.getElementById("emailContainer");
+            const emailTooltip = document.getElementById("emailTooltip");
+            
+            if (emailContainer && emailTooltip) {
+                // 마우스 올렸을 때
+                emailContainer.addEventListener("mouseenter", () => {
+                    emailTooltip.innerHTML = `📬 클릭하면 메일 주소가 복사됩니다 <div class="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-stone-800/95"></div>`;
+                    emailTooltip.style.opacity = "1";
+                    emailTooltip.style.transform = "translate(-50%, -4px)";
+                });
+                
+                // 마우스 벗어날 때
+                emailContainer.addEventListener("mouseleave", () => {
+                    emailTooltip.style.opacity = "0";
+                    emailTooltip.style.transform = "translate(-50%, 0px)";
+                });
+                
+                // 클릭했을 때 (복사 메커니즘 및 툴팁 피드백)
+                emailContainer.addEventListener("click", () => {
+                    const mailText = "koindori@gmail.com";
+                    
+                    // iFrame 내 복사 호환성 보장용 임시 요소 생성
+                    const tempInput = document.createElement("textarea");
+                    tempInput.value = mailText;
+                    tempInput.style.position = "absolute";
+                    tempInput.style.left = "-9999px";
+                    document.body.appendChild(tempInput);
+                    tempInput.select();
+                    
+                    try {
+                        const success = document.execCommand("copy");
+                        if (success) {
+                            // 귀여운 복사 완료 성공 메세지 전환
+                            emailTooltip.innerHTML = `✨ 복사되었습니다! <div class="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-stone-800/95"></div>`;
+                            
+                            // 튕기는 듯한 마이크로 스케일 효과
+                            emailTooltip.style.transform = "translate(-50%, -8px) scale(1.08)";
+                            setTimeout(() => {
+                                emailTooltip.style.transform = "translate(-50%, -4px) scale(1)";
+                            }, 180);
+                        }
+                    } catch (err) {
+                        console.error("이메일 주소 복사 실패: ", err);
+                    }
+                    
+                    document.body.removeChild(tempInput);
+                });
+            }
         });
     </script>
 </body>
