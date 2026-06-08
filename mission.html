@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>선교의 자취 - IK pastor KO</title>
+    
+    <!-- 브라우저 탭 아이콘 (파비콘) 적용 -->
+    <link rel="icon" href="logo.png" type="image/png">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Noto Serif KR (명조체), Noto Sans KR (고딕체), Playfair Display (영문) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&family=Playfair+Display:ital,wght=0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            background-color: #FAF8F5; /* 메인 페이지와 완벽히 동일한 감성 미색 톤 */
+            color: #4A4A4A; /* 눈이 편안한 미디엄 차콜그레이 */
+            font-family: 'Noto Sans KR', sans-serif; 
+            overflow-x: hidden;
+            background-image: radial-gradient(#e5e0d8 1px, transparent 1px);
+            background-size: 24px 24px; /* 섬세한 캔버스 텍스처 느낌 */
+        }
+
+        .font-serif-kr {
+            font-family: 'Noto Serif KR', serif;
+        }
+
+        .font-playfair {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* 스크롤 리빌 애니메이션 */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform, opacity;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 아티스틱한 이미지 마스크 줌 효과 */
+        .img-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .img-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 36px rgba(0,0,0,0.06);
+        }
+
+        .img-card img {
+            transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .img-card:hover img {
+            transform: scale(1.06);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased">
+
+    <!-- 상단 장식 라인 -->
+    <div class="h-1.5 w-full bg-gradient-to-r from-stone-200 via-amber-200/50 to-stone-300"></div>
+
+    <!-- 미니멀 네비게이션 헤더 -->
+    <header class="sticky top-0 z-50 bg-[#FAF8F5]/80 backdrop-blur-md border-b border-stone-200/30 transition-all duration-300">
+        <div class="max-w-[1300px] mx-auto px-6 sm:px-10 lg:px-16 h-16 md:h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2 group">
+                <img src="logo.png" alt="고인국목사 로고" class="h-8 md:h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105" onerror="this.style.display='none';">
+                <span class="text-xs md:text-sm font-medium text-stone-500 group-hover:text-stone-800 tracking-wider transition-colors duration-300">고인국 목사</span>
+            </a>
+
+            <!-- 이전 프로필 메인으로 돌아가는 세련된 텍스트 버튼 -->
+            <a href="index.html" class="flex items-center gap-1.5 text-xs md:text-sm font-medium text-emerald-700 hover:text-emerald-900 tracking-wider transition-colors duration-300">
+                <i class="fa-solid fa-arrow-left-long text-xs"></i> 메인 화면으로 돌아가기
+            </a>
+        </div>
+        <!-- 얇은 예술적 데코 라인 -->
+        <div class="h-[1px] w-full bg-gradient-to-r from-stone-200 via-stone-300/50 to-stone-200"></div>
+    </header>
+
+    <!-- 인트로 소개 타이틀 영역 -->
+    <section class="max-w-[1100px] w-full mx-auto px-6 sm:px-10 pt-12 md:pt-20 pb-10 text-center">
+        <p class="text-emerald-700 font-semibold tracking-[0.2em] text-xs uppercase mb-3 font-sans">TRACES OF MISSION</p>
+        <h2 class="font-serif-kr text-3xl md:text-4xl lg:text-5xl font-bold text-stone-800 leading-tight tracking-tight mb-6">
+            선교의 자취
+        </h2>
+        <div class="w-12 h-[1.5px] bg-amber-400/80 mx-auto mb-6"></div>
+        <p class="text-stone-500 font-light text-sm md:text-base leading-relaxed max-w-2xl mx-auto">
+            국경과 인종을 넘어 가라사대 하신 주님의 발자취를 좇아,<br class="hidden sm:block">
+            세계의 굽이치는 현장 속에서 뜨겁게 예배하고 소통했던 은혜의 기록들입니다.
+        </p>
+    </section>
+
+    <!-- 메인 타임라인 갤러리 스트림 -->
+    <main class="max-w-[1100px] w-full mx-auto px-6 sm:px-10 pb-24 space-y-24 md:space-y-36">
+
+        <!-- 1. 우즈베키스탄 (가장 위) -->
+        <section class="reveal">
+            <!-- 섹션 헤더 -->
+            <div class="flex flex-col md:flex-row md:items-baseline justify-between border-b border-stone-200/60 pb-4 mb-8">
+                <div class="flex items-center gap-3">
+                    <span class="text-2xl font-playfair italic text-emerald-700/80">01</span>
+                    <h3 class="font-serif-kr text-xl md:text-2xl font-semibold text-stone-800">우즈베키스탄</h3>
+                </div>
+                <span class="text-xs text-stone-400 font-sans tracking-widest mt-1 md:mt-0 uppercase">Central Asia Mission</span>
+            </div>
+
+            <!-- 사진 3장 그리드 배치 (동적 매거진 룩) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                <!-- 사진 1 -->
+                <div class="img-card md:col-span-2 aspect-[16/10]">
+                    <img src="우즈베키스탄 중간.jpeg" alt="우즈베키스탄 사역 풍경 1" class="w-full h-full object-cover" onerror="handleImageError(this, '우즈베키스탄 풍경 1')">
+                </div>
+                <!-- 사진 2 -->
+                <div class="img-card aspect-square md:aspect-auto">
+                    <img src="우즈베키스탄2 중간.jpeg" alt="우즈베키스탄 사역 풍경 2" class="w-full h-full object-cover" onerror="handleImageError(this, '우즈베키스탄 풍경 2')">
+                </div>
+                <!-- 사진 3 -->
+                <div class="img-card md:col-span-3 aspect-[16/7] overflow-hidden">
+                    <img src="우즈베키스탄3 중간.jpeg" alt="우즈베키스탄 사역 풍경 3" class="w-full h-full object-cover" onerror="handleImageError(this, '우즈베키스탄 풍경 3')">
+                </div>
+            </div>
+
+            <!-- 사역 코멘터리 -->
+            <div class="max-w-3xl">
+                <p class="text-stone-500 font-light text-xs md:text-sm leading-relaxed">
+                    광활한 중앙아시아의 중심, 실크로드의 오랜 자취가 숨쉬는 우즈베키스탄의 메마른 땅에 진리의 생수를 전했습니다. 현지 영혼들과 교제하며 빚어낸 따스한 만남은 국경과 세대를 지워내고 주님의 사랑으로 온전해지는 눈물 어린 은혜의 연대였습니다.
+                </p>
+            </div>
+        </section>
+
+        <!-- 2. 아프리카 (두 번째) -->
+        <section class="reveal">
+            <!-- 섹션 헤더 -->
+            <div class="flex flex-col md:flex-row md:items-baseline justify-between border-b border-stone-200/60 pb-4 mb-8">
+                <div class="flex items-center gap-3">
+                    <span class="text-2xl font-playfair italic text-emerald-700/80">02</span>
+                    <h3 class="font-serif-kr text-xl md:text-2xl font-semibold text-stone-800">아프리카</h3>
+                </div>
+                <span class="text-xs text-stone-400 font-sans tracking-widest mt-1 md:mt-0 uppercase">Africa Mission</span>
+            </div>
+
+            <!-- 사진 3장 그리드 배치 (에디토리얼 비주얼 밸런스) -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-6">
+                <!-- 사진 1 -->
+                <div class="img-card md:col-span-7 aspect-[4/3]">
+                    <img src="아프리카 중간.jpeg" alt="아프리카 사역 풍경 1" class="w-full h-full object-cover" onerror="handleImageError(this, '아프리카 풍경 1')">
+                </div>
+                <!-- 사진 2 -->
+                <div class="img-card md:col-span-5 aspect-[4/3]">
+                    <img src="아프리카2 중간.jpeg" alt="아프리카 사역 풍경 2" class="w-full h-full object-cover" onerror="handleImageError(this, '아프리카 풍경 2')">
+                </div>
+                <!-- 사진 3 -->
+                <div class="img-card md:col-span-12 aspect-[21/9]">
+                    <img src="아프리ｶ3 중간.jpeg" alt="아프리카 사역 풍경 3" class="w-full h-full object-cover" onerror="handleImageError(this, '아프리카 풍경 3')">
+                </div>
+            </div>
+
+            <!-- 사역 코멘터리 -->
+            <div class="max-w-3xl">
+                <p class="text-stone-500 font-light text-xs md:text-sm leading-relaxed">
+                    뜨거운 태양 아래, 붉은 황톳길 너머 울려 퍼지던 아이들의 순박한 찬양이 아직도 귓가에 선명합니다. 양철 지붕으로 만든 초라한 임시 성막 안이었지만 성령의 역사하심은 어느 곳보다 뜨거웠고, 푸른 단체복을 입고 힘을 모아 선포한 'Power of God'의 기적은 메마른 땅 위에 소망의 성전으로 굳건히 심겼습니다.
+                </p>
+            </div>
+        </section>
+
+        <!-- 3. 필리핀 (세 번째) -->
+        <section class="reveal">
+            <!-- 섹션 헤더 -->
+            <div class="flex flex-col md:flex-row md:items-baseline justify-between border-b border-stone-200/60 pb-4 mb-8">
+                <div class="flex items-center gap-3">
+                    <span class="text-2xl font-playfair italic text-emerald-700/80">03</span>
+                    <h3 class="font-serif-kr text-xl md:text-2xl font-semibold text-stone-800">필리핀</h3>
+                </div>
+                <span class="text-xs text-stone-400 font-sans tracking-widest mt-1 md:mt-0 uppercase">Southeast Asia Mission</span>
+            </div>
+
+            <!-- 사진 1장 (단독 고화질 와이드 와치 플레이스) -->
+            <div class="grid grid-cols-1 mb-6">
+                <div class="img-card aspect-[16/9]">
+                    <img src="필리핀 중간.jpeg" alt="필리핀 사역 풍경 1" class="w-full h-full object-cover" onerror="handleImageError(this, '필리핀 풍경 1')">
+                </div>
+            </div>
+
+            <!-- 사역 코멘터리 -->
+            <div class="max-w-3xl">
+                <p class="text-stone-500 font-light text-xs md:text-sm leading-relaxed">
+                    열대의 섬마을, 소박하게 살아가는 수많은 이웃들과 땀방울을 함께 흘렸습니다. 골목길 한가운데에서 전해지는 간결한 복음은 가난과 결핍으로 가득한 이들의 마음을 위로하는 소금과 빛이 되었으며, 주님의 손과 발이 되어 실천적인 긍휼을 흘려보낸 생명력 넘치는 전도 현장이었습니다.
+                </p>
+            </div>
+        </section>
+
+        <!-- 4. 티벳 (네 번째) -->
+        <section class="reveal">
+            <!-- 섹션 헤더 -->
+            <div class="flex flex-col md:flex-row md:items-baseline justify-between border-b border-stone-200/60 pb-4 mb-8">
+                <div class="flex items-center gap-3">
+                    <span class="text-2xl font-playfair italic text-emerald-700/80">04</span>
+                    <h3 class="font-serif-kr text-xl md:text-2xl font-semibold text-stone-800">티벳</h3>
+                </div>
+                <span class="text-xs text-stone-400 font-sans tracking-widest mt-1 md:mt-0 uppercase">Tibet Highlands Mission</span>
+            </div>
+
+            <!-- 사진 3장 그리드 배치 (에디토리얼 비주얼 밸런스) -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-6">
+                <!-- 사진 1 -->
+                <div class="img-card md:col-span-5 aspect-square md:aspect-auto">
+                    <img src="티벳 중간.jpeg" alt="티벳 사역 풍경 1" class="w-full h-full object-cover" onerror="handleImageError(this, '티벳 풍경 1')">
+                </div>
+                <!-- 사진 2 -->
+                <div class="img-card md:col-span-7 aspect-[16/10]">
+                    <img src="티벳2 중간.jpeg" alt="티벳 사역 풍경 2" class="w-full h-full object-cover" onerror="handleImageError(this, '티벳 풍경 2')">
+                </div>
+                <!-- 사진 3 -->
+                <div class="img-card md:col-span-12 aspect-[21/9]">
+                    <img src="티벳3 중간.jpeg" alt="티벳 사역 풍경 3" class="w-full h-full object-cover" onerror="handleImageError(this, '티벳 풍경 3')">
+                </div>
+            </div>
+
+            <!-- 사역 코멘터리 -->
+            <div class="max-w-3xl">
+                <p class="text-stone-500 font-light text-xs md:text-sm leading-relaxed">
+                    세상의 지붕이라 불리는 고산 지대, 혹독한 추위와 척박한 바람 속에서도 하나님의 사랑은 얼어붙지 않았습니다. 눈 덮인 호숫가에 동역자들과 빙 둘러앉아 기타 선율 위에 띄워 보낸 고요한 찬양은 하늘 끝에 닿는 기도가 되었고, 척박한 어둠을 이겨내는 등불이 되었습니다.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 하단 푸터 영역 및 홈 복귀 네비게이션 -->
+    <footer class="w-full py-12 text-center bg-stone-100/50 border-t border-stone-200/40">
+        <div class="max-w-[1100px] mx-auto px-6 flex flex-col items-center gap-6">
+            <a href="index.html" class="flex items-center gap-2 px-8 py-4 bg-white text-stone-600 hover:text-stone-900 border border-stone-200/60 rounded-xl shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
+                <i class="fa-solid fa-home text-stone-400"></i>
+                <span class="text-sm font-medium">메인 화면으로 이동하기</span>
+            </a>
+            <p class="text-xs text-stone-400 tracking-wider">
+                &copy; 2026 고인국목사. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- 자바스크립트 엔진 (스크롤 리빌 및 깃허브 이미지 예외 처리) -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // 1. 스크롤 감지 리빌 연출
+            const revealElements = document.querySelectorAll(".reveal");
+
+            const revealOnScrollObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("active");
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.15,
+                rootMargin: "0px 0px -40px 0px"
+            });
+
+            revealElements.forEach(el => {
+                revealOnScrollObserver.observe(el);
+            });
+        });
+
+        // 2. 이미지 로드 오류 발생 시 고급 대체 박스 처리기
+        function handleImageError(imgElement, textLabel) {
+            imgElement.style.display = 'none';
+            
+            const fallbackDiv = document.createElement('div');
+            fallbackDiv.className = "absolute inset-0 flex flex-col items-center justify-center bg-stone-100/80 text-stone-400 border border-stone-200/20 p-4 text-center rounded-2xl";
+            fallbackDiv.innerHTML = `
+                <i class="fa-solid fa-image text-3xl mb-3 text-stone-300"></i>
+                <span class="text-xs font-serif-kr font-medium text-stone-500">${textLabel}</span>
+                <span class="text-[10px] text-stone-400 mt-1">사역 사진 로딩 중...</span>
+            `;
+            
+            imgElement.parentNode.appendChild(fallbackDiv);
+        }
+    </script>
+</body>
+</html>
