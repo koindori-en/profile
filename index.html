@@ -100,14 +100,14 @@
         /* [요청사항] 중앙에서 밖으로 서서히 퍼져나가는 화이트 파티클 애니메이션 */
         @keyframes particleSpreadOut {
             0% {
-                transform: translate(-50%, -50%) translate(0, 0) scale(0.2);
+                transform: translate(-50%, -50%) translate(0, 0) scale(0.2) rotate(0deg);
                 opacity: 0;
             }
             15% {
                 opacity: var(--max-opacity, 0.85);
             }
             100% {
-                transform: translate(-50%, -50%) translate(var(--tx, 150px), var(--ty, 150px)) scale(var(--end-scale, 1.2));
+                transform: translate(-50%, -50%) translate(var(--tx, 150px), var(--ty, 150px)) scale(var(--end-scale, 1.2)) rotate(var(--rot, 360deg));
                 opacity: 0;
             }
         }
@@ -323,7 +323,7 @@
         </div>
     </section>
 
-    <!-- 유튜브 쇼츠 삽입 섹션 (노란 점선 스티치 프레임 적용) -->
+    <!-- 유튜브 쇼츠 삽입 섹션 (테두리 제거 및 미니멀 프레임 전면 개편) -->
     <section id="media" class="py-20 scroll-mt-24">
         <div class="max-w-[1300px] w-full mx-auto px-6 sm:px-10 lg:px-16 text-center lg:text-left">
             <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
@@ -343,20 +343,15 @@
                     </div>
                 </div>
 
-                <!-- 오른쪽 유튜브 플레이어 (귀여운 노란색 자수 바느질 느낌의 스티치 프레임 적용) -->
+                <!-- 오른쪽 유튜브 플레이어 (테두리 삭제 및 모던 저곡률 둥근 프레임 적용) -->
                 <div class="w-full lg:w-1/2 flex justify-center reveal delay-200">
                     <div class="relative max-w-[340px] w-full">
                         
-                        <!-- 스티치(점선 바느질) 느낌의 아기자기한 수제 카드 프레임 디자인 -->
-                        <div class="relative bg-white/70 p-5 pb-7 rounded-[3.2rem] shadow-[0_16px_40px_rgba(139,115,85,0.06)] border-4 border-dashed border-yellow-400/80 overflow-hidden group/phone transition-transform duration-500 hover:scale-[1.02]">
+                        <!-- 테두리를 삭제하고 곡률을 낮춰 세련되게 정리한 카드 디자인 -->
+                        <div class="relative bg-white p-3 rounded-2xl shadow-[0_12px_36px_rgba(0,0,0,0.04)] border border-stone-200/40 overflow-hidden group/phone transition-transform duration-500 hover:scale-[1.02]">
                             
-                            <!-- 스피커 느낌의 아기자기한 데코 배지 -->
-                            <div class="w-16 h-3 bg-stone-100 rounded-full mx-auto mb-4 border border-dashed border-stone-300/60 flex items-center justify-center">
-                                <span class="w-1.5 h-1.5 rounded-full bg-stone-400/40 inline-block"></span>
-                            </div>
-                            
-                            <!-- 유튜브 Shorts 9:16 임베디드 아이프레임 -->
-                            <div class="relative aspect-[9/16] w-full rounded-[2.2rem] overflow-hidden bg-stone-950 shadow-inner border border-stone-200/20">
+                            <!-- 유튜브 Shorts 9:16 임베디드 아이프레임 (곡률 완화된 rounded-xl) -->
+                            <div class="relative aspect-[9/16] w-full rounded-xl overflow-hidden bg-stone-950 shadow-inner border border-stone-200/10">
                                 <iframe 
                                     class="absolute inset-0 w-full h-full"
                                     src="https://www.youtube.com/embed/0NNMD6U9mdw" 
@@ -368,7 +363,7 @@
                             </div>
                         </div>
                         
-                        <!-- 귀여운 미니멀 데코 아이콘 오버레이 -->
+                        <!-- 미니멀 데코 아이콘 오버레이 -->
                         <div class="absolute -right-4 -bottom-4 w-12 h-12 bg-amber-100/80 rounded-full flex items-center justify-center text-amber-600 shadow-md transform rotate-12 -z-10">
                             <i class="fa-solid fa-heart"></i>
                         </div>
@@ -385,7 +380,7 @@
             
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
                 
-                <!-- 왼쪽 컬럼: 타이틀 소개 (Journey of the Life) -->
+                <!-- 왼쪽 컬럼: 타이틀 소개 (PASTOR PROFILE) -->
                 <div class="reveal">
                     <p class="text-emerald-700 font-semibold tracking-wider text-xs uppercase mb-3 font-sans">PASTOR PROFILE</p>
                     <h2 class="font-serif-kr text-3xl font-bold text-stone-700 mb-4">함께 소통하는 길</h2>
@@ -440,8 +435,8 @@
                         </div>
                     </div>
 
-                    <!-- 링크 버튼 영역 (새제천교회 홈페이지 & 고목사클라쓰 통일감 극대화) -->
-                    <div class="reveal delay-500 md:col-span-2 flex flex-col sm:flex-row gap-4 pt-8">
+                    <!-- 링크 버튼 영역 (새제천교회 홈페이지, 고목사클라쓰 & 인스타그램까지 완벽하게 정렬) -->
+                    <div class="reveal delay-500 md:col-span-2 flex flex-col sm:flex-row flex-wrap gap-4 pt-8">
                         <!-- 새제천교회 홈페이지 버튼 (교회 아이콘 회색 톤으로 적용 및 호버 시 기품 있는 에메랄드 초록색 전환) -->
                         <a href="https://saejecheon.com" target="_blank" rel="noopener noreferrer" 
                            class="flex items-center justify-center bg-white text-stone-600 hover:text-stone-800 px-8 py-4 text-sm font-medium tracking-wide transition-all duration-300 ease-out hover:bg-stone-50 rounded-lg w-full sm:w-auto shadow-[0_4px_12px_rgba(0,0,0,0.02)] hover:shadow-[0_10px_20px_rgba(0,0,0,0.06)] hover:-translate-y-0.5 border border-stone-200/40 group">
@@ -454,6 +449,13 @@
                            class="flex items-center justify-center bg-white text-stone-600 hover:text-stone-800 px-8 py-4 text-sm font-medium tracking-wide transition-all duration-300 ease-out hover:bg-stone-50 rounded-lg w-full sm:w-auto shadow-[0_4px_12px_rgba(0,0,0,0.02)] hover:shadow-[0_10px_20px_rgba(0,0,0,0.06)] hover:-translate-y-0.5 border border-stone-200/40 group">
                             <i class="fa-brands fa-youtube mr-3 text-stone-400 transition-colors group-hover:text-rose-600"></i>
                             고목사클라쓰
+                        </a>
+
+                        <!-- 고목사인스타그램 버튼 (인디언 핑크/인스타그램 컬러의 은은한 가을 롤오버 효과 구현) -->
+                        <a href="https://www.instagram.com/koinkook/" target="_blank" rel="noopener noreferrer" 
+                           class="flex items-center justify-center bg-white text-stone-600 hover:text-stone-800 px-8 py-4 text-sm font-medium tracking-wide transition-all duration-300 ease-out hover:bg-stone-50 rounded-lg w-full sm:w-auto shadow-[0_4px_12px_rgba(0,0,0,0.02)] hover:shadow-[0_10px_20px_rgba(0,0,0,0.06)] hover:-translate-y-0.5 border border-stone-200/40 group">
+                            <i class="fa-brands fa-instagram mr-3 text-stone-400 transition-colors group-hover:text-pink-600"></i>
+                            고목사인스타그램
                         </a>
                     </div>
 
@@ -493,9 +495,21 @@
                 revealOnScrollObserver.observe(el);
             });
 
-            // 2. 동적 파티클(중앙에서 퍼져나가는 순백색 원형 및 사각형 조각) 생성 엔진 구현
+            // 2. 동적 파티클(중앙에서 퍼져나가는 순백색 원형, 사각형, 삼각형, 하트 조각) 생성 엔진 구현
             const particleOverlay = document.getElementById("particleOverlay");
             
+            // 귀여운 백색 기하학 셰이프 벡터 배열 정의
+            const particleShapes = [
+                // 1. 부드러운 동그라미 (Circle)
+                '<svg viewBox="0 0 24 24" class="w-full h-full"><circle cx="12" cy="12" r="8" fill="currentColor"/></svg>',
+                // 2. 귀여운 정사각형 (Square)
+                '<svg viewBox="0 0 24 24" class="w-full h-full"><rect x="4" y="4" width="16" height="16" rx="1.5" fill="currentColor"/></svg>',
+                // 3. 미니멀한 정삼각형 (Triangle)
+                '<svg viewBox="0 0 24 24" class="w-full h-full"><polygon points="12,4 4,20 20,20" fill="currentColor"/></svg>',
+                // 4. 감성적인 하트 (Heart)
+                '<svg viewBox="0 0 24 24" class="w-full h-full"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="currentColor"/></svg>'
+            ];
+
             function spawnParticle() {
                 if (!particleOverlay) return;
                 
@@ -505,32 +519,29 @@
                 const particle = document.createElement("div");
                 particle.className = "spreading-particle";
 
-                // [요청사항 반영] 십자가를 완전히 지우고, 50% 확률로 동그라미(원형) 또는 정사각형 설정
-                const isSquare = Math.random() > 0.5;
-                const size = 6 + Math.random() * 8; // 6px ~ 14px 사이의 조화로운 크기
-                
+                // 무작위 셰이프 선택 및 인젝트
+                const randomShapeHTML = particleShapes[Math.floor(Math.random() * particleShapes.length)];
+                particle.innerHTML = randomShapeHTML;
+
                 // [요청사항 반영] 100% 순백색 조각 및 화사하게 빛나는 아웃라인 처리
+                const size = 6 + Math.random() * 8; // 6px ~ 14px 사이의 조화로운 크기
                 particle.style.width = `${size}px`;
                 particle.style.height = `${size}px`;
-                particle.style.backgroundColor = "rgba(255, 255, 255, 0.9)";
-                particle.style.boxShadow = "0 0 10px rgba(255, 255, 255, 0.75), 0 0 3px rgba(255, 255, 255, 0.9)";
-                
-                if (isSquare) {
-                    particle.style.borderRadius = "2px"; // 귀여운 모서리를 가진 정사각형
-                } else {
-                    particle.style.borderRadius = "50%"; // 부드러운 동그라미
-                }
+                particle.style.color = "rgba(255, 255, 255, 0.9)";
+                particle.style.filter = "drop-shadow(0 0 4px rgba(255, 255, 255, 0.8))";
 
-                // [요청사항 반영] 중앙에서 사방 바깥쪽으로 퍼져나가는 벡터 연산
+                // [요청사항 반영] 중앙에서 사방 바깥쪽으로 아주 천천히 넓게 퍼져나가는 벡터 연산
                 const angle = Math.random() * Math.PI * 2; // 무작위 사방 각도 (0 ~ 360도)
-                const distance = 120 + Math.random() * 260; // 퍼져나갈 무작위 방사 거리 (120px ~ 380px)
+                // 일부 파티클은 사진 바깥 끝자락(최대 450px)까지 도달할 수 있도록 랜덤 범위 확장
+                const distance = 150 + Math.random() * 300; 
                 const tx = Math.cos(angle) * distance;
                 const ty = Math.sin(angle) * distance;
                 
-                // 마이크로 인터랙션 최적화 수치 분배
-                const duration = 3.5 + Math.random() * 4; // 3.5초 ~ 7.5초 간 스르륵 소멸
-                const endScale = 0.4 + Math.random() * 1.4; // 퍼지면서 크기 역시 자연스럽게 변화
-                const maxOpacity = 0.45 + Math.random() * 0.45; // 투명도 무작위 밸런싱
+                // [요청사항 반영] 매우 천천히 부드럽게 흐르도록 지속시간을 5.5초~10.5초로 세팅
+                const duration = 5.5 + Math.random() * 5.0; 
+                const endScale = 0.5 + Math.random() * 1.1; // 퍼지면서 크기 역시 자연스럽게 변화
+                const maxOpacity = 0.4 + Math.random() * 0.45; // 투명도 무작위 밸런싱
+                const rotation = -180 + Math.random() * 360; // 회전 효과 추가로 디테일 강화
 
                 // CSS 커스텀 변수 바인딩
                 particle.style.setProperty("--tx", `${tx}px`);
@@ -538,6 +549,7 @@
                 particle.style.setProperty("--float-duration", `${duration}s`);
                 particle.style.setProperty("--end-scale", endScale);
                 particle.style.setProperty("--max-opacity", maxOpacity);
+                particle.style.setProperty("--rot", `${rotation}deg`);
 
                 particleOverlay.appendChild(particle);
 
@@ -552,8 +564,8 @@
                 setTimeout(spawnParticle, i * 600);
             }
 
-            // 1.4초 주기로 중앙에서 정밀하게 파티클 분출 루프 시작
-            setInterval(spawnParticle, 1400);
+            // [요청사항 반영] 은은한 생성을 위해 주기를 1.5초(1500ms)로 여유 있게 구성
+            setInterval(spawnParticle, 1500);
 
             // 3. 이메일 클립보드 복사 & 상호작용 툴팁 엔진 구현
             const emailContainer = document.getElementById("emailContainer");
