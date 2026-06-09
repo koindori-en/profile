@@ -111,7 +111,7 @@
     <!-- 상단 네비게이션 헤더 -->
     <header class="sticky top-0 z-50 bg-[#050C0E]/85 backdrop-blur-md border-b border-white/5 transition-all duration-300">
         <div class="max-w-[1300px] mx-auto px-6 sm:px-10 lg:px-16 h-16 md:h-20 flex items-center justify-between">
-            <!-- 메인 타이틀 및 브랜딩 명패 (요청하신 대로 왼쪽 상단 배치) -->
+            <!-- 메인 타이틀 및 브랜딩 명패 -->
             <a href="index.html" class="flex items-center gap-2 group">
                 <img src="logo.png" alt="고인국목사 로고" class="h-8 md:h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105" onerror="this.style.display='none';">
                 <span class="text-xs md:text-sm font-semibold text-white tracking-widest transition-colors duration-300">취미 생활</span>
@@ -145,11 +145,11 @@
         <!-- 취미 생활 전시 그리드 리스트 (골드 & 다크 틸 대비 레이아웃) -->
         <div class="space-y-36">
             
-            <!-- 취미 1: 독서 (Reading) - 새 파일명 Reading2_2.jpeg 반영 -->
+            <!-- 취미 1: 독서 (Reading) - Reading2.jpeg 적용 및 서사적 텍스트 설계 -->
             <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-16 reveal delay-100">
                 <!-- 왼쪽: 텍스트 묵상 카드 -->
                 <div class="w-full lg:w-5/12 flex flex-col justify-center order-2 lg:order-1">
-                    <div class="flex items-center gap-2.5 mb-4">
+                    <div class="flex items-center gap-2.5 mb-5">
                         <span class="relative flex h-2.5 w-2.5">
                             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
                             <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-amber-400"></span>
@@ -157,28 +157,27 @@
                         <p class="text-xs font-bold text-amber-400 uppercase tracking-widest font-playfair">Chapter 01</p>
                     </div>
                     
-                    <h2 class="text-2xl md:text-3xl font-extrabold text-white leading-tight mb-4 tracking-tight">
+                    <h2 class="text-2xl md:text-3xl font-extrabold text-white leading-tight mb-5 tracking-tight">
                         독서 <span class="font-playfair italic text-lg text-amber-400/80 font-light block sm:inline-block sm:pl-2">Reading</span>
                     </h2>
                     
-                    <p class="text-slate-300 text-xs md:text-sm leading-relaxed mb-6 font-light">
-                        책장을 넘기며 마주하는 고요한 은혜의 사색. 활자 사이에 머무는 침묵 속에서 영혼의 양식을 공급받고, 창조주의 세밀한 지혜와 경건의 깊이를 경청하며 마음에 새기는 축복의 여정입니다.
-                    </p>
-                    
-                    <!-- 성경 구절 카드 장식 -->
-                    <div class="bg-white/[0.03] border-l-2 border-amber-400 p-4.5 rounded-r-xl backdrop-blur-md">
-                        <p class="text-xs text-slate-200 italic leading-relaxed font-serif-kr">
-                            "지혜를 얻는 자는 자기 영혼을 사랑하고 명철을 지키는 자는 복을 얻느니라" <br class="not-italic block mt-1.5 font-bold tracking-wider text-[10px] text-amber-400 uppercase font-sans">— 잠언 19:8
+                    <!-- 성경 구절을 삭제한 자리에 더욱 기품 있고 은은한 감각의 고화질 정밀 서사 구현 -->
+                    <div class="space-y-4">
+                        <p class="text-slate-200 text-sm md:text-base leading-relaxed tracking-wide font-light">
+                            은은하게 번지는 종이의 향과 서서히 넘어가는 책장 소리 속에서 맑고 투명한 영혼의 숨을 고릅니다.
+                        </p>
+                        <p class="text-slate-300 text-xs md:text-sm leading-relaxed tracking-wide font-light opacity-90 border-t border-white/5 pt-4">
+                            검은 활자들 사이에 머무는 고요한 침묵의 시간은 소란스러운 세상을 뒤로하고 내면을 영적 지혜로 풍성히 가득 채웁니다. 한 문장 한 문장을 깊이 사색하며 세밀한 창조주의 섭리를 마음에 새겨넣는 아름다운 축복의 여정입니다.
                         </p>
                     </div>
                 </div>
                 
-                <!-- 오른쪽: 우아한 금빛 프레임의 독서 이미지 (요청하신 Reading2_2.jpeg 적용 완료) -->
+                <!-- 오른쪽: 우아한 금빛 프레임의 독서 이미지 (Reading2.jpeg 적용 완료) -->
                 <div class="w-full lg:w-7/12 order-1 lg:order-2">
                     <div class="premium-frame">
                         <div class="relative aspect-[4/3] w-full rounded-xl overflow-hidden bg-slate-950 border-2 border-slate-100/10 shadow-2xl">
                             <img 
-                                src="Reading2_2.jpeg" 
+                                src="Reading2.jpeg" 
                                 alt="독서하는 모습" 
                                 class="absolute inset-0 w-full h-full object-cover transform hover:scale-105 transition-transform duration-1000"
                                 onerror="this.onerror=null; this.src='https://placehold.co/800x600/050c0e/d97706?text=Reading';">
@@ -204,7 +203,7 @@
 
                 <!-- 오른쪽: 텍스트 묵상 카드 -->
                 <div class="w-full lg:w-5/12 flex flex-col justify-center">
-                    <div class="flex items-center gap-2.5 mb-4">
+                    <div class="flex items-center gap-2.5 mb-5">
                         <span class="relative flex h-2.5 w-2.5">
                             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-slate-400 opacity-75"></span>
                             <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-slate-400"></span>
@@ -212,18 +211,17 @@
                         <p class="text-xs font-bold text-slate-400 uppercase tracking-widest font-playfair">Chapter 02</p>
                     </div>
                     
-                    <h2 class="text-2xl md:text-3xl font-extrabold text-white leading-tight mb-4 tracking-tight">
+                    <h2 class="text-2xl md:text-3xl font-extrabold text-white leading-tight mb-5 tracking-tight">
                         탁구 <span class="font-playfair italic text-lg text-amber-400/80 font-light block sm:inline-block sm:pl-2">Table Tennis</span>
                     </h2>
                     
-                    <p class="text-slate-300 text-xs md:text-sm leading-relaxed mb-6 font-light">
-                        빠르게 가로지르는 하얀 공의 포물선 속에 깃드는 건강한 긴장감과 생동감. 주고받는 스트로크 속에 육체의 강건함을 다지고 이웃들과 격의 없이 땀 흘리며 교제하는 기쁨의 광장입니다.
-                    </p>
-                    
-                    <!-- 성경 구절 카드 장식 -->
-                    <div class="bg-white/[0.03] border-l-2 border-slate-400 p-4.5 rounded-r-xl backdrop-blur-md">
-                        <p class="text-xs text-slate-200 italic leading-relaxed font-serif-kr">
-                            "평온한 마음은 육신의 생명이나 시기는 뼈를 썩게 하느니라"<br class="not-italic block mt-1.5 font-bold tracking-wider text-[10px] text-slate-400 uppercase font-sans">— 잠언 14:30
+                    <!-- 성경 구절을 대체하는 화사하고 지적인 에세이 텍스트 -->
+                    <div class="space-y-4">
+                        <p class="text-slate-200 text-sm md:text-base leading-relaxed tracking-wide font-light">
+                            초록빛 테이블 위를 빠른 속도로 가로지르는 은빛 탁구공의 포물선 속에 건강한 에너지와 생기가 깃듭니다.
+                        </p>
+                        <p class="text-slate-300 text-xs md:text-sm leading-relaxed tracking-wide font-light opacity-90 border-t border-white/5 pt-4">
+                            탁구 라켓과 공이 경쾌하게 부딪히는 찰나의 리듬 속에 오롯이 몰입하며 육체의 신성한 강건함을 일깨웁니다. 매 랠리마다 가벼운 웃음과 정겨운 땀방울이 오가는 동안, 이웃들과 언어를 초월한 신뢰와 기쁨 어린 친교를 가만히 꽃피우는 소통의 마당입니다.
                         </p>
                     </div>
                 </div>
@@ -233,7 +231,7 @@
             <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-16 reveal">
                 <!-- 왼쪽: 텍스트 묵상 카드 -->
                 <div class="w-full lg:w-5/12 flex flex-col justify-center order-2 lg:order-1">
-                    <div class="flex items-center gap-2.5 mb-4">
+                    <div class="flex items-center gap-2.5 mb-5">
                         <span class="relative flex h-2.5 w-2.5">
                             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
                             <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-sky-400"></span>
@@ -241,23 +239,22 @@
                         <p class="text-xs font-bold text-sky-400 uppercase tracking-widest font-playfair">Chapter 03</p>
                     </div>
                     
-                    <h2 class="text-2xl md:text-3xl font-extrabold text-white leading-tight mb-4 tracking-tight">
+                    <h2 class="text-2xl md:text-3xl font-extrabold text-white leading-tight mb-5 tracking-tight">
                         수영 <span class="font-playfair italic text-lg text-amber-400/80 font-light block sm:inline-block sm:pl-2">Swimming</span>
                     </h2>
                     
-                    <p class="text-slate-300 text-xs md:text-sm leading-relaxed mb-6 font-light">
-                        물결의 순리에 부드럽게 몸을 실어 평온한 은혜 속에 완전히 잠기는 자유. 소음이 멈춘 푸른 물결 속에서 오로지 호흡에 몰입하며, 내면에 쌓여온 복잡한 상념들을 가라앉히는 치유와 기도의 시간입니다.
-                    </p>
-                    
-                    <!-- 성경 구절 카드 장식 -->
-                    <div class="bg-white/[0.03] border-l-2 border-sky-400 p-4.5 rounded-r-xl backdrop-blur-md">
-                        <p class="text-xs text-slate-200 italic leading-relaxed font-serif-kr">
-                            "물이 바다를 덮음 같이 여호와의 영광을 인정하는 것이 세상에 가득함이니라"<br class="not-italic block mt-1.5 font-bold tracking-wider text-[10px] text-sky-400 uppercase font-sans">— 하박국 2:14
+                    <!-- 물결의 흐름을 대변하는 은은한 사유의 텍스트 레이아웃 -->
+                    <div class="space-y-4">
+                        <p class="text-slate-200 text-sm md:text-base leading-relaxed tracking-wide font-light">
+                            세상의 복잡한 소음이 일순간에 멈춘 푸른 물결의 품 안에서 온전히 몸을 싣고 평온을 유영합니다.
+                        </p>
+                        <p class="text-slate-300 text-xs md:text-sm leading-relaxed tracking-wide font-light opacity-90 border-t border-white/5 pt-4">
+                            부드러운 물길을 어루만지며 숨결의 규칙적인 속도에 집중하는 일은 내면의 오래된 상념과 피로를 조용히 씻어내는 정화의 의식입니다. 순리의 부력을 받들며 물과 나의 경계가 허물어지는 평화 속에서 창조주께서 내려주시는 완전한 평화와 세심한 돌봄을 경험합니다.
                         </p>
                     </div>
                 </div>
                 
-                <!-- 오른쪽: 우아한 금빛 프레임의 수영 GIF 이미지 -->
+                <!-- 오른쪽: 우아한 금빛 프레임의 수영 GIF 이미지 (swim.gif 연동) -->
                 <div class="w-full lg:w-7/12 order-1 lg:order-2">
                     <div class="premium-frame">
                         <div class="relative aspect-[16/9] w-full rounded-xl overflow-hidden bg-slate-950 border-2 border-slate-100/10 shadow-2xl">
