@@ -129,8 +129,8 @@
         
         <!-- 대타이틀 제거 및 깊이 있는 프롤로그 중심의 숲 테마 재구성 -->
         <div class="text-center max-w-3xl mx-auto mb-24 reveal mt-6">
-            <!-- 말씀의 숲 문구 -->
-            <p class="text-slate-100 font-medium text-lg md:text-xl lg:text-2xl leading-relaxed max-w-2xl mx-auto tracking-wide mb-4">
+            <!-- 말씀의 숲 문구 (한 줄에 출력되도록 사이즈 최적화 및 줄바꿈 차단 적용) -->
+            <p class="text-slate-100 font-medium text-base md:text-lg lg:text-xl leading-relaxed max-w-4xl mx-auto tracking-wide mb-4 md:whitespace-nowrap">
                 "선포된 복음의 메시지를 귀담아들으며, 말씀의 숲으로 들어갑시다."
             </p>
             <!-- 세련된 영어 번역 매칭 -->
@@ -143,7 +143,7 @@
         <!-- 말씀 비디오 전시 리스트 (블루&화이트 강렬한 미학적 배열) -->
         <div class="space-y-36">
             
-            <!-- 설교 1: 너를 위해 (업데이트 완료) -->
+            <!-- 설교 1: 너를 위해 -->
             <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-16 reveal delay-100">
                 <!-- 왼쪽: 텍스트 및 말씀 배경 스토리 설명 -->
                 <div class="w-full lg:w-5/12 flex flex-col justify-center order-2 lg:order-1">
@@ -289,20 +289,21 @@
 
         <!-- 하단 메인페이지 복귀 제안 섹션 (은은하고 고딕적인 극미니멀 프리미엄 카드) -->
         <div class="mt-36 text-center reveal">
-            <div class="inline-block p-10 md:p-14 bg-gradient-to-b from-white/[0.03] to-white/[0.005] backdrop-blur-2xl rounded-3xl border border-white/[0.08] shadow-[0_40px_100px_rgba(0,0,0,0.8)] max-w-xl w-full">
-                <!-- 미니멀 펄스 홈 아이콘 -->
-                <i class="fa-solid fa-house-chimney-window text-sky-400/80 text-2xl mb-5 animate-pulse"></i>
+            <!-- 카드 전체를 클릭하면 평온하게 홈으로 이동하도록 구성 -->
+            <a href="index.html" class="inline-block p-10 md:p-14 bg-gradient-to-b from-white/[0.03] to-white/[0.005] backdrop-blur-2xl rounded-3xl border border-white/[0.08] shadow-[0_40px_100px_rgba(0,0,0,0.8)] hover:bg-white/[0.06] hover:border-white/20 hover:shadow-[0_40px_100px_rgba(56,189,248,0.15)] hover:-translate-y-1.5 transition-all duration-500 max-w-xl w-full group cursor-pointer">
+                <!-- 미니멀 펄스 홈 아이콘 (숨쉬는 효과 제거 및 호버링 확대 상호작용 적용) -->
+                <i class="fa-solid fa-house-chimney-window text-sky-400/80 text-2xl mb-5 transition-transform duration-300 group-hover:scale-110"></i>
                 
                 <!-- 두께를 걷어내어 극도로 모던해진 기조 문장 -->
                 <h3 class="text-base md:text-lg font-light text-slate-200 tracking-wide mb-8 leading-relaxed">
                     말씀의 은혜를 깊이 간직하셨기를 바랍니다
                 </h3>
                 
-                <!-- 은빛 네온 광채를 머금은 원형 캡슐 알약 버튼 (화살표 제거 완료) -->
-                <a href="index.html" class="inline-flex items-center px-8 py-3.5 bg-white text-[#030812] hover:bg-sky-400 hover:text-[#030812] transition-all duration-400 rounded-full text-xs md:text-sm font-semibold tracking-wider hover:shadow-[0_0_25px_rgba(56,189,248,0.25)] shadow-md">
+                <!-- 은빛 네온 광채를 머금은 원형 캡슐 알약 버튼 (전체 카드 호버 시 스카이 블루 전환) -->
+                <div class="inline-flex items-center px-8 py-3.5 bg-white text-[#030812] group-hover:bg-sky-400 transition-all duration-400 rounded-full text-xs md:text-sm font-semibold tracking-wider group-hover:shadow-[0_0_25px_rgba(56,189,248,0.25)] shadow-md">
                     메인 홈으로 평온하게 돌아가기
-                </a>
-            </div>
+                </div>
+            </a>
         </div>
 
     </main>
