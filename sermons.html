@@ -12,10 +12,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts: Noto Serif KR, Noto Sans KR, Playfair Display -->
+    <!-- Google Fonts: Noto Sans KR (세련된 고딕), Playfair Display -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&family=Playfair+Display:ital,wght=0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     
     <style>
         body {
@@ -31,19 +31,15 @@
             background-position: 0 0, 8px 8px;
         }
  
-        .font-serif-kr {
-            font-family: 'Noto Serif KR', serif;
-        }
- 
         .font-playfair {
             font-family: 'Playfair Display', serif;
         }
  
-        /* 스크롤 리빌 애니메이션 */
+        /* 스크롤 리빌 애니메이션 - 명품 리빙룸 쇼룸 같은 벨벳 무브먼트 구현 */
         .reveal {
             opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateY(45px);
+            transition: opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1), transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
             will-change: transform, opacity;
         }
  
@@ -52,29 +48,29 @@
             transform: translateY(0);
         }
  
-        .delay-100 { transition-delay: 100ms; }
-        .delay-200 { transition-delay: 200ms; }
-        .delay-300 { transition-delay: 300ms; }
+        .delay-100 { transition-delay: 150ms; }
+        .delay-200 { transition-delay: 300ms; }
+        .delay-300 { transition-delay: 450ms; }
         
         /* 딥블루 밤하늘 위에서 눈부시게 폭발하는 초고화질 은빛 메탈릭 럭셔리 프레임 */
         .premium-frame {
             position: relative;
-            background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.01);
+            backdrop-filter: blur(24px);
             padding: 14px;
             border-radius: 24px;
-            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 35px 80px rgba(0, 0, 0, 0.75), inset 0 1px 1px rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
         }
         
         .premium-frame:hover {
-            transform: translateY(-8px) scale(1.01);
+            transform: translateY(-10px) scale(1.015);
             box-shadow: 
-                0 35px 80px rgba(0, 0, 0, 0.85), 
-                0 0 40px rgba(56, 189, 248, 0.35),
-                0 0 80px rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.45);
+                0 45px 95px rgba(0, 0, 0, 0.9), 
+                0 0 50px rgba(56, 189, 248, 0.25),
+                0 0 90px rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.4);
         }
         
         /* 은은히 떠다니는 세미한 밤하늘의 다이아몬드 별빛가루 효과 */
@@ -84,8 +80,8 @@
                 opacity: 0.1;
             }
             50% {
-                transform: translateY(-40px) rotate(180deg) scale(1.2);
-                opacity: 0.8;
+                transform: translateY(-50px) rotate(180deg) scale(1.3);
+                opacity: 0.7;
             }
         }
         .star-particle {
@@ -94,11 +90,11 @@
             border-radius: 50%;
             pointer-events: none;
             will-change: transform, opacity;
-            animation: starFloat 12s ease-in-out infinite;
+            animation: starFloat 14s ease-in-out infinite;
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col antialiased relative">
+<body class="min-h-screen flex flex-col antialiased relative selection:bg-sky-500/30">
 
     <!-- 심층적 공간감을 연출하는 하이엔드 블루 & 시안 스포트라이트 오라 -->
     <div class="absolute top-[3%] left-[5%] w-[700px] h-[700px] bg-blue-600/10 rounded-full blur-[160px] -z-10 pointer-events-none"></div>
@@ -109,18 +105,18 @@
     <div id="starOverlay" class="absolute inset-0 overflow-hidden pointer-events-none z-0"></div>
 
     <!-- 상단 네비게이션 헤더 (블루&화이트 테마 반영) -->
-    <header class="sticky top-0 z-50 bg-[#030812]/80 backdrop-blur-md border-b border-white/5 transition-all duration-300">
+    <header class="sticky top-0 z-50 bg-[#030812]/85 backdrop-blur-md border-b border-white/5 transition-all duration-300">
         <div class="max-w-[1300px] mx-auto px-6 sm:px-10 lg:px-16 h-16 md:h-20 flex items-center justify-between">
             <!-- 메인 로고 및 브랜딩 명패 -->
             <a href="index.html" class="flex items-center gap-2 group">
                 <img src="logo.png" alt="고인국목사 로고" class="h-8 md:h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105" onerror="this.style.display='none';">
-                <span class="text-xs md:text-sm font-medium text-slate-400 group-hover:text-white tracking-wider transition-colors duration-300">고인국 목사</span>
+                <span class="text-xs md:text-sm font-medium text-slate-400 group-hover:text-white tracking-widest transition-colors duration-300">고인국 목사</span>
             </a>
  
             <!-- 메인 페이지로 복귀하는 아웃라인 디자인 링크 -->
-            <a href="index.html" class="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-white/20 text-white text-xs md:text-sm font-medium transition-all duration-300 hover:bg-white hover:text-[#030812] hover:border-white group">
-                <i class="fa-solid fa-arrow-left transition-transform duration-300 group-hover:-translate-x-1.5"></i>
-                메인으로 돌아가기
+            <a href="index.html" class="inline-flex items-center gap-2.5 px-5 py-2 rounded-full border border-white/15 text-white text-xs md:text-sm font-medium transition-all duration-300 hover:bg-white hover:text-[#030812] hover:border-white group">
+                <i class="fa-solid fa-arrow-left text-xs transition-transform duration-300 group-hover:-translate-x-1"></i>
+                메인으로 돌아하기
             </a>
         </div>
         <!-- 정교한 장식선 -->
@@ -130,40 +126,52 @@
     <!-- 메인 컨텐츠 영역 -->
     <main class="max-w-[1200px] w-full mx-auto px-6 sm:px-10 lg:px-16 pt-16 pb-24 flex-grow relative z-10">
         
-        <!-- 대타이틀 및 프롤로그 소개 (요청하신 말씀의 숲 문구 완벽 적용) -->
-        <div class="text-center max-w-3xl mx-auto mb-24 reveal">
-            <p class="text-sky-400 font-semibold tracking-widest text-xs uppercase mb-3 font-sans">Sermon Archive</p>
-            <h1 class="font-serif-kr text-4xl md:text-5xl font-bold text-white leading-tight tracking-tight mb-6">
+        <!-- 대타이틀 및 프롤로그 소개 (궁서체 전면 탈피, 초정밀 하이테크 고딕 레이아웃) -->
+        <div class="text-center max-w-3xl mx-auto mb-28 reveal">
+            <p class="text-sky-400 font-bold tracking-[0.25em] text-xs uppercase mb-4">Sermon Archive</p>
+            
+            <!-- 고급스러운 크리스탈 실버 메탈릭 그라데이션 타이틀 -->
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight tracking-tight mb-8 bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-100 to-slate-400">
                 추억의 설교
             </h1>
-            <div class="w-16 h-[2px] bg-gradient-to-r from-sky-400 via-white to-sky-400 mx-auto mb-6"></div>
+            <div class="w-16 h-[2.5px] bg-gradient-to-r from-sky-500 via-white to-sky-500 mx-auto mb-8 rounded-full"></div>
             
-            <p class="text-slate-200 font-light text-base md:text-lg leading-relaxed max-w-2xl mx-auto font-serif-kr">
+            <!-- 말씀의 숲 문구 - 정갈하고 선명한 서독 풍의 영감 폰트 배열 -->
+            <p class="text-slate-200 font-light text-base md:text-lg lg:text-xl leading-relaxed max-w-2xl mx-auto tracking-wide">
                 선포된 복음의 메시지를 귀담아들으며, 말씀의 숲으로 들어갑시다.
             </p>
         </div>
 
         <!-- 말씀 비디오 전시 리스트 (블루&화이트 강렬한 미학적 배열) -->
-        <div class="space-y-32">
+        <div class="space-y-36">
             
-            <!-- 설교 1: 은혜의 강가에서 -->
+            <!-- 설교 1: 너를 위해 (업데이트 완료) -->
             <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-16 reveal delay-100">
                 <!-- 왼쪽: 텍스트 및 말씀 배경 스토리 설명 -->
                 <div class="w-full lg:w-5/12 flex flex-col justify-center order-2 lg:order-1">
-                    <div class="flex items-center gap-2 mb-3">
-                        <span class="w-1.5 h-1.5 rounded-full bg-sky-400 animate-ping"></span>
-                        <p class="text-xs font-semibold text-sky-400 uppercase tracking-widest font-sans">Chapter 01</p>
+                    <div class="flex items-center gap-2.5 mb-4">
+                        <!-- 동적으로 회전 및 확장하는 스카이 블루 펄스 링 생성 -->
+                        <span class="relative flex h-2.5 w-2.5">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-sky-400"></span>
+                        </span>
+                        <p class="text-xs font-bold text-sky-400 uppercase tracking-widest">Chapter 01</p>
                     </div>
-                    <h2 class="font-serif-kr text-2xl md:text-3xl font-bold text-white leading-snug mb-4">
-                        참된 안식과 회복의 약속
+                    
+                    <!-- 초정밀 무광 고딕 타이틀 -->
+                    <h2 class="text-2xl md:text-3xl font-extrabold text-white leading-tight mb-4 tracking-tight">
+                        너를 위해
                     </h2>
+                    
+                    <!-- 요청 변경 텍스트 적용 완료 -->
                     <p class="text-slate-300 text-xs md:text-sm leading-relaxed mb-6 font-light">
-                        분주함과 무거운 짐을 가만히 내려놓고 주님의 보좌 앞으로 조용히 나아갈 때 허락하시는 하나님의 회복을 기록했습니다. 우리의 갈증을 단숨에 채워주는 깊은 샘물 같은 주님의 따사롭고 포근한 은혜를 만날 수 있습니다.
+                        분주함과 무거운 짐을 진 분들. 고통 속에 신음하고 계신 분들 꼭 시청하시길 바랍니다. 주님께서 여러분을 위해 뭔가를 하고 있습니다.
                     </p>
+                    
                     <!-- 성경 구절 카드 장식 -->
-                    <div class="bg-white/5 border-l-2 border-sky-400 p-4 rounded-r-xl backdrop-blur-sm">
-                        <p class="font-serif-kr text-xs text-slate-200 italic leading-relaxed">
-                            "수고하고 무거운 짐 진 자들아 다 내게로 오라 내가 너희를 쉬게 하리라" <br class="not-italic block mt-1 font-sans text-[10px] font-semibold text-slate-400">— 마태복음 11:28
+                    <div class="bg-white/[0.03] border-l-2 border-sky-400 p-4.5 rounded-r-xl backdrop-blur-md">
+                        <p class="text-xs text-slate-200 italic leading-relaxed">
+                            "수고하고 무거운 짐 진 자들아 다 내게로 오라 내가 너희를 쉬게 하리라" <br class="not-italic block mt-1.5 font-bold tracking-wider text-[10px] text-slate-400 uppercase">— 마태복음 11:28
                         </p>
                     </div>
                 </div>
@@ -205,21 +213,28 @@
 
                 <!-- 오른쪽: 텍스트 및 말씀 배경 스토리 설명 -->
                 <div class="w-full lg:w-5/12 flex flex-col justify-center">
-                    <div class="flex items-center gap-2 mb-3">
-                        <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
-                        <p class="text-xs font-semibold text-white uppercase tracking-widest font-sans">Chapter 02</p>
+                    <div class="flex items-center gap-2.5 mb-4">
+                        <!-- 동적으로 확장하는 화이트 펄스 링 생성 (동그라미 작동화 완료) -->
+                        <span class="relative flex h-2.5 w-2.5">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-white"></span>
+                        </span>
+                        <p class="text-xs font-bold text-white uppercase tracking-widest">Chapter 02</p>
                     </div>
-                    <!-- 요청 수정 완료: 1부 제목 변경 -->
-                    <h2 class="font-serif-kr text-2xl md:text-3xl font-bold text-white leading-snug mb-4">
+                    
+                    <!-- 무광 딥 실버 고딕 타이틀 -->
+                    <h2 class="text-2xl md:text-3xl font-extrabold text-white leading-tight mb-4 tracking-tight">
                         네가 어찌하여 여기 있느냐? (1부)
                     </h2>
+                    
                     <p class="text-slate-300 text-xs md:text-sm leading-relaxed mb-6 font-light">
                         삶의 깊은 동굴 속에 숨어 홀로 신음하는 엘리야에게 주셨던 하나님의 무겁고도 인자하신 질문입니다. 인생의 풍랑 속에서 우리가 있어야 할 참된 믿음의 자리를 돌아보게 하는 감동의 메시지입니다.
                     </p>
+                    
                     <!-- 성경 구절 카드 장식 -->
-                    <div class="bg-white/5 border-l-2 border-white p-4 rounded-r-xl backdrop-blur-sm">
-                        <p class="font-serif-kr text-xs text-slate-200 italic leading-relaxed">
-                            "여호와의 말씀이 그에게 임하여 이르시되 엘리야야 네가 어찌하여 여기 있느냐"<br class="not-italic block mt-1 font-sans text-[10px] font-semibold text-slate-400">— 열왕기상 19:9
+                    <div class="bg-white/[0.03] border-l-2 border-white p-4.5 rounded-r-xl backdrop-blur-md">
+                        <p class="text-xs text-slate-200 italic leading-relaxed">
+                            "여호와의 말씀이 그에게 임하여 이르시되 엘리야야 네가 어찌하여 여기 있느냐"<br class="not-italic block mt-1.5 font-bold tracking-wider text-[10px] text-slate-400 uppercase">— 열왕기상 19:9
                         </p>
                     </div>
                 </div>
@@ -229,21 +244,28 @@
             <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-16 reveal">
                 <!-- 왼쪽: 텍스트 및 말씀 배경 스토리 설명 -->
                 <div class="w-full lg:w-5/12 flex flex-col justify-center order-2 lg:order-1">
-                    <div class="flex items-center gap-2 mb-3">
-                        <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>
-                        <p class="text-xs font-semibold text-sky-400 uppercase tracking-widest font-sans">Chapter 03</p>
+                    <div class="flex items-center gap-2.5 mb-4">
+                        <!-- 동적으로 회전 및 확장하는 시안 블루 펄스 링 생성 (동그라미 작동화 완료) -->
+                        <span class="relative flex h-2.5 w-2.5">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-300 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-sky-300"></span>
+                        </span>
+                        <p class="text-xs font-bold text-sky-400 uppercase tracking-widest">Chapter 03</p>
                     </div>
-                    <!-- 요청 수정 완료: 2부 제목 변경 -->
-                    <h2 class="font-serif-kr text-2xl md:text-3xl font-bold text-white leading-snug mb-4">
+                    
+                    <!-- 세련된 시안 고딕 타이틀 -->
+                    <h2 class="text-2xl md:text-3xl font-extrabold text-white leading-tight mb-4 tracking-tight">
                         네가 어찌하여 여기 있느냐? (2부)
                     </h2>
+                    
                     <p class="text-slate-300 text-xs md:text-sm leading-relaxed mb-6 font-light">
                         요란한 바람과 지진, 불 속에 계시지 않고, 모든 풍랑이 지나간 자리에 고요히 들려오던 하나님의 조용한 속삭임을 들려줍니다. 일상 속에서 잔잔히 임하시는 창조주의 세밀한 동행을 경험해 보세요.
                     </p>
+                    
                     <!-- 성경 구절 카드 장식 -->
-                    <div class="bg-white/5 border-l-2 border-sky-400 p-4 rounded-r-xl backdrop-blur-sm">
-                        <p class="font-serif-kr text-xs text-slate-200 italic leading-relaxed">
-                            "불 후에 세미한 소리가 있는지라... 엘리야야 네가 어찌하여 여기 있느냐"<br class="not-italic block mt-1 font-sans text-[10px] font-semibold text-slate-400">— 열왕기상 19:12-13
+                    <div class="bg-white/[0.03] border-l-2 border-sky-400 p-4.5 rounded-r-xl backdrop-blur-md">
+                        <p class="text-xs text-slate-200 italic leading-relaxed">
+                            "불 후에 세미한 소리가 있는지라... 엘리야야 네가 어찌하여 여기 있느냐"<br class="not-italic block mt-1.5 font-bold tracking-wider text-[10px] text-slate-400 uppercase">— 열왕기상 19:12-13
                         </p>
                     </div>
                 </div>
@@ -268,15 +290,15 @@
         </div>
 
         <!-- 하단 메인페이지 복귀 제안 섹션 -->
-        <div class="mt-32 text-center reveal">
-            <div class="inline-block p-10 bg-white/5 backdrop-blur-md rounded-3xl border border-white/10 shadow-2xl max-w-xl">
-                <i class="fa-solid fa-church text-sky-400 text-3xl mb-4 animate-pulse"></i>
-                <h3 class="font-serif-kr text-xl font-bold text-white mb-2">말씀의 은혜를 깊이 간직하셨기를 바랍니다</h3>
-                <p class="text-slate-300 text-xs md:text-sm font-light leading-relaxed mb-6">
+        <div class="mt-36 text-center reveal">
+            <div class="inline-block p-10 md:p-12 bg-white/[0.02] backdrop-blur-xl rounded-3xl border border-white/10 shadow-[0_35px_80px_rgba(0,0,0,0.6)] max-w-xl">
+                <i class="fa-solid fa-church text-sky-400 text-3xl mb-5 animate-pulse"></i>
+                <h3 class="text-xl font-extrabold text-white mb-2.5">말씀의 은혜를 깊이 간직하셨기를 바랍니다</h3>
+                <p class="text-slate-300 text-xs md:text-sm font-light leading-relaxed mb-8">
                     고인국 목사 소개 및 선교지에서의 다양한 발자취, 잔잔한 생각들을 만나러 다시 홈으로 편히 이동해 보세요.
                 </p>
-                <a href="index.html" class="inline-flex items-center gap-2 px-8 py-4 bg-white text-[#030812] hover:bg-sky-400 hover:text-[#030812] transition-all duration-300 rounded-xl text-sm font-semibold shadow-lg">
-                    메인 홈으로 평온하게 돌아하기
+                <a href="index.html" class="inline-flex items-center gap-2.5 px-8 py-4 bg-white text-[#030812] hover:bg-sky-400 hover:text-[#030812] transition-all duration-400 rounded-xl text-sm font-bold shadow-lg">
+                    메인 홈으로 평온하게 돌아가기
                     <i class="fa-solid fa-arrow-right"></i>
                 </a>
             </div>
@@ -285,7 +307,7 @@
     </main>
 
     <!-- 하단 저작권 푸터 -->
-    <footer class="w-full py-8 text-center bg-black/40 border-t border-white/5 relative z-10">
+    <footer class="w-full py-8 text-center bg-black/45 border-t border-white/5 relative z-10">
         <p class="text-xs text-slate-500 tracking-wider">
             &copy; 2026 고인국목사. All rights reserved.
         </p>
@@ -347,7 +369,7 @@
                 spawnStar();
             }
             // 자연스러운 흐름 생성 루프
-            setInterval(spawnStar, 2500);
+            setInterval(spawnStar, 2300);
         });
     </script>
 </body>
