@@ -19,13 +19,16 @@
     
     <style>
         body {
-            background-color: #FAF8F5; /* 따뜻하고 화사한 미색 일러스트톤 백그라운드 */
-            color: #4A4A4A; /* 눈이 편안한 미디엄 차콜그레이 */
+            background-color: #050C0E; /* 심해와 울창한 숲을 닮은 묵직하고 고요한 딥 모스 틸 블랙 */
+            color: #F8FAFC; /* 순백에 가까운 정결한 화이트 */
             font-family: 'Noto Sans KR', sans-serif; 
             overflow-x: hidden;
-            /* 디자이너 조율: 은은한 샌드톤 도트 캔버스 */
-            background-image: radial-gradient(#e5e0d8 1.5px, transparent 1.5px);
-            background-size: 24px 24px;
+            /* 디자이너 조율: 깊고 아득한 공간감을 입히는 앰버 골드 & 크리스탈 화이트 엇갈림 도트 매트릭스 */
+            background-image: 
+                radial-gradient(rgba(245, 158, 11, 0.12) 1.5px, transparent 1.5px),
+                radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+            background-size: 32px 32px, 16px 16px;
+            background-position: 0 0, 8px 8px;
         }
  
         .font-serif-kr {
@@ -36,10 +39,10 @@
             font-family: 'Playfair Display', serif;
         }
  
-        /* 스크롤 리빌 애니메이션 - 벨벳 같은 부드러운 안착 효과 */
+        /* 스크롤 리빌 애니메이션 - 경건하게 안착하는 명품 피드백 */
         .reveal {
             opacity: 0;
-            transform: translateY(40px);
+            transform: translateY(45px);
             transition: opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1), transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
             will-change: transform, opacity;
         }
@@ -53,41 +56,41 @@
         .delay-200 { transition-delay: 300ms; }
         .delay-300 { transition-delay: 450ms; }
         
-        /* 맑고 투명한 유리 느낌의 앰버 골드 프레임 */
+        /* 칠흑 속에 영롱하게 대비되는 프리미엄 반투명 골드 메탈릭 프레임 */
         .premium-frame {
             position: relative;
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(16px);
-            padding: 12px;
+            background: rgba(255, 255, 255, 0.01);
+            backdrop-filter: blur(24px);
+            padding: 14px;
             border-radius: 24px;
-            box-shadow: 0 20px 45px rgba(139, 92, 26, 0.03), inset 0 1px 1px rgba(255, 255, 255, 0.9);
+            box-shadow: 0 35px 80px rgba(0, 0, 0, 0.8), inset 0 1px 1px rgba(255, 255, 255, 0.08);
             border: 1px solid rgba(245, 158, 11, 0.15);
             transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
         }
         
         .premium-frame:hover {
-            transform: translateY(-8px) scale(1.01);
+            transform: translateY(-10px) scale(1.015);
             box-shadow: 
-                0 35px 70px rgba(139, 92, 26, 0.08), 
-                0 0 35px rgba(245, 158, 11, 0.12),
-                0 0 60px rgba(255, 255, 255, 0.5);
+                0 45px 95px rgba(0, 0, 0, 0.95), 
+                0 0 50px rgba(245, 158, 11, 0.25),
+                0 0 90px rgba(255, 255, 255, 0.05);
             border-color: rgba(245, 158, 11, 0.45);
         }
         
-        /* 화사한 대기 중을 수놓는 아늑한 황금빛 보케 파티클 효과 */
+        /* 어두운 대기 속을 고요히 유영하는 아늑한 황금빛 불꽃 스파크 효과 */
         @keyframes sparkFloat {
             0%, 100% {
                 transform: translateY(0) rotate(0deg) scale(0.8);
                 opacity: 0.1;
             }
             50% {
-                transform: translateY(-50px) rotate(180deg) scale(1.3);
-                opacity: 0.5;
+                transform: translateY(-60px) rotate(180deg) scale(1.4);
+                opacity: 0.6;
             }
         }
         .spark-particle {
             position: absolute;
-            background-color: rgba(245, 158, 11, 0.35); /* 햇살을 닮은 따뜻한 골드 펄 */
+            background-color: rgba(245, 158, 11, 0.45); /* 따스한 은혜를 닮은 골드 조각 */
             border-radius: 50%;
             pointer-events: none;
             will-change: transform, opacity;
@@ -95,90 +98,90 @@
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col antialiased relative selection:bg-amber-100">
+<body class="min-h-screen flex flex-col antialiased relative selection:bg-amber-500/30">
 
-    <!-- 따스한 봄볕 같은 앰버 골드 & 에메랄드 스포트라이트 오라 장식 -->
-    <div class="absolute top-[5%] left-[8%] w-[600px] h-[600px] bg-amber-500/5 rounded-full blur-[140px] -z-10 pointer-events-none"></div>
-    <div class="absolute top-[35%] right-[-5%] w-[750px] h-[750px] bg-emerald-500/5 rounded-full blur-[160px] -z-10 pointer-events-none"></div>
-    <div class="absolute bottom-[8%] left-[-8%] w-[650px] h-[650px] bg-yellow-500/5 rounded-full blur-[130px] -z-10 pointer-events-none"></div>
+    <!-- 공간의 깊이를 극대화하는 따스한 앰버 골드 & 에메랄드 스포트라이트 오라 -->
+    <div class="absolute top-[3%] left-[5%] w-[700px] h-[700px] bg-amber-500/10 rounded-full blur-[150px] -z-10 pointer-events-none"></div>
+    <div class="absolute top-[40%] right-[-10%] w-[800px] h-[800px] bg-emerald-500/5 rounded-full blur-[170px] -z-10 pointer-events-none"></div>
+    <div class="absolute bottom-[5%] left-[-10%] w-[750px] h-[750px] bg-yellow-500/800 bg-yellow-500/5 rounded-full blur-[140px] -z-10 pointer-events-none"></div>
     
-    <!-- 실시간 황금 보케 파티클 레이어 -->
+    <!-- 실시간 황금빛 스파크 파티클 레이어 -->
     <div id="sparkOverlay" class="absolute inset-0 overflow-hidden pointer-events-none z-0"></div>
 
     <!-- 상단 네비게이션 헤더 -->
-    <header class="sticky top-0 z-50 bg-[#FAF8F5]/80 backdrop-blur-md border-b border-stone-200/40 transition-all duration-300">
+    <header class="sticky top-0 z-50 bg-[#050C0E]/85 backdrop-blur-md border-b border-white/5 transition-all duration-300">
         <div class="max-w-[1300px] mx-auto px-6 sm:px-10 lg:px-16 h-16 md:h-20 flex items-center justify-between">
-            <!-- 메인 타이틀 및 브랜딩 명패 -->
+            <!-- 메인 타이틀 및 브랜딩 명패 (요청하신 대로 왼쪽 상단 배치) -->
             <a href="index.html" class="flex items-center gap-2 group">
                 <img src="logo.png" alt="고인국목사 로고" class="h-8 md:h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105" onerror="this.style.display='none';">
-                <span class="text-xs md:text-sm font-semibold text-stone-600 tracking-widest transition-colors duration-300">취미 생활</span>
-                <span class="text-[10px] text-amber-600 font-bold uppercase tracking-wider pl-2 border-l border-stone-300 hidden sm:inline-block font-playfair">Leisurely Pursuits</span>
+                <span class="text-xs md:text-sm font-semibold text-white tracking-widest transition-colors duration-300">취미 생활</span>
+                <span class="text-[10px] text-amber-400 font-bold uppercase tracking-wider pl-2 border-l border-white/20 hidden sm:inline-block font-playfair">Leisurely Pursuits</span>
             </a>
  
-            <!-- 최고급 크림 실버 스타일의 영문 HOME 내비게이션 -->
-            <a href="index.html" class="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-stone-200/60 bg-white/50 text-stone-600 text-xs font-semibold tracking-widest uppercase transition-all duration-300 hover:bg-stone-800 hover:text-white hover:border-stone-800 hover:shadow-lg group">
+            <!-- 최고급 텍스처 스타일의 영문 HOME 내비게이션 -->
+            <a href="index.html" class="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-white/10 bg-white/[0.02] text-white text-xs font-semibold tracking-widest uppercase transition-all duration-300 hover:bg-white hover:text-[#050C0E] hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.15)] group">
                 <i class="fa-solid fa-house text-[10px] transition-transform duration-300 group-hover:scale-110"></i>
                 HOME
             </a>
         </div>
-        <!-- 정교한 골드/실버 그라데이션 장식 라인 -->
-        <div class="h-[1px] w-full bg-gradient-to-r from-stone-200 via-amber-200/30 to-stone-200"></div>
+        <!-- 정교한 데코 라인 -->
+        <div class="h-[1px] w-full bg-gradient-to-r from-white/0 via-white/10 to-white/0"></div>
     </header>
 
     <!-- 메인 컨텐츠 영역 -->
-    <main class="max-w-[1200px] w-full mx-auto px-6 sm:px-10 lg:px-16 pt-12 pb-24 flex-grow relative z-10">
+    <main class="max-w-[1200px] w-full mx-auto px-6 sm:px-10 lg:px-16 pt-16 pb-24 flex-grow relative z-10">
         
         <!-- 사유와 사색을 이끄는 프롤로그 문구 -->
-        <div class="text-center max-w-3xl mx-auto mb-20 reveal mt-6">
-            <p class="text-stone-700 font-medium text-base md:text-lg lg:text-xl leading-relaxed max-w-4xl mx-auto tracking-wide mb-4 md:whitespace-nowrap">
+        <div class="text-center max-w-3xl mx-auto mb-24 reveal mt-6">
+            <p class="text-slate-100 font-medium text-base md:text-lg lg:text-xl leading-relaxed max-w-4xl mx-auto tracking-wide mb-4 md:whitespace-nowrap">
                 "일상의 쉼표 안에서 길어 올리는 맑은 영혼의 숨결을 만끽합니다."
             </p>
-            <p class="font-playfair italic text-xs md:text-sm lg:text-base text-amber-600/80 tracking-wide max-w-2xl mx-auto font-light">
+            <p class="font-playfair italic text-xs md:text-sm lg:text-base text-amber-300/80 tracking-wide max-w-2xl mx-auto font-light">
                 Breathing in the clarity of clean soul captured within the pauses of daily life.
             </p>
-            <div class="w-12 h-[1px] bg-gradient-to-r from-transparent via-amber-400/40 to-transparent mx-auto mt-8"></div>
+            <div class="w-12 h-[1px] bg-gradient-to-r from-transparent via-amber-500/40 to-transparent mx-auto mt-8"></div>
         </div>
 
-        <!-- 취미 생활 전시 그리드 리스트 (골드 & 크림 틸 레이아웃) -->
-        <div class="space-y-32">
+        <!-- 취미 생활 전시 그리드 리스트 (골드 & 다크 틸 대비 레이아웃) -->
+        <div class="space-y-36">
             
-            <!-- 취미 1: 독서 (Reading) -->
+            <!-- 취미 1: 독서 (Reading) - 새 파일명 Reading2_2.jpeg 반영 -->
             <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-16 reveal delay-100">
                 <!-- 왼쪽: 텍스트 묵상 카드 -->
                 <div class="w-full lg:w-5/12 flex flex-col justify-center order-2 lg:order-1">
                     <div class="flex items-center gap-2.5 mb-4">
                         <span class="relative flex h-2.5 w-2.5">
                             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
-                            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-amber-500"></span>
+                            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-amber-400"></span>
                         </span>
-                        <p class="text-xs font-bold text-amber-600 uppercase tracking-widest font-playfair">Chapter 01</p>
+                        <p class="text-xs font-bold text-amber-400 uppercase tracking-widest font-playfair">Chapter 01</p>
                     </div>
                     
-                    <h2 class="text-2xl md:text-3xl font-extrabold text-stone-800 leading-tight mb-4 tracking-tight">
-                        독서 <span class="font-playfair italic text-lg text-amber-600/70 font-light block sm:inline-block sm:pl-2">Reading</span>
+                    <h2 class="text-2xl md:text-3xl font-extrabold text-white leading-tight mb-4 tracking-tight">
+                        독서 <span class="font-playfair italic text-lg text-amber-400/80 font-light block sm:inline-block sm:pl-2">Reading</span>
                     </h2>
                     
-                    <p class="text-stone-600 text-xs md:text-sm leading-relaxed mb-6 font-light">
+                    <p class="text-slate-300 text-xs md:text-sm leading-relaxed mb-6 font-light">
                         책장을 넘기며 마주하는 고요한 은혜의 사색. 활자 사이에 머무는 침묵 속에서 영혼의 양식을 공급받고, 창조주의 세밀한 지혜와 경건의 깊이를 경청하며 마음에 새기는 축복의 여정입니다.
                     </p>
                     
                     <!-- 성경 구절 카드 장식 -->
-                    <div class="bg-white/60 border-l-2 border-amber-500 p-4.5 rounded-r-xl shadow-sm">
-                        <p class="text-xs text-stone-600 italic leading-relaxed font-serif-kr">
-                            "지혜를 얻는 자는 자기 영혼을 사랑하고 명철을 지키는 자는 복을 얻느니라" <br class="not-italic block mt-1.5 font-bold tracking-wider text-[10px] text-amber-700 uppercase font-sans">— 잠언 19:8
+                    <div class="bg-white/[0.03] border-l-2 border-amber-400 p-4.5 rounded-r-xl backdrop-blur-md">
+                        <p class="text-xs text-slate-200 italic leading-relaxed font-serif-kr">
+                            "지혜를 얻는 자는 자기 영혼을 사랑하고 명철을 지키는 자는 복을 얻느니라" <br class="not-italic block mt-1.5 font-bold tracking-wider text-[10px] text-amber-400 uppercase font-sans">— 잠언 19:8
                         </p>
                     </div>
                 </div>
                 
-                <!-- 오른쪽: 우아한 금빛 프레임의 독서 이미지 (새로운 사진 적용) -->
+                <!-- 오른쪽: 우아한 금빛 프레임의 독서 이미지 (요청하신 Reading2_2.jpeg 적용 완료) -->
                 <div class="w-full lg:w-7/12 order-1 lg:order-2">
                     <div class="premium-frame">
-                        <div class="relative aspect-[4/3] w-full rounded-xl overflow-hidden bg-stone-50 border border-amber-500/10 shadow-md">
+                        <div class="relative aspect-[4/3] w-full rounded-xl overflow-hidden bg-slate-950 border-2 border-slate-100/10 shadow-2xl">
                             <img 
-                                src="Reading2_2.jpg" 
+                                src="Reading2_2.jpeg" 
                                 alt="독서하는 모습" 
                                 class="absolute inset-0 w-full h-full object-cover transform hover:scale-105 transition-transform duration-1000"
-                                onerror="this.onerror=null; this.src='https://placehold.co/800x600/fcfaf7/d97706?text=Reading';">
+                                onerror="this.onerror=null; this.src='https://placehold.co/800x600/050c0e/d97706?text=Reading';">
                         </div>
                     </div>
                 </div>
@@ -189,12 +192,12 @@
                 <!-- 왼쪽: 우아한 금빛 프레임의 탁구 GIF 이미지 -->
                 <div class="w-full lg:w-7/12">
                     <div class="premium-frame">
-                        <div class="relative aspect-[4/3] w-full rounded-xl overflow-hidden bg-stone-50 border border-amber-500/10 shadow-md">
+                        <div class="relative aspect-[4/3] w-full rounded-xl overflow-hidden bg-slate-950 border-2 border-slate-100/10 shadow-2xl">
                             <img 
                                 src="pingpong.gif" 
                                 alt="탁구 경기 모습" 
                                 class="absolute inset-0 w-full h-full object-cover transform hover:scale-105 transition-transform duration-1000"
-                                onerror="this.onerror=null; this.src='https://placehold.co/800x600/fcfaf7/d97706?text=Pingpong';">
+                                onerror="this.onerror=null; this.src='https://placehold.co/800x600/050c0e/d97706?text=Pingpong';">
                         </div>
                     </div>
                 </div>
@@ -203,24 +206,24 @@
                 <div class="w-full lg:w-5/12 flex flex-col justify-center">
                     <div class="flex items-center gap-2.5 mb-4">
                         <span class="relative flex h-2.5 w-2.5">
-                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-stone-400 opacity-75"></span>
-                            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-stone-500"></span>
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-slate-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-slate-400"></span>
                         </span>
-                        <p class="text-xs font-bold text-stone-600 uppercase tracking-widest font-playfair">Chapter 02</p>
+                        <p class="text-xs font-bold text-slate-400 uppercase tracking-widest font-playfair">Chapter 02</p>
                     </div>
                     
-                    <h2 class="text-2xl md:text-3xl font-extrabold text-stone-800 leading-tight mb-4 tracking-tight">
-                        탁구 <span class="font-playfair italic text-lg text-amber-600/70 font-light block sm:inline-block sm:pl-2">Table Tennis</span>
+                    <h2 class="text-2xl md:text-3xl font-extrabold text-white leading-tight mb-4 tracking-tight">
+                        탁구 <span class="font-playfair italic text-lg text-amber-400/80 font-light block sm:inline-block sm:pl-2">Table Tennis</span>
                     </h2>
                     
-                    <p class="text-stone-600 text-xs md:text-sm leading-relaxed mb-6 font-light">
+                    <p class="text-slate-300 text-xs md:text-sm leading-relaxed mb-6 font-light">
                         빠르게 가로지르는 하얀 공의 포물선 속에 깃드는 건강한 긴장감과 생동감. 주고받는 스트로크 속에 육체의 강건함을 다지고 이웃들과 격의 없이 땀 흘리며 교제하는 기쁨의 광장입니다.
                     </p>
                     
                     <!-- 성경 구절 카드 장식 -->
-                    <div class="bg-white/60 border-l-2 border-stone-500 p-4.5 rounded-r-xl shadow-sm">
-                        <p class="text-xs text-stone-600 italic leading-relaxed font-serif-kr">
-                            "평온한 마음은 육신의 생명이나 시기는 뼈를 썩게 하느니라"<br class="not-italic block mt-1.5 font-bold tracking-wider text-[10px] text-stone-500 uppercase font-sans">— 잠언 14:30
+                    <div class="bg-white/[0.03] border-l-2 border-slate-400 p-4.5 rounded-r-xl backdrop-blur-md">
+                        <p class="text-xs text-slate-200 italic leading-relaxed font-serif-kr">
+                            "평온한 마음은 육신의 생명이나 시기는 뼈를 썩게 하느니라"<br class="not-italic block mt-1.5 font-bold tracking-wider text-[10px] text-slate-400 uppercase font-sans">— 잠언 14:30
                         </p>
                     </div>
                 </div>
@@ -233,23 +236,23 @@
                     <div class="flex items-center gap-2.5 mb-4">
                         <span class="relative flex h-2.5 w-2.5">
                             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
-                            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-sky-500"></span>
+                            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-sky-400"></span>
                         </span>
-                        <p class="text-xs font-bold text-sky-600 uppercase tracking-widest font-playfair">Chapter 03</p>
+                        <p class="text-xs font-bold text-sky-400 uppercase tracking-widest font-playfair">Chapter 03</p>
                     </div>
                     
-                    <h2 class="text-2xl md:text-3xl font-extrabold text-stone-800 leading-tight mb-4 tracking-tight">
-                        수영 <span class="font-playfair italic text-lg text-amber-600/70 font-light block sm:inline-block sm:pl-2">Swimming</span>
+                    <h2 class="text-2xl md:text-3xl font-extrabold text-white leading-tight mb-4 tracking-tight">
+                        수영 <span class="font-playfair italic text-lg text-amber-400/80 font-light block sm:inline-block sm:pl-2">Swimming</span>
                     </h2>
                     
-                    <p class="text-stone-600 text-xs md:text-sm leading-relaxed mb-6 font-light">
+                    <p class="text-slate-300 text-xs md:text-sm leading-relaxed mb-6 font-light">
                         물결의 순리에 부드럽게 몸을 실어 평온한 은혜 속에 완전히 잠기는 자유. 소음이 멈춘 푸른 물결 속에서 오로지 호흡에 몰입하며, 내면에 쌓여온 복잡한 상념들을 가라앉히는 치유와 기도의 시간입니다.
                     </p>
                     
                     <!-- 성경 구절 카드 장식 -->
-                    <div class="bg-white/60 border-l-2 border-sky-400 p-4.5 rounded-r-xl shadow-sm">
-                        <p class="text-xs text-stone-600 italic leading-relaxed font-serif-kr">
-                            "물이 바다를 덮음 같이 여호와의 영광을 인정하는 것이 세상에 가득함이니라"<br class="not-italic block mt-1.5 font-bold tracking-wider text-[10px] text-sky-600 uppercase font-sans">— 하박국 2:14
+                    <div class="bg-white/[0.03] border-l-2 border-sky-400 p-4.5 rounded-r-xl backdrop-blur-md">
+                        <p class="text-xs text-slate-200 italic leading-relaxed font-serif-kr">
+                            "물이 바다를 덮음 같이 여호와의 영광을 인정하는 것이 세상에 가득함이니라"<br class="not-italic block mt-1.5 font-bold tracking-wider text-[10px] text-sky-400 uppercase font-sans">— 하박국 2:14
                         </p>
                     </div>
                 </div>
@@ -257,12 +260,12 @@
                 <!-- 오른쪽: 우아한 금빛 프레임의 수영 GIF 이미지 -->
                 <div class="w-full lg:w-7/12 order-1 lg:order-2">
                     <div class="premium-frame">
-                        <div class="relative aspect-[16/9] w-full rounded-xl overflow-hidden bg-stone-50 border border-amber-500/10 shadow-md">
+                        <div class="relative aspect-[16/9] w-full rounded-xl overflow-hidden bg-slate-950 border-2 border-slate-100/10 shadow-2xl">
                             <img 
                                 src="swim.gif" 
                                 alt="수영하는 모습" 
                                 class="absolute inset-0 w-full h-full object-cover transform hover:scale-105 transition-transform duration-1000"
-                                onerror="this.onerror=null; this.src='https://placehold.co/800x450/fcfaf7/d97706?text=Swimming';">
+                                onerror="this.onerror=null; this.src='https://placehold.co/800x450/050c0e/d97706?text=Swimming';">
                         </div>
                     </div>
                 </div>
@@ -270,19 +273,19 @@
 
         </div>
 
-        <!-- 하단 메인페이지 복귀 제안 섹션 (화사한 앰버 골드 테마 카드) -->
-        <div class="mt-32 text-center reveal">
+        <!-- 하단 메인페이지 복귀 제안 섹션 (은은하고 고디적인 극미니멀 프리미엄 카드) -->
+        <div class="mt-36 text-center reveal">
             <!-- 카드 전체를 클릭하면 평온하게 홈으로 이동하도록 구성 -->
-            <a href="index.html" class="inline-block p-10 md:p-14 bg-white/70 backdrop-blur-md rounded-3xl border border-amber-500/10 shadow-[0_30px_70px_rgba(139,92,26,0.04)] hover:bg-white hover:border-amber-400/40 hover:shadow-[0_40px_80px_rgba(245,158,11,0.1)] hover:-translate-y-1.5 transition-all duration-500 max-w-xl w-full group cursor-pointer">
+            <a href="index.html" class="inline-block p-10 md:p-14 bg-gradient-to-b from-white/[0.03] to-white/[0.005] backdrop-blur-2xl rounded-3xl border border-white/[0.08] shadow-[0_40px_100px_rgba(0,0,0,0.8)] hover:bg-white/[0.06] hover:border-white/20 hover:shadow-[0_40px_100px_rgba(245,158,11,0.15)] hover:-translate-y-1.5 transition-all duration-500 max-w-xl w-full group cursor-pointer">
                 <!-- 미니멀 홈 아이콘 -->
-                <i class="fa-solid fa-house-chimney-window text-amber-500/80 text-2xl mb-5 transition-transform duration-300 group-hover:scale-110"></i>
+                <i class="fa-solid fa-house-chimney-window text-amber-400/80 text-2xl mb-5 transition-transform duration-300 group-hover:scale-110"></i>
                 
-                <h3 class="text-base md:text-lg font-light text-stone-600 tracking-wide mb-8 leading-relaxed">
+                <h3 class="text-base md:text-lg font-light text-slate-200 tracking-wide mb-8 leading-relaxed">
                     쉼과 건강한 활동을 통해 새로운 힘을 얻으셨기를 바랍니다
                 </h3>
                 
                 <!-- 원형 캡슐 알약 버튼 (전체 카드 호버 시 앰버 골드 빛 활성화) -->
-                <div class="inline-flex items-center px-8 py-3.5 bg-stone-800 text-white group-hover:bg-amber-500 transition-all duration-400 rounded-full text-xs md:text-sm font-semibold tracking-wider group-hover:shadow-[0_0_20px_rgba(245,158,11,0.25)] shadow-md">
+                <div class="inline-flex items-center px-8 py-3.5 bg-white text-[#050C0E] group-hover:bg-amber-400 transition-all duration-400 rounded-full text-xs md:text-sm font-semibold tracking-wider group-hover:shadow-[0_0_25px_rgba(245,158,11,0.25)] shadow-md">
                     메인 홈으로 평온하게 돌아가기
                 </div>
             </a>
@@ -291,8 +294,8 @@
     </main>
 
     <!-- 하단 저작권 푸터 -->
-    <footer class="w-full py-8 text-center bg-[#FAF8F5]/80 border-t border-stone-200/40 relative z-10">
-        <p class="text-xs text-stone-400 tracking-wider">
+    <footer class="w-full py-8 text-center bg-black/45 border-t border-white/5 relative z-10">
+        <p class="text-xs text-slate-500 tracking-wider">
             &copy; 2026 고인국목사. All rights reserved.
         </p>
     </footer>
