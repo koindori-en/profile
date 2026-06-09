@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>추억의 설교 - 고인국 목사</title>
+    
+    <!-- 브라우저 탭 아이콘 (파비콘) 적용 -->
+    <link class="js-favicon" rel="icon" href="logo.png" type="image/png">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Noto Serif KR, Noto Sans KR, Playfair Display -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            background-color: #050E1B; /* '네가 어찌하여 여기 있느냐' 표지의 고요하고 깊은 딥 블루 배경 */
+            color: #E2E8F0;
+            font-family: 'Noto Sans KR', sans-serif; 
+            overflow-x: hidden;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+            background-size: 32px 32px; /* 영적이고 현대적인 우주적 모눈 질감 */
+        }
+ 
+        .font-serif-kr {
+            font-family: 'Noto Serif KR', serif;
+        }
+ 
+        .font-playfair {
+            font-family: 'Playfair Display', serif;
+        }
+ 
+        /* 스크롤 리빌 애니메이션 */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform, opacity;
+        }
+ 
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+ 
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+        
+        /* 딥블루 배경 위에서 하얗고 눈부시게 대비되는 프리미엄 실버 테두리 프레임 */
+        .premium-frame {
+            position: relative;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            padding: 12px;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .premium-frame:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 25px 60px rgba(56, 189, 248, 0.2);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+        
+        /* 은은히 떠다니는 세미한 밤하늘의 빛 가루(스타 더스트) 효과 */
+        @keyframes starFloat {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.1;
+            }
+            50% {
+                transform: translateY(-35px) rotate(180deg);
+                opacity: 0.7;
+            }
+        }
+        .star-particle {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.4); /* 순백의 영롱한 별빛가루 */
+            border-radius: 50%;
+            pointer-events: none;
+            will-change: transform, opacity;
+            animation: starFloat 14s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased relative">
+
+    <!-- 신비롭고 깊은 영적 공간감을 완성하는 블루 스포트라이트 그라데이션 데코 -->
+    <div class="absolute top-[5%] left-[10%] w-[600px] h-[600px] bg-blue-900/10 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+    <div class="absolute top-[35%] right-[-10%] w-[700px] h-[700px] bg-indigo-950/20 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+    <div class="absolute bottom-[10%] left-[-10%] w-[650px] h-[650px] bg-sky-950/20 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+    
+    <!-- 세미하게 부유하는 순백 별빛 가루 레이어 -->
+    <div id="starOverlay" class="absolute inset-0 overflow-hidden pointer-events-none z-0"></div>
+
+    <!-- 상단 네비게이션 헤더 (블루&화이트 테마 반영) -->
+    <header class="sticky top-0 z-50 bg-[#050E1B]/80 backdrop-blur-md border-b border-white/5 transition-all duration-300">
+        <div class="max-w-[1300px] mx-auto px-6 sm:px-10 lg:px-16 h-16 md:h-20 flex items-center justify-between">
+            <!-- 메인 로고 및 브랜딩 명패 -->
+            <a href="index.html" class="flex items-center gap-2 group">
+                <img src="logo.png" alt="고인국목사 로고" class="h-8 md:h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105" onerror="this.style.display='none';">
+                <span class="text-xs md:text-sm font-medium text-slate-400 group-hover:text-white tracking-wider transition-colors duration-300">고인국 목사</span>
+            </a>
+ 
+            <!-- 메인 페이지로 복귀하는 우아한 화살표 네비게이션 링크 (강렬한 화이트 아웃라인 디자인) -->
+            <a href="index.html" class="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-white/20 text-white text-xs md:text-sm font-medium transition-all duration-300 hover:bg-white hover:text-[#050E1B] hover:border-white group">
+                <i class="fa-solid fa-arrow-left transition-transform duration-300 group-hover:-translate-x-1.5"></i>
+                메인으로 돌아가기
+            </a>
+        </div>
+        <!-- 정교한 장식선 -->
+        <div class="h-[1px] w-full bg-gradient-to-r from-white/0 via-white/10 to-white/0"></div>
+    </header>
+
+    <!-- 메인 컨텐츠 영역 -->
+    <main class="max-w-[1200px] w-full mx-auto px-6 sm:px-10 lg:px-16 pt-12 pb-24 flex-grow relative z-10">
+        
+        <!-- 대타이틀 및 프롤로그 소개 (요청하신 말씀의 숲 문구 완벽 적용) -->
+        <div class="text-center max-w-3xl mx-auto mb-20 reveal">
+            <p class="text-sky-400 font-semibold tracking-widest text-xs uppercase mb-3 font-sans">Sermon Archive</p>
+            <h1 class="font-serif-kr text-4xl md:text-5xl font-bold text-white leading-tight tracking-tight mb-6">
+                추억의 설교
+            </h1>
+            <div class="w-16 h-[2px] bg-gradient-to-r from-sky-400 via-white to-sky-400 mx-auto mb-6"></div>
+            
+            <p class="text-slate-300 font-light text-sm md:text-base leading-relaxed max-w-2xl mx-auto">
+                선포된 복음의 메시지를 귀담아들으며, 말씀의 숲으로 들어갑시다.
+            </p>
+        </div>
+
+        <!-- 말씀 비디오 전시 리스트 (블루&화이트 강렬한 미학적 배열) -->
+        <div class="space-y-24">
+            
+            <!-- 설교 1: 은혜의 강가에서 -->
+            <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-16 reveal delay-100">
+                <!-- 왼쪽: 텍스트 및 말씀 배경 스토리 설명 -->
+                <div class="w-full lg:w-5/12 flex flex-col justify-center order-2 lg:order-1">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="w-1.5 h-1.5 rounded-full bg-sky-400 animate-ping"></span>
+                        <p class="text-xs font-semibold text-sky-400 uppercase tracking-widest font-sans">Chapter 01</p>
+                    </div>
+                    <h2 class="font-serif-kr text-2xl md:text-3xl font-bold text-white leading-snug mb-4">
+                        참된 안식과 회복의 약속
+                    </h2>
+                    <p class="text-slate-300 text-xs md:text-sm leading-relaxed mb-6 font-light">
+                        분주함과 무거운 짐을 가만히 내려놓고 주님의 보좌 앞으로 조용히 나아갈 때 허락하시는 하나님의 회복을 기록했습니다. 우리의 갈증을 단숨에 채워주는 깊은 샘물 같은 주님의 따사롭고 포근한 은혜를 만날 수 있습니다.
+                    </p>
+                    <!-- 성경 구절 카드 장식 (고대비 화이트 박스 스타일링) -->
+                    <div class="bg-white/5 border-l-2 border-sky-400 p-4 rounded-r-xl backdrop-blur-sm">
+                        <p class="font-serif-kr text-xs text-slate-200 italic leading-relaxed">
+                            "수고하고 무거운 짐 진 자들아 다 내게로 오라 내가 너희를 쉬게 하리라" <br class="not-italic block mt-1 font-sans text-[10px] font-semibold text-slate-400">— 마태복음 11:28
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 오른쪽: 우아하게 박싱된 유튜브 동영상 플레이어 (강렬한 대조의 은색 메탈 테두리) -->
+                <div class="w-full lg:w-7/12 order-1 lg:order-2">
+                    <div class="premium-frame">
+                        <div class="relative aspect-video w-full rounded-xl overflow-hidden bg-slate-950 border-2 border-stone-300 shadow-2xl">
+                            <iframe 
+                                class="absolute inset-0 w-full h-full"
+                                src="https://www.youtube.com/embed/kZfIqgk_ivU" 
+                                title="추억의 설교 1" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 설교 2: 네가 어찌하여 여기 있느냐 (상) -->
+            <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-16 reveal">
+                <!-- 왼쪽: 우아하게 박싱된 유튜브 동영상 플레이어 (은색 메탈 테두리) -->
+                <div class="w-full lg:w-7/12">
+                    <div class="premium-frame">
+                        <div class="relative aspect-video w-full rounded-xl overflow-hidden bg-slate-950 border-2 border-stone-300 shadow-2xl">
+                            <iframe 
+                                class="absolute inset-0 w-full h-full"
+                                src="https://www.youtube.com/embed/6AnnQ2r4yIw" 
+                                title="추억의 설교 2" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 오른쪽: 텍스트 및 말씀 배경 스토리 설명 -->
+                <div class="w-full lg:w-5/12 flex flex-col justify-center">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
+                        <p class="text-xs font-semibold text-white uppercase tracking-widest font-sans">Chapter 02</p>
+                    </div>
+                    <h2 class="font-serif-kr text-2xl md:text-3xl font-bold text-white leading-snug mb-4">
+                        네가 어찌하여 여기 있느냐
+                    </h2>
+                    <p class="text-slate-300 text-xs md:text-sm leading-relaxed mb-6 font-light">
+                        삶의 깊은 동굴 속에 숨어 홀로 신음하는 엘리야에게 주셨던 하나님의 무겁고도 인자하신 질문입니다. 인생의 풍랑 속에서 우리가 있어야 할 참된 믿음의 자리를 돌아보게 하는 감동의 메시지입니다.
+                    </p>
+                    <!-- 성경 구절 카드 장식 -->
+                    <div class="bg-white/5 border-l-2 border-white p-4 rounded-r-xl backdrop-blur-sm">
+                        <p class="font-serif-kr text-xs text-slate-200 italic leading-relaxed">
+                            "여호와의 말씀이 그에게 임하여 이르시되 엘리야야 네가 어찌하여 여기 있느냐"<br class="not-italic block mt-1 font-sans text-[10px] font-semibold text-slate-400">— 열왕기상 19:9
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 설교 3: 세미한 음성 가운데로 (하) -->
+            <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-16 reveal">
+                <!-- 왼쪽: 텍스트 및 말씀 배경 스토리 설명 -->
+                <div class="w-full lg:w-5/12 flex flex-col justify-center order-2 lg:order-1">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>
+                        <p class="text-xs font-semibold text-sky-400 uppercase tracking-widest font-sans">Chapter 03</p>
+                    </div>
+                    <h2 class="font-serif-kr text-2xl md:text-3xl font-bold text-white leading-snug mb-4">
+                        세미한 음성 가운데로
+                    </h2>
+                    <p class="text-slate-300 text-xs md:text-sm leading-relaxed mb-6 font-light">
+                        요란한 바람과 지진, 불 속에 계시지 않고, 모든 풍랑이 지나간 자리에 고요히 들려오던 하나님의 조용한 속삭임을 들려줍니다. 일상 속에서 잔잔히 임하시는 창조주의 세밀한 동행을 경험해 보세요.
+                    </p>
+                    <!-- 성경 구절 카드 장식 -->
+                    <div class="bg-white/5 border-l-2 border-sky-400 p-4 rounded-r-xl backdrop-blur-sm">
+                        <p class="font-serif-kr text-xs text-slate-200 italic leading-relaxed">
+                            "불 후에 세미한 소리가 있는지라... 엘리야야 네가 어찌하여 여기 있느냐"<br class="not-italic block mt-1 font-sans text-[10px] font-semibold text-slate-400">— 열왕기상 19:12-13
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 오른쪽: 우아하게 박싱된 유튜브 동영상 플레이어 (은색 메탈 테두리) -->
+                <div class="w-full lg:w-7/12 order-1 lg:order-2">
+                    <div class="premium-frame">
+                        <div class="relative aspect-video w-full rounded-xl overflow-hidden bg-slate-950 border-2 border-stone-300 shadow-2xl">
+                            <iframe 
+                                class="absolute inset-0 w-full h-full"
+                                src="https://www.youtube.com/embed/iaECy7b-bX0" 
+                                title="추억의 설교 3" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 하단 메인페이지 복귀 제안 섹션 -->
+        <div class="mt-32 text-center reveal">
+            <div class="inline-block p-10 bg-white/5 backdrop-blur-md rounded-3xl border border-white/10 shadow-2xl max-w-xl">
+                <i class="fa-solid fa-church text-sky-400 text-3xl mb-4 animate-pulse"></i>
+                <h3 class="font-serif-kr text-xl font-bold text-white mb-2">말씀의 은혜를 깊이 간직하셨기를 바랍니다</h3>
+                <p class="text-slate-300 text-xs md:text-sm font-light leading-relaxed mb-6">
+                    고인국 목사 소개 및 선교지에서의 다양한 발자취, 잔잔한 생각들을 만나러 다시 홈으로 편히 이동해 보세요.
+                </p>
+                <a href="index.html" class="inline-flex items-center gap-2 px-8 py-4 bg-white text-[#050E1B] hover:bg-sky-400 hover:text-[#050E1B] transition-all duration-300 rounded-xl text-sm font-semibold shadow-lg">
+                    메인 홈으로 평온하게 돌아가기
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- 하단 저작권 푸터 -->
+    <footer class="w-full py-8 text-center bg-black/40 border-t border-white/5 relative z-10">
+        <p class="text-xs text-slate-500 tracking-wider">
+            &copy; 2026 고인국목사. All rights reserved.
+        </p>
+    </footer>
+
+    <!-- 자바스크립트 엔진 (리빌 효과 및 빛가루 생성) -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // 1. 스크롤 감지 및 요소 노출 (IntersectionObserver)
+            const revealElements = document.querySelectorAll(".reveal");
+ 
+            const revealOnScrollObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("active");
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px"
+            });
+ 
+            revealElements.forEach(el => {
+                revealOnScrollObserver.observe(el);
+            });
+
+            // 2. 부유하는 은은한 순백 별빛 가루(Star Dust Particle) 생성
+            const starOverlay = document.getElementById("starOverlay");
+            
+            function spawnStar() {
+                if (!starOverlay) return;
+                if (starOverlay.children.length > 25) return; // 렉 방지 상한선
+                
+                const star = document.createElement("div");
+                star.className = "star-particle";
+                
+                // 불규칙 크기 및 투명도 설정
+                const size = 2 + Math.random() * 4;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                
+                // 애니메이션 지속 시간 랜덤화
+                const duration = 12 + Math.random() * 15;
+                star.style.animationDuration = `${duration}s`;
+                
+                starOverlay.appendChild(star);
+                
+                // 생명주기가 다하면 가비지 컬렉트
+                setTimeout(() => {
+                    star.remove();
+                }, duration * 1000);
+            }
+
+            // 초기 10개 우선 스폰
+            for(let i=0; i<10; i++){
+                spawnStar();
+            }
+            // 자연스러운 흐름 생성 루프
+            setInterval(spawnStar, 2500);
+        });
+    </script>
+</body>
+</html>
