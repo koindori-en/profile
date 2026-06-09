@@ -297,33 +297,43 @@
                     </p>
                 </a>
  
-                <!-- 가치 2: 취미 생활 -->
-                <div class="bg-white p-8 rounded-2xl shadow-[0_4px_25px_rgba(0,0,0,0.01)] border border-stone-100 hover:-translate-y-2 transition-transform duration-500 reveal delay-200">
-                    <div class="w-14 h-14 rounded-full bg-amber-50/70 flex items-center justify-center text-amber-600 mb-6">
-                        <i class="fa-solid fa-camera text-2xl animate-camera"></i>
+                <!-- 가치 2: 취미 생활 (hobbies.html 이동 및 프리미엄 롤오버 인터랙션 반영) -->
+                <a href="https://koindori-en.github.io/profile/hobbies.html" class="block bg-white p-8 rounded-2xl shadow-[0_4px_25px_rgba(0,0,0,0.01)] border border-stone-100 hover:-translate-y-2 hover:shadow-[0_12px_30px_rgba(0,0,0,0.05)] transition-all duration-500 ease-out group cursor-pointer reveal delay-200">
+                    <!-- 아이콘을 화사하게 감싸는 컨테이너 (호버 시 앰버 그라데이션 및 부드러운 스케일, 네온 광채 적용) -->
+                    <div class="w-14 h-14 rounded-full bg-amber-50 flex items-center justify-center text-amber-600 mb-6 shadow-sm border border-amber-100/30 group-hover:bg-gradient-to-tr group-hover:from-amber-500 group-hover:to-orange-400 group-hover:text-white group-hover:scale-110 group-hover:shadow-[0_8px_20px_rgba(245,158,11,0.3)] transition-all duration-500 ease-out">
+                        <!-- 카메라 아이콘이 부드럽게 반응하는 마이크로 효과 추가 -->
+                        <i class="fa-solid fa-camera text-2xl transition-transform duration-700 group-hover:rotate-[360deg]"></i>
                     </div>
                     <div class="mb-3">
-                        <span class="text-[10px] font-bold text-amber-600 tracking-wider uppercase font-playfair block mb-1">Leisurely Pursuits</span>
-                        <h3 class="font-serif-kr text-xl font-bold text-stone-700">취미 생활</h3>
+                        <span class="text-[10px] font-bold text-amber-600 tracking-wider uppercase font-playfair block mb-1 group-hover:text-amber-500 transition-colors duration-300">Leisurely Pursuits</span>
+                        <h3 class="font-serif-kr text-xl font-bold text-stone-700 flex items-center gap-1.5">
+                            취미 생활
+                            <i class="fa-solid fa-chevron-right text-xs text-amber-500 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 ease-out"></i>
+                        </h3>
                     </div>
-                    <p class="text-stone-500 text-xs md:text-sm leading-relaxed">
+                    <p class="text-stone-500 text-xs md:text-sm leading-relaxed group-hover:text-stone-600 transition-colors duration-300">
                         아름다운 자연 속을 거닐고 기록하는 일은 내면에 깃드는 맑은 쉼의 시간입니다. 피조 세계를 관조하며 창조주의 숨결을 만끽합니다.
                     </p>
-                </div>
+                </a>
  
-                <!-- 가치 3: 추억의 설교 (요청하신 대로 개편 완료) -->
-                <div class="bg-white p-8 rounded-2xl shadow-[0_4px_25px_rgba(0,0,0,0.01)] border border-stone-100 hover:-translate-y-2 transition-transform duration-500 reveal delay-300">
-                    <div class="w-14 h-14 rounded-full bg-rose-50/70 flex items-center justify-center text-rose-700 mb-6">
-                        <i class="fa-solid fa-book-open text-2xl animate-nib"></i>
+                <!-- 가치 3: 추억의 설교 (sermons.html 이동 및 프리미엄 롤오버 인터랙션 반영) -->
+                <a href="https://koindori-en.github.io/profile/sermons.html" class="block bg-white p-8 rounded-2xl shadow-[0_4px_25px_rgba(0,0,0,0.01)] border border-stone-100 hover:-translate-y-2 hover:shadow-[0_12px_30px_rgba(0,0,0,0.05)] transition-all duration-500 ease-out group cursor-pointer reveal delay-300">
+                    <!-- 아이콘을 화사하게 감싸는 컨테이너 (호버 시 로즈 그라데이션 및 부드러운 스케일, 네온 광채 적용) -->
+                    <div class="w-14 h-14 rounded-full bg-rose-50 flex items-center justify-center text-rose-700 mb-6 shadow-sm border border-rose-100/30 group-hover:bg-gradient-to-tr group-hover:from-rose-500 group-hover:to-pink-400 group-hover:text-white group-hover:scale-110 group-hover:shadow-[0_8px_20px_rgba(244,63,94,0.3)] transition-all duration-500 ease-out">
+                        <!-- 책 아이콘이 확대되면서 우아하게 튕기는 마이크로 효과 추가 -->
+                        <i class="fa-solid fa-book-open text-2xl transition-transform duration-700 group-hover:scale-110 group-hover:rotate-12"></i>
                     </div>
                     <div class="mb-3">
-                        <span class="text-[10px] font-bold text-rose-700 tracking-wider uppercase font-playfair block mb-1">Treasured Sermons</span>
-                        <h3 class="font-serif-kr text-xl font-bold text-stone-700">추억의 설교</h3>
+                        <span class="text-[10px] font-bold text-rose-700 tracking-wider uppercase font-playfair block mb-1 group-hover:text-rose-500 transition-colors duration-300">Treasured Sermons</span>
+                        <h3 class="font-serif-kr text-xl font-bold text-stone-700 flex items-center gap-1.5">
+                            추억의 설교
+                            <i class="fa-solid fa-chevron-right text-xs text-rose-500 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 ease-out"></i>
+                        </h3>
                     </div>
-                    <p class="text-stone-500 text-xs md:text-sm leading-relaxed">
+                    <p class="text-stone-500 text-xs md:text-sm leading-relaxed group-hover:text-stone-600 transition-colors duration-300">
                         사역의 여정 속에서 성도들과 함께 눈물 흘리며 나누었던 은혜와 감동의 메시지입니다. 선포된 말씀 속에서 오늘을 살아갈 하늘의 소망과 깊은 위로를 다시금 길어 올립니다.
                     </p>
-                </div>
+                </a>
             </div>
  
         </div>
@@ -340,16 +350,16 @@
                     <p class="text-stone-500 text-sm md:text-base leading-relaxed mb-6">
                         짧은 메시지와 생각의 세계로 초대합니다.
                     </p>
-
+ 
                     <!-- 새로이 인서트된 끄적이는 생각들 (Scribbled Thoughts) 블록 영역 -->
                     <div class="mb-8 border-l-2 border-stone-300 pl-4 py-1 text-left">
                         <span class="text-[10px] font-bold text-stone-400 tracking-wider uppercase font-playfair block mb-1">Scribbled Thoughts</span>
                         <h4 class="font-serif-kr text-base font-bold text-stone-700 mb-2">끄적이는 생각들</h4>
                         <p class="text-stone-500 text-xs md:text-sm leading-relaxed">
-                            말씀을 묵상하며 떠오른 잔잔한 지혜와 일상의 여정에서 만난 조각 생각들을 담백한 영상으로 담았습니다.
+                            말씀 묵상하며 떠오른 잔잔한 지혜와 일상의 여정에서 만난 조각 생각들을 담백한 영상으로 담았습니다.
                         </p>
                     </div>
-
+ 
                     <div class="inline-flex items-center gap-4 bg-white px-6 py-4 rounded-xl border border-stone-200/50 shadow-sm">
                         <i class="fa-brands fa-youtube text-rose-600 text-2xl animate-pulse"></i>
                         <div class="text-left">
