@@ -2,7 +2,7 @@
 <html lang="ko" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <!-- 크롬창 제목을 IK 선교의 자취로 전격 변경 -->
     <title>IK 선교의 자취</title>
     
@@ -32,11 +32,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     
     <style>
+        /* 모바일 가로 스크롤 완전 차단을 위해 html 및 body 전체에 오버플로우 제한 */
+        html {
+            overflow-x: hidden;
+            width: 100%;
+            height: 100%;
+        }
         body {
             background-color: #FAF8F5; /* 따뜻하고 감성적인 미색 일러스트톤 백그라운드 */
             color: #4A4A4A; /* 눈이 편안한 미디엄 차콜그레이 */
             font-family: 'Noto Sans KR', sans-serif; 
             overflow-x: hidden;
+            width: 100%;
             background-image: radial-gradient(#e5e0d8 1px, transparent 1px);
             background-size: 24px 24px; /* 모눈종이/캔버스 텍스처 */
         }
@@ -91,29 +98,31 @@
 
     <!-- 상단 네비게이션 헤더 -->
     <header class="sticky top-0 z-50 bg-[#FAF8F5]/80 backdrop-blur-md border-b border-stone-200/40">
-        <div class="max-w-[1300px] mx-auto px-6 sm:px-10 lg:px-16 h-16 md:h-20 flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <span class="text-stone-700 font-sans text-sm md:text-base font-medium tracking-wider">선교의 자취</span>
-                <span class="text-xs text-stone-400 font-sans tracking-widest uppercase hidden sm:inline-block">Traces of Mission</span>
+        <div class="max-w-[1300px] mx-auto px-4 sm:px-10 lg:px-16 h-16 md:h-20 flex items-center justify-between">
+            <div class="flex items-center gap-2 sm:gap-3">
+                <span class="text-stone-700 font-sans text-xs sm:text-sm md:text-base font-semibold tracking-wider">선교의 자취</span>
+                <span class="text-[10px] sm:text-xs text-stone-400 font-sans tracking-widest uppercase hidden sm:inline-block">Traces of Mission</span>
             </div>
             
-            <!-- 세련된 홈 복귀 버튼 -->
-            <a href="index.html" class="flex items-center gap-2 bg-white text-stone-600 hover:text-stone-800 px-5 py-2.5 text-xs md:text-sm font-medium tracking-wide transition-all duration-300 ease-out rounded-full shadow-[0_4px_12px_rgba(0,0,0,0.02)] hover:shadow-[0_10px_20px_rgba(0,0,0,0.06)] hover:-translate-y-0.5 border border-stone-200/40 group">
+            <!-- 세련된 홈 복귀 버튼 (모바일에서 넘치지 않도록 반응형 패딩 적용) -->
+            <a href="index.html" class="flex items-center gap-1.5 sm:gap-2 bg-white text-stone-600 hover:text-stone-800 px-3.5 sm:px-5 py-2 sm:py-2.5 text-xs md:text-sm font-medium tracking-wide transition-all duration-300 ease-out rounded-full shadow-[0_4px_12px_rgba(0,0,0,0.02)] hover:shadow-[0_10px_20px_rgba(0,0,0,0.06)] hover:-translate-y-0.5 border border-stone-200/40 group">
                 <i class="fa-solid fa-arrow-left transition-transform duration-300 group-hover:-translate-x-1"></i>
-                홈화면으로
+                <span>홈화면으로</span>
             </a>
         </div>
         <div class="h-[1px] w-full bg-gradient-to-r from-stone-200 via-stone-300/50 to-stone-200"></div>
     </header>
 
     <!-- 메인 컨텐츠 영역 -->
-    <main class="max-w-[1300px] w-full mx-auto px-6 sm:px-10 lg:px-16 py-12 md:py-20 flex-grow relative z-10">
+    <main class="max-w-[1300px] w-full mx-auto px-5 sm:px-10 lg:px-16 py-10 md:py-20 flex-grow relative z-10">
         
-        <!-- 데코 일러스트 도형 -->
-        <div class="absolute top-[15%] right-[-5%] w-[300px] h-[300px] bg-stone-200/30 rounded-full blur-3xl -z-10 pointer-events-none"></div>
-        <div class="absolute bottom-[25%] left-[-5%] w-[400px] h-[400px] bg-stone-200/20 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+        <!-- [핵심 수정] 데코 일러스트 도형이 뷰포트를 절대 초과할 수 없도록 별도의 overflow-hidden 컨테이너로 감싸 격리시킴 -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none -z-10">
+            <div class="absolute top-[15%] right-[-5%] w-[300px] h-[300px] bg-stone-200/30 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-[25%] left-[-5%] w-[400px] h-[400px] bg-stone-200/20 rounded-full blur-3xl"></div>
+        </div>
 
-        <div class="space-y-24 md:space-y-36">
+        <div class="space-y-20 md:space-y-36">
 
             <!-- 1. 티벳 (첫 번째) -->
             <section class="reveal">
@@ -126,19 +135,19 @@
                     <span class="text-xs text-stone-400 font-sans tracking-widest mt-1 md:mt-0 uppercase">Tibet Mission</span>
                 </div>
 
-                <!-- 사진 3장 매거진 그리드 배치 -->
+                <!-- 사진 3장 매거진 그리드 배치 (모바일에서 지나치게 길거나 찌그러지지 않게 반응형 비율 최적화) -->
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-6">
                     <!-- 사진 1 -->
-                    <div class="img-card md:col-span-4 aspect-[3/4]">
-                        <img src="티벳 중간.jpeg" alt="티벳 사역 풍경 1 - 척박한 땅 위에서의 첫 걸음" class="w-full h-full object-cover" onerror="handleImageError(this, '티벳 풍경 1')">
+                    <div class="img-card md:col-span-4 aspect-[4/3] sm:aspect-[3/4]">
+                        <img src="티벳 중간.jpeg" alt="티벳 사역 풍경 1 - 척박한 땅 위에서의 첫 걸음" class="w-full h-full object-cover" onerror="handleImageError(this, '티벳 풍경 1')">
                     </div>
                     <!-- 사진 2 -->
-                    <div class="img-card md:col-span-8 aspect-[4/3] md:aspect-auto">
-                        <img src="티벳2 중간.jpeg" alt="티벳 사역 풍경 2 - 주님을 경배하는 자매들" class="w-full h-full object-cover object-[35%_50%]" onerror="handleImageError(this, '티벳 풍경 2')">
+                    <div class="img-card md:col-span-8 aspect-[4/3] sm:aspect-square md:aspect-auto">
+                        <img src="티벳2 중간.jpeg" alt="티벳 사역 풍경 2 - 주님을 경배하는 자매들" class="w-full h-full object-cover object-[35%_50%]" onerror="handleImageError(this, '티벳 풍경 2')">
                     </div>
                     <!-- 사진 3 -->
-                    <div class="img-card md:col-span-12 aspect-[21/9]">
-                        <img src="티벳3 중간.jpeg" alt="티벳 사역 풍경 3 - 하늘과 가장 맞닿은 공동체" class="w-full h-full object-cover" onerror="handleImageError(this, '티벳 풍경 3')">
+                    <div class="img-card md:col-span-12 aspect-[16/9] sm:aspect-[21/9]">
+                        <img src="티벳3 중간.jpeg" alt="티벳 사역 풍경 3 - 하늘과 가장 맞닿은 공동체" class="w-full h-full object-cover" onerror="handleImageError(this, '티벳 풍경 3')">
                     </div>
                 </div>
 
@@ -166,17 +175,17 @@
 
                 <!-- 사진 3장 에디토리얼 그리드 배치 -->
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-6">
-                    <!-- 사진 1 (넓은 파노라마) -->
-                    <div class="img-card md:col-span-12 aspect-[21/9]">
-                        <img src="필리핀 중간.jpeg" alt="필리핀 사역 풍경 1 - 마을 복음 축제 현장" class="w-full h-full object-cover" onerror="handleImageError(this, '필리핀 풍경 1')">
+                    <!-- 사진 1 (넓은 파노라마 - 모바일에서는 16:9 비율 조정) -->
+                    <div class="img-card md:col-span-12 aspect-[16/9] sm:aspect-[21/9]">
+                        <img src="필리핀 중간.jpeg" alt="필리핀 사역 풍경 1 - 마을 복음 축제 현장" class="w-full h-full object-cover" onerror="handleImageError(this, '필리핀 풍경 1')">
                     </div>
                     <!-- 사진 2 -->
                     <div class="img-card md:col-span-6 aspect-[4/3]">
-                        <img src="필리핀2 중간.jpeg" alt="필리핀 사역 풍경 2 - 해맑은 아이들과 함께" class="w-full h-full object-cover" onerror="handleImageError(this, '필리핀 풍경 2')">
+                        <img src="필리핀2 중간.jpeg" alt="필리핀 사역 풍경 2 - 해맑은 아이들과 함께" class="w-full h-full object-cover" onerror="handleImageError(this, '필리핀 풍경 2')">
                     </div>
                     <!-- 사진 3 -->
                     <div class="img-card md:col-span-6 aspect-[4/3]">
-                        <img src="필리핀3 중간.jpeg" alt="필리핀 사역 풍경 3 - 초가 움막 속 은혜의 예배" class="w-full h-full object-cover" onerror="handleImageError(this, '필리핀 풍경 3')">
+                        <img src="필리핀3 중간.jpeg" alt="필리핀 사역 풍경 3 - 초가 움막 속 은혜의 예배" class="w-full h-full object-cover" onerror="handleImageError(this, '필리핀 풍경 3')">
                     </div>
                 </div>
 
@@ -202,19 +211,19 @@
                     <span class="text-xs text-stone-400 font-sans tracking-widest mt-1 md:mt-0 uppercase">Africa Mission</span>
                 </div>
 
-                <!-- 사진 3장 그리드 배치 (50:50 밸런스 정렬 완료) -->
+                <!-- 사진 3장 그리드 배치 -->
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-6">
                     <!-- 사진 1 -->
                     <div class="img-card md:col-span-6 aspect-[4/3]">
-                        <img src="아프리카 중간.jpeg" alt="아프리카 사역 풍경 1 - 천진난만한 아이들과 함께 부른 찬가" class="w-full h-full object-cover" onerror="handleImageError(this, '아프리카 풍경 1')">
+                        <img src="아프리카 중간.jpeg" alt="아프리카 사역 풍경 1 - 천진난만한 아이들과 함께 부른 찬가" class="w-full h-full object-cover" onerror="handleImageError(this, '아프리카 풍경 1')">
                     </div>
                     <!-- 사진 2 -->
                     <div class="img-card md:col-span-6 aspect-[4/3]">
-                        <img src="아프리카2 중간.jpeg" alt="아프리카 사역 풍경 2 - 거리 복음 전도단 사역" class="w-full h-full object-cover" onerror="handleImageError(this, '아프리카 풍경 2')">
+                        <img src="아프리카2 중간.jpeg" alt="아프리카 사역 풍경 2 - 거리 복음 전도단 사역" class="w-full h-full object-cover" onerror="handleImageError(this, '아프리카 풍경 2')">
                     </div>
                     <!-- 사진 3 -->
-                    <div class="img-card md:col-span-12 aspect-[21/9]">
-                        <img src="아프리카3 중간.jpeg" alt="아프리카 사역 풍경 3 - 흙바닥 위 모인 영광스러운 성전" class="w-full h-full object-cover" onerror="handleImageError(this, '아프리카 풍경 3')">
+                    <div class="img-card md:col-span-12 aspect-[16/9] sm:aspect-[21/9]">
+                        <img src="아프리카3 중간.jpeg" alt="아프리카 사역 풍경 3 - 흙바닥 위 모인 영광스러운 성전" class="w-full h-full object-cover" onerror="handleImageError(this, '아프리카 풍경 3')">
                     </div>
                 </div>
 
@@ -242,17 +251,17 @@
 
                 <!-- 사진 3장 에디토리얼 그리드 배치 -->
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-6">
-                    <!-- 사진 1 (요청에 따라 구도 정렬) -->
-                    <div class="img-card md:col-span-8 aspect-[4/3] md:aspect-auto">
-                        <img src="우즈베키스탄 중간.jpeg" alt="우즈베키스탄 사역 풍경 1 - 설산 배경의 생명수 프로젝트" class="w-full h-full object-cover object-[35%_50%]" onerror="handleImageError(this, '우즈베키스탄 풍경 1')">
+                    <!-- 사진 1 -->
+                    <div class="img-card md:col-span-8 aspect-[4/3] sm:aspect-square md:aspect-auto">
+                        <img src="우즈베키스탄 중간.jpeg" alt="우즈베키스탄 사역 풍경 1 - 설산 배경의 생명수 프로젝트" class="w-full h-full object-cover object-[35%_50%]" onerror="handleImageError(this, '우즈베키스탄 풍경 1')">
                     </div>
-                    <!-- 사진 2 (요청에 따라 사람 중심의 중앙으로 다시 정렬 적용) -->
-                    <div class="img-card md:col-span-4 aspect-[3/4]">
-                        <img src="우즈베키스탄2 중간.jpeg" alt="우즈베키스탄 사역 풍경 2 - 평화로운 이슬람 유적지 탐방" class="w-full h-full object-cover object-[50%_50%]" onerror="handleImageError(this, '우즈베키스탄 풍경 2')">
+                    <!-- 사진 2 -->
+                    <div class="img-card md:col-span-4 aspect-[4/3] sm:aspect-[3/4]">
+                        <img src="우즈베키스탄2 중간.jpeg" alt="우즈베키스탄 사역 풍경 2 - 평화로운 이슬람 유적지 탐방" class="w-full h-full object-cover object-[50%_50%]" onerror="handleImageError(this, '우즈베키스탄 풍경 2')">
                     </div>
                     <!-- 사진 3 -->
-                    <div class="img-card md:col-span-12 aspect-[21/9]">
-                        <img src="우즈베키스탄3 중간.jpeg" alt="우즈베키스탄 사역 풍경 3 - 시골 마을 주민들과 나눈 온정" class="w-full h-full object-cover" onerror="handleImageError(this, '우즈베키스탄 풍경 3')">
+                    <div class="img-card md:col-span-12 aspect-[16/9] sm:aspect-[21/9]">
+                        <img src="우즈베키스탄3 중간.jpeg" alt="우즈베키스탄 사역 풍경 3 - 시골 마을 주민들과 나눈 온정" class="w-full h-full object-cover" onerror="handleImageError(this, '우즈베키스탄 풍경 3')">
                     </div>
                 </div>
 
@@ -282,15 +291,15 @@
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-6">
                     <!-- 사진 1 -->
                     <div class="img-card md:col-span-6 aspect-[4/3]">
-                        <img src="몽골 크게.jpeg" alt="몽골 사역 풍경 1 - 온 교회가 함께 주님의 십자가 밑에서" class="w-full h-full object-cover" onerror="handleImageError(this, '몽골 풍경 1')">
+                        <img src="몽골 크게.jpeg" alt="몽골 사역 풍경 1 - 온 교회가 함께 주님의 십자가 밑에서" class="w-full h-full object-cover" onerror="handleImageError(this, '몽골 풍경 1')">
                     </div>
                     <!-- 사진 2 -->
                     <div class="img-card md:col-span-6 aspect-[4/3]">
-                        <img src="몽골2 크게.jpeg" alt="몽골 사역 풍경 2 - 광활한 초원 속 생명을 구하러 나선 행렬" class="w-full h-full object-cover" onerror="handleImageError(this, '몽골 풍경 2')">
+                        <img src="몽골2 크게.jpeg" alt="몽골 사역 풍경 2 - 광활한 초원 속 생명을 구하러 나선 행렬" class="w-full h-full object-cover" onerror="handleImageError(this, '몽골 풍경 2')">
                     </div>
                     <!-- 사진 3 -->
-                    <div class="img-card md:col-span-12 aspect-[21/9]">
-                        <img src="몽골3 크게.jpeg" alt="몽골 사역 풍경 3 - 몽골 전통 게르 속에 핀 은혜와 풍선 아트 축제" class="w-full h-full object-cover" onerror="handleImageError(this, '몽골 풍경 3')">
+                    <div class="img-card md:col-span-12 aspect-[16/9] sm:aspect-[21/9]">
+                        <img src="몽골3 크게.jpeg" alt="몽골 사역 풍경 3 - 몽골 전통 게르 속에 핀 은혜와 풍선 아트 축제" class="w-full h-full object-cover" onerror="handleImageError(this, '몽골 풍경 3')">
                     </div>
                 </div>
 
