@@ -34,7 +34,7 @@
             font-family: 'Playfair Display', serif;
         }
 
-        /* 1. 배경에 세련되고 은은한 질서가 느껴지는 촘촘한 도트 격자 무늬 구현 */
+        /* 1. 배경에 세련되고 은은한 질서가 느껴지는 촘촘한 도트 격자 무늬 구현 (첫 번째 영역만 적용) */
         .dot-grid {
             background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1.2px, transparent 1.2px);
             background-size: 24px 24px;
@@ -210,11 +210,11 @@
 </head>
 <body class="min-h-screen flex flex-col antialiased overflow-x-hidden w-full relative">
     
-    <!-- 배경을 부유하는 미세한 스파크 파티클 효과용 Canvas (z-index를 10으로 올려 다른 섹션들 위에 확실히 렌더링되도록 보장) -->
-    <canvas id="sparkParticlesCanvas" class="fixed inset-0 w-full h-full pointer-events-none z-10"></canvas>
+    <!-- 배경을 부유하는 미세한 스파크 파티클 효과용 Canvas (z-index를 20으로 올려 다른 섹션들 위에 확실히 렌더링되도록 보장) -->
+    <canvas id="sparkParticlesCanvas" class="fixed inset-0 w-full h-full pointer-events-none z-20"></canvas>
 
-    <!-- 모바일 및 웹 전체 가로 오버플로우를 2중 보호하기 위한 래퍼 (z-index를 20으로 설정하여 콘텐츠가 제일 상단에 클릭 가능하게 정돈) -->
-    <div class="overflow-x-hidden w-full flex flex-col min-h-screen relative z-20">
+    <!-- 모바일 및 웹 전체 가로 오버플로우를 2중 보호하기 위한 래퍼 (z-index를 30으로 설정하여 콘텐츠가 제일 상단에 클릭 가능하게 정돈) -->
+    <div class="overflow-x-hidden w-full flex flex-col min-h-screen relative z-30">
  
         <!-- 상단 고정형 (Sticky) 네비게이션 헤더 -->
         <header class="sticky top-0 z-50 bg-[#0a0f1d]/70 backdrop-blur-xl border-b border-white/5 transition-all duration-300 w-full">
@@ -239,7 +239,7 @@
         </header>
      
         <!-- 구역 1: [환영] 딥 퍼플 미드나잇 영역 (dot-grid 클래스 추가로 점선 도트가 무조건 선명히 레이어링되도록 전개) -->
-        <main id="intro" class="dot-grid bg-[#0a0f1d] max-w-full w-full mx-auto px-6 sm:px-10 lg:px-16 pt-8 lg:pt-16 pb-12 lg:pb-24 flex-grow relative z-20 scroll-mt-24 border-b border-blue-500/10">
+        <main id="intro" class="dot-grid bg-[#0a0f1d] max-w-full w-full mx-auto px-6 sm:px-10 lg:px-16 pt-8 lg:pt-16 pb-12 lg:pb-24 flex-grow relative z-30 scroll-mt-24 border-b border-blue-500/10">
             
             <!-- 다크 테마를 아름답게 밝혀줄 은은하고 몽환적인 백그라운드 발광 레이아웃 -->
             <div class="absolute top-[10%] left-[-10%] w-[350px] sm:w-[500px] h-[350px] sm:h-[500px] bg-blue-900/15 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
@@ -321,8 +321,8 @@
             </div>
         </main>
      
-        <!-- 구역 2: [여정] 에메랄드 딥 선교 테마 영역 (dot-grid 클래스 탑재로 고해상도 격자 보존) -->
-        <section id="values" class="dot-grid bg-gradient-to-b from-[#0a0f1d] via-[#0d2123] to-[#0a1e1f] py-24 border-b border-emerald-500/10 scroll-mt-24 w-full relative z-20">
+        <!-- 구역 2: [여정] 에메랄드 딥 선교 테마 영역 (dot-grid 클래스를 생략하여 자연스러운 다크 오션 그라데이션 보존) -->
+        <section id="values" class="bg-gradient-to-b from-[#0a0f1d] via-[#0d2123] to-[#0a1e1f] py-24 border-b border-emerald-500/10 scroll-mt-24 w-full relative z-30">
             <!-- 신비로운 에메랄드 안개 발광 레이어 -->
             <div class="absolute inset-0 bg-gradient-to-r from-emerald-950/20 via-transparent to-blue-950/20 pointer-events-none"></div>
 
@@ -395,8 +395,8 @@
             </div>
         </section>
      
-        <!-- 구역 3: [쇼츠] 따뜻한 루비 로즈 테마 영역 (dot-grid 클래스 보강 완료) -->
-        <section id="media" class="dot-grid bg-gradient-to-b from-[#0a1e1f] via-[#1c0f1b] to-[#120a1b] py-24 border-b border-rose-500/10 scroll-mt-24 w-full relative z-20">
+        <!-- 구역 3: [쇼츠] 따뜻한 루비 로즈 테마 영역 (dot-grid 클래스 생략) -->
+        <section id="media" class="bg-gradient-to-b from-[#0a1e1f] via-[#1c0f1b] to-[#120a1b] py-24 border-b border-rose-500/10 scroll-mt-24 w-full relative z-30">
             <!-- 둥근 공간 발광 이펙트 (웜 로즈) -->
             <div class="absolute top-[30%] right-[5%] w-[400px] h-[400px] bg-rose-950/15 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
 
@@ -455,8 +455,8 @@
             </div>
         </section>
      
-        <!-- 구역 4: [소통] 깊은 우주 테마 영역 (dot-grid 클래스 보강 완료) -->
-        <section id="profile" class="dot-grid bg-gradient-to-b from-[#120a1b] via-[#0a0d18] to-[#04060d] py-24 scroll-mt-24 w-full relative z-20">
+        <!-- 구역 4: [소통] 깊은 우주 테마 영역 (dot-grid 클래스 생략) -->
+        <section id="profile" class="bg-gradient-to-b from-[#120a1b] via-[#0a0d18] to-[#04060d] py-24 scroll-mt-24 w-full relative z-30">
             <!-- 파란 우주선 발광 레이어 -->
             <div class="absolute bottom-0 left-[15%] w-[450px] h-[450px] bg-blue-950/10 rounded-full blur-[140px] -z-10 pointer-events-none"></div>
 
