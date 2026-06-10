@@ -150,6 +150,11 @@
             overflow: hidden;
             height: 100vh;
         }
+
+        /* 성경 구절 전용 황금빛 은하 글로우 효과 */
+        .gospel-glow {
+            text-shadow: 0 0 12px rgba(229, 193, 88, 0.45), 0 0 25px rgba(229, 193, 88, 0.2);
+        }
     </style>
 </head>
 <body class="min-h-screen bg-[#050C0E] text-[#F8FAFC] antialiased selection:bg-[#E5C158]/30">
@@ -168,10 +173,10 @@
         <!-- 상단 네비게이션 헤더 -->
         <header class="sticky top-0 z-50 bg-[#050C0E]/85 backdrop-blur-md border-b border-white/5 transition-all duration-300">
             <div class="max-w-[1300px] mx-auto px-6 sm:px-10 lg:px-16 h-16 md:h-20 flex items-center justify-between">
-                <!-- 왼쪽 상단 브랜딩 명패 (세련된 고딕체 font-sans 모바일 최적화 한 줄 가로 정렬 배치) -->
-                <a href="https://koindori-en.github.io/profile/" class="flex items-center gap-3 group">
-                    <div class="w-8 h-8 md:w-9 md:h-9 bg-white/5 border border-white/10 rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-105 shrink-0">
-                        <i class="fa-solid fa-globe text-[#E5C158] text-sm md:text-base animate-spin-slow"></i>
+                <!-- 왼쪽 상단 브랜딩 명패 (지구본 사이즈 모바일 대응 축소 적용) -->
+                <a href="https://koindori-en.github.io/profile/" class="flex items-center gap-2 md:gap-3 group">
+                    <div class="w-6 h-6 md:w-9 md:h-9 bg-white/5 border border-white/10 rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-105 shrink-0">
+                        <i class="fa-solid fa-globe text-[#E5C158] text-[10px] md:text-base animate-spin-slow"></i>
                     </div>
                     <div class="flex items-baseline gap-1.5 md:gap-3 flex-nowrap whitespace-nowrap">
                         <span class="text-xs sm:text-sm md:text-base font-semibold tracking-tight text-white font-sans shrink-0">선교의 자취</span>
@@ -179,9 +184,9 @@
                     </div>
                 </a>
     
-                <!-- 우측 홈 버튼 -->
-                <a href="https://koindori-en.github.io/profile/" class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/[0.02] text-white text-xs font-semibold tracking-widest uppercase transition-all duration-300 hover:bg-white hover:text-[#050C0E] hover:border-white">
-                    <i class="fa-solid fa-house text-[10px]"></i>
+                <!-- 우측 홈 버튼 (모바일 화면 대응 패딩 및 텍스트 자동 축소 설계) -->
+                <a href="https://koindori-en.github.io/profile/" class="inline-flex items-center gap-1.5 md:gap-2 px-2.5 py-1 md:px-4 md:py-1.5 rounded-full border border-white/10 bg-white/[0.02] text-white text-[10px] md:text-xs font-semibold tracking-widest uppercase transition-all duration-300 hover:bg-white hover:text-[#050C0E] hover:border-white shrink-0">
+                    <i class="fa-solid fa-house text-[8px] md:text-[10px]"></i>
                     HOME
                 </a>
             </div>
@@ -191,9 +196,9 @@
         <!-- 메인 컨텐츠 영역 -->
         <main class="max-w-[1200px] w-full mx-auto px-6 sm:px-10 lg:px-16 pt-16 pb-24 flex-grow relative z-10">
             
-            <!-- 사색적인 프롤로그 대서사 (영문 성구 전용 임팩트 있고 절제된 헤드라인) -->
-            <div class="text-center max-w-4xl mx-auto mb-36 reveal mt-6">
-                <p class="font-playfair italic font-semibold text-sm md:text-lg lg:text-xl text-slate-100 leading-relaxed tracking-wider mb-6 uppercase">
+            <!-- 사색적인 프롤로그 대서사 (영문 성구 자간 및 폰트 크기 최적화, 글로우 데코레이션 추가) -->
+            <div class="text-center max-w-4xl mx-auto mb-16 reveal mt-6">
+                <p class="font-playfair italic font-semibold text-xs md:text-base lg:text-lg text-slate-100 leading-relaxed tracking-[0.25em] mb-6 uppercase gospel-glow">
                     "GO INTO ALL THE WORLD AND PREACH THE GOSPEL TO ALL CREATION."
                 </p>
                 <p class="font-playfair text-xs md:text-sm lg:text-base text-[#E5C158] tracking-[0.25em] uppercase font-semibold">
@@ -409,9 +414,9 @@
                         땅 끝까지 이르러 주님의 사랑을 기록하는<br class="hidden sm:inline"> 복되고 숭고한 여정은 계속됩니다
                     </h3>
                     
-                    <!-- 캡슐 복귀 버튼 (고품격 영어 멘트 및 미니 홈 아이콘 매칭) -->
+                    <!-- 캡슐 복귀 버튼 (영문 RETURN TO HOME 멘트 변경 적용) -->
                     <div class="inline-flex items-center px-8 py-3.5 bg-white text-[#050C0E] group-hover:bg-[#E5C158] transition-all duration-400 rounded-full text-xs md:text-sm font-semibold tracking-wider group-hover:shadow-[0_0_25px_rgba(229,193,88,0.25)] shadow-md">
-                        <i class="fa-solid fa-house mr-2 text-xs"></i> RETURN TO PROFILE HOME
+                        <i class="fa-solid fa-house mr-2 text-xs"></i> RETURN TO HOME
                     </div>
                 </a>
             </div>
