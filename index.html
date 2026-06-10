@@ -19,13 +19,14 @@
     
     <style>
         body {
-            background-color: #FAF8F5; /* 따뜻하고 감성적인 미색 일러스트톤 백그라운드 */
-            color: #4A4A4A; /* 눈이 편안한 미디엄 차콜그레이 */
+            background-color: #0a0f1d; /* 프리미엄 미드나잇 오션 다크 테마 */
+            color: #e2e8f0; /* 선명하고 고급스러운 실버그레이 */
             font-family: 'Noto Sans KR', sans-serif; 
             overflow-x: hidden;
-            background-image: radial-gradient(#e5e0d8 1px, transparent 1px);
-            background-size: 24px 24px; /* 섬세한 모눈종이/캔버스 텍스처 느낌 추가 */
             width: 100%;
+            /* 1. 규칙적이고 세련된 도트 그리드 은은하게 영사 */
+            background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1.2px, transparent 1.2px);
+            background-size: 30px 30px;
         }
  
         .font-serif-kr {
@@ -152,70 +153,89 @@
             will-change: transform;
             display: inline-block;
         }
+
+        /* 4. 미세한 유리 질감 다크 글래스모피즘 효과 정의 */
+        .glass-panel-dark {
+            background: rgba(10, 15, 29, 0.6);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* 4. 화사하면서도 영롱한 라이트 글래스모피즘 효과 정의 (밝은 카드 링크용) */
+        .glass-panel-light {
+            background: rgba(255, 255, 255, 0.82);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
     </style>
 </head>
-<body class="min-h-screen flex flex-col antialiased overflow-x-hidden w-full">
+<body class="min-h-screen flex flex-col antialiased overflow-x-hidden w-full relative">
     
+    <!-- 배경을 부유하는 미세한 스파크 파티클 효과용 Canvas -->
+    <canvas id="sparkParticlesCanvas" class="fixed inset-0 w-full h-full pointer-events-none z-0"></canvas>
+
     <!-- 모바일 및 웹 전체 가로 오버플로우를 2중 보호하기 위한 래퍼 -->
-    <div class="overflow-x-hidden w-full flex flex-col min-h-screen">
+    <div class="overflow-x-hidden w-full flex flex-col min-h-screen relative z-10">
  
-        <!-- 상단 고정형 (Sticky) 네비게이션 헤더 (모바일 가로크기 대응 패딩 및 간격 조정) -->
-        <header class="sticky top-0 z-50 bg-[#FAF8F5]/80 backdrop-blur-md border-b border-stone-200/40 transition-all duration-300 w-full">
+        <!-- 상단 고정형 (Sticky) 네비게이션 헤더 -->
+        <header class="sticky top-0 z-50 bg-[#0a0f1d]/70 backdrop-blur-xl border-b border-white/5 transition-all duration-300 w-full">
             <div class="max-w-[1300px] mx-auto px-4 sm:px-10 lg:px-16 h-16 md:h-20 flex items-center justify-between">
                 <!-- 로고 영역 및 요청하신 폰트 스타일 일치 '고인국 목사' 텍스트 명패 -->
                 <a href="#intro" class="flex items-center gap-1.5 sm:gap-2 group shrink-0">
-                    <img src="logo.png" alt="고인국목사 로고" class="h-7 sm:h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105" onerror="this.style.display='none';">
-                    <!-- '소개'와 완전히 동일한 폰트 테마 및 간격을 적용한 텍스트 명함 -->
-                    <span class="text-xs sm:text-sm font-medium text-stone-500 group-hover:text-stone-800 tracking-wider transition-colors duration-300">고인국 목사</span>
+                    <img src="logo.png" alt="고인국목사 로고" class="h-7 sm:h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105 brightness-110" onerror="this.style.display='none';">
+                    <!-- 우아한 화이트 실버 톤의 명함 텍스트 -->
+                    <span class="text-xs sm:text-sm font-medium text-slate-300 group-hover:text-amber-400 tracking-wider transition-colors duration-300">고인국 목사</span>
                 </a>
      
-                <!-- 세련된 텍스트 네비게이션 메뉴 (모바일 320px대 기기를 대비해 좁은 간격 대응) -->
+                <!-- 세련된 텍스트 네비게이션 메뉴 (밝고 투명하게 재조정) -->
                 <nav class="flex items-center gap-3 sm:gap-6 md:gap-10 shrink-0">
-                    <a href="#intro" class="text-[11px] sm:text-sm font-medium text-stone-500 hover:text-stone-800 tracking-wider transition-colors duration-300">환영</a>
-                    <a href="#values" class="text-[11px] sm:text-sm font-medium text-stone-500 hover:text-stone-800 tracking-wider transition-colors duration-300">여정</a>
-                    <a href="#media" class="text-[11px] sm:text-sm font-medium text-stone-500 hover:text-stone-800 tracking-wider transition-colors duration-300">쇼츠</a>
-                    <a href="#profile" class="text-[11px] sm:text-sm font-medium text-stone-500 hover:text-stone-800 tracking-wider transition-colors duration-300">소통</a>
+                    <a href="#intro" class="text-[11px] sm:text-sm font-medium text-slate-400 hover:text-white tracking-wider transition-colors duration-300">환영</a>
+                    <a href="#values" class="text-[11px] sm:text-sm font-medium text-slate-400 hover:text-white tracking-wider transition-colors duration-300">여정</a>
+                    <a href="#media" class="text-[11px] sm:text-sm font-medium text-slate-400 hover:text-white tracking-wider transition-colors duration-300">쇼츠</a>
+                    <a href="#profile" class="text-[11px] sm:text-sm font-medium text-slate-400 hover:text-white tracking-wider transition-colors duration-300">소통</a>
                 </nav>
             </div>
-            <!-- 얇은 예술적 데코 라인 -->
-            <div class="h-[1px] w-full bg-gradient-to-r from-stone-200 via-stone-300/50 to-stone-200"></div>
+            <!-- 예술적 네온 블루 테마 데코 라인 -->
+            <div class="h-[1px] w-full bg-gradient-to-r from-blue-500/0 via-blue-500/30 to-blue-500/0"></div>
         </header>
      
         <!-- 메인 감성 컨텐츠 영역 -->
         <main id="intro" class="max-w-[1300px] w-full mx-auto px-6 sm:px-10 lg:px-16 pt-8 lg:pt-16 pb-12 lg:pb-24 flex-grow relative z-10 scroll-mt-24">
             
-            <!-- 배경 데코용 부드러운 일러스트레이션 도형 -->
-            <div class="absolute top-[10%] left-[-5%] w-[300px] sm:w-[400px] h-[300px] sm:h-[400px] bg-stone-200/20 rounded-full blur-3xl -z-10 pointer-events-none"></div>
-            <div class="absolute bottom-[20%] right-[-10%] w-[400px] sm:w-[500px] h-[400px] sm:h-[500px] bg-stone-200/30 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+            <!-- 다크 테마를 아름답게 밝혀줄 은은하고 몽환적인 백그라운드 발광 레이아웃 -->
+            <div class="absolute top-[10%] left-[-10%] w-[350px] sm:w-[500px] h-[350px] sm:h-[500px] bg-blue-900/15 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
+            <div class="absolute bottom-[20%] right-[-10%] w-[450px] sm:w-[600px] h-[450px] sm:h-[600px] bg-emerald-950/20 rounded-full blur-[140px] -z-10 pointer-events-none"></div>
      
             <div class="flex flex-col lg:flex-row gap-12 lg:gap-16 xl:gap-24 items-center lg:items-stretch h-full">
                 
-                <!-- 왼쪽: 프로필 이미지 및 일러스트 데코 프레임 영역 (파티클 효과 포함) -->
+                <!-- 왼쪽: 프로필 이미지 및 일러스트 데코 프레임 영역 (기존 효과 완벽 유지) -->
                 <div class="w-full lg:w-5/12 xl:w-[45%] reveal pt-0 lg:pt-6">
                     <div class="relative group">
-                        <!-- 이미지를 포근하게 감싸는 아티스틱한 일러스트 링 배경 -->
-                        <div class="absolute -inset-4 bg-gradient-to-tr from-stone-200/40 to-stone-100/40 rounded-2xl opacity-70 blur-md group-hover:scale-[1.02] transition-transform duration-700 ease-out -z-10"></div>
+                        <!-- 세련된 다크 글래스 네온 이펙트 링 배경 -->
+                        <div class="absolute -inset-4 bg-gradient-to-tr from-blue-500/20 to-emerald-500/10 rounded-2xl opacity-70 blur-xl group-hover:scale-[1.02] transition-transform duration-700 ease-out -z-10"></div>
                         
-                        <!-- 이미지 컨테이너 (모바일에서 세로 크기 유연하게 조정) -->
-                        <div id="photoContainer" class="img-container relative w-full h-[400px] sm:h-[520px] md:h-[620px] lg:h-[700px] overflow-hidden rounded-xl bg-stone-100 shadow-[0_8px_30px_rgb(0,0,0,0.02)]">
+                        <!-- 이미지 컨테이너 (그대로 유지) -->
+                        <div id="photoContainer" class="img-container relative w-full h-[400px] sm:h-[520px] md:h-[620px] lg:h-[700px] overflow-hidden rounded-2xl bg-slate-900/80 shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/10">
                             <!-- 롤오버 확대 레이어를 마크업 분리하여 100% 동작 보장 -->
                             <div class="img-zoom-wrapper absolute inset-0 w-full h-full">
                                 <img src="1000007608.jpg" alt="고목사 프로필 사진" 
                                     class="img-breathing absolute inset-0 w-full h-full object-cover"
                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                                 <!-- 이미지 로드 안될 때의 대체 박스 -->
-                                <div class="hidden absolute inset-0 flex-col items-center justify-center bg-stone-100 text-stone-400">
-                                    <i class="fa-solid fa-church text-5xl mb-4 text-stone-300"></i>
+                                <div class="hidden absolute inset-0 flex-col items-center justify-center bg-slate-900 text-slate-400">
+                                    <i class="fa-solid fa-church text-5xl mb-4 text-slate-700"></i>
                                     <span class="text-sm font-sans">새제천교회 고인국 목사</span>
                                 </div>
                             </div>
      
-                            <!-- 동적으로 중앙에서 퍼져나가는 화이트 순백 파티클 레이어 -->
+                            <!-- 동적으로 중앙에서 퍼져나가는 화이트 순백 파티클 레이어 (기존 동일 보존) -->
                             <div id="particleOverlay" class="absolute inset-0 pointer-events-none z-20 overflow-hidden"></div>
                         </div>
      
-                        <!-- 일러스트 풍의 숲/자연 모양 SVG 아이콘 배지 (모바일 가로 마진 확보를 위해 위치 미세 조정) -->
-                        <div class="absolute -bottom-3 -left-3 sm:-bottom-4 sm:-left-4 w-14 h-14 sm:w-16 sm:h-16 bg-white rounded-full shadow-lg flex items-center justify-center text-emerald-700 hover:rotate-12 hover:text-amber-500 transition-all duration-500">
+                        <!-- 일러스트 풍의 숲/자연 모양 SVG 아이콘 배지 -->
+                        <div class="absolute -bottom-3 -left-3 sm:-bottom-4 sm:-left-4 w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-tr from-slate-800 to-slate-900 border border-white/10 rounded-full shadow-2xl flex items-center justify-center text-emerald-400 hover:rotate-12 hover:text-amber-400 transition-all duration-500">
                             <svg class="w-7 h-7 sm:w-8 sm:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M14 12a2 2 0 11-4 0 2 2 0 014 0z"></path>
                             </svg>
@@ -226,35 +246,35 @@
                 <!-- 오른쪽: 텍스트 정보 및 콘텐츠 스트림 영역 -->
                 <div class="w-full lg:w-7/12 xl:w-[55%] flex flex-col justify-center py-4 lg:py-8">
                     
-                    <!-- 1. 임팩트 있는 메인 문구 -->
+                    <!-- 1. 임팩트 있는 메인 문구 (색채 정교화) -->
                     <div class="reveal delay-100 mb-10">
                         <div class="relative inline-block pl-6 pr-6 md:pl-8 md:pr-12 py-2">
-                            <span class="font-playfair italic text-5xl sm:text-6xl text-amber-500/20 absolute -top-4 left-0 select-none">“</span>
-                            <p class="font-serif-kr text-2xl sm:text-3xl md:text-4xl text-stone-700 font-semibold leading-[1.7] tracking-tight relative z-10">
-                                주님의 심장으로<br>당신을 사랑합니다!
+                            <span class="font-playfair italic text-5xl sm:text-6xl text-amber-400/20 absolute -top-4 left-0 select-none">“</span>
+                            <p class="font-serif-kr text-2xl sm:text-3xl md:text-4xl text-slate-100 font-semibold leading-[1.7] tracking-tight relative z-10">
+                                주님의 심장으로<br><span class="bg-gradient-to-r from-amber-400 to-amber-200 bg-clip-text text-transparent">당신을 사랑합니다!</span>
                             </p>
-                            <span class="font-playfair italic text-5xl sm:text-6xl text-amber-500/20 absolute -bottom-10 right-0 select-none">”</span>
+                            <span class="font-playfair italic text-5xl sm:text-6xl text-amber-400/20 absolute -bottom-10 right-0 select-none">”</span>
                         </div>
                     </div>
      
-                    <!-- 2. 원어 헬라어와 한국어 성경 말씀 통합형 비주얼 카드 (요한복음 13:34) (모바일 가로 스크롤 방지를 위한 break-words 추가) -->
-                    <div class="reveal delay-200 mb-10 bg-white/60 backdrop-blur-md p-6 sm:p-8 md:p-10 rounded-2xl border border-stone-200/50 shadow-[0_8px_30px_rgb(0,0,0,0.01)]">
-                        <!-- 상단: 그리스어 원어 구절 -->
+                    <!-- 2. 그리스어 원어 구절 및 한국어 말씀 비주얼 카드 (완벽한 다크 글래스모피즘 반영) -->
+                    <div class="reveal delay-200 mb-10 glass-panel-dark p-6 sm:p-8 md:p-10 rounded-2xl shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]">
+                        <!-- 상단: 그리스어 원어 구절 (신비로운 실버골드 컬러) -->
                         <div class="mb-6">
-                            <p class="font-serif text-base sm:text-lg md:text-2xl text-stone-500/90 leading-relaxed tracking-wide italic font-medium break-words font-playfair">
+                            <p class="font-serif text-base sm:text-lg md:text-2xl text-slate-300 leading-relaxed tracking-wide italic font-medium break-words font-playfair">
                                 Ἐντολὴν καινὴν δίδωμι ὑμῖν, ἵνα ἀγαπᾶτε ἀλλήλους, καθὼς ἠγάπησα ὑμᾶς ἵνα καὶ ὑμεῖς ἀγαπᾶτε ἀλλήλους.
                             </p>
                         </div>
                         
-                        <!-- 구분선 (골드/스톤 포인트 그라데이션) -->
-                        <div class="h-[1px] w-full bg-gradient-to-r from-stone-200 via-amber-300/40 to-stone-200 my-6"></div>
+                        <!-- 구분선 (세련된 아우라 그라데이션) -->
+                        <div class="h-[1px] w-full bg-gradient-to-r from-transparent via-amber-400/30 to-transparent my-6"></div>
      
                         <!-- 하단: 한국어 성경 말씀 -->
                         <div class="pt-2">
-                            <p class="text-[10px] md:text-xs text-amber-600 mb-3 font-sans tracking-widest uppercase flex items-center gap-1.5">
-                                <i class="fa-solid fa-bookmark text-amber-600"></i> 요한복음 13:34
+                            <p class="text-[10px] md:text-xs text-amber-400 mb-3 font-sans tracking-widest uppercase flex items-center gap-1.5">
+                                <i class="fa-solid fa-bookmark text-amber-400"></i> 요한복음 13:34
                             </p>
-                            <p class="font-serif-kr text-base sm:text-lg md:text-xl text-stone-600 leading-relaxed font-semibold">
+                            <p class="font-serif-kr text-base sm:text-lg md:text-xl text-slate-200 leading-relaxed font-semibold">
                                 새 계명을 너희에게 주노니 서로 사랑하라<br class="hidden sm:block">
                                 내가 너희를 사랑한 것 같이 너희도 서로 사랑하라
                             </p>
@@ -266,77 +286,68 @@
         </main>
      
         <!-- 전문 사역 핵심 가치 비주얼 섹션 -->
-        <section id="values" class="bg-stone-100/40 py-20 border-y border-stone-200/30 scroll-mt-24 w-full">
+        <section id="values" class="bg-slate-900/30 py-20 border-y border-white/5 scroll-mt-24 w-full">
             <div class="max-w-[1300px] w-full mx-auto px-6 sm:px-10 lg:px-16">
                 
                 <!-- 상단 헤더 텍스트 리뉴얼 적용 -->
                 <div class="text-center max-w-2xl mx-auto mb-16 reveal">
-                    <p class="text-emerald-700 font-semibold tracking-wider text-xs uppercase mb-3 font-sans">Journey of the Life</p>
-                    <div class="w-12 h-[1px] bg-stone-300 mx-auto mb-4"></div>
-                    <p class="text-stone-500 font-light text-xs sm:text-sm md:text-base leading-relaxed">
+                    <p class="text-emerald-400 font-semibold tracking-wider text-xs uppercase mb-3 font-sans">Journey of the Life</p>
+                    <div class="w-12 h-[1px] bg-slate-700 mx-auto mb-4"></div>
+                    <p class="text-slate-400 font-light text-xs sm:text-sm md:text-base leading-relaxed">
                         선교지에서의 사역과 일상의 소박한 쉼, <br class="hidden sm:block">
                         그리고 삶 속에서 길어 올린 잔잔한 사유의 조각들을 함께 나눕니다.
                     </p>
                 </div>
      
-                <!-- 핵심 가치 3대 카드 그리드 -->
+                <!-- 핵심 가치 3대 카드 그리드 (★ 누르고 싶은 밝은 톤의 라이트 글래스모피즘 설계) -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- 가치 1: 선교의 자취 (mission.html 이동 및 프리미엄 롤오버 인터랙션 반영) -->
-                    <a href="mission.html" class="block bg-white p-8 rounded-2xl shadow-[0_4px_25px_rgba(0,0,0,0.01)] border border-stone-100 hover:-translate-y-2 hover:shadow-[0_12px_30px_rgba(0,0,0,0.05)] transition-all duration-500 ease-out group cursor-pointer reveal delay-100">
-                        <!-- 아이콘을 화사하게 감싸는 컨테이너 (호버 시 블루 그라데이션 및 부드러운 스케일, 네온 광채 적용) -->
-                        <div class="w-14 h-14 rounded-full bg-blue-50 flex items-center justify-center text-blue-900 mb-6 shadow-sm border border-blue-100/30 group-hover:bg-gradient-to-tr group-hover:from-blue-500 group-hover:to-cyan-400 group-hover:text-white group-hover:scale-110 group-hover:shadow-[0_8px_20px_rgba(59,130,246,0.3)] transition-all duration-500 ease-out shrink-0">
-                            <!-- 지구본 아이콘이 회전하는 마이크로 효과 추가 -->
+                    <!-- 가치 1: 선교의 자취 -->
+                    <a href="mission.html" class="block glass-panel-light p-8 rounded-2xl shadow-[0_10px_35px_rgba(255,255,255,0.05)] hover:-translate-y-2 hover:shadow-[0_20px_45px_rgba(59,130,246,0.2)] hover:border-blue-400/80 transition-all duration-500 ease-out group cursor-pointer reveal delay-100">
+                        <div class="w-14 h-14 rounded-full bg-blue-100/80 flex items-center justify-center text-blue-700 mb-6 shadow-sm border border-blue-200/50 group-hover:bg-gradient-to-tr group-hover:from-blue-500 group-hover:to-cyan-400 group-hover:text-white group-hover:scale-110 group-hover:shadow-[0_8px_20px_rgba(59,130,246,0.3)] transition-all duration-500 ease-out shrink-0">
                             <i class="fa-solid fa-earth-asia text-2xl transition-transform duration-700 group-hover:rotate-[360deg]"></i>
                         </div>
                         <div class="mb-3">
-                            <span class="text-[10px] font-bold text-blue-900 tracking-wider uppercase font-playfair block mb-1 group-hover:text-blue-500 transition-colors duration-300">Traces of Mission</span>
-                            <!-- 마우스 롤오버 시 우측에서 화살표가 자연스럽게 튀어나오는 타이틀 디자인 -->
-                            <h3 class="font-serif-kr text-lg sm:text-xl font-bold text-stone-700 flex items-center gap-1.5">
+                            <span class="text-[10px] font-bold text-blue-600 tracking-wider uppercase font-playfair block mb-1">Traces of Mission</span>
+                            <h3 class="font-serif-kr text-xl font-bold text-slate-800 flex items-center gap-1.5">
                                 선교의 자취
-                                <i class="fa-solid fa-chevron-right text-xs text-blue-500 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 ease-out"></i>
+                                <i class="fa-solid fa-chevron-right text-xs text-blue-600 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 ease-out"></i>
                             </h3>
                         </div>
-                        <p class="text-stone-500 text-xs sm:text-sm leading-relaxed group-hover:text-stone-600 transition-colors duration-300">
+                        <p class="text-slate-600 text-xs sm:text-sm leading-relaxed group-hover:text-slate-900 transition-colors duration-300">
                             선교지에서 흘렸던 뜨거운 기도와 눈물, 국경을 너머 역사하시는 하나님의 깊은 사랑을 일상의 사역 가운데 묵묵히 풀어내고 있습니다.
                         </p>
                     </a>
      
-                    <!-- 가치 2: 취미 생활 (hobbies.html 이동 및 프리미엄 롤오버 인터랙션 반영) -->
-                    <a href="https://koindori-en.github.io/profile/hobbies.html" class="block bg-white p-8 rounded-2xl shadow-[0_4px_25px_rgba(0,0,0,0.01)] border border-stone-100 hover:-translate-y-2 hover:shadow-[0_12px_30px_rgba(0,0,0,0.05)] transition-all duration-500 ease-out group cursor-pointer reveal delay-200">
-                        <!-- 아이콘을 화사하게 감싸는 컨테이너 (호버 시 앰버 그라데이션 및 은은한 바운스/그로우, 네온 광채 적용) -->
-                        <div class="w-14 h-14 rounded-full bg-amber-50 flex items-center justify-center text-amber-600 mb-6 shadow-sm border border-amber-100/30 group-hover:bg-gradient-to-tr group-hover:from-amber-500 group-hover:to-orange-400 group-hover:text-white group-hover:scale-110 group-hover:shadow-[0_8px_20px_rgba(245,158,11,0.3)] transition-all duration-500 ease-out shrink-0">
-                            <!-- 카메라 아이콘이 부드럽고 여유롭게 아주 살짝 위로 부상(Float)하며 제자리 강조되는 우아한 모션 -->
+                    <!-- 가치 2: 취미 생활 -->
+                    <a href="https://koindori-en.github.io/profile/hobbies.html" class="block glass-panel-light p-8 rounded-2xl shadow-[0_10px_35px_rgba(255,255,255,0.05)] hover:-translate-y-2 hover:shadow-[0_20px_45px_rgba(245,158,11,0.2)] hover:border-amber-400/80 transition-all duration-500 ease-out group cursor-pointer reveal delay-200">
+                        <div class="w-14 h-14 rounded-full bg-amber-100/80 flex items-center justify-center text-amber-700 mb-6 shadow-sm border border-amber-200/50 group-hover:bg-gradient-to-tr group-hover:from-amber-500 group-hover:to-orange-400 group-hover:text-white group-hover:scale-110 group-hover:shadow-[0_8px_20px_rgba(245,158,11,0.3)] transition-all duration-500 ease-out shrink-0">
                             <i class="fa-solid fa-camera text-2xl transition-all duration-500 ease-out group-hover:scale-110 group-hover:-translate-y-1"></i>
                         </div>
                         <div class="mb-3">
-                            <span class="text-[10px] font-bold text-amber-600 tracking-wider uppercase font-playfair block mb-1 group-hover:text-amber-500 transition-colors duration-300">Leisurely Pursuits</span>
-                            <h3 class="font-serif-kr text-lg sm:text-xl font-bold text-stone-700 flex items-center gap-1.5">
+                            <span class="text-[10px] font-bold text-amber-600 tracking-wider uppercase font-playfair block mb-1">Leisurely Pursuits</span>
+                            <h3 class="font-serif-kr text-xl font-bold text-slate-800 flex items-center gap-1.5">
                                 취미 생활
-                                <i class="fa-solid fa-chevron-right text-xs text-amber-500 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 ease-out"></i>
+                                <i class="fa-solid fa-chevron-right text-xs text-amber-600 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 ease-out"></i>
                             </h3>
                         </div>
-                        <!-- 독서, 탁구, 수영을 더 짧고 세련되게 바꾼 임팩트 있는 핵심 문구 -->
-                        <p class="text-stone-500 text-xs sm:text-sm leading-relaxed group-hover:text-stone-600 transition-colors duration-300">
+                        <p class="text-slate-600 text-xs sm:text-sm leading-relaxed group-hover:text-slate-900 transition-colors duration-300">
                             독서로 조용히 영혼의 양식을 채우고, 탁구와 수영으로 땀 흘리며 육신의 건강을 가꿉니다. 일상의 맑은 쉼표를 통해 더 건강하고 깊이 있는 사역의 힘을 얻습니다.
                         </p>
                     </a>
      
-                    <!-- 가치 3: 추억의 설교 (sermons.html 이동 및 이전 버전의 세련되고 역동적인 호버 인터랙션 복원 적용) -->
-                    <a href="https://koindori-en.github.io/profile/sermons.html" class="block bg-white p-8 rounded-2xl shadow-[0_4px_25px_rgba(0,0,0,0.01)] border border-stone-100 hover:-translate-y-2 hover:shadow-[0_12px_30px_rgba(0,0,0,0.05)] transition-all duration-500 ease-out group cursor-pointer reveal delay-300">
-                        <!-- 아이콘을 화사하게 감싸는 컨테이너 (호버 시 로즈 그라데이션 및 부드러운 스케일, 네온 광채 적용) -->
-                        <div class="w-14 h-14 rounded-full bg-rose-50 flex items-center justify-center text-rose-700 mb-6 shadow-sm border border-rose-100/30 group-hover:bg-gradient-to-tr group-hover:from-rose-500 group-hover:to-pink-400 group-hover:text-white group-hover:scale-110 group-hover:shadow-[0_8px_20px_rgba(244,63,94,0.3)] transition-all duration-500 ease-out shrink-0">
-                            <!-- 책 아이콘이 우아하게 약간 회전하며 확대 튕김을 구현한 이전 효과 복원 완료 -->
+                    <!-- 가치 3: 추억의 설교 -->
+                    <a href="https://koindori-en.github.io/profile/sermons.html" class="block glass-panel-light p-8 rounded-2xl shadow-[0_10px_35px_rgba(255,255,255,0.05)] hover:-translate-y-2 hover:shadow-[0_20px_45px_rgba(244,63,94,0.2)] hover:border-rose-400/80 transition-all duration-500 ease-out group cursor-pointer reveal delay-300">
+                        <div class="w-14 h-14 rounded-full bg-rose-100/80 flex items-center justify-center text-rose-700 mb-6 shadow-sm border border-rose-200/50 group-hover:bg-gradient-to-tr group-hover:from-rose-500 group-hover:to-pink-400 group-hover:text-white group-hover:scale-110 group-hover:shadow-[0_8px_20px_rgba(244,63,94,0.3)] transition-all duration-500 ease-out shrink-0">
                             <i class="fa-solid fa-book-open text-2xl transition-transform duration-700 group-hover:scale-110 group-hover:rotate-12"></i>
                         </div>
                         <div class="mb-3">
-                            <span class="text-[10px] font-bold text-rose-700 tracking-wider uppercase font-playfair block mb-1 group-hover:text-rose-500 transition-colors duration-300">Sermon Archive</span>
-                            <h3 class="font-serif-kr text-lg sm:text-xl font-bold text-stone-700 flex items-center gap-1.5">
+                            <span class="text-[10px] font-bold text-rose-600 tracking-wider uppercase font-playfair block mb-1">Sermon Archive</span>
+                            <h3 class="font-serif-kr text-xl font-bold text-slate-800 flex items-center gap-1.5">
                                 추억의 설교
-                                <i class="fa-solid fa-chevron-right text-xs text-rose-500 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 ease-out"></i>
+                                <i class="fa-solid fa-chevron-right text-xs text-rose-600 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 ease-out"></i>
                             </h3>
                         </div>
-                        <!-- 추억의 설교 카드 전용: 짧고 군더더기 없는 은혜 가득한 핵심 문구 -->
-                        <p class="text-stone-500 text-xs sm:text-sm leading-relaxed group-hover:text-stone-600 transition-colors duration-300">
+                        <p class="text-slate-600 text-xs sm:text-sm leading-relaxed group-hover:text-slate-900 transition-colors duration-300">
                             강단 위에서 성도들과 함께 울고 웃으며 나누었던 감동의 은혜입니다. 생명의 말씀 속에 깊이 녹아 있는 하늘 소망과 위로의 목소리를 영혼의 아카이브로 다시 꺼내어 선사합니다.
                         </p>
                     </a>
@@ -346,44 +357,48 @@
         </section>
      
         <!-- 유튜브 쇼츠 삽입 섹션 -->
-        <section id="media" class="py-20 scroll-mt-24 w-full">
+        <section id="media" class="py-20 scroll-mt-24 w-full relative">
+            <!-- 둥근 공간 발광 이펙트 -->
+            <div class="absolute top-[30%] right-[-10%] w-[300px] h-[300px] bg-red-900/10 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
+
             <div class="max-w-[1300px] w-full mx-auto px-6 sm:px-10 lg:px-16 text-center lg:text-left">
                 <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
                     
                     <!-- 왼쪽 문구 -->
                     <div class="w-full lg:w-1/2 reveal">
-                        <p class="text-emerald-700 font-semibold tracking-wider text-xs uppercase mb-3 font-sans">Shorts</p>
-                        <p class="text-stone-500 text-xs sm:text-sm md:text-base leading-relaxed mb-6">
+                        <p class="text-emerald-400 font-semibold tracking-wider text-xs uppercase mb-3 font-sans">Shorts</p>
+                        <p class="text-slate-400 text-xs sm:text-sm md:text-base leading-relaxed mb-6">
                             짧은 메시지와 생각의 세계로 초대합니다.
                         </p>
      
-                        <!-- 새로이 인서트된 끄적이는 생각들 (Scribbled Thoughts) 블록 영역 -->
-                        <div class="mb-8 border-l-2 border-stone-300 pl-4 py-1 text-left">
-                            <span class="text-[10px] font-bold text-stone-400 tracking-wider uppercase font-playfair block mb-1">Scribbled Thoughts</span>
-                            <h4 class="font-serif-kr text-base font-bold text-stone-700 mb-2">끄적이는 생각들</h4>
-                            <p class="text-stone-500 text-xs sm:text-sm leading-relaxed">
+                        <!-- 새로이 인서트된 끄적이는 생각들 (Scribbled Thoughts) 블록 영역 (다크 테마 최적화) -->
+                        <div class="mb-8 border-l-2 border-slate-700 pl-4 py-1 text-left">
+                            <span class="text-[10px] font-bold text-slate-500 tracking-wider uppercase font-playfair block mb-1">Scribbled Thoughts</span>
+                            <h4 class="font-serif-kr text-base font-bold text-slate-200 mb-2">끄적이는 생각들</h4>
+                            <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
                                 말씀 묵상하며 떠오른 잔잔한 지혜와 일상의 여정에서 만난 조각 생각들을 담백한 영상으로 담았습니다.
                             </p>
                         </div>
      
-                        <div class="inline-flex items-center gap-4 bg-white px-6 py-4 rounded-xl border border-stone-200/50 shadow-sm max-w-full overflow-hidden">
+                        <!-- 밝은 톤의 시선을 사로잡는 박스 (글래스모피즘 터치 추가) -->
+                        <div class="inline-flex items-center gap-4 bg-white/95 backdrop-blur-md hover:bg-white text-slate-800 px-6 py-4 rounded-xl shadow-lg shadow-black/25 max-w-full overflow-hidden transition-all duration-300">
                             <i class="fa-brands fa-youtube text-rose-600 text-2xl animate-pulse shrink-0"></i>
                             <div class="text-left min-w-0">
-                                <p class="text-[10px] sm:text-xs text-stone-400 truncate">공식 말씀 플랫폼</p>
-                                <p class="text-xs sm:text-sm font-bold text-stone-600 truncate">고목사클라쓰 유튜브 shorts</p>
+                                <p class="text-[10px] sm:text-xs text-slate-500 truncate">공식 말씀 플랫폼</p>
+                                <p class="text-xs sm:text-sm font-bold text-slate-800 truncate">고목사클라쓰 유튜브 shorts</p>
                             </div>
                         </div>
                     </div>
      
-                    <!-- 오른쪽 유튜브 플레이어 (테두리 색상 은색 변경 및 노란 하트 데코레이터 소거) -->
+                    <!-- 오른쪽 유튜브 플레이어 (글래스 프레임 극대화) -->
                     <div class="w-full lg:w-1/2 flex justify-center reveal delay-200">
                         <div class="relative max-w-[340px] w-full px-4 sm:px-0">
                             
-                            <!-- 테두리를 삭제하고 곡률을 낮춰 세련되게 정리한 카드 디자인 -->
-                            <div class="relative bg-white p-3 rounded-2xl shadow-[0_12px_36px_rgba(0,0,0,0.04)] border border-stone-200/40 overflow-hidden group/phone transition-transform duration-500 hover:scale-[1.02]">
+                            <!-- 세련되게 다듬은 글래스 프레임 -->
+                            <div class="relative glass-panel-dark p-3 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.6)] border border-white/10 overflow-hidden group/phone transition-transform duration-500 hover:scale-[1.02]">
                                 
-                                <!-- 유튜브 Shorts 9:16 임베디드 아이프레임 (검은색 테두리를 세련된 은색 메탈릭 테두리로 변경) -->
-                                <div class="relative aspect-[9/16] w-full rounded-xl overflow-hidden bg-stone-950 shadow-inner border-2 border-stone-300">
+                                <!-- 유튜브 Shorts 9:16 임베디드 아이프레임 -->
+                                <div class="relative aspect-[9/16] w-full rounded-xl overflow-hidden bg-black shadow-inner border-2 border-slate-800">
                                     <iframe 
                                        class="absolute inset-0 w-full h-full"
                                        src="https://www.youtube.com/embed/0NNMD6U9mdw" 
@@ -403,17 +418,17 @@
         </section>
      
         <!-- 학력 및 교회 정보 / 연락처 소통 영역 -->
-        <section id="profile" class="bg-stone-100/40 py-20 border-t border-stone-200/30 scroll-mt-24 w-full">
+        <section id="profile" class="bg-slate-900/40 py-20 border-t border-white/5 scroll-mt-24 w-full relative z-10">
             <div class="max-w-[1300px] w-full mx-auto px-6 sm:px-10 lg:px-16">
                 
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
                     
                     <!-- 왼쪽 컬럼: 타이틀 소개 (PASTOR PROFILE) -->
                     <div class="reveal">
-                        <p class="text-emerald-700 font-semibold tracking-wider text-xs uppercase mb-3 font-sans">PASTOR PROFILE</p>
-                        <h2 class="font-serif-kr text-2xl sm:text-3xl font-bold text-stone-700 mb-4">함께 소통하는 길</h2>
-                        <p class="text-stone-500 text-xs sm:text-sm leading-relaxed">
-                            하나님의 부르심에 믿음으로 답해온 사역의 발자취와 따뜻한 마음의 문을 열어 연락할 수 있는 통로입니다.
+                        <p class="text-emerald-400 font-semibold tracking-wider text-xs uppercase mb-3 font-sans">PASTOR PROFILE</p>
+                        <h2 class="font-serif-kr text-2xl sm:text-3xl font-bold text-slate-200 mb-4">함께 소통하는 길</h2>
+                        <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
+                             하나님의 부르심에 믿음으로 답해온 사역의 발자취와 따뜻한 마음의 문을 열어 연락할 수 있는 통로입니다.
                         </p>
                     </div>
      
@@ -422,67 +437,65 @@
                         
                         <!-- 학력 정보 -->
                         <div class="reveal delay-200">
-                            <h3 class="text-xs font-bold text-amber-600 tracking-widest uppercase mb-6 border-b border-stone-200/60 pb-2 font-sans">Education</h3>
+                            <h3 class="text-xs font-bold text-amber-400 tracking-widest uppercase mb-6 border-b border-white/10 pb-2 font-sans">Education</h3>
                             <ul class="space-y-4">
-                                <li class="flex items-center text-stone-600 group">
-                                    <span class="w-2.5 h-2.5 rounded-full bg-slate-700/90 mr-3 group-hover:scale-125 transition-transform duration-300 shadow-sm shrink-0"></span>
-                                    <span class="text-sm sm:text-base font-medium">총신대학원 <span class="text-stone-400 font-light ml-1 font-playfair">M.Div</span></span>
+                                <li class="flex items-center text-slate-300 group">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-slate-500 mr-3 group-hover:scale-125 transition-transform duration-300 shadow-sm shrink-0"></span>
+                                    <span class="text-sm sm:text-base font-medium">총신대학원 <span class="text-slate-500 font-light ml-1 font-playfair">M.Div</span></span>
                                 </li>
-                                <li class="flex items-center text-stone-600 group">
-                                    <span class="w-2.5 h-2.5 rounded-full bg-slate-700/90 mr-3 group-hover:scale-125 transition-transform duration-300 shadow-sm shrink-0"></span>
-                                    <span class="text-sm sm:text-base font-medium">스텔렌보쉬 대학교 <span class="text-stone-400 font-light ml-1 font-playfair">M.TH</span></span>
+                                <li class="flex items-center text-slate-300 group">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-slate-500 mr-3 group-hover:scale-125 transition-transform duration-300 shadow-sm shrink-0"></span>
+                                    <span class="text-sm sm:text-base font-medium">스텔렌보쉬 대학교 <span class="text-slate-500 font-light ml-1 font-playfair">M.TH</span></span>
                                 </li>
                             </ul>
                         </div>
      
                         <!-- 사역 정보 -->
                         <div class="reveal delay-300">
-                            <h3 class="text-xs font-bold text-amber-600 tracking-widest uppercase mb-6 border-b border-stone-200/60 pb-2 font-sans">Church</h3>
+                            <h3 class="text-xs font-bold text-amber-400 tracking-widest uppercase mb-6 border-b border-white/10 pb-2 font-sans">Church</h3>
                             <ul class="space-y-4">
-                                <li class="flex items-center text-stone-600 group">
-                                    <span class="w-2.5 h-2.5 rounded-full bg-slate-700/90 mr-3 group-hover:scale-125 transition-transform duration-300 shadow-sm shrink-0"></span>
+                                <li class="flex items-center text-slate-300 group">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-slate-500 mr-3 group-hover:scale-125 transition-transform duration-300 shadow-sm shrink-0"></span>
                                     <span class="text-sm sm:text-base font-medium">새제천교회 담임목사</span>
                                 </li>
                             </ul>
                         </div>
      
-                        <!-- 연락처 정보 (모바일 가로크기를 고려한 레이아웃 보완) -->
+                        <!-- 3. 연락처 정보 (카드처리 하지 않고 아주 내추럴하며 세련된 텍스트 연출) -->
                         <div class="reveal delay-400 md:col-span-2 pt-6 max-w-full">
-                            <h3 class="text-xs font-bold text-amber-600 tracking-widest uppercase mb-4 font-sans">Contact</h3>
-                            <div id="emailContainer" class="relative inline-flex items-center text-stone-600 group cursor-pointer select-none max-w-full overflow-hidden">
-                                <div id="emailIcon" class="w-10 h-10 rounded-full bg-white flex items-center justify-center mr-3 sm:mr-4 text-slate-700/90 shadow-sm border border-stone-200/20 transition-all duration-300 group-hover:bg-amber-100 group-hover:text-amber-800 group-hover:scale-110 shrink-0">
-                                    <i class="fa-regular fa-envelope text-sm"></i>
-                                </div>
-                                <span class="text-xs sm:text-sm md:text-base font-medium hover:text-stone-800 transition-colors duration-300 border-b border-dashed border-stone-300 group-hover:border-stone-800 truncate">koindori@gmail.com</span>
+                            <h3 class="text-xs font-bold text-amber-400 tracking-widest uppercase mb-3 font-sans">Contact</h3>
+                            <div id="emailContainer" class="relative inline-flex items-center text-slate-300 hover:text-amber-300 gap-2.5 cursor-pointer select-none transition-colors duration-300 group max-w-full">
+                                <i class="fa-regular fa-envelope text-sm sm:text-base text-slate-400 group-hover:text-amber-300 transition-colors"></i>
+                                <span class="text-sm sm:text-base md:text-lg font-medium border-b border-dashed border-slate-500 hover:border-amber-300 truncate tracking-wide">koindori@gmail.com</span>
                                 
-                                <!-- 귀여운 인터랙티브 복사 말풍선 (모바일 뷰포트 오버플로우 방지를 위한 너비 조정) -->
-                                <div id="emailTooltip" class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-3 px-3 py-2 bg-stone-800/95 text-white text-[10px] sm:text-xs rounded-xl opacity-0 pointer-events-none transition-all duration-300 shadow-lg whitespace-normal max-w-[260px] text-center z-50 flex items-center gap-1.5 font-sans">
+                                <!-- 인터랙티브 복사 말풍선 -->
+                                <div id="emailTooltip" class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-3 px-3 py-2 bg-slate-800 text-white text-[10px] sm:text-xs rounded-xl opacity-0 pointer-events-none transition-all duration-300 shadow-xl whitespace-normal max-w-[260px] text-center z-50 flex items-center gap-1.5 font-sans">
                                     <span>📬 클릭하면 메일 주소가 복사됩니다</span>
-                                    <div class="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-stone-800/95"></div>
+                                    <div class="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-slate-800"></div>
                                 </div>
                             </div>
                         </div>
      
-                        <!-- 링크 버튼 영역 -->
+                        <!-- 링크 버튼 영역 (시선이 가고 누르고 싶게 만드는 고급스러운 밝은 화이트 글래스 카드 구성) -->
                         <div class="reveal delay-500 md:col-span-2 flex flex-col sm:flex-row flex-wrap gap-4 pt-8 w-full">
                             <!-- 새제천교회 홈페이지 버튼 -->
                             <a href="https://saejecheon.com" target="_blank" rel="noopener noreferrer" 
-                               class="flex items-center justify-center bg-white text-stone-600 hover:text-stone-800 px-6 sm:px-8 py-4 text-xs sm:text-sm font-medium tracking-wide transition-all duration-300 ease-out hover:bg-stone-50 rounded-lg w-full sm:w-auto shadow-[0_4px_12px_rgba(0,0,0,0.02)] hover:shadow-[0_10px_20px_rgba(0,0,0,0.06)] hover:-translate-y-0.5 border border-stone-200/40 group">
-                                <i class="fa-solid fa-church mr-3 text-stone-400 transition-colors group-hover:text-emerald-700"></i>
+                               class="flex items-center justify-center glass-panel-light text-slate-800 hover:text-emerald-700 px-6 sm:px-8 py-4 text-xs sm:text-sm font-semibold tracking-wide transition-all duration-300 ease-out rounded-xl w-full sm:w-auto shadow-md hover:shadow-xl hover:-translate-y-0.5 border border-white/60 group">
+                                <i class="fa-solid fa-church mr-3 text-emerald-600 transition-colors"></i>
                                 새제천교회 홈페이지
                             </a>
                             
                             <!-- 고목사클라쓰 버튼 -->
                             <a href="https://www.youtube.com/@koclass" target="_blank" rel="noopener noreferrer" 
-                               class="flex items-center justify-center bg-white text-stone-600 hover:text-stone-800 px-6 sm:px-8 py-4 text-xs sm:text-sm font-medium tracking-wide transition-all duration-300 ease-out hover:bg-stone-50 rounded-lg w-full sm:w-auto shadow-[0_4px_12px_rgba(0,0,0,0.02)] hover:shadow-[0_10px_20px_rgba(0,0,0,0.06)] hover:-translate-y-0.5 border border-stone-200/40 group">
-                                <i class="fa-brands fa-youtube mr-3 text-stone-400 transition-colors group-hover:text-rose-600"></i>
+                               class="flex items-center justify-center glass-panel-light text-slate-800 hover:text-rose-600 px-6 sm:px-8 py-4 text-xs sm:text-sm font-semibold tracking-wide transition-all duration-300 ease-out rounded-xl w-full sm:w-auto shadow-md hover:shadow-xl hover:-translate-y-0.5 border border-white/60 group">
+                                <i class="fa-brands fa-youtube mr-3 text-rose-600 transition-colors"></i>
                                 고목사클라쓰
                             </a>
      
                             <!-- 고목사인스타그램 버튼 -->
                             <a href="https://www.instagram.com/koinkook/" target="_blank" rel="noopener noreferrer" 
-                               class="flex items-center justify-center bg-white text-stone-600 hover:text-stone-800 px-6 sm:px-8 py-4 text-xs sm:text-sm font-medium tracking-wide transition-all duration-300 ease-out hover:bg-stone-50 rounded-lg w-full sm:w-auto shadow-[0_4px_12px_rgba(0,0,0,0.02)] hover:shadow-[0_10px_20px_rgba(0,0,0,0.06)] hover:-translate-y-0.5 border border-stone-200/40 group">
-                                <i class="fa-brands fa-instagram mr-3 text-stone-400 transition-colors group-hover:text-pink-600"></i>
+                               class="flex items-center justify-center glass-panel-light text-slate-800 hover:text-pink-600 px-6 sm:px-8 py-4 text-xs sm:text-sm font-semibold tracking-wide transition-all duration-300 ease-out rounded-xl w-full sm:w-auto shadow-md hover:shadow-xl hover:-translate-y-0.5 border border-white/60 group">
+                                <i class="fa-brands fa-instagram mr-3 text-pink-600 transition-colors"></i>
                                 고목사인스타그램
                             </a>
                         </div>
@@ -494,8 +507,8 @@
         </section>
      
         <!-- 하단 저작권 문구 영역 -->
-        <footer class="w-full py-8 text-center bg-stone-100/50 border-t border-stone-200/40 mt-auto">
-            <p class="text-[10px] sm:text-xs text-stone-400 tracking-wider">
+        <footer class="w-full py-8 text-center bg-slate-950/80 border-t border-white/5 mt-auto">
+            <p class="text-[10px] sm:text-xs text-slate-500 tracking-wider">
                 &copy; 2026 고인국목사. All rights reserved.
             </p>
         </footer>
@@ -524,7 +537,7 @@
                 revealOnScrollObserver.observe(el);
             });
  
-            // 2. 동적 파티클 생성 엔진 구현
+            // 2. 동적 이미지 중앙 분사 파티클 생성 엔진 (기존 효과 100% 보존)
             const particleOverlay = document.getElementById("particleOverlay");
             
             const particleShapes = [
@@ -534,9 +547,8 @@
                 '<svg viewBox="0 0 24 24" class="w-full h-full"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="currentColor"/></svg>'
             ];
  
-            function spawnParticle() {
+            function spawnCenterParticle() {
                 if (!particleOverlay) return;
-                // 모바일 환경에서의 최적화 및 버벅임 방지를 위해 활성 파티클 개수 제한
                 const maxParticles = window.innerWidth < 768 ? 12 : 25;
                 if (particleOverlay.children.length > maxParticles) return;
  
@@ -577,18 +589,93 @@
             }
  
             for(let i = 0; i < 6; i++) {
-                setTimeout(spawnParticle, i * 600);
+                setTimeout(spawnCenterParticle, i * 600);
             }
+            setInterval(spawnCenterParticle, 1500);
+
+            // 3. 배경전체 '부유하는 스파크 파티클 효과' (개수 절반 이하로 감소 및 화이트톤 단색으로 단순화)
+            const canvas = document.getElementById("sparkParticlesCanvas");
+            const ctx = canvas.getContext("2d");
+            let particlesArray = [];
+            
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            window.addEventListener("resize", resizeCanvas);
+            resizeCanvas();
+
+            class SparkParticle {
+                constructor() {
+                    this.init();
+                }
+
+                init() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                    this.size = 0.8 + Math.random() * 2.2; // 조금 더 아련하고 미세하게 가공
+                    this.speedX = -0.15 + Math.random() * 0.3; // 더 차분한 수평 움직임
+                    this.speedY = -(0.1 + Math.random() * 0.25); // 잔잔하게 상승
+                    this.baseOpacity = 0.1 + Math.random() * 0.4;
+                    this.opacity = this.baseOpacity;
+                    this.fadeSpeed = 0.003 + Math.random() * 0.008;
+                    this.fadeDirection = Math.random() > 0.5 ? 1 : -1;
+                    // 깨끗한 눈송이/수증기 같은 순백색 단색(`rgba(255, 255, 255)`)으로 정제
+                    this.color = `rgba(255, 255, 255, `; 
+                }
+
+                update() {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+
+                    if (this.y < -10 || this.x < -10 || this.x > canvas.width + 10) {
+                        this.y = canvas.height + 10;
+                        this.x = Math.random() * canvas.width;
+                    }
+
+                    this.opacity += this.fadeSpeed * this.fadeDirection;
+                    if (this.opacity >= this.baseOpacity + 0.1 || this.opacity <= 0.05) {
+                        this.fadeDirection *= -1;
+                    }
+                    this.opacity = Math.max(0.04, Math.min(this.opacity, 0.7));
+                }
+
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fillStyle = this.color + this.opacity + ')';
+                    ctx.shadowBlur = this.size * 1.5;
+                    ctx.shadowColor = 'rgba(255, 255, 255, 0.25)';
+                    ctx.fill();
+                }
+            }
+
+            // 요청에 맞춰 전체 파티클 숫자를 약 60% 절감 (과하지 않고 은은함 제공)
+            const totalSparks = window.innerWidth < 768 ? 35 : 65;
+            for (let i = 0; i < totalSparks; i++) {
+                particlesArray.push(new SparkParticle());
+            }
+
+            function animateCanvas() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.shadowBlur = 0; 
+                ctx.shadowColor = 'transparent';
+
+                for (let i = 0; i < particlesArray.length; i++) {
+                    particlesArray[i].update();
+                    particlesArray[i].draw();
+                }
+                requestAnimationFrame(animateCanvas);
+            }
+            animateCanvas();
  
-            setInterval(spawnParticle, 1500);
- 
-            // 3. 이메일 클립보드 복사 & 상호작용 툴팁 엔진 구현
+            // 4. 이메일 클립보드 복사 & 상호작용 툴팁 엔진 구현
             const emailContainer = document.getElementById("emailContainer");
             const emailTooltip = document.getElementById("emailTooltip");
             
             if (emailContainer && emailTooltip) {
                 emailContainer.addEventListener("mouseenter", () => {
-                    emailTooltip.innerHTML = `📬 클릭하면 메일 주소가 복사됩니다 <div class="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-stone-800/95"></div>`;
+                    emailTooltip.innerHTML = `📬 클릭하면 메일 주소가 복사됩니다 <div class="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-slate-800"></div>`;
                     emailTooltip.style.opacity = "1";
                     emailTooltip.style.transform = "translate(-50%, -4px)";
                 });
@@ -610,7 +697,7 @@
                     try {
                         const success = document.execCommand("copy");
                         if (success) {
-                            emailTooltip.innerHTML = `✨복사되었습니다! <div class="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-stone-800/95"></div>`;
+                            emailTooltip.innerHTML = `✨복사되었습니다! <div class="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-slate-800"></div>`;
                             emailTooltip.style.transform = "translate(-50%, -8px) scale(1.08)";
                             setTimeout(() => {
                                 emailTooltip.style.transform = "translate(-50%, -4px) scale(1)";
