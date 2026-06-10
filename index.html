@@ -24,7 +24,7 @@
             font-family: 'Noto Sans KR', sans-serif; 
             overflow-x: hidden;
             width: 100%;
-            /* 1. 은은하지만 확실한 질서를 전달하는 하이엔드 스타 도트 패턴 */
+            /* 은은하지만 확실한 질서를 전달하는 하이엔드 스타 도트 패턴 */
             background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1.5px, transparent 1.5px);
             background-size: 28px 28px;
         }
@@ -154,7 +154,7 @@
             display: inline-block;
         }
 
-        /* 4. 미세한 유리 질감 다크 글래스모피즘 효과 정의 */
+        /* 미세한 유리 질감 다크 글래스모피즘 효과 정의 */
         .glass-panel-dark {
             background: rgba(10, 15, 29, 0.6);
             backdrop-filter: blur(14px);
@@ -162,7 +162,7 @@
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        /* 4. 화사하면서도 영롱한 라이트 글래스모피즘 효과 정의 (밝은 카드 링크용) */
+        /* 화사하면서도 영롱한 라이트 글래스모피즘 효과 정의 (밝은 카드 링크용) */
         .glass-panel-light {
             background: rgba(255, 255, 255, 0.82);
             backdrop-filter: blur(16px);
@@ -170,32 +170,7 @@
             border: 1px solid rgba(255, 255, 255, 0.6);
         }
 
-        /* 3. 영롱한 이슬 물방울 맺힘 효과 정의 */
-        .water-drop {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(2px);
-            -webkit-backdrop-filter: blur(2px);
-            border-radius: 51% 49% 48% 52% / 62% 44% 56% 38%;
-            box-shadow: inset -3px -3px 6px rgba(0,0,0,0.45),
-                        inset 2px 2px 5px rgba(255,255,255,0.45),
-                        1px 3px 6px rgba(0,0,0,0.35);
-            pointer-events: none;
-            z-index: 30;
-            display: inline-block;
-        }
-        .water-drop::after {
-            content: '';
-            position: absolute;
-            top: 15%;
-            left: 20%;
-            width: 25%;
-            height: 25%;
-            background: rgba(255, 255, 255, 0.85);
-            border-radius: 50%;
-        }
-
-        /* 4. 하단 버튼 글자색 변함없이 외곽에만 은은한 색번짐(Ambient Glow) 발생 */
+        /* 하단 버튼 글자색 변함없이 외곽에만 은은한 색번짐(Ambient Glow) 발생 */
         .btn-glow-emerald {
             transition: transform 0.3s ease, box-shadow 0.4s ease, border-color 0.4s ease;
         }
@@ -256,9 +231,6 @@
      
         <!-- 구역 1: [환영] 딥 퍼플 미드나잇 영역 -->
         <main id="intro" class="bg-[#0a0f1d] max-w-full w-full mx-auto px-6 sm:px-10 lg:px-16 pt-8 lg:pt-16 pb-12 lg:pb-24 flex-grow relative z-10 scroll-mt-24 border-b border-blue-500/10">
-            <!-- 영롱한 물방울 맺힘 배치 -->
-            <div class="water-drop w-5 h-5 top-12 left-10 opacity-75"></div>
-            <div class="water-drop w-3.5 h-3 top-36 right-16 opacity-60"></div>
             
             <!-- 다크 테마를 아름답게 밝혀줄 은은하고 몽환적인 백그라운드 발광 레이아웃 -->
             <div class="absolute top-[10%] left-[-10%] w-[350px] sm:w-[500px] h-[350px] sm:h-[500px] bg-blue-900/15 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
@@ -272,10 +244,7 @@
                         
                         <!-- 이미지 컨테이너 (그대로 유지) -->
                         <div id="photoContainer" class="img-container relative w-full h-[400px] sm:h-[520px] md:h-[620px] lg:h-[700px] overflow-hidden rounded-2xl bg-slate-900/80 shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/10">
-                            <!-- 프로필 우측 하단 영롱한 물방울 맺힘 -->
-                            <div class="water-drop w-6 h-5 bottom-8 right-8 opacity-80" style="border-radius: 40% 60% 50% 50% / 50% 50% 60% 40%;"></div>
-                            <div class="water-drop w-4 h-4 bottom-20 right-6 opacity-60"></div>
-
+                            
                             <!-- 롤오버 확대 레이어를 마크업 분리하여 100% 동작 보장 -->
                             <div class="img-zoom-wrapper absolute inset-0 w-full h-full">
                                 <img src="1000007608.jpg" alt="고목사 프로필 사진" 
@@ -317,12 +286,10 @@
      
                     <!-- 2. 그리스어 원어 구절 및 한국어 말씀 비주얼 카드 (완벽한 다크 글래스모피즘 반영) -->
                     <div class="reveal delay-200 mb-10 glass-panel-dark p-6 sm:p-8 md:p-10 rounded-2xl shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] relative">
-                        <!-- 말씀카드 귀퉁이 물방울 데코 -->
-                        <div class="water-drop w-4 h-4 -top-2 -right-1 opacity-70"></div>
                         <!-- 상단: 그리스어 원어 구절 (신비로운 실버골드 컬러) -->
                         <div class="mb-6">
                             <p class="font-serif text-base sm:text-lg md:text-2xl text-slate-300 leading-relaxed tracking-wide italic font-medium break-words font-playfair">
-                                Ἐν토λὴν καινὴν δίδωμι ὑμῖν, ἵνα ἀγαπᾶτε ἀλλήλους, καθὼς ἠγάπησα ὑμᾶς ἵνα καὶ ὑμεῖς ἀγαπᾶτε ἀλλήλους.
+                                Ἐντολὴν καινὴν δίδωμι ὑμῖν, ἵνα ἀγαπᾶτε ἀλλήλους, καθὼς ἠγάπησα ὑμᾶς ἵνα καὶ ὑ메ῖς ἀγαπᾶτε ἀλλήλους.
                             </p>
                         </div>
                         
@@ -345,14 +312,10 @@
             </div>
         </main>
      
-        <!-- 구역 2: [여정] 에메랄드 딥 선교 테마 영역 (완전히 다른 공간으로 전환) -->
+        <!-- 구역 2: [여정] 에메랄드 딥 선교 테마 영역 -->
         <section id="values" class="bg-gradient-to-b from-[#0a0f1d] via-[#0d2123] to-[#0a1e1f] py-24 border-b border-emerald-500/10 scroll-mt-24 w-full relative">
             <!-- 신비로운 에메랄드 안개 발광 레이어 -->
             <div class="absolute inset-0 bg-gradient-to-r from-emerald-950/20 via-transparent to-blue-950/20 pointer-events-none"></div>
-            
-            <!-- 영롱한 물방울 맺힘 배치 -->
-            <div class="water-drop w-4 h-4 top-16 left-12 opacity-80"></div>
-            <div class="water-drop w-5.5 h-4.5 bottom-12 right-20 opacity-70" style="border-radius: 60% 40% 50% 50% / 40% 60% 50% 50%"></div>
 
             <div class="max-w-[1300px] w-full mx-auto px-6 sm:px-10 lg:px-16 relative z-10">
                 
@@ -370,8 +333,6 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <!-- 가치 1: 선교의 자취 -->
                     <a href="mission.html" class="block glass-panel-light p-8 rounded-2xl shadow-[0_10px_35px_rgba(255,255,255,0.05)] hover:-translate-y-2 hover:shadow-[0_20px_45px_rgba(59,130,246,0.2)] hover:border-blue-400/80 transition-all duration-500 ease-out group cursor-pointer reveal delay-100 relative">
-                        <!-- 카드 위 이슬 맺힘 -->
-                        <div class="water-drop w-3.5 h-3.5 -top-1 -left-1 opacity-75"></div>
                         <div class="w-14 h-14 rounded-full bg-blue-100/80 flex items-center justify-center text-blue-700 mb-6 shadow-sm border border-blue-200/50 group-hover:bg-gradient-to-tr group-hover:from-blue-500 group-hover:to-cyan-400 group-hover:text-white group-hover:scale-110 group-hover:shadow-[0_8px_20px_rgba(59,130,246,0.3)] transition-all duration-500 ease-out shrink-0">
                             <i class="fa-solid fa-earth-asia text-2xl transition-transform duration-700 group-hover:rotate-[360deg]"></i>
                         </div>
@@ -406,8 +367,6 @@
      
                     <!-- 가치 3: 추억의 설교 -->
                     <a href="https://koindori-en.github.io/profile/sermons.html" class="block glass-panel-light p-8 rounded-2xl shadow-[0_10px_35px_rgba(255,255,255,0.05)] hover:-translate-y-2 hover:shadow-[0_20px_45px_rgba(244,63,94,0.2)] hover:border-rose-400/80 transition-all duration-500 ease-out group cursor-pointer reveal delay-300 relative">
-                        <!-- 카드 위 이슬 맺힘 -->
-                        <div class="water-drop w-4 h-4 -bottom-1.5 -right-1 opacity-75"></div>
                         <div class="w-14 h-14 rounded-full bg-rose-100/80 flex items-center justify-center text-rose-700 mb-6 shadow-sm border border-rose-200/50 group-hover:bg-gradient-to-tr group-hover:from-rose-500 group-hover:to-pink-400 group-hover:text-white group-hover:scale-110 group-hover:shadow-[0_8px_20px_rgba(244,63,94,0.3)] transition-all duration-500 ease-out shrink-0">
                             <i class="fa-solid fa-book-open text-2xl transition-transform duration-700 group-hover:scale-110 group-hover:rotate-12"></i>
                         </div>
@@ -427,14 +386,10 @@
             </div>
         </section>
      
-        <!-- 구역 3: [쇼츠] 따뜻한 루비 로즈 테마 영역 (완전히 다른 공간으로 전환) -->
+        <!-- 구역 3: [쇼츠] 따뜻한 루비 로즈 테마 영역 -->
         <section id="media" class="bg-gradient-to-b from-[#0a1e1f] via-[#1c0f1b] to-[#120a1b] py-24 border-b border-rose-500/10 scroll-mt-24 w-full relative">
             <!-- 둥근 공간 발광 이펙트 (웜 로즈) -->
             <div class="absolute top-[30%] right-[5%] w-[400px] h-[400px] bg-rose-950/15 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
-
-            <!-- 영롱한 물방울 맺힘 배치 -->
-            <div class="water-drop w-4 h-4 top-20 right-24 opacity-60"></div>
-            <div class="water-drop w-5 h-5 bottom-32 left-16 opacity-75"></div>
 
             <div class="max-w-[1300px] w-full mx-auto px-6 sm:px-10 lg:px-16 text-center lg:text-left relative z-10">
                 <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
@@ -448,8 +403,6 @@
      
                         <!-- 새로이 인서트된 끄적이는 생각들 (Scribbled Thoughts) 블록 영역 (다크 테마 최적화) -->
                         <div class="mb-8 border-l-2 border-rose-500/30 pl-4 py-1 text-left relative">
-                            <!-- 라인 물방울 -->
-                            <div class="water-drop w-3 h-3 top-0 -left-1.5 opacity-80"></div>
                             <span class="text-[10px] font-bold text-slate-400 tracking-wider uppercase font-playfair block mb-1">Scribbled Thoughts</span>
                             <h4 class="font-serif-kr text-base font-bold text-slate-200 mb-2">끄적이는 생각들</h4>
                             <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
@@ -473,8 +426,6 @@
                             
                             <!-- 세련되게 다듬은 글래스 프레임 -->
                             <div class="relative glass-panel-dark p-3 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.6)] border border-white/10 overflow-hidden group/phone transition-transform duration-500 hover:scale-[1.02]">
-                                <!-- 플레이어 모서리 물방울 데코 -->
-                                <div class="water-drop w-4 h-4 top-1 right-2 opacity-75"></div>
                                 <!-- 유튜브 Shorts 9:16 임베디드 아이프레임 -->
                                 <div class="relative aspect-[9/16] w-full rounded-xl overflow-hidden bg-black shadow-inner border-2 border-slate-800">
                                     <iframe 
@@ -495,14 +446,10 @@
             </div>
         </section>
      
-        <!-- 구역 4: [소통] 깊은 우주 테마 영역 (완전히 다른 공간으로 전환) -->
+        <!-- 구역 4: [소통] 깊은 우주 테마 영역 -->
         <section id="profile" class="bg-gradient-to-b from-[#120a1b] via-[#0a0d18] to-[#04060d] py-24 scroll-mt-24 w-full relative z-10">
             <!-- 파란 우주선 발광 레이어 -->
             <div class="absolute bottom-0 left-[15%] w-[450px] h-[450px] bg-blue-950/10 rounded-full blur-[140px] -z-10 pointer-events-none"></div>
-
-            <!-- 영롱한 물방울 맺힘 배치 -->
-            <div class="water-drop w-5 h-5 top-12 left-1/4 opacity-75"></div>
-            <div class="water-drop w-4.5 h-3.5 bottom-24 right-1/3 opacity-80" style="border-radius: 40% 60% 50% 50%"></div>
 
             <div class="max-w-[1300px] w-full mx-auto px-6 sm:px-10 lg:px-16 relative z-10">
                 
@@ -546,22 +493,22 @@
                             </ul>
                         </div>
      
-                        <!-- 3. 연락처 정보 (카드처리 하지 않고 아주 내추럴하며 세련된 텍스트 연출) -->
+                        <!-- 연락처 정보 (카드처리 하지 않고 아주 내추럴하며 세련된 텍스트 연출) -->
                         <div class="reveal delay-400 md:col-span-2 pt-6 max-w-full">
                             <h3 class="text-xs font-bold text-slate-400 tracking-widest uppercase mb-3 font-sans">Contact</h3>
                             <div id="emailContainer" class="relative inline-flex items-center text-slate-300 hover:text-amber-300 gap-2.5 cursor-pointer select-none transition-colors duration-300 group max-w-full">
                                 <i class="fa-regular fa-envelope text-sm sm:text-base text-slate-400 group-hover:text-amber-300 transition-colors"></i>
                                 <span class="text-sm sm:text-base md:text-lg font-medium border-b border-dashed border-slate-500 hover:border-amber-300 truncate tracking-wide">koindori@gmail.com</span>
                                 
-                                <!-- 인터랙티브 복사 말풍선 -->
-                                <div id="emailTooltip" class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-3 px-3 py-2 bg-slate-800 text-white text-[10px] sm:text-xs rounded-xl opacity-0 pointer-events-none transition-all duration-300 shadow-xl whitespace-normal max-w-[260px] text-center z-50 flex items-center gap-1.5 font-sans">
+                                <!-- 인터랙티브 복사 말풍선 (데스크톱에서는 한 줄, 모바일 기기에서도 최적화되어 한 줄 레이아웃 유지) -->
+                                <div id="emailTooltip" class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-3 px-3 py-2 bg-slate-800 text-white text-[10px] sm:text-xs rounded-xl opacity-0 pointer-events-none transition-all duration-300 shadow-xl whitespace-nowrap max-w-none text-center z-50 flex items-center gap-1.5 font-sans">
                                     <span>📬 클릭하면 메일 주소가 복사됩니다</span>
                                     <div class="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-slate-800"></div>
                                 </div>
                             </div>
                         </div>
      
-                        <!-- 4. 링크 버튼 영역 (마우스 오버 시 글자색은 불변, 외곽으로 아름다운 은은한 색번짐 광채 분출) -->
+                        <!-- 링크 버튼 영역 (마우스 오버 시 글자색은 불변, 외곽으로 아름다운 은은한 색번짐 광채 분출) -->
                         <div class="reveal delay-500 md:col-span-2 flex flex-col sm:flex-row flex-wrap gap-4 pt-8 w-full">
                             <!-- 새제천교회 홈페이지 버튼 (에메랄드 아우라 색번짐) -->
                             <a href="https://saejecheon.com" target="_blank" rel="noopener noreferrer" 
@@ -678,7 +625,7 @@
             }
             setInterval(spawnCenterParticle, 1500);
 
-            // 3. 배경전체 '부유하는 스파크 파티클 효과' (개수 대폭 절감 및 속도 매우 조용하게 저속화)
+            // 3. 배경전체 '부유하는 스파크 파티클 효과' (안정적이며 우아하고 세련된 초저속 시네마틱 모션)
             const canvas = document.getElementById("sparkParticlesCanvas");
             const ctx = canvas.getContext("2d");
             let particlesArray = [];
@@ -698,12 +645,12 @@
                 init() {
                     this.x = Math.random() * canvas.width;
                     this.y = Math.random() * canvas.height;
-                    this.size = 0.7 + Math.random() * 2.3; // 작고 아련하게
-                    this.speedX = -0.06 + Math.random() * 0.12; // 수평 이동 극도로 최소화
-                    this.speedY = -(0.04 + Math.random() * 0.08); // 고요하게 부유하는 슬로우 모션
+                    this.size = 0.6 + Math.random() * 2.2; // 초미세 크기로 아스라이 빛나는 형태
+                    this.speedX = -0.015 + Math.random() * 0.03; // 수평이동 최소화하여 흔들림 방지
+                    this.speedY = -(0.01 + Math.random() * 0.025); // 극단적으로 느리게 떠오르도록 유도하여 편안함 극대화
                     this.baseOpacity = 0.12 + Math.random() * 0.35;
                     this.opacity = this.baseOpacity;
-                    this.fadeSpeed = 0.002 + Math.random() * 0.005;
+                    this.fadeSpeed = 0.0006 + Math.random() * 0.0015; // 아주 점진적이고 고요한 깜빡임 주기
                     this.fadeDirection = Math.random() > 0.5 ? 1 : -1;
                     this.color = `rgba(255, 255, 255, `; 
                 }
@@ -734,7 +681,7 @@
                 }
             }
 
-            // 요청에 맞춰 전반적인 파티클 수량 대폭 절감 (PC: 45개, 모바일: 20개 내외)
+            // 요청에 맞춰 은은하게 깔리는 수량 유지 (PC: 45개, 모바일: 20개 내외)
             const totalSparks = window.innerWidth < 768 ? 20 : 45;
             for (let i = 0; i < totalSparks; i++) {
                 particlesArray.push(new SparkParticle());
@@ -781,7 +728,7 @@
                     try {
                         const success = document.execCommand("copy");
                         if (success) {
-                            emailTooltip.innerHTML = `✨복사되었습니다! <div class="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-slate-800"></div>`;
+                            emailTooltip.innerHTML = `✨ 복사되었습니다! <div class="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-slate-800"></div>`;
                             emailTooltip.style.transform = "translate(-50%, -8px) scale(1.08)";
                             setTimeout(() => {
                                 emailTooltip.style.transform = "translate(-50%, -4px) scale(1)";
