@@ -168,14 +168,14 @@
         <!-- 상단 네비게이션 헤더 -->
         <header class="sticky top-0 z-50 bg-[#050C0E]/85 backdrop-blur-md border-b border-white/5 transition-all duration-300">
             <div class="max-w-[1300px] mx-auto px-6 sm:px-10 lg:px-16 h-16 md:h-20 flex items-center justify-between">
-                <!-- 왼쪽 상단 브랜딩 명패 (세련된 고딕체 font-sans 및 회전 이펙트) -->
+                <!-- 왼쪽 상단 브랜딩 명패 (세련된 고딕체 font-sans 한 줄 가로 정렬 배치) -->
                 <a href="https://koindori-en.github.io/profile/" class="flex items-center gap-3 group">
                     <div class="w-8 h-8 md:w-9 md:h-9 bg-white/5 border border-white/10 rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
                         <i class="fa-solid fa-globe text-[#E5C158] text-sm md:text-base animate-spin-slow"></i>
                     </div>
-                    <div class="flex flex-col">
-                        <span class="text-sm md:text-base font-extrabold tracking-tight text-white font-sans">선교의 자취</span>
-                        <span class="text-[9px] text-[#E5C158] font-playfair uppercase tracking-[0.18em] leading-none">Traces of Mission</span>
+                    <div class="flex items-baseline gap-2 md:gap-3">
+                        <span class="text-sm md:text-base font-semibold tracking-tight text-white font-sans">선교의 자취</span>
+                        <span class="text-[9px] md:text-[10px] text-[#E5C158] font-playfair uppercase tracking-[0.18em] leading-none">Traces of Mission</span>
                     </div>
                 </a>
     
@@ -191,9 +191,9 @@
         <!-- 메인 컨텐츠 영역 -->
         <main class="max-w-[1200px] w-full mx-auto px-6 sm:px-10 lg:px-16 pt-16 pb-24 flex-grow relative z-10">
             
-            <!-- 사색적인 프롤로그 대서사 (영문 성구 전용 초미학적 헤드라인) -->
+            <!-- 사색적인 프롤로그 대서사 (영문 성구 전용 임팩트 있고 절제된 헤드라인) -->
             <div class="text-center max-w-4xl mx-auto mb-36 reveal mt-6">
-                <p class="font-playfair italic text-lg md:text-2xl lg:text-3xl text-slate-100 leading-relaxed tracking-wide mb-6">
+                <p class="font-playfair italic font-semibold text-base md:text-xl lg:text-2xl text-slate-100 leading-relaxed tracking-wide mb-6">
                     "Go into all the world and preach the gospel to all creation."
                 </p>
                 <p class="font-playfair text-xs md:text-sm lg:text-base text-[#E5C158] tracking-[0.25em] uppercase font-semibold">
@@ -205,7 +205,7 @@
             <!-- 선교 자취 리스트 (지정 순서: 티벳, 필리핀, 아프리카, 우즈베키스탄, 몽골) -->
             <div class="space-y-44">
                 
-                <!-- 1. 티벳 (Tibet) - 두 장 상단 / 중간 사진(tibet2.jpeg) 아래 와이드 배치 -->
+                <!-- 1. 티벳 (Tibet) - 기도 사진(tibet2.jpeg) 상단 와이드 배치 / 아래에 두 장 배치 -->
                 <div class="reveal flex flex-col">
                     <!-- 국가명 (세련된 고딕 스타일) -->
                     <div class="flex items-center gap-2 mb-6 border-b border-white/5 pb-4">
@@ -214,8 +214,13 @@
                             티벳 <span class="text-xs md:text-sm font-normal text-slate-400 font-sans pl-1">(Tibet)</span>
                         </h2>
                     </div>
-                    <!-- 비대칭 사진 그리드 배치 -->
+                    <!-- 비대칭 사진 그리드 배치 (순서 변경 적용) -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <div class="premium-frame md:col-span-2" onclick="openModal(this)">
+                            <div class="relative aspect-[21/9] md:aspect-[3/1] w-full rounded-xl overflow-hidden bg-slate-950">
+                                <img src="tibet2.jpeg" alt="티벳의 기도" class="absolute inset-0 w-full h-full object-cover" onerror="handleImgError(this, 'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1200&q=80')">
+                            </div>
+                        </div>
                         <div class="premium-frame" onclick="openModal(this)">
                             <div class="relative aspect-[4/3] w-full rounded-xl overflow-hidden bg-slate-950">
                                 <img src="tibet.jpeg" alt="티벳 전경" class="absolute inset-0 w-full h-full object-cover" onerror="handleImgError(this)">
@@ -224,11 +229,6 @@
                         <div class="premium-frame" onclick="openModal(this)">
                             <div class="relative aspect-[4/3] w-full rounded-xl overflow-hidden bg-slate-950">
                                 <img src="tibet3.jpeg" alt="티벳의 미소" class="absolute inset-0 w-full h-full object-cover" onerror="handleImgError(this, 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80')">
-                            </div>
-                        </div>
-                        <div class="premium-frame md:col-span-2" onclick="openModal(this)">
-                            <div class="relative aspect-[21/9] md:aspect-[3/1] w-full rounded-xl overflow-hidden bg-slate-950">
-                                <img src="tibet2.jpeg" alt="티벳의 기도" class="absolute inset-0 w-full h-full object-cover" onerror="handleImgError(this, 'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1200&q=80')">
                             </div>
                         </div>
                     </div>
@@ -429,7 +429,7 @@
 
     <!-- 고성능 자연주의 이미지 팝업 모달 (이미지 클릭 시에도 즉각 복귀) -->
     <div id="imageModal" onclick="closeModal()">
-        <img id="modalImg" src="" alt="선교 사진 확대 보기" class="cursor-zoom-out">
+        <img id="modalImg" src="" alt="선교 사진 확대 보기" class="cursor-zoom-out m-auto">
     </div>
 
     <!-- 스크립트 엔진 -->
