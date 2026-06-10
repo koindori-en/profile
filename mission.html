@@ -3,44 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- 크롬창 제목을 IK 선교의 자취로 전격 변경 -->
     <title>IK 선교의 자취</title>
     
     <!-- 브라우저 탭 아이콘 (파비콘) 적용 -->
-    <link rel="icon" href="logo.png" type="image/png">
+    <link class="js-favicon" rel="icon" href="logo.png" type="image/png">
     
-    <!-- [버그 수정] 이미지 실패 시 즉시 대체 이미지를 제공하는 에러 핸들러 최상단 선언 -->
-    <script>
-        function handleImageError(imgElement, altText) {
-            imgElement.onerror = null; // 무한 루프 예방
-            // 로드가 안 된 이미지의 컨테이너 크기를 가져오거나 기본 크기 적용
-            const width = Math.round(imgElement.getBoundingClientRect().width || imgElement.offsetWidth || 800);
-            const height = Math.round(imgElement.getBoundingClientRect().height || imgElement.offsetHeight || 600);
-            // 전체 일러스트 감성 톤인 미색(#FAF8F5)과 찰진 텍스트 컬러로 이루어진 세련된 대체 이미지 자동 렌더링
-            imgElement.src = `https://placehold.co/${width}x${height}/FAF8F5/a8a29e?text=${encodeURIComponent(altText)}`;
-            imgElement.classList.add("opacity-40", "transition-opacity", "duration-500");
-        }
-    </script>
-
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
+    <!-- Google Fonts: Noto Sans KR, Noto Serif KR (명조체), Playfair Display (영문) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Noto+Serif+KR:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     
     <style>
-        body {
-            background-color: #FAF8F5; /* 따뜻하고 감성적인 미색 일러스트톤 백그라운드 */
-            color: #4A4A4A; /* 눈이 편안한 미디엄 차콜그레이 */
-            font-family: 'Noto Sans KR', sans-serif; 
-            overflow-x: hidden;
-            background-image: radial-gradient(#e5e0d8 1px, transparent 1px);
-            background-size: 24px 24px; /* 모눈종이/캔버스 텍스처 */
+        :root {
+            --primary-green: #050C0E;  /* 심해와 울창한 숲을 닮은 묵직하고 고요한 딥 모스 틸 블랙 */
+            --accent-gold: #E5C158;    /* 영롱한 성체와 기도를 상징하는 황금빛 아우라 */
+            --pure-white: #F8FAFC;     /* 정결하고 맑은 화이트 */
         }
 
+        body {
+            background-color: var(--primary-green);
+            color: var(--pure-white);
+            font-family: 'Noto Sans KR', sans-serif; 
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(rgba(229, 193, 88, 0.12) 1.5px, transparent 1.5px),
+                radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+            background-size: 32px 32px, 16px 16px;
+            background-position: 0 0, 8px 8px;
+        }
+ 
         .font-serif-kr {
             font-family: 'Noto Serif KR', serif;
         }
@@ -48,7 +43,7 @@
         .font-playfair {
             font-family: 'Playfair Display', serif;
         }
-
+ 
         /* 스크롤 리빌 애니메이션 */
         .reveal {
             opacity: 0;
@@ -56,285 +51,413 @@
             transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
             will-change: transform, opacity;
         }
-
+ 
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
-
-        /* 매거진 이미지 호버 액션 및 클릭 시 확대될 수 있는 돋보기 커서 적용 */
-        .img-card {
+ 
+        /* 영롱하게 대비되는 프리미엄 반투명 프레임 */
+        .premium-frame {
             position: relative;
+            background: rgba(255, 255, 255, 0.01);
+            backdrop-filter: blur(12px);
+            padding: 10px;
+            border-radius: 20px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(229, 193, 88, 0.12);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
             overflow: hidden;
+        }
+ 
+        .premium-frame:hover {
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 
+                0 35px 80px rgba(0, 0, 0, 0.8), 
+                0 0 40px rgba(229, 193, 88, 0.2),
+                0 0 70px rgba(255, 255, 255, 0.03);
+            border-color: rgba(229, 193, 88, 0.4);
+        }
+
+        .premium-frame img {
+            transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .premium-frame:hover img {
+            transform: scale(1.06); /* 부드럽고 자연스러운 이미지 확대 효과 */
+        }
+ 
+        /* 아늑한 황금빛 불꽃 스파크 애니메이션 */
+        @keyframes sparkFloat {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg) scale(0.8);
+                opacity: 0.1;
+            }
+            50% {
+                transform: translateY(-80px) rotate(180deg) scale(1.3);
+                opacity: 0.5;
+            }
+        }
+        .spark-particle {
+            position: absolute;
+            background-color: rgba(229, 193, 88, 0.35);
+            border-radius: 50%;
+            pointer-events: none;
+            will-change: transform, opacity;
+            animation: sparkFloat 14s ease-in-out infinite;
+        }
+
+        /* 지구본 천천히 자전하는 애니메이션 */
+        @keyframes spinSlow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .animate-spin-slow {
+            animation: spinSlow 15s linear infinite;
+        }
+
+        /* 기품 넘치는 초정밀 자연주의 이미지 모달 */
+        #imageModal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            background: rgba(5, 12, 14, 0.96);
+            backdrop-filter: blur(16px);
+            opacity: 0;
+            transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: zoom-out;
+        }
+        #imageModal.show {
+            display: flex;
+            opacity: 1;
+        }
+        #modalImg {
+            max-width: 90%;
+            max-height: 82%;
             border-radius: 12px;
-            background-color: #f5f5f4;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
-            border: 1px solid rgba(229, 224, 216, 0.5);
-            cursor: zoom-in;
+            box-shadow: 0 40px 90px rgba(0, 0, 0, 0.9), 0 0 50px rgba(229, 193, 88, 0.15);
+            transform: scale(0.94) translateY(15px);
+            transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
         }
-
-        .img-card img {
-            transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+        #imageModal.show #modalImg {
+            transform: scale(1) translateY(0);
         }
-
-        .img-card:hover img {
-            transform: scale(1.06);
-        }
-
-        /* 라이트박스 캡션 및 모달 스무스 트랜지션 전용 */
-        #lightboxModal {
-            transition: opacity 0.3s ease, visibility 0.3s ease;
+        .no-scroll {
+            overflow: hidden;
+            height: 100vh;
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col antialiased">
+<body class="min-h-screen bg-[#050C0E] text-[#F8FAFC] antialiased selection:bg-[#E5C158]/30">
 
-    <!-- 상단 네비게이션 헤더 -->
-    <header class="sticky top-0 z-50 bg-[#FAF8F5]/80 backdrop-blur-md border-b border-stone-200/40">
-        <div class="max-w-[1300px] mx-auto px-6 sm:px-10 lg:px-16 h-16 md:h-20 flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <span class="text-stone-700 font-sans text-sm md:text-base font-medium tracking-wider">선교의 자취</span>
-                <span class="text-xs text-stone-400 font-sans tracking-widest uppercase hidden sm:inline-block">Traces of Mission</span>
-            </div>
-            
-            <!-- 세련된 홈 복귀 버튼 -->
-            <a href="index.html" class="flex items-center gap-2 bg-white text-stone-600 hover:text-stone-800 px-5 py-2.5 text-xs md:text-sm font-medium tracking-wide transition-all duration-300 ease-out rounded-full shadow-[0_4px_12px_rgba(0,0,0,0.02)] hover:shadow-[0_10px_20px_rgba(0,0,0,0.06)] hover:-translate-y-0.5 border border-stone-200/40 group">
-                <i class="fa-solid fa-arrow-left transition-transform duration-300 group-hover:-translate-x-1"></i>
-                홈화면으로
-            </a>
-        </div>
-        <div class="h-[1px] w-full bg-gradient-to-r from-stone-200 via-stone-300/50 to-stone-200"></div>
-    </header>
+    <!-- 모바일 환경 가로 스크롤 방지 래퍼 -->
+    <div class="relative w-full min-h-screen flex flex-col overflow-hidden">
 
-    <!-- 메인 컨텐츠 영역 -->
-    <main class="max-w-[1300px] w-full mx-auto px-6 sm:px-10 lg:px-16 py-12 md:py-20 flex-grow relative z-10">
+        <!-- 은은한 신성성을 부여하는 공간 오라 이펙트 -->
+        <div class="absolute top-[2%] left-[4%] w-[320px] h-[320px] sm:w-[650px] sm:h-[650px] bg-[#E5C158]/5 rounded-full blur-[90px] sm:blur-[160px] -z-10 pointer-events-none"></div>
+        <div class="absolute top-[45%] right-[-8%] w-[350px] h-[350px] sm:w-[750px] sm:h-[750px] bg-emerald-500/3 rounded-full blur-[100px] sm:blur-[180px] -z-10 pointer-events-none"></div>
+        <div class="absolute bottom-[3%] left-[-8%] w-[330px] h-[330px] sm:w-[700px] sm:h-[700px] bg-yellow-500/3 rounded-full blur-[90px] sm:blur-[150px] -z-10 pointer-events-none"></div>
         
-        <!-- 데코 일러스트 도형 -->
-        <div class="absolute top-[15%] right-[-5%] w-[300px] h-[300px] bg-stone-200/30 rounded-full blur-3xl -z-10 pointer-events-none"></div>
-        <div class="absolute bottom-[25%] left-[-5%] w-[400px] h-[400px] bg-stone-200/20 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+        <!-- 실시간 스파크 레이어 -->
+        <div id="sparkOverlay" class="absolute inset-0 overflow-hidden pointer-events-none z-0"></div>
 
-        <div class="space-y-24 md:space-y-36">
+        <!-- 상단 네비게이션 헤더 -->
+        <header class="sticky top-0 z-50 bg-[#050C0E]/85 backdrop-blur-md border-b border-white/5 transition-all duration-300">
+            <div class="max-w-[1300px] mx-auto px-6 sm:px-10 lg:px-16 h-16 md:h-20 flex items-center justify-between">
+                <!-- 왼쪽 상단 브랜딩 명패 (동그란 지구본 회전 이펙트) -->
+                <a href="https://koindori-en.github.io/profile/" class="flex items-center gap-3 group">
+                    <div class="w-8 h-8 md:w-9 md:h-9 bg-white/5 border border-white/10 rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+                        <i class="fa-solid fa-globe text-[#E5C158] text-sm md:text-base animate-spin-slow"></i>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-sm md:text-base font-bold tracking-tight text-white font-serif-kr">선교의 자취</span>
+                        <span class="text-[9px] text-[#E5C158] font-playfair uppercase tracking-[0.18em] leading-none">Traces of Mission</span>
+                    </div>
+                </a>
+    
+                <!-- 우측 홈 버튼 -->
+                <a href="https://koindori-en.github.io/profile/" class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/[0.02] text-white text-xs font-semibold tracking-widest uppercase transition-all duration-300 hover:bg-white hover:text-[#050C0E] hover:border-white">
+                    <i class="fa-solid fa-house text-[10px]"></i>
+                    HOME
+                </a>
+            </div>
+            <div class="h-[1px] w-full bg-gradient-to-r from-white/0 via-white/10 to-white/0"></div>
+        </header>
 
-            <!-- 1. 티벳 (첫 번째) -->
-            <section class="reveal">
-                <!-- 섹션 헤더 -->
-                <div class="flex flex-col md:flex-row md:items-baseline justify-between border-b border-stone-200/60 pb-4 mb-8">
-                    <div class="flex items-center gap-3">
-                        <span class="text-2xl font-playfair italic text-emerald-700/80">01</span>
-                        <h3 class="font-sans text-base md:text-lg font-semibold text-stone-600">티벳 <span class="text-xs md:text-sm font-light text-stone-400 font-sans">(Tibet)</span></h3>
-                    </div>
-                    <span class="text-xs text-stone-400 font-sans tracking-widest mt-1 md:mt-0 uppercase">Tibet Mission</span>
-                </div>
+        <!-- 메인 컨텐츠 영역 -->
+        <main class="max-w-[1200px] w-full mx-auto px-6 sm:px-10 lg:px-16 pt-16 pb-24 flex-grow relative z-10">
+            
+            <!-- 사색적인 프롤로그 대서사 (영문 성구 전용 초미학적 헤드라인) -->
+            <div class="text-center max-w-4xl mx-auto mb-36 reveal mt-6">
+                <p class="font-playfair italic text-lg md:text-2xl lg:text-3xl text-slate-100 leading-relaxed tracking-wide mb-6">
+                    "Go into all the world and preach the gospel to all creation."
+                </p>
+                <p class="font-playfair text-xs md:text-sm lg:text-base text-[#E5C158] tracking-[0.25em] uppercase font-semibold">
+                    (Mark 16:15)
+                </p>
+                <div class="w-16 h-[1px] bg-gradient-to-r from-transparent via-[#E5C158]/50 to-transparent mx-auto mt-10"></div>
+            </div>
 
-                <!-- 사진 3장 매거진 그리드 배치 -->
-                <div class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-6">
-                    <!-- 사진 1 -->
-                    <div class="img-card md:col-span-4 aspect-[3/4]">
-                        <img src="티벳 중간.jpeg" alt="티벳 사역 풍경 1 - 척박한 땅 위에서의 첫 걸음" class="w-full h-full object-cover" onerror="handleImageError(this, '티벳 풍경 1')">
+            <!-- 선교 자취 리스트 (지정 순서: 티벳, 필리핀, 아프리카, 우즈베키스탄, 몽골) -->
+            <div class="space-y-44">
+                
+                <!-- 1. 티벳 (Tibet) -->
+                <div class="reveal flex flex-col">
+                    <!-- 국가명 (세련된 고딕 스타일) -->
+                    <div class="flex items-center gap-2 mb-6 border-b border-white/5 pb-4">
+                        <span class="w-2 h-2 rounded-full bg-[#E5C158] animate-pulse"></span>
+                        <h2 class="text-xl md:text-2xl font-bold font-sans tracking-tight text-white uppercase">
+                            티벳 <span class="text-xs md:text-sm font-normal text-slate-400 font-sans pl-1">(Tibet)</span>
+                        </h2>
                     </div>
-                    <!-- 사진 2 -->
-                    <div class="img-card md:col-span-8 aspect-[4/3] md:aspect-auto">
-                        <img src="티벳2 중간.jpeg" alt="티벳 사역 풍경 2 - 주님을 경배하는 자매들" class="w-full h-full object-cover object-[35%_50%]" onerror="handleImageError(this, '티벳 풍경 2')">
+                    <!-- 세 장의 사진 질서정연 배치 -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                        <div class="premium-frame" onclick="openModal(this)">
+                            <div class="relative aspect-[4/3] w-full rounded-xl overflow-hidden bg-slate-950">
+                                <img src="tibet.jpeg" alt="티벳 전경" class="absolute inset-0 w-full h-full object-cover" onerror="handleImgError(this)">
+                            </div>
+                        </div>
+                        <div class="premium-frame" onclick="openModal(this)">
+                            <div class="relative aspect-[4/3] w-full rounded-xl overflow-hidden bg-slate-950">
+                                <img src="tibet2.jpeg" alt="티벳의 기도" class="absolute inset-0 w-full h-full object-cover" onerror="handleImgError(this, 'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1200&q=80')">
+                            </div>
+                        </div>
+                        <div class="premium-frame" onclick="openModal(this)">
+                            <div class="relative aspect-[4/3] w-full rounded-xl overflow-hidden bg-slate-950">
+                                <img src="tibet3.jpeg" alt="티벳의 미소" class="absolute inset-0 w-full h-full object-cover" onerror="handleImgError(this, 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80')">
+                            </div>
+                        </div>
                     </div>
-                    <!-- 사진 3 -->
-                    <div class="img-card md:col-span-12 aspect-[21/9]">
-                        <img src="티벳3 중간.jpeg" alt="티벳 사역 풍경 3 - 하늘과 가장 맞닿은 공동체" class="w-full h-full object-cover" onerror="handleImageError(this, '티벳 풍경 3')">
-                    </div>
-                </div>
-
-                <!-- 사역 코멘터리 -->
-                <div class="max-w-3xl">
-                    <p class="font-serif-kr text-base md:text-lg text-stone-600 leading-relaxed mb-4">
-                        "하늘과 맞닿은 척박한 고원, 그 영적인 어둠 한가운데서 주님의 등불을 켭니다."
-                    </p>
-                    <p class="text-stone-500 font-light text-xs md:text-sm leading-relaxed">
-                        산소가 부족하고 매서운 칼바람이 부는 혹독한 환경이었지만, 그곳에서 만난 영혼들의 눈망울 속에서 창조주의 한량없는 사랑과 갈급함을 발견했습니다. 얼어붙은 영토 위에서 부른 기도의 찬송은 하늘 문을 열기에 충분했습니다.
-                    </p>
-                </div>
-            </section>
-
-            <!-- 2. 필리핀 (두 번째) -->
-            <section class="reveal">
-                <!-- 섹션 헤더 -->
-                <div class="flex flex-col md:flex-row md:items-baseline justify-between border-b border-stone-200/60 pb-4 mb-8">
-                    <div class="flex items-center gap-3">
-                        <span class="text-2xl font-playfair italic text-emerald-700/80">02</span>
-                        <h3 class="font-sans text-base md:text-lg font-semibold text-stone-600">필리핀 <span class="text-xs md:text-sm font-light text-stone-400 font-sans">(Philippines)</span></h3>
-                    </div>
-                    <span class="text-xs text-stone-400 font-sans tracking-widest mt-1 md:mt-0 uppercase">Philippines Mission</span>
-                </div>
-
-                <!-- 사진 3장 에디토리얼 그리드 배치 -->
-                <div class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-6">
-                    <!-- 사진 1 (넓은 파노라마) -->
-                    <div class="img-card md:col-span-12 aspect-[21/9]">
-                        <img src="필리핀 중간.jpeg" alt="필리핀 사역 풍경 1 - 마을 복음 축제 현장" class="w-full h-full object-cover" onerror="handleImageError(this, '필리핀 풍경 1')">
-                    </div>
-                    <!-- 사진 2 -->
-                    <div class="img-card md:col-span-6 aspect-[4/3]">
-                        <img src="필리핀2 중간.jpeg" alt="필리핀 사역 풍경 2 - 해맑은 아이들과 함께" class="w-full h-full object-cover" onerror="handleImageError(this, '필리핀 풍경 2')">
-                    </div>
-                    <!-- 사진 3 -->
-                    <div class="img-card md:col-span-6 aspect-[4/3]">
-                        <img src="필리핀3 중간.jpeg" alt="필리핀 사역 풍경 3 - 초가 움막 속 은혜의 예배" class="w-full h-full object-cover" onerror="handleImageError(this, '필리핀 풍경 3')">
-                    </div>
-                </div>
-
-                <!-- 사역 코멘터리 -->
-                <div class="max-w-3xl">
-                    <p class="font-serif-kr text-base md:text-lg text-stone-600 leading-relaxed mb-4">
-                        "더위 속에서도 피어나는 해맑은 동심, 복음은 가장 낮은 마음에 흐릅니다."
-                    </p>
-                    <p class="text-stone-500 font-light text-xs md:text-sm leading-relaxed">
-                        화려한 문명과 편의는 없었지만 아이들의 맑은 웃음소리가 가득했던 골목길, 지치고 가난한 영혼들을 주님의 손길로 위로하며 빵과 생명의 말씀을 함께 떼어 주었습니다. 교회가 지역 공동체의 소망이 되고 울타리가 되는 보람을 경험한 시간이었습니다.
-                    </p>
-                </div>
-            </section>
-
-            <!-- 3. 아프리카 (세 번째) -->
-            <section class="reveal">
-                <!-- 섹션 헤더 -->
-                <div class="flex flex-col md:flex-row md:items-baseline justify-between border-b border-stone-200/60 pb-4 mb-8">
-                    <div class="flex items-center gap-3">
-                        <span class="text-2xl font-playfair italic text-emerald-700/80">03</span>
-                        <h3 class="font-sans text-base md:text-lg font-semibold text-stone-600">아프리카 <span class="text-xs md:text-sm font-light text-stone-400 font-sans">(Africa)</span></h3>
-                    </div>
-                    <span class="text-xs text-stone-400 font-sans tracking-widest mt-1 md:mt-0 uppercase">Africa Mission</span>
-                </div>
-
-                <!-- 사진 3장 그리드 배치 (50:50 밸런스 정렬 완료) -->
-                <div class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-6">
-                    <!-- 사진 1 -->
-                    <div class="img-card md:col-span-6 aspect-[4/3]">
-                        <img src="아프리카 중간.jpeg" alt="아프리카 사역 풍경 1 - 천진난만한 아이들과 함께 부른 찬가" class="w-full h-full object-cover" onerror="handleImageError(this, '아프리카 풍경 1')">
-                    </div>
-                    <!-- 사진 2 -->
-                    <div class="img-card md:col-span-6 aspect-[4/3]">
-                        <img src="아프리카2 중간.jpeg" alt="아프리카 사역 풍경 2 - 거리 복음 전도단 사역" class="w-full h-full object-cover" onerror="handleImageError(this, '아프리카 풍경 2')">
-                    </div>
-                    <!-- 사진 3 -->
-                    <div class="img-card md:col-span-12 aspect-[21/9]">
-                        <img src="아프리카3 중간.jpeg" alt="아프리카 사역 풍경 3 - 흙바닥 위 모인 영광스러운 성전" class="w-full h-full object-cover" onerror="handleImageError(this, '아프리카 풍경 3')">
+                    <!-- 아래에 설명 위치 -->
+                    <div class="space-y-4 max-w-4xl">
+                        <p class="text-slate-200 text-sm md:text-base leading-relaxed tracking-wide font-light">
+                            산소가 희박한 고도 4,000m의 대지 위에 수놓아진 맑고 투명한 영혼들의 눈빛을 마주합니다.
+                        </p>
+                        <p class="text-slate-400 text-xs md:text-sm leading-relaxed tracking-wide font-light">
+                            척박한 바람이 부는 장엄한 협곡 속에서, 굳게 잠겨 있던 칭하이-티벳 고원의 영적 빗장이 풀리기를 눈물로 축복했습니다. 길 위에서 스쳐 지나는 영혼 하나하나의 마음에 영원히 마르지 않는 생명의 복음 씨앗이 심어지길 원했던 잊을 수 없는 하늘 아래 첫 영토의 순간입니다.
+                        </p>
                     </div>
                 </div>
 
-                <!-- 사역 코멘터리 -->
-                <div class="max-w-3xl">
-                    <p class="font-serif-kr text-base md:text-lg text-stone-600 leading-relaxed mb-4">
-                        "작은 공간에 울려 퍼진 영혼의 찬송, 황무지에 꽃을 피우는 소망의 터전입니다."
-                    </p>
-                    <p class="text-stone-500 font-light text-xs md:text-sm leading-relaxed">
-                        아무런 악기도 시설도 없는 비바람 가림막 아래 모여 오직 목소리 하나로 창조주를 경배하던 아프리카의 형제자매들. 그 가슴 벅찬 찬송은 문명의 풍요 속에 살던 우리의 부끄러운 영성을 일깨웠습니다. 소박하지만 가장 진실한 예배의 현장이었습니다.
-                    </p>
-                </div>
-            </section>
-
-            <!-- 4. 우즈베키스탄 (네 번째) -->
-            <section class="reveal">
-                <!-- 섹션 헤더 -->
-                <div class="flex flex-col md:flex-row md:items-baseline justify-between border-b border-stone-200/60 pb-4 mb-8">
-                    <div class="flex items-center gap-3">
-                        <span class="text-2xl font-playfair italic text-emerald-700/80">04</span>
-                        <h3 class="font-sans text-base md:text-lg font-semibold text-stone-600">우즈베키스탄 <span class="text-xs md:text-sm font-light text-stone-400 font-sans">(Uzbekistan)</span></h3>
+                <!-- 2. 필리핀 (Philippines) -->
+                <div class="reveal flex flex-col">
+                    <!-- 국가명 (세련된 고딕 스타일) -->
+                    <div class="flex items-center gap-2 mb-6 border-b border-white/5 pb-4">
+                        <span class="w-2 h-2 rounded-full bg-[#E5C158] animate-pulse"></span>
+                        <h2 class="text-xl md:text-2xl font-bold font-sans tracking-tight text-white uppercase">
+                            필리핀 <span class="text-xs md:text-sm font-normal text-slate-400 font-sans pl-1">(Philippines)</span>
+                        </h2>
                     </div>
-                    <span class="text-xs text-stone-400 font-sans tracking-widest mt-1 md:mt-0 uppercase">Uzbekistan Mission</span>
-                </div>
-
-                <!-- 사진 3장 에디토리얼 그리드 배치 -->
-                <div class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-6">
-                    <!-- 사진 1 (요청에 따라 구도 정렬) -->
-                    <div class="img-card md:col-span-8 aspect-[4/3] md:aspect-auto">
-                        <img src="우즈베키스탄 중간.jpeg" alt="우즈베키스탄 사역 풍경 1 - 설산 배경의 생명수 프로젝트" class="w-full h-full object-cover object-[35%_50%]" onerror="handleImageError(this, '우즈베키스탄 풍경 1')">
+                    <!-- 세 장의 사진 질서정연 배치 -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                        <div class="premium-frame" onclick="openModal(this)">
+                            <div class="relative aspect-[4/3] w-full rounded-xl overflow-hidden bg-slate-950">
+                                <img src="Philippines.jpeg" alt="필리핀 선교 활동 1" class="absolute inset-0 w-full h-full object-cover" onerror="handleImgError(this)">
+                            </div>
+                        </div>
+                        <div class="premium-frame" onclick="openModal(this)">
+                            <div class="relative aspect-[4/3] w-full rounded-xl overflow-hidden bg-slate-950">
+                                <img src="Philippines2.jpeg" alt="필리핀 선교 활동 2" class="absolute inset-0 w-full h-full object-cover" onerror="handleImgError(this)">
+                            </div>
+                        </div>
+                        <div class="premium-frame" onclick="openModal(this)">
+                            <div class="relative aspect-[4/3] w-full rounded-xl overflow-hidden bg-slate-950">
+                                <img src="Philippines3.jpeg" alt="필리핀 선교 활동 3" class="absolute inset-0 w-full h-full object-cover" onerror="handleImgError(this)">
+                            </div>
+                        </div>
                     </div>
-                    <!-- 사진 2 (요청에 따라 사람 중심의 중앙으로 다시 정렬 적용) -->
-                    <div class="img-card md:col-span-4 aspect-[3/4]">
-                        <img src="우즈베키스탄2 중간.jpeg" alt="우즈베키스탄 사역 풍경 2 - 평화로운 이슬람 유적지 탐방" class="w-full h-full object-cover object-[50%_50%]" onerror="handleImageError(this, '우즈베키스탄 풍경 2')">
-                    </div>
-                    <!-- 사진 3 -->
-                    <div class="img-card md:col-span-12 aspect-[21/9]">
-                        <img src="우즈베키스탄3 중간.jpeg" alt="우즈베키스탄 사역 풍경 3 - 시골 마을 주민들과 나눈 온정" class="w-full h-full object-cover" onerror="handleImageError(this, '우즈베키스탄 풍경 3')">
-                    </div>
-                </div>
-
-                <!-- 사역 코멘터리 -->
-                <div class="max-w-3xl">
-                    <p class="font-serif-kr text-base md:text-lg text-stone-600 leading-relaxed mb-4">
-                        "실크로드의 교차로, 메마른 중앙아시아의 대지 위로 생명수의 흐름을 틔웁니다."
-                    </p>
-                    <p class="text-stone-500 font-light text-xs md:text-sm leading-relaxed">
-                        문화와 종교의 장벽이 공고히 가로막고 있는 개척지였지만, 삶을 나누고 마음을 트는 소박한 나눔 속에서 하나님의 일하심은 멈추지 않았습니다. 사랑방 모임을 통해 싹튼 믿음의 묘목들이 언젠가는 거대한 푸른 숲을 이루어 가기를 간절히 기도합니다.
-                    </p>
-                </div>
-            </section>
-
-            <!-- 5. 몽골 (다섯 번째) -->
-            <section class="reveal">
-                <!-- 섹션 헤더 -->
-                <div class="flex flex-col md:flex-row md:items-baseline justify-between border-b border-stone-200/60 pb-4 mb-8">
-                    <div class="flex items-center gap-3">
-                        <span class="text-2xl font-playfair italic text-emerald-700/80">05</span>
-                        <h3 class="font-sans text-base md:text-lg font-semibold text-stone-600">몽골 <span class="text-xs md:text-sm font-light text-stone-400 font-sans">(Mongolia)</span></h3>
-                    </div>
-                    <span class="text-xs text-stone-400 font-sans tracking-widest mt-1 md:mt-0 uppercase">Mongolia Mission</span>
-                </div>
-
-                <!-- 사진 3장 에디토리얼 그리드 배치 -->
-                <div class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-6">
-                    <!-- 사진 1 -->
-                    <div class="img-card md:col-span-6 aspect-[4/3]">
-                        <img src="몽골 크게.jpeg" alt="몽골 사역 풍경 1 - 온 교회가 함께 주님의 십자가 밑에서" class="w-full h-full object-cover" onerror="handleImageError(this, '몽골 풍경 1')">
-                    </div>
-                    <!-- 사진 2 -->
-                    <div class="img-card md:col-span-6 aspect-[4/3]">
-                        <img src="몽골2 크게.jpeg" alt="몽골 사역 풍경 2 - 광활한 초원 속 생명을 구하러 나선 행렬" class="w-full h-full object-cover" onerror="handleImageError(this, '몽골 풍경 2')">
-                    </div>
-                    <!-- 사진 3 -->
-                    <div class="img-card md:col-span-12 aspect-[21/9]">
-                        <img src="몽골3 크게.jpeg" alt="몽골 사역 풍경 3 - 몽골 전통 게르 속에 핀 은혜와 풍선 아트 축제" class="w-full h-full object-cover" onerror="handleImageError(this, '몽골 풍경 3')">
+                    <!-- 아래에 설명 위치 -->
+                    <div class="space-y-4 max-w-4xl">
+                        <p class="text-slate-200 text-sm md:text-base leading-relaxed tracking-wide font-light">
+                            야자수 잎이 흩날리는 평화로운 주거지 사이로 어린 천사들의 해맑은 웃음소리가 울려 퍼집니다.
+                        </p>
+                        <p class="text-slate-400 text-xs md:text-sm leading-relaxed tracking-wide font-light">
+                            소박한 나무 울타리와 판자 처마 밑에서도 이웃들과의 진솔한 삶의 나눔을 이어갔습니다. 영적인 목마름을 안고 모인 성도들과 뜨겁게 부대끼며 하나님의 나라가 이미 가난하고 억눌린 자들 가운데 깊숙이 선포되고 있음을 생생히 체감한 축복 가득한 사역입니다.
+                        </p>
                     </div>
                 </div>
 
-                <!-- 사역 코멘터리 -->
-                <div class="max-w-3xl">
-                    <p class="font-serif-kr text-base md:text-lg text-stone-600 leading-relaxed mb-4">
-                        "끝없이 펼쳐진 초원 위에 심겨진 하늘나라의 씨앗, 소망으로 가득한 미래를 함께 세워갑니다."
-                    </p>
-                    <p class="text-stone-500 font-light text-xs md:text-sm leading-relaxed">
-                        바람과 구름의 나라 몽골의 광활한 대지 속에서 잊지 못할 영혼들을 마주했습니다. 전통 천막 가옥 게르(Ger)에 옹기종기 모여 풍선을 불며 가르친 말씀과 나눈 대화는 주님의 따뜻한 사랑 안에서 국경과 언어를 초월한 깊은 형제애를 느끼게 해 주었습니다. 맑은 아이들의 눈망울과 드넓은 벌판을 달리던 말들처럼, 그들의 고귀한 믿음 또한 거침없이 무럭무럭 자라나길 소원합니다.
-                    </p>
+                <!-- 3. 아프리카 (Africa) -->
+                <div class="reveal flex flex-col">
+                    <!-- 국가명 (세련된 고딕 스타일) -->
+                    <div class="flex items-center gap-2 mb-6 border-b border-white/5 pb-4">
+                        <span class="w-2 h-2 rounded-full bg-[#E5C158] animate-pulse"></span>
+                        <h2 class="text-xl md:text-2xl font-bold font-sans tracking-tight text-white uppercase">
+                            아프리카 <span class="text-xs md:text-sm font-normal text-slate-400 font-sans pl-1">(Africa)</span>
+                        </h2>
+                    </div>
+                    <!-- 세 장의 사진 질서정연 배치 -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                        <div class="premium-frame" onclick="openModal(this)">
+                            <div class="relative aspect-[4/3] w-full rounded-xl overflow-hidden bg-slate-950">
+                                <img src="africa.jpeg" alt="아프리카 미소" class="absolute inset-0 w-full h-full object-cover" onerror="handleImgError(this)">
+                            </div>
+                        </div>
+                        <div class="premium-frame" onclick="openModal(this)">
+                            <div class="relative aspect-[4/3] w-full rounded-xl overflow-hidden bg-slate-950">
+                                <img src="africa2.jpeg" alt="아프리카 찬양" class="absolute inset-0 w-full h-full object-cover" onerror="handleImgError(this)">
+                            </div>
+                        </div>
+                        <div class="premium-frame" onclick="openModal(this)">
+                            <div class="relative aspect-[4/3] w-full rounded-xl overflow-hidden bg-slate-950">
+                                <img src="africa3.jpeg" alt="아프리카 예배" class="absolute inset-0 w-full h-full object-cover" onerror="handleImgError(this)">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 아래에 설명 위치 -->
+                    <div class="space-y-4 max-w-4xl">
+                        <p class="text-slate-200 text-sm md:text-base leading-relaxed tracking-wide font-light">
+                            생명력을 상실한 사막과 소음의 한복판에 흘러가는 복음의 신성하고 힘찬 박동입니다.
+                        </p>
+                        <p class="text-slate-400 text-xs md:text-sm leading-relaxed tracking-wide font-light">
+                            기타를 메고 현지 찬양 인도자들과 함석 판자벽 예배당에 둥글게 둘러섰던 기적의 찬양 집회, 그네에 함께 매달린 순박한 아이들과의 사랑 가득한 셀피, 그리고 'SPRING WATER OF BLESSING' 성전 아래 모인 주님의 용사들까지. 아프리카 대륙의 상처를 보듬고 완전한 치유와 성령의 임재를 강력하게 부르짖은 자취입니다.
+                        </p>
+                    </div>
                 </div>
-            </section>
 
-        </div>
-    </main>
+                <!-- 4. 우즈베키스탄 (Uzbekistan) -->
+                <div class="reveal flex flex-col">
+                    <!-- 국가명 (세련된 고딕 스타일) -->
+                    <div class="flex items-center gap-2 mb-6 border-b border-white/5 pb-4">
+                        <span class="w-2 h-2 rounded-full bg-[#E5C158] animate-pulse"></span>
+                        <h2 class="text-xl md:text-2xl font-bold font-sans tracking-tight text-white uppercase">
+                            우즈베키스탄 <span class="text-xs md:text-sm font-normal text-slate-400 font-sans pl-1">(Uzbekistan)</span>
+                        </h2>
+                    </div>
+                    <!-- 세 장의 사진 질서정연 배치 -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                        <div class="premium-frame" onclick="openModal(this)">
+                            <div class="relative aspect-[4/3] w-full rounded-xl overflow-hidden bg-slate-950">
+                                <img src="uzbekistan.jpeg" alt="우즈베키스탄 선교" class="absolute inset-0 w-full h-full object-cover" onerror="handleImgError(this)">
+                            </div>
+                        </div>
+                        <div class="premium-frame" onclick="openModal(this)">
+                            <div class="relative aspect-[4/3] w-full rounded-xl overflow-hidden bg-slate-950">
+                                <img src="uzbekistan2.jpeg" alt="우즈베키스탄 역사" class="absolute inset-0 w-full h-full object-cover" onerror="handleImgError(this, 'https://images.unsplash.com/photo-1528154291023-a6525fabe5b4?auto=format&fit=crop&w=1200&q=80')">
+                            </div>
+                        </div>
+                        <div class="premium-frame" onclick="openModal(this)">
+                            <div class="relative aspect-[4/3] w-full rounded-xl overflow-hidden bg-slate-950">
+                                <img src="uzbekistan3.jpeg" alt="우즈베키스탄 사람" class="absolute inset-0 w-full h-full object-cover" onerror="handleImgError(this, 'https://images.unsplash.com/photo-1508919801845-fc2ae1bc2a28?auto=format&fit=crop&w=1200&q=80')">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 아래에 설명 위치 -->
+                    <div class="space-y-4 max-w-4xl">
+                        <p class="text-slate-200 text-sm md:text-base leading-relaxed tracking-wide font-light">
+                            황막한 실크로드의 오랜 장막을 헤집고 번져가는 순교적 생명의 샘물입니다.
+                        </p>
+                        <p class="text-slate-400 text-xs md:text-sm leading-relaxed tracking-wide font-light">
+                            이슬람 사원들의 청색 기와와 차가운 장막 뒤로, 참된 하나님을 향한 진리의 해갈이 일어나고 있습니다. 조용히 영들의 거점을 축복하며, 메마른 모래폭풍 속에서도 결코 꺾이지 않고 가슴속에 깊은 사랑의 지표를 세운 중앙아시아 회복의 주춧돌을 조심스레 새겨 넣습니다.
+                        </p>
+                    </div>
+                </div>
 
-    <!-- 하단 푸터 -->
-    <footer class="w-full py-8 text-center bg-stone-100/50 border-t border-stone-200/40">
-        <p class="text-xs text-stone-400 tracking-wider">
-            &copy; 2026 고인국목사. All rights reserved.
-        </p>
-    </footer>
+                <!-- 5. 몽골 (Mongolia) -->
+                <div class="reveal flex flex-col">
+                    <!-- 국가명 (세련된 고딕 스타일) -->
+                    <div class="flex items-center gap-2 mb-6 border-b border-white/5 pb-4">
+                        <span class="w-2 h-2 rounded-full bg-[#E5C158] animate-pulse"></span>
+                        <h2 class="text-xl md:text-2xl font-bold font-sans tracking-tight text-white uppercase">
+                            몽골 <span class="text-xs md:text-sm font-normal text-slate-400 font-sans pl-1">(Mongolia)</span>
+                        </h2>
+                    </div>
+                    <!-- 세 장의 사진 질서정연 배치 -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                        <div class="premium-frame" onclick="openModal(this)">
+                            <div class="relative aspect-[4/3] w-full rounded-xl overflow-hidden bg-slate-950">
+                                <img src="mongolia.jpeg" alt="몽골 예배당" class="absolute inset-0 w-full h-full object-cover" onerror="handleImgError(this)">
+                            </div>
+                        </div>
+                        <div class="premium-frame" onclick="openModal(this)">
+                            <div class="relative aspect-[4/3] w-full rounded-xl overflow-hidden bg-slate-950">
+                                <img src="mongolia2.jpeg" alt="몽골 초원" class="absolute inset-0 w-full h-full object-cover" onerror="handleImgError(this)">
+                            </div>
+                        </div>
+                        <div class="premium-frame" onclick="openModal(this)">
+                            <div class="relative aspect-[4/3] w-full rounded-xl overflow-hidden bg-slate-950">
+                                <img src="mongolia3.jpeg" alt="몽골 단체사진" class="absolute inset-0 w-full h-full object-cover" onerror="handleImgError(this)">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 아래에 설명 위치 -->
+                    <div class="space-y-4 max-w-4xl">
+                        <p class="text-slate-200 text-sm md:text-base leading-relaxed tracking-wide font-light">
+                            푸른 대평원 끝자락, 게르(Ger) 가득히 울려 퍼지는 천국 찬송의 뜨거운 하모니를 마음에 품습니다.
+                        </p>
+                        <p class="text-slate-400 text-xs md:text-sm leading-relaxed tracking-wide font-light">
+                            지평선을 가르며 말을 타고 오지 유목민들을 직접 찾아 나선 믿음의 대장정. 게르 둥근 천장을 뚫고 우주 끝까지 닿아 흐르는 아이들의 찬양 율동과 형형색색 풍선을 불어주던 미소 어린 친교는 우리 모두가 천국 시민이자 가족임을 다시 한번 진심으로 일깨워 주었습니다.
+                        </p>
+                    </div>
+                </div>
 
-    <!-- [요청사항 반영] 클릭 시 확대되는 세련된 무한 라이트박스 뷰어 모달 마크업 -->
-    <div id="lightboxModal" class="fixed inset-0 z-[100] bg-stone-950/90 backdrop-blur-md hidden opacity-0 flex items-center justify-center p-4 cursor-zoom-out select-none">
-        <!-- 닫기 버튼 -->
-        <button id="closeModalBtn" class="absolute top-6 right-6 text-white/80 hover:text-white text-3xl transition-colors cursor-pointer z-50 p-2" aria-label="닫기">
-            <i class="fa-solid fa-xmark"></i>
-        </button>
-        <div class="relative max-w-5xl max-h-[85vh] flex flex-col items-center justify-center pointer-events-none">
-            <!-- 확대 이미지 -->
-            <img id="modalImg" src="" alt="확대 이미지" class="max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl pointer-events-auto cursor-default border border-stone-800/50">
-            <!-- 설명 캡션 -->
-            <p id="modalCaption" class="text-stone-300 text-xs md:text-sm mt-4 font-sans tracking-wide text-center pointer-events-auto bg-stone-900/60 px-5 py-2.5 rounded-full border border-stone-800/30"></p>
-        </div>
+            </div>
+
+            <!-- 하단 복귀 프로필 링크 카드 -->
+            <div class="mt-40 text-center reveal">
+                <a href="https://koindori-en.github.io/profile/" class="inline-block p-10 md:p-14 bg-gradient-to-b from-white/[0.03] to-white/[0.003] backdrop-blur-2xl rounded-3xl border border-white/[0.06] shadow-[0_40px_100px_rgba(0,0,0,0.8)] hover:bg-white/[0.05] hover:border-white/15 hover:shadow-[0_40px_100px_rgba(229,193,88,0.12)] hover:-translate-y-1.5 transition-all duration-500 max-w-xl w-full group cursor-pointer">
+                    <!-- 세련된 대형 홈 아이콘 장식 -->
+                    <div class="w-14 h-14 rounded-full border border-[#E5C158]/30 flex items-center justify-center mx-auto mb-6 transition-all duration-300 group-hover:scale-110 bg-white/[0.01] group-hover:bg-[#E5C158] group-hover:border-[#E5C158] group-hover:shadow-[0_0_15px_rgba(229,193,88,0.3)]">
+                        <i class="fa-solid fa-house-chimney text-[#E5C158] group-hover:text-[#050C0E] text-xl transition-colors duration-300"></i>
+                    </div>
+                    
+                    <h3 class="text-base md:text-lg font-light text-slate-200 tracking-wide mb-8 leading-relaxed font-serif-kr">
+                        땅 끝까지 이르러 주님의 사랑을 기록하는<br class="hidden sm:inline"> 복되고 숭고한 여정은 계속됩니다
+                    </h3>
+                    
+                    <!-- 캡슐 복귀 버튼 (고품격 영어 멘트 및 미니 홈 아이콘 매칭) -->
+                    <div class="inline-flex items-center px-8 py-3.5 bg-white text-[#050C0E] group-hover:bg-[#E5C158] transition-all duration-400 rounded-full text-xs md:text-sm font-semibold tracking-wider group-hover:shadow-[0_0_25px_rgba(229,193,88,0.25)] shadow-md">
+                        <i class="fa-solid fa-house mr-2 text-xs"></i> RETURN TO PROFILE HOME
+                    </div>
+                </a>
+            </div>
+
+        </main>
+
+        <!-- 하단 저작권 푸터 -->
+        <footer class="w-full py-10 text-center bg-black/35 border-t border-white/5 relative z-10">
+            <p class="text-[10px] text-white/30 tracking-widest uppercase font-playfair">
+                &copy; 2026 IK Mission Archive. All Footprints in His Grace.
+            </p>
+        </footer>
+
     </div>
 
-    <!-- 스크롤 리빌 애니메이션 & 라이트박스 뷰어 구동 스크립트 -->
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            // 1. 스크롤 리빌 감지엔진
-            const revealElements = document.querySelectorAll(".reveal");
+    <!-- 고성능 자연주의 이미지 팝업 모달 -->
+    <div id="imageModal" onclick="closeModal()">
+        <img id="modalImg" src="" alt="선교 사진 확대 보기" onclick="event.stopPropagation()">
+    </div>
 
+    <!-- 스크립트 엔진 -->
+    <script>
+        // 이미지 로딩 실패 시 파일 확장자(.jpeg <-> .jpg) 및 Unsplash 대체 이미지 자동 보정 처리 함수
+        function handleImgError(img, ultimateFallbackUrl) {
+            if (img.dataset.triedFallback === "ultimate") return;
+            
+            if (!img.dataset.triedFallback) {
+                img.dataset.triedFallback = "jpegToJpg";
+                const currentSrc = img.getAttribute('src');
+                if (currentSrc.endsWith('.jpeg')) {
+                    img.setAttribute('src', currentSrc.replace(/\.jpeg$/, '.jpg'));
+                } else if (currentSrc.endsWith('.jpg')) {
+                    img.setAttribute('src', currentSrc.replace(/\.jpg$/, '.jpeg'));
+                }
+            } else if (img.dataset.triedFallback === "jpegToJpg") {
+                img.dataset.triedFallback = "ultimate";
+                if (ultimateFallbackUrl) {
+                    img.setAttribute('src', ultimateFallbackUrl);
+                } else {
+                    // 기본 백업 이미지
+                    img.setAttribute('src', 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80');
+                }
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            // 1. 스크롤 인터랙션 엔진
+            const revealElements = document.querySelectorAll(".reveal");
             const revealOnScrollObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -344,59 +467,75 @@
                 });
             }, {
                 threshold: 0.1,
-                rootMargin: "0px 0px -50px 0px"
+                rootMargin: "0px 0px -60px 0px"
             });
-
+ 
             revealElements.forEach(el => {
                 revealOnScrollObserver.observe(el);
             });
 
-            // 2. [요청사항 반영] 라이트박스 뷰어 엔진
-            const modal = document.getElementById("lightboxModal");
-            const modalImg = document.getElementById("modalImg");
-            const modalCaption = document.getElementById("modalCaption");
-            const closeBtn = document.getElementById("closeModalBtn");
-
-            // 모든 이미지에 대해 클릭 이벤트 바인딩
-            document.querySelectorAll(".img-card img").forEach(img => {
-                img.addEventListener("click", (e) => {
-                    e.stopPropagation();
-                    modalImg.src = img.src;
-                    modalCaption.textContent = img.alt || "선교의 자취";
-                    
-                    // 모달 나타내기 애니메이션
-                    modal.classList.remove("hidden");
-                    // 브라우저 렌더 레이아웃 동기화 트리거
-                    modal.offsetHeight; 
-                    modal.classList.add("opacity-100");
-                });
-            });
-
-            // 모달 닫기 공통 함수
-            const closeModal = () => {
-                modal.classList.remove("opacity-100");
+            // 2. 고밀도 황금빛 유기체 파티클 이펙트
+            const sparkOverlay = document.getElementById("sparkOverlay");
+            
+            function spawnSpark() {
+                if (!sparkOverlay) return;
+                const limit = window.innerWidth < 768 ? 10 : 22;
+                if (sparkOverlay.children.length > limit) return;
+                
+                const spark = document.createElement("div");
+                spark.className = "spark-particle";
+                
+                const size = 1.8 + Math.random() * 3.5;
+                spark.style.width = `${size}px`;
+                spark.style.height = `${size}px`;
+                spark.style.left = `${Math.random() * 96}%`;
+                spark.style.top = `${Math.random() * 95}%`;
+                
+                const duration = 12 + Math.random() * 10;
+                spark.style.animationDuration = `${duration}s`;
+                
+                sparkOverlay.appendChild(spark);
+                
                 setTimeout(() => {
-                    modal.classList.add("hidden");
-                    modalImg.src = "";
-                    modalCaption.textContent = "";
-                }, 300);
-            };
+                    spark.remove();
+                }, duration * 1000);
+            }
 
-            // 바깥 빈 공간 누르면 소멸
-            modal.addEventListener("click", closeModal);
-            // 닫기 버튼 누르면 소멸
-            closeBtn.addEventListener("click", (e) => {
-                e.stopPropagation();
-                closeModal();
-            });
-
-            // ESC 키 누르면 소멸
-            document.addEventListener("keydown", (e) => {
-                if (e.key === "Escape" && !modal.classList.contains("hidden")) {
-                    closeModal();
-                }
-            });
+            for(let i = 0; i < 7; i++){
+                spawnSpark();
+            }
+            setInterval(spawnSpark, 2500);
         });
+
+        // 3. 기품 있는 모달 확대 및 은은한 아웃트로 효과 구현
+        function openModal(element) {
+            const imgElement = element.querySelector('img');
+            const currentSrc = imgElement.src;
+            
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImg');
+            
+            modalImg.src = currentSrc;
+            
+            modal.style.display = 'flex';
+            void modal.offsetHeight; // Reflow 유도로 자연스러운 하드웨어 가속 확보
+            modal.classList.add('show');
+            document.body.classList.add('no-scroll');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.remove('show');
+            document.body.classList.remove('no-scroll');
+            
+            // 450ms 페이드아웃 아웃트로 애니메이션 완료 후 완벽히 엘리먼트 제거
+            setTimeout(() => {
+                if(!modal.classList.contains('show')) {
+                    modal.style.display = 'none';
+                    document.getElementById('modalImg').src = "";
+                }
+            }, 450);
+        }
     </script>
 </body>
 </html>
