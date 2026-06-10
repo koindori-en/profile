@@ -24,9 +24,9 @@
             font-family: 'Noto Sans KR', sans-serif; 
             overflow-x: hidden;
             width: 100%;
-            /* 1. 규칙적이고 세련된 도트 그리드 은은하게 영사 */
-            background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1.2px, transparent 1.2px);
-            background-size: 30px 30px;
+            /* 1. 은은하지만 확실한 질서를 전달하는 하이엔드 스타 도트 패턴 */
+            background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1.5px, transparent 1.5px);
+            background-size: 28px 28px;
         }
  
         .font-serif-kr {
@@ -169,6 +169,59 @@
             -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.6);
         }
+
+        /* 3. 영롱한 이슬 물방울 맺힘 효과 정의 */
+        .water-drop {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            border-radius: 51% 49% 48% 52% / 62% 44% 56% 38%;
+            box-shadow: inset -3px -3px 6px rgba(0,0,0,0.45),
+                        inset 2px 2px 5px rgba(255,255,255,0.45),
+                        1px 3px 6px rgba(0,0,0,0.35);
+            pointer-events: none;
+            z-index: 30;
+            display: inline-block;
+        }
+        .water-drop::after {
+            content: '';
+            position: absolute;
+            top: 15%;
+            left: 20%;
+            width: 25%;
+            height: 25%;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 50%;
+        }
+
+        /* 4. 하단 버튼 글자색 변함없이 외곽에만 은은한 색번짐(Ambient Glow) 발생 */
+        .btn-glow-emerald {
+            transition: transform 0.3s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+        }
+        .btn-glow-emerald:hover {
+            border-color: rgba(16, 185, 129, 0.6);
+            box-shadow: 0 0 25px rgba(16, 185, 129, 0.45);
+            transform: translateY(-2px);
+        }
+
+        .btn-glow-rose {
+            transition: transform 0.3s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+        }
+        .btn-glow-rose:hover {
+            border-color: rgba(244, 63, 94, 0.6);
+            box-shadow: 0 0 25px rgba(244, 63, 94, 0.45);
+            transform: translateY(-2px);
+        }
+
+        .btn-glow-pink {
+            transition: transform 0.3s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+        }
+        .btn-glow-pink:hover {
+            border-color: rgba(236, 72, 153, 0.6);
+            box-shadow: 0 0 25px rgba(236, 72, 153, 0.45);
+            transform: translateY(-2px);
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col antialiased overflow-x-hidden w-full relative">
@@ -201,15 +254,16 @@
             <div class="h-[1px] w-full bg-gradient-to-r from-blue-500/0 via-blue-500/30 to-blue-500/0"></div>
         </header>
      
-        <!-- 메인 감성 컨텐츠 영역 -->
-        <main id="intro" class="max-w-[1300px] w-full mx-auto px-6 sm:px-10 lg:px-16 pt-8 lg:pt-16 pb-12 lg:pb-24 flex-grow relative z-10 scroll-mt-24">
+        <!-- 구역 1: [환영] 딥 퍼플 미드나잇 영역 -->
+        <main id="intro" class="bg-[#0a0f1d] max-w-full w-full mx-auto px-6 sm:px-10 lg:px-16 pt-8 lg:pt-16 pb-12 lg:pb-24 flex-grow relative z-10 scroll-mt-24 border-b border-blue-500/10">
+            <!-- 영롱한 물방울 맺힘 배치 -->
+            <div class="water-drop w-5 h-5 top-12 left-10 opacity-75"></div>
+            <div class="water-drop w-3.5 h-3 top-36 right-16 opacity-60"></div>
             
             <!-- 다크 테마를 아름답게 밝혀줄 은은하고 몽환적인 백그라운드 발광 레이아웃 -->
             <div class="absolute top-[10%] left-[-10%] w-[350px] sm:w-[500px] h-[350px] sm:h-[500px] bg-blue-900/15 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
-            <div class="absolute bottom-[20%] right-[-10%] w-[450px] sm:w-[600px] h-[450px] sm:h-[600px] bg-emerald-950/20 rounded-full blur-[140px] -z-10 pointer-events-none"></div>
-     
-            <div class="flex flex-col lg:flex-row gap-12 lg:gap-16 xl:gap-24 items-center lg:items-stretch h-full">
-                
+            
+            <div class="max-w-[1300px] mx-auto flex flex-col lg:flex-row gap-12 lg:gap-16 xl:gap-24 items-center lg:items-stretch h-full">
                 <!-- 왼쪽: 프로필 이미지 및 일러스트 데코 프레임 영역 (기존 효과 완벽 유지) -->
                 <div class="w-full lg:w-5/12 xl:w-[45%] reveal pt-0 lg:pt-6">
                     <div class="relative group">
@@ -218,6 +272,10 @@
                         
                         <!-- 이미지 컨테이너 (그대로 유지) -->
                         <div id="photoContainer" class="img-container relative w-full h-[400px] sm:h-[520px] md:h-[620px] lg:h-[700px] overflow-hidden rounded-2xl bg-slate-900/80 shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/10">
+                            <!-- 프로필 우측 하단 영롱한 물방울 맺힘 -->
+                            <div class="water-drop w-6 h-5 bottom-8 right-8 opacity-80" style="border-radius: 40% 60% 50% 50% / 50% 50% 60% 40%;"></div>
+                            <div class="water-drop w-4 h-4 bottom-20 right-6 opacity-60"></div>
+
                             <!-- 롤오버 확대 레이어를 마크업 분리하여 100% 동작 보장 -->
                             <div class="img-zoom-wrapper absolute inset-0 w-full h-full">
                                 <img src="1000007608.jpg" alt="고목사 프로필 사진" 
@@ -258,11 +316,13 @@
                     </div>
      
                     <!-- 2. 그리스어 원어 구절 및 한국어 말씀 비주얼 카드 (완벽한 다크 글래스모피즘 반영) -->
-                    <div class="reveal delay-200 mb-10 glass-panel-dark p-6 sm:p-8 md:p-10 rounded-2xl shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]">
+                    <div class="reveal delay-200 mb-10 glass-panel-dark p-6 sm:p-8 md:p-10 rounded-2xl shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] relative">
+                        <!-- 말씀카드 귀퉁이 물방울 데코 -->
+                        <div class="water-drop w-4 h-4 -top-2 -right-1 opacity-70"></div>
                         <!-- 상단: 그리스어 원어 구절 (신비로운 실버골드 컬러) -->
                         <div class="mb-6">
                             <p class="font-serif text-base sm:text-lg md:text-2xl text-slate-300 leading-relaxed tracking-wide italic font-medium break-words font-playfair">
-                                Ἐντολὴν καινὴν δίδωμι ὑμῖν, ἵνα ἀγαπᾶτε ἀλλήλους, καθὼς ἠγάπησα ὑμᾶς ἵνα καὶ ὑμεῖς ἀγαπᾶτε ἀλλήλους.
+                                Ἐν토λὴν καινὴν δίδωμι ὑμῖν, ἵνα ἀγαπᾶτε ἀλλήλους, καθὼς ἠγάπησα ὑμᾶς ἵνα καὶ ὑμεῖς ἀγαπᾶτε ἀλλήλους.
                             </p>
                         </div>
                         
@@ -285,15 +345,22 @@
             </div>
         </main>
      
-        <!-- 전문 사역 핵심 가치 비주얼 섹션 -->
-        <section id="values" class="bg-slate-900/30 py-20 border-y border-white/5 scroll-mt-24 w-full">
-            <div class="max-w-[1300px] w-full mx-auto px-6 sm:px-10 lg:px-16">
+        <!-- 구역 2: [여정] 에메랄드 딥 선교 테마 영역 (완전히 다른 공간으로 전환) -->
+        <section id="values" class="bg-gradient-to-b from-[#0a0f1d] via-[#0d2123] to-[#0a1e1f] py-24 border-b border-emerald-500/10 scroll-mt-24 w-full relative">
+            <!-- 신비로운 에메랄드 안개 발광 레이어 -->
+            <div class="absolute inset-0 bg-gradient-to-r from-emerald-950/20 via-transparent to-blue-950/20 pointer-events-none"></div>
+            
+            <!-- 영롱한 물방울 맺힘 배치 -->
+            <div class="water-drop w-4 h-4 top-16 left-12 opacity-80"></div>
+            <div class="water-drop w-5.5 h-4.5 bottom-12 right-20 opacity-70" style="border-radius: 60% 40% 50% 50% / 40% 60% 50% 50%"></div>
+
+            <div class="max-w-[1300px] w-full mx-auto px-6 sm:px-10 lg:px-16 relative z-10">
                 
                 <!-- 상단 헤더 텍스트 리뉴얼 적용 -->
                 <div class="text-center max-w-2xl mx-auto mb-16 reveal">
                     <p class="text-emerald-400 font-semibold tracking-wider text-xs uppercase mb-3 font-sans">Journey of the Life</p>
-                    <div class="w-12 h-[1px] bg-slate-700 mx-auto mb-4"></div>
-                    <p class="text-slate-400 font-light text-xs sm:text-sm md:text-base leading-relaxed">
+                    <div class="w-12 h-[1px] bg-slate-600 mx-auto mb-4"></div>
+                    <p class="text-slate-300 font-light text-xs sm:text-sm md:text-base leading-relaxed">
                         선교지에서의 사역과 일상의 소박한 쉼, <br class="hidden sm:block">
                         그리고 삶 속에서 길어 올린 잔잔한 사유의 조각들을 함께 나눕니다.
                     </p>
@@ -302,7 +369,9 @@
                 <!-- 핵심 가치 3대 카드 그리드 (★ 누르고 싶은 밝은 톤의 라이트 글래스모피즘 설계) -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <!-- 가치 1: 선교의 자취 -->
-                    <a href="mission.html" class="block glass-panel-light p-8 rounded-2xl shadow-[0_10px_35px_rgba(255,255,255,0.05)] hover:-translate-y-2 hover:shadow-[0_20px_45px_rgba(59,130,246,0.2)] hover:border-blue-400/80 transition-all duration-500 ease-out group cursor-pointer reveal delay-100">
+                    <a href="mission.html" class="block glass-panel-light p-8 rounded-2xl shadow-[0_10px_35px_rgba(255,255,255,0.05)] hover:-translate-y-2 hover:shadow-[0_20px_45px_rgba(59,130,246,0.2)] hover:border-blue-400/80 transition-all duration-500 ease-out group cursor-pointer reveal delay-100 relative">
+                        <!-- 카드 위 이슬 맺힘 -->
+                        <div class="water-drop w-3.5 h-3.5 -top-1 -left-1 opacity-75"></div>
                         <div class="w-14 h-14 rounded-full bg-blue-100/80 flex items-center justify-center text-blue-700 mb-6 shadow-sm border border-blue-200/50 group-hover:bg-gradient-to-tr group-hover:from-blue-500 group-hover:to-cyan-400 group-hover:text-white group-hover:scale-110 group-hover:shadow-[0_8px_20px_rgba(59,130,246,0.3)] transition-all duration-500 ease-out shrink-0">
                             <i class="fa-solid fa-earth-asia text-2xl transition-transform duration-700 group-hover:rotate-[360deg]"></i>
                         </div>
@@ -319,7 +388,7 @@
                     </a>
      
                     <!-- 가치 2: 취미 생활 -->
-                    <a href="https://koindori-en.github.io/profile/hobbies.html" class="block glass-panel-light p-8 rounded-2xl shadow-[0_10px_35px_rgba(255,255,255,0.05)] hover:-translate-y-2 hover:shadow-[0_20px_45px_rgba(245,158,11,0.2)] hover:border-amber-400/80 transition-all duration-500 ease-out group cursor-pointer reveal delay-200">
+                    <a href="https://koindori-en.github.io/profile/hobbies.html" class="block glass-panel-light p-8 rounded-2xl shadow-[0_10px_35px_rgba(255,255,255,0.05)] hover:-translate-y-2 hover:shadow-[0_20px_45px_rgba(245,158,11,0.2)] hover:border-amber-400/80 transition-all duration-500 ease-out group cursor-pointer reveal delay-200 relative">
                         <div class="w-14 h-14 rounded-full bg-amber-100/80 flex items-center justify-center text-amber-700 mb-6 shadow-sm border border-amber-200/50 group-hover:bg-gradient-to-tr group-hover:from-amber-500 group-hover:to-orange-400 group-hover:text-white group-hover:scale-110 group-hover:shadow-[0_8px_20px_rgba(245,158,11,0.3)] transition-all duration-500 ease-out shrink-0">
                             <i class="fa-solid fa-camera text-2xl transition-all duration-500 ease-out group-hover:scale-110 group-hover:-translate-y-1"></i>
                         </div>
@@ -336,7 +405,9 @@
                     </a>
      
                     <!-- 가치 3: 추억의 설교 -->
-                    <a href="https://koindori-en.github.io/profile/sermons.html" class="block glass-panel-light p-8 rounded-2xl shadow-[0_10px_35px_rgba(255,255,255,0.05)] hover:-translate-y-2 hover:shadow-[0_20px_45px_rgba(244,63,94,0.2)] hover:border-rose-400/80 transition-all duration-500 ease-out group cursor-pointer reveal delay-300">
+                    <a href="https://koindori-en.github.io/profile/sermons.html" class="block glass-panel-light p-8 rounded-2xl shadow-[0_10px_35px_rgba(255,255,255,0.05)] hover:-translate-y-2 hover:shadow-[0_20px_45px_rgba(244,63,94,0.2)] hover:border-rose-400/80 transition-all duration-500 ease-out group cursor-pointer reveal delay-300 relative">
+                        <!-- 카드 위 이슬 맺힘 -->
+                        <div class="water-drop w-4 h-4 -bottom-1.5 -right-1 opacity-75"></div>
                         <div class="w-14 h-14 rounded-full bg-rose-100/80 flex items-center justify-center text-rose-700 mb-6 shadow-sm border border-rose-200/50 group-hover:bg-gradient-to-tr group-hover:from-rose-500 group-hover:to-pink-400 group-hover:text-white group-hover:scale-110 group-hover:shadow-[0_8px_20px_rgba(244,63,94,0.3)] transition-all duration-500 ease-out shrink-0">
                             <i class="fa-solid fa-book-open text-2xl transition-transform duration-700 group-hover:scale-110 group-hover:rotate-12"></i>
                         </div>
@@ -356,26 +427,32 @@
             </div>
         </section>
      
-        <!-- 유튜브 쇼츠 삽입 섹션 -->
-        <section id="media" class="py-20 scroll-mt-24 w-full relative">
-            <!-- 둥근 공간 발광 이펙트 -->
-            <div class="absolute top-[30%] right-[-10%] w-[300px] h-[300px] bg-red-900/10 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
+        <!-- 구역 3: [쇼츠] 따뜻한 루비 로즈 테마 영역 (완전히 다른 공간으로 전환) -->
+        <section id="media" class="bg-gradient-to-b from-[#0a1e1f] via-[#1c0f1b] to-[#120a1b] py-24 border-b border-rose-500/10 scroll-mt-24 w-full relative">
+            <!-- 둥근 공간 발광 이펙트 (웜 로즈) -->
+            <div class="absolute top-[30%] right-[5%] w-[400px] h-[400px] bg-rose-950/15 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
 
-            <div class="max-w-[1300px] w-full mx-auto px-6 sm:px-10 lg:px-16 text-center lg:text-left">
+            <!-- 영롱한 물방울 맺힘 배치 -->
+            <div class="water-drop w-4 h-4 top-20 right-24 opacity-60"></div>
+            <div class="water-drop w-5 h-5 bottom-32 left-16 opacity-75"></div>
+
+            <div class="max-w-[1300px] w-full mx-auto px-6 sm:px-10 lg:px-16 text-center lg:text-left relative z-10">
                 <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
                     
                     <!-- 왼쪽 문구 -->
                     <div class="w-full lg:w-1/2 reveal">
-                        <p class="text-emerald-400 font-semibold tracking-wider text-xs uppercase mb-3 font-sans">Shorts</p>
-                        <p class="text-slate-400 text-xs sm:text-sm md:text-base leading-relaxed mb-6">
+                        <p class="text-rose-400 font-semibold tracking-wider text-xs uppercase mb-3 font-sans">Shorts</p>
+                        <p class="text-slate-300 text-xs sm:text-sm md:text-base leading-relaxed mb-6">
                             짧은 메시지와 생각의 세계로 초대합니다.
                         </p>
      
                         <!-- 새로이 인서트된 끄적이는 생각들 (Scribbled Thoughts) 블록 영역 (다크 테마 최적화) -->
-                        <div class="mb-8 border-l-2 border-slate-700 pl-4 py-1 text-left">
-                            <span class="text-[10px] font-bold text-slate-500 tracking-wider uppercase font-playfair block mb-1">Scribbled Thoughts</span>
+                        <div class="mb-8 border-l-2 border-rose-500/30 pl-4 py-1 text-left relative">
+                            <!-- 라인 물방울 -->
+                            <div class="water-drop w-3 h-3 top-0 -left-1.5 opacity-80"></div>
+                            <span class="text-[10px] font-bold text-slate-400 tracking-wider uppercase font-playfair block mb-1">Scribbled Thoughts</span>
                             <h4 class="font-serif-kr text-base font-bold text-slate-200 mb-2">끄적이는 생각들</h4>
-                            <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
+                            <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
                                 말씀 묵상하며 떠오른 잔잔한 지혜와 일상의 여정에서 만난 조각 생각들을 담백한 영상으로 담았습니다.
                             </p>
                         </div>
@@ -396,7 +473,8 @@
                             
                             <!-- 세련되게 다듬은 글래스 프레임 -->
                             <div class="relative glass-panel-dark p-3 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.6)] border border-white/10 overflow-hidden group/phone transition-transform duration-500 hover:scale-[1.02]">
-                                
+                                <!-- 플레이어 모서리 물방울 데코 -->
+                                <div class="water-drop w-4 h-4 top-1 right-2 opacity-75"></div>
                                 <!-- 유튜브 Shorts 9:16 임베디드 아이프레임 -->
                                 <div class="relative aspect-[9/16] w-full rounded-xl overflow-hidden bg-black shadow-inner border-2 border-slate-800">
                                     <iframe 
@@ -417,15 +495,22 @@
             </div>
         </section>
      
-        <!-- 학력 및 교회 정보 / 연락처 소통 영역 -->
-        <section id="profile" class="bg-slate-900/40 py-20 border-t border-white/5 scroll-mt-24 w-full relative z-10">
-            <div class="max-w-[1300px] w-full mx-auto px-6 sm:px-10 lg:px-16">
+        <!-- 구역 4: [소통] 깊은 우주 테마 영역 (완전히 다른 공간으로 전환) -->
+        <section id="profile" class="bg-gradient-to-b from-[#120a1b] via-[#0a0d18] to-[#04060d] py-24 scroll-mt-24 w-full relative z-10">
+            <!-- 파란 우주선 발광 레이어 -->
+            <div class="absolute bottom-0 left-[15%] w-[450px] h-[450px] bg-blue-950/10 rounded-full blur-[140px] -z-10 pointer-events-none"></div>
+
+            <!-- 영롱한 물방울 맺힘 배치 -->
+            <div class="water-drop w-5 h-5 top-12 left-1/4 opacity-75"></div>
+            <div class="water-drop w-4.5 h-3.5 bottom-24 right-1/3 opacity-80" style="border-radius: 40% 60% 50% 50%"></div>
+
+            <div class="max-w-[1300px] w-full mx-auto px-6 sm:px-10 lg:px-16 relative z-10">
                 
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
                     
                     <!-- 왼쪽 컬럼: 타이틀 소개 (PASTOR PROFILE) -->
                     <div class="reveal">
-                        <p class="text-emerald-400 font-semibold tracking-wider text-xs uppercase mb-3 font-sans">PASTOR PROFILE</p>
+                        <p class="text-amber-400 font-semibold tracking-wider text-xs uppercase mb-3 font-sans">PASTOR PROFILE</p>
                         <h2 class="font-serif-kr text-2xl sm:text-3xl font-bold text-slate-200 mb-4">함께 소통하는 길</h2>
                         <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
                              하나님의 부르심에 믿음으로 답해온 사역의 발자취와 따뜻한 마음의 문을 열어 연락할 수 있는 통로입니다.
@@ -437,7 +522,7 @@
                         
                         <!-- 학력 정보 -->
                         <div class="reveal delay-200">
-                            <h3 class="text-xs font-bold text-amber-400 tracking-widest uppercase mb-6 border-b border-white/10 pb-2 font-sans">Education</h3>
+                            <h3 class="text-xs font-bold text-slate-400 tracking-widest uppercase mb-6 border-b border-white/10 pb-2 font-sans">Education</h3>
                             <ul class="space-y-4">
                                 <li class="flex items-center text-slate-300 group">
                                     <span class="w-2.5 h-2.5 rounded-full bg-slate-500 mr-3 group-hover:scale-125 transition-transform duration-300 shadow-sm shrink-0"></span>
@@ -452,7 +537,7 @@
      
                         <!-- 사역 정보 -->
                         <div class="reveal delay-300">
-                            <h3 class="text-xs font-bold text-amber-400 tracking-widest uppercase mb-6 border-b border-white/10 pb-2 font-sans">Church</h3>
+                            <h3 class="text-xs font-bold text-slate-400 tracking-widest uppercase mb-6 border-b border-white/10 pb-2 font-sans">Church</h3>
                             <ul class="space-y-4">
                                 <li class="flex items-center text-slate-300 group">
                                     <span class="w-2.5 h-2.5 rounded-full bg-slate-500 mr-3 group-hover:scale-125 transition-transform duration-300 shadow-sm shrink-0"></span>
@@ -463,7 +548,7 @@
      
                         <!-- 3. 연락처 정보 (카드처리 하지 않고 아주 내추럴하며 세련된 텍스트 연출) -->
                         <div class="reveal delay-400 md:col-span-2 pt-6 max-w-full">
-                            <h3 class="text-xs font-bold text-amber-400 tracking-widest uppercase mb-3 font-sans">Contact</h3>
+                            <h3 class="text-xs font-bold text-slate-400 tracking-widest uppercase mb-3 font-sans">Contact</h3>
                             <div id="emailContainer" class="relative inline-flex items-center text-slate-300 hover:text-amber-300 gap-2.5 cursor-pointer select-none transition-colors duration-300 group max-w-full">
                                 <i class="fa-regular fa-envelope text-sm sm:text-base text-slate-400 group-hover:text-amber-300 transition-colors"></i>
                                 <span class="text-sm sm:text-base md:text-lg font-medium border-b border-dashed border-slate-500 hover:border-amber-300 truncate tracking-wide">koindori@gmail.com</span>
@@ -476,26 +561,26 @@
                             </div>
                         </div>
      
-                        <!-- 링크 버튼 영역 (시선이 가고 누르고 싶게 만드는 고급스러운 밝은 화이트 글래스 카드 구성) -->
+                        <!-- 4. 링크 버튼 영역 (마우스 오버 시 글자색은 불변, 외곽으로 아름다운 은은한 색번짐 광채 분출) -->
                         <div class="reveal delay-500 md:col-span-2 flex flex-col sm:flex-row flex-wrap gap-4 pt-8 w-full">
-                            <!-- 새제천교회 홈페이지 버튼 -->
+                            <!-- 새제천교회 홈페이지 버튼 (에메랄드 아우라 색번짐) -->
                             <a href="https://saejecheon.com" target="_blank" rel="noopener noreferrer" 
-                               class="flex items-center justify-center glass-panel-light text-slate-800 hover:text-emerald-700 px-6 sm:px-8 py-4 text-xs sm:text-sm font-semibold tracking-wide transition-all duration-300 ease-out rounded-xl w-full sm:w-auto shadow-md hover:shadow-xl hover:-translate-y-0.5 border border-white/60 group">
-                                <i class="fa-solid fa-church mr-3 text-emerald-600 transition-colors"></i>
+                               class="btn-glow-emerald flex items-center justify-center glass-panel-light text-slate-800 px-6 sm:px-8 py-4 text-xs sm:text-sm font-bold tracking-wide rounded-xl w-full sm:w-auto shadow-md border border-white/60 group">
+                                <i class="fa-solid fa-church mr-3 text-emerald-600"></i>
                                 새제천교회 홈페이지
                             </a>
                             
-                            <!-- 고목사클라쓰 버튼 -->
+                            <!-- 고목사클라쓰 버튼 (로즈 레드 아우라 색번짐) -->
                             <a href="https://www.youtube.com/@koclass" target="_blank" rel="noopener noreferrer" 
-                               class="flex items-center justify-center glass-panel-light text-slate-800 hover:text-rose-600 px-6 sm:px-8 py-4 text-xs sm:text-sm font-semibold tracking-wide transition-all duration-300 ease-out rounded-xl w-full sm:w-auto shadow-md hover:shadow-xl hover:-translate-y-0.5 border border-white/60 group">
-                                <i class="fa-brands fa-youtube mr-3 text-rose-600 transition-colors"></i>
+                               class="btn-glow-rose flex items-center justify-center glass-panel-light text-slate-800 px-6 sm:px-8 py-4 text-xs sm:text-sm font-bold tracking-wide rounded-xl w-full sm:w-auto shadow-md border border-white/60 group">
+                                <i class="fa-brands fa-youtube mr-3 text-rose-600"></i>
                                 고목사클라쓰
                             </a>
      
-                            <!-- 고목사인스타그램 버튼 -->
+                            <!-- 고목사인스타그램 버튼 (핑크 아우라 색번짐) -->
                             <a href="https://www.instagram.com/koinkook/" target="_blank" rel="noopener noreferrer" 
-                               class="flex items-center justify-center glass-panel-light text-slate-800 hover:text-pink-600 px-6 sm:px-8 py-4 text-xs sm:text-sm font-semibold tracking-wide transition-all duration-300 ease-out rounded-xl w-full sm:w-auto shadow-md hover:shadow-xl hover:-translate-y-0.5 border border-white/60 group">
-                                <i class="fa-brands fa-instagram mr-3 text-pink-600 transition-colors"></i>
+                               class="btn-glow-pink flex items-center justify-center glass-panel-light text-slate-800 px-6 sm:px-8 py-4 text-xs sm:text-sm font-bold tracking-wide rounded-xl w-full sm:w-auto shadow-md border border-white/60 group">
+                                <i class="fa-brands fa-instagram mr-3 text-pink-600"></i>
                                 고목사인스타그램
                             </a>
                         </div>
@@ -507,7 +592,7 @@
         </section>
      
         <!-- 하단 저작권 문구 영역 -->
-        <footer class="w-full py-8 text-center bg-slate-950/80 border-t border-white/5 mt-auto">
+        <footer class="w-full py-8 text-center bg-slate-950/90 border-t border-white/5 mt-auto">
             <p class="text-[10px] sm:text-xs text-slate-500 tracking-wider">
                 &copy; 2026 고인국목사. All rights reserved.
             </p>
@@ -593,7 +678,7 @@
             }
             setInterval(spawnCenterParticle, 1500);
 
-            // 3. 배경전체 '부유하는 스파크 파티클 효과' (개수 절반 이하로 감소 및 화이트톤 단색으로 단순화)
+            // 3. 배경전체 '부유하는 스파크 파티클 효과' (개수 대폭 절감 및 속도 매우 조용하게 저속화)
             const canvas = document.getElementById("sparkParticlesCanvas");
             const ctx = canvas.getContext("2d");
             let particlesArray = [];
@@ -613,14 +698,13 @@
                 init() {
                     this.x = Math.random() * canvas.width;
                     this.y = Math.random() * canvas.height;
-                    this.size = 0.8 + Math.random() * 2.2; // 조금 더 아련하고 미세하게 가공
-                    this.speedX = -0.15 + Math.random() * 0.3; // 더 차분한 수평 움직임
-                    this.speedY = -(0.1 + Math.random() * 0.25); // 잔잔하게 상승
-                    this.baseOpacity = 0.1 + Math.random() * 0.4;
+                    this.size = 0.7 + Math.random() * 2.3; // 작고 아련하게
+                    this.speedX = -0.06 + Math.random() * 0.12; // 수평 이동 극도로 최소화
+                    this.speedY = -(0.04 + Math.random() * 0.08); // 고요하게 부유하는 슬로우 모션
+                    this.baseOpacity = 0.12 + Math.random() * 0.35;
                     this.opacity = this.baseOpacity;
-                    this.fadeSpeed = 0.003 + Math.random() * 0.008;
+                    this.fadeSpeed = 0.002 + Math.random() * 0.005;
                     this.fadeDirection = Math.random() > 0.5 ? 1 : -1;
-                    // 깨끗한 눈송이/수증기 같은 순백색 단색(`rgba(255, 255, 255)`)으로 정제
                     this.color = `rgba(255, 255, 255, `; 
                 }
 
@@ -637,7 +721,7 @@
                     if (this.opacity >= this.baseOpacity + 0.1 || this.opacity <= 0.05) {
                         this.fadeDirection *= -1;
                     }
-                    this.opacity = Math.max(0.04, Math.min(this.opacity, 0.7));
+                    this.opacity = Math.max(0.04, Math.min(this.opacity, 0.65));
                 }
 
                 draw() {
@@ -645,13 +729,13 @@
                     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                     ctx.fillStyle = this.color + this.opacity + ')';
                     ctx.shadowBlur = this.size * 1.5;
-                    ctx.shadowColor = 'rgba(255, 255, 255, 0.25)';
+                    ctx.shadowColor = 'rgba(255, 255, 255, 0.2)';
                     ctx.fill();
                 }
             }
 
-            // 요청에 맞춰 전체 파티클 숫자를 약 60% 절감 (과하지 않고 은은함 제공)
-            const totalSparks = window.innerWidth < 768 ? 35 : 65;
+            // 요청에 맞춰 전반적인 파티클 수량 대폭 절감 (PC: 45개, 모바일: 20개 내외)
+            const totalSparks = window.innerWidth < 768 ? 20 : 45;
             for (let i = 0; i < totalSparks; i++) {
                 particlesArray.push(new SparkParticle());
             }
