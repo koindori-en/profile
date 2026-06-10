@@ -15,6 +15,7 @@
     <!-- Google Fonts: Noto Sans KR, Noto Serif KR (명조체), Playfair Display (영문) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Noto+Ser" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Noto+Serif+KR:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     
     <style>
@@ -173,14 +174,14 @@
         <!-- 상단 네비게이션 헤더 -->
         <header class="sticky top-0 z-50 bg-[#050C0E]/85 backdrop-blur-md border-b border-white/5 transition-all duration-300">
             <div class="max-w-[1300px] mx-auto px-6 sm:px-10 lg:px-16 h-16 md:h-20 flex items-center justify-between">
-                <!-- 왼쪽 상단 브랜딩 명패 (지구본 사이즈 모바일 대응 축소 적용) -->
+                <!-- 왼쪽 상단 브랜딩 명패 (지구본 사이즈 모바일 대응 축소 적용 및 고딕체 Traces of Mission 한 줄 적용) -->
                 <a href="https://koindori-en.github.io/profile/" class="flex items-center gap-2 md:gap-3 group">
                     <div class="w-6 h-6 md:w-9 md:h-9 bg-white/5 border border-white/10 rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-105 shrink-0">
                         <i class="fa-solid fa-globe text-[#E5C158] text-[10px] md:text-base animate-spin-slow"></i>
                     </div>
                     <div class="flex items-baseline gap-1.5 md:gap-3 flex-nowrap whitespace-nowrap">
                         <span class="text-xs sm:text-sm md:text-base font-semibold tracking-tight text-white font-sans shrink-0">선교의 자취</span>
-                        <span class="text-[8px] sm:text-[9px] md:text-[10px] text-[#E5C158] font-playfair uppercase tracking-[0.12em] md:tracking-[0.18em] leading-none shrink-0">Traces of Mission</span>
+                        <span class="text-[8px] sm:text-[9px] md:text-[10px] text-[#E5C158] font-sans uppercase tracking-[0.12em] md:tracking-[0.18em] leading-none shrink-0 font-medium">Traces of Mission</span>
                     </div>
                 </a>
     
@@ -196,11 +197,13 @@
         <!-- 메인 컨텐츠 영역 -->
         <main class="max-w-[1200px] w-full mx-auto px-6 sm:px-10 lg:px-16 pt-16 pb-24 flex-grow relative z-10">
             
-            <!-- 사색적인 프롤로그 대서사 (영문 성구 자간 및 폰트 크기 최적화, 글로우 데코레이션 추가) -->
+            <!-- 사색적인 프롤로그 대서사 (영문 성구 자간 및 폰트 크기 최적화, 3단계 분할 앰퍼샌드 기호 매칭 및 글로우 효과) -->
             <div class="text-center max-w-4xl mx-auto mb-16 reveal mt-6">
-                <p class="font-playfair italic font-semibold text-xs md:text-base lg:text-lg text-slate-100 leading-relaxed tracking-[0.25em] mb-6 uppercase gospel-glow">
-                    "GO INTO ALL THE WORLD AND PREACH THE GOSPEL TO ALL CREATION."
-                </p>
+                <div class="font-playfair italic font-semibold text-xs md:text-base lg:text-lg text-slate-100 leading-[1.8] tracking-[0.25em] mb-6 uppercase gospel-glow flex flex-col items-center gap-2">
+                    <span class="block">"GO INTO ALL THE WORLD"</span>
+                    <span class="block text-[#E5C158] text-base md:text-xl lg:text-2xl font-light font-sans">&</span>
+                    <span class="block">"PREACH THE GOSPEL TO ALL CREATION."</span>
+                </div>
                 <p class="font-playfair text-xs md:text-sm lg:text-base text-[#E5C158] tracking-[0.25em] uppercase font-semibold">
                     (Mark 16:15)
                 </p>
