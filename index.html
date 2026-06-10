@@ -24,9 +24,6 @@
             font-family: 'Noto Sans KR', sans-serif; 
             overflow-x: hidden;
             width: 100%;
-            /* 은은하지만 확실한 질서를 전달하는 하이엔드 스타 도트 패턴 */
-            background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1.5px, transparent 1.5px);
-            background-size: 28px 28px;
         }
  
         .font-serif-kr {
@@ -35,6 +32,12 @@
  
         .font-playfair {
             font-family: 'Playfair Display', serif;
+        }
+
+        /* 1. 배경에 세련되고 은은한 질서가 느껴지는 촘촘한 도트 격자 무늬 구현 */
+        .dot-grid {
+            background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1.2px, transparent 1.2px);
+            background-size: 24px 24px;
         }
  
         /* 스크롤 리빌 애니메이션 기본 스타일 */
@@ -154,20 +157,26 @@
             display: inline-block;
         }
 
-        /* 미세한 유리 질감 다크 글래스모피즘 효과 정의 */
+        /* 2. 기품 넘치는 투명 글래스 모피즘 데코레이션 스타일링 */
         .glass-panel-dark {
-            background: rgba(10, 15, 29, 0.6);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.03); /* 높은 투명도로 배경 융합 */
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08); /* 얇고 영롱한 화이트 테두리 */
         }
 
-        /* 화사하면서도 영롱한 라이트 글래스모피즘 효과 정의 (밝은 카드 링크용) */
+        /* 화사하면서도 영롱한 라이트 글래스모피즘 효과 정의 및 호버 시 밝기 극대화 튜닝 */
         .glass-panel-light {
             background: rgba(255, 255, 255, 0.82);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.6);
+            transition: background 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .glass-panel-light:hover {
+            background: rgba(255, 255, 255, 0.98) !important; /* 마우스 오버 시 흰색 배경을 더욱 맑고 투명하게 극대화 */
+            border-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 20px 40px rgba(255, 255, 255, 0.12);
         }
 
         /* 하단 버튼 글자색 변함없이 외곽에만 은은한 색번짐(Ambient Glow) 발생 */
@@ -201,11 +210,11 @@
 </head>
 <body class="min-h-screen flex flex-col antialiased overflow-x-hidden w-full relative">
     
-    <!-- 배경을 부유하는 미세한 스파크 파티클 효과용 Canvas -->
-    <canvas id="sparkParticlesCanvas" class="fixed inset-0 w-full h-full pointer-events-none z-0"></canvas>
+    <!-- 배경을 부유하는 미세한 스파크 파티클 효과용 Canvas (z-index를 10으로 올려 다른 섹션들 위에 확실히 렌더링되도록 보장) -->
+    <canvas id="sparkParticlesCanvas" class="fixed inset-0 w-full h-full pointer-events-none z-10"></canvas>
 
-    <!-- 모바일 및 웹 전체 가로 오버플로우를 2중 보호하기 위한 래퍼 -->
-    <div class="overflow-x-hidden w-full flex flex-col min-h-screen relative z-10">
+    <!-- 모바일 및 웹 전체 가로 오버플로우를 2중 보호하기 위한 래퍼 (z-index를 20으로 설정하여 콘텐츠가 제일 상단에 클릭 가능하게 정돈) -->
+    <div class="overflow-x-hidden w-full flex flex-col min-h-screen relative z-20">
  
         <!-- 상단 고정형 (Sticky) 네비게이션 헤더 -->
         <header class="sticky top-0 z-50 bg-[#0a0f1d]/70 backdrop-blur-xl border-b border-white/5 transition-all duration-300 w-full">
@@ -229,8 +238,8 @@
             <div class="h-[1px] w-full bg-gradient-to-r from-blue-500/0 via-blue-500/30 to-blue-500/0"></div>
         </header>
      
-        <!-- 구역 1: [환영] 딥 퍼플 미드나잇 영역 -->
-        <main id="intro" class="bg-[#0a0f1d] max-w-full w-full mx-auto px-6 sm:px-10 lg:px-16 pt-8 lg:pt-16 pb-12 lg:pb-24 flex-grow relative z-10 scroll-mt-24 border-b border-blue-500/10">
+        <!-- 구역 1: [환영] 딥 퍼플 미드나잇 영역 (dot-grid 클래스 추가로 점선 도트가 무조건 선명히 레이어링되도록 전개) -->
+        <main id="intro" class="dot-grid bg-[#0a0f1d] max-w-full w-full mx-auto px-6 sm:px-10 lg:px-16 pt-8 lg:pt-16 pb-12 lg:pb-24 flex-grow relative z-20 scroll-mt-24 border-b border-blue-500/10">
             
             <!-- 다크 테마를 아름답게 밝혀줄 은은하고 몽환적인 백그라운드 발광 레이아웃 -->
             <div class="absolute top-[10%] left-[-10%] w-[350px] sm:w-[500px] h-[350px] sm:h-[500px] bg-blue-900/15 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
@@ -273,23 +282,23 @@
                 <!-- 오른쪽: 텍스트 정보 및 콘텐츠 스트림 영역 -->
                 <div class="w-full lg:w-7/12 xl:w-[55%] flex flex-col justify-center py-4 lg:py-8">
                     
-                    <!-- 1. 임팩트 있는 메인 문구 (색채 정교화) -->
+                    <!-- 1. 임팩트 있는 메인 문구 (요청사항 1: "당신을 사랑합니다!" 글자색을 흰색으로 변경) -->
                     <div class="reveal delay-100 mb-10">
                         <div class="relative inline-block pl-6 pr-6 md:pl-8 md:pr-12 py-2">
                             <span class="font-playfair italic text-5xl sm:text-6xl text-amber-400/20 absolute -top-4 left-0 select-none">“</span>
                             <p class="font-serif-kr text-2xl sm:text-3xl md:text-4xl text-slate-100 font-semibold leading-[1.7] tracking-tight relative z-10">
-                                주님의 심장으로<br><span class="bg-gradient-to-r from-amber-400 to-amber-200 bg-clip-text text-transparent">당신을 사랑합니다!</span>
+                                주님의 심장으로<br><span class="text-white">당신을 사랑합니다!</span>
                             </p>
                             <span class="font-playfair italic text-5xl sm:text-6xl text-amber-400/20 absolute -bottom-10 right-0 select-none">”</span>
                         </div>
                     </div>
      
-                    <!-- 2. 그리스어 원어 구절 및 한국어 말씀 비주얼 카드 (완벽한 다크 글래스모피즘 반영) -->
-                    <div class="reveal delay-200 mb-10 glass-panel-dark p-6 sm:p-8 md:p-10 rounded-2xl shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] relative">
+                    <!-- 2. 그리스어 원어 구절 및 한국어 말씀 비주얼 카드 (요청사항 2: 완전히 투명한 글래스 모피즘으로 전면 구현) -->
+                    <div class="reveal delay-200 mb-10 glass-panel-dark p-6 sm:p-8 md:p-10 rounded-2xl shadow-[0_8px_32px_0_rgba(0,0,0,0.25)] relative">
                         <!-- 상단: 그리스어 원어 구절 (신비로운 실버골드 컬러) -->
                         <div class="mb-6">
                             <p class="font-serif text-base sm:text-lg md:text-2xl text-slate-300 leading-relaxed tracking-wide italic font-medium break-words font-playfair">
-                                Ἐντολὴν καινὴν δίδωμι ὑμῖν, ἵνα ἀγαπᾶτε ἀλλήλους, καθὼς ἠγάπησα ὑμᾶς ἵνα καὶ ὑ메ῖς ἀγαπᾶτε ἀλλήλους.
+                                Ἐντολὴν καινὴν δίδωμι ὑμῖν, ἵνα ἀγαπᾶτε ἀλλήλους, καθὼς ἠγάπησα ὑμᾶς ἵνα καὶ ὑμεῖς ἀγαπᾶτε ἀλλήλους.
                             </p>
                         </div>
                         
@@ -312,8 +321,8 @@
             </div>
         </main>
      
-        <!-- 구역 2: [여정] 에메랄드 딥 선교 테마 영역 -->
-        <section id="values" class="bg-gradient-to-b from-[#0a0f1d] via-[#0d2123] to-[#0a1e1f] py-24 border-b border-emerald-500/10 scroll-mt-24 w-full relative">
+        <!-- 구역 2: [여정] 에메랄드 딥 선교 테마 영역 (dot-grid 클래스 탑재로 고해상도 격자 보존) -->
+        <section id="values" class="dot-grid bg-gradient-to-b from-[#0a0f1d] via-[#0d2123] to-[#0a1e1f] py-24 border-b border-emerald-500/10 scroll-mt-24 w-full relative z-20">
             <!-- 신비로운 에메랄드 안개 발광 레이어 -->
             <div class="absolute inset-0 bg-gradient-to-r from-emerald-950/20 via-transparent to-blue-950/20 pointer-events-none"></div>
 
@@ -329,7 +338,7 @@
                     </p>
                 </div>
      
-                <!-- 핵심 가치 3대 카드 그리드 (★ 누르고 싶은 밝은 톤의 라이트 글래스모피즘 설계) -->
+                <!-- 핵심 가치 3대 카드 그리드 (★ 누르고 싶은 밝은 톤의 라이트 글래스모피즘 설계 - 호버 시 극상의 화이트 톤업 작동) -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <!-- 가치 1: 선교의 자취 -->
                     <a href="mission.html" class="block glass-panel-light p-8 rounded-2xl shadow-[0_10px_35px_rgba(255,255,255,0.05)] hover:-translate-y-2 hover:shadow-[0_20px_45px_rgba(59,130,246,0.2)] hover:border-blue-400/80 transition-all duration-500 ease-out group cursor-pointer reveal delay-100 relative">
@@ -386,8 +395,8 @@
             </div>
         </section>
      
-        <!-- 구역 3: [쇼츠] 따뜻한 루비 로즈 테마 영역 -->
-        <section id="media" class="bg-gradient-to-b from-[#0a1e1f] via-[#1c0f1b] to-[#120a1b] py-24 border-b border-rose-500/10 scroll-mt-24 w-full relative">
+        <!-- 구역 3: [쇼츠] 따뜻한 루비 로즈 테마 영역 (dot-grid 클래스 보강 완료) -->
+        <section id="media" class="dot-grid bg-gradient-to-b from-[#0a1e1f] via-[#1c0f1b] to-[#120a1b] py-24 border-b border-rose-500/10 scroll-mt-24 w-full relative z-20">
             <!-- 둥근 공간 발광 이펙트 (웜 로즈) -->
             <div class="absolute top-[30%] right-[5%] w-[400px] h-[400px] bg-rose-950/15 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
 
@@ -446,8 +455,8 @@
             </div>
         </section>
      
-        <!-- 구역 4: [소통] 깊은 우주 테마 영역 -->
-        <section id="profile" class="bg-gradient-to-b from-[#120a1b] via-[#0a0d18] to-[#04060d] py-24 scroll-mt-24 w-full relative z-10">
+        <!-- 구역 4: [소통] 깊은 우주 테마 영역 (dot-grid 클래스 보강 완료) -->
+        <section id="profile" class="dot-grid bg-gradient-to-b from-[#120a1b] via-[#0a0d18] to-[#04060d] py-24 scroll-mt-24 w-full relative z-20">
             <!-- 파란 우주선 발광 레이어 -->
             <div class="absolute bottom-0 left-[15%] w-[450px] h-[450px] bg-blue-950/10 rounded-full blur-[140px] -z-10 pointer-events-none"></div>
 
@@ -493,14 +502,14 @@
                             </ul>
                         </div>
      
-                        <!-- 연락처 정보 (카드처리 하지 않고 아주 내추럴하며 세련된 텍스트 연출) -->
+                        <!-- 연락처 정보 (요청사항 3: 지메일 위 마우스오버 시 웹은 한 줄, 모바일은 뷰포트 맞춤형 툴팁 팝업 & 앞의 메일 아이콘 완전 제거) -->
                         <div class="reveal delay-400 md:col-span-2 pt-6 max-w-full">
                             <h3 class="text-xs font-bold text-slate-400 tracking-widest uppercase mb-3 font-sans">Contact</h3>
                             <div id="emailContainer" class="relative inline-flex items-center text-slate-300 hover:text-amber-300 gap-2.5 cursor-pointer select-none transition-colors duration-300 group max-w-full">
-                                <i class="fa-regular fa-envelope text-sm sm:text-base text-slate-400 group-hover:text-amber-300 transition-colors"></i>
+                                <!-- 앞에 있던 편지 아이콘을 완벽하게 제거하여 자연스러운 타이포 텍스트만 유지 -->
                                 <span class="text-sm sm:text-base md:text-lg font-medium border-b border-dashed border-slate-500 hover:border-amber-300 truncate tracking-wide">koindori@gmail.com</span>
                                 
-                                <!-- 인터랙티브 복사 말풍선 (데스크톱에서는 한 줄, 모바일 기기에서도 최적화되어 한 줄 레이아웃 유지) -->
+                                <!-- 인터랙티브 복사 말풍선 (데스크톱 및 모바일 기기에 맞는 세련된 반응형 한줄 툴팁) -->
                                 <div id="emailTooltip" class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-3 px-3 py-2 bg-slate-800 text-white text-[10px] sm:text-xs rounded-xl opacity-0 pointer-events-none transition-all duration-300 shadow-xl whitespace-nowrap max-w-none text-center z-50 flex items-center gap-1.5 font-sans">
                                     <span>📬 클릭하면 메일 주소가 복사됩니다</span>
                                     <div class="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-slate-800"></div>
@@ -625,7 +634,7 @@
             }
             setInterval(spawnCenterParticle, 1500);
 
-            // 3. 배경전체 '부유하는 스파크 파티클 효과' (안정적이며 우아하고 세련된 초저속 시네마틱 모션)
+            // 3. 배경전체 '부유하는 스파크 파티클 효과' (요청사항 3: 매우 세련되게 천천히 흐르도록 수치 극대화 튜닝)
             const canvas = document.getElementById("sparkParticlesCanvas");
             const ctx = canvas.getContext("2d");
             let particlesArray = [];
@@ -646,11 +655,12 @@
                     this.x = Math.random() * canvas.width;
                     this.y = Math.random() * canvas.height;
                     this.size = 0.6 + Math.random() * 2.2; // 초미세 크기로 아스라이 빛나는 형태
-                    this.speedX = -0.015 + Math.random() * 0.03; // 수평이동 최소화하여 흔들림 방지
-                    this.speedY = -(0.01 + Math.random() * 0.025); // 극단적으로 느리게 떠오르도록 유도하여 편안함 극대화
+                    // 수평/수직 이동 속도를 기존보다 훨씬 늦추어 시각적 깊이감과 숭고함 조성
+                    this.speedX = -0.008 + Math.random() * 0.016; 
+                    this.speedY = -(0.005 + Math.random() * 0.012); 
                     this.baseOpacity = 0.12 + Math.random() * 0.35;
                     this.opacity = this.baseOpacity;
-                    this.fadeSpeed = 0.0006 + Math.random() * 0.0015; // 아주 점진적이고 고요한 깜빡임 주기
+                    this.fadeSpeed = 0.0003 + Math.random() * 0.0008; // 아주 서서히 깜빡이는 페이드아웃 주기
                     this.fadeDirection = Math.random() > 0.5 ? 1 : -1;
                     this.color = `rgba(255, 255, 255, `; 
                 }
