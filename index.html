@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ko" class="scroll-smooth">
 <head>
@@ -33,8 +34,7 @@
         .font-playfair {
             font-family: 'Playfair Display', serif;
         }
-
-        /* 1. 배경에 세련되고 은은한 질서가 느껴지는 촘촘한 도트 격자 무늬 구현 (첫 번째 영역만 적용) */
+        /* 1. 배경에 세련되고 은은한 질서가 느껴지는 촘촘한 도트 격자 무늬 구현 */
         .dot-grid {
             background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1.2px, transparent 1.2px);
             background-size: 24px 24px;
@@ -156,7 +156,6 @@
             will-change: transform;
             display: inline-block;
         }
-
         /* 2. 기품 넘치는 투명 글래스 모피즘 데코레이션 스타일링 */
         .glass-panel-dark {
             background: rgba(255, 255, 255, 0.03); /* 높은 투명도로 배경 융합 */
@@ -164,7 +163,6 @@
             -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.08); /* 얇고 영롱한 화이트 테두리 */
         }
-
         /* 화사하면서도 영롱한 라이트 글래스모피즘 효과 정의 및 호버 시 밝기 극대화 튜닝 */
         .glass-panel-light {
             background: rgba(255, 255, 255, 0.82);
@@ -178,7 +176,6 @@
             border-color: rgba(255, 255, 255, 0.9);
             box-shadow: 0 20px 40px rgba(255, 255, 255, 0.12);
         }
-
         /* 하단 버튼 글자색 변함없이 외곽에만 은은한 색번짐(Ambient Glow) 발생 */
         .btn-glow-emerald {
             transition: transform 0.3s ease, box-shadow 0.4s ease, border-color 0.4s ease;
@@ -188,7 +185,6 @@
             box-shadow: 0 0 25px rgba(16, 185, 129, 0.45);
             transform: translateY(-2px);
         }
-
         .btn-glow-rose {
             transition: transform 0.3s ease, box-shadow 0.4s ease, border-color 0.4s ease;
         }
@@ -197,7 +193,6 @@
             box-shadow: 0 0 25px rgba(244, 63, 94, 0.45);
             transform: translateY(-2px);
         }
-
         .btn-glow-pink {
             transition: transform 0.3s ease, box-shadow 0.4s ease, border-color 0.4s ease;
         }
@@ -209,8 +204,10 @@
     </style>
 </head>
 <body class="min-h-screen flex flex-col antialiased overflow-x-hidden w-full relative">
-
-    <!-- 모바일 및 웹 전체 가로 오버플로우를 2중 보호하기 위한 래퍼 (z-index 정돈) -->
+    
+    <!-- 배경을 부유하는 미세한 스파크 파티클 효과용 Canvas (z-index를 20으로 올려 다른 섹션들 위에 확실히 렌더링되도록 보장) -->
+    <canvas id="sparkParticlesCanvas" class="fixed inset-0 w-full h-full pointer-events-none z-20"></canvas>
+    <!-- 모바일 및 웹 전체 가로 오버플로우를 2중 보호하기 위한 래퍼 (z-index를 30으로 설정하여 콘텐츠가 제일 상단에 클릭 가능하게 정돈) -->
     <div class="overflow-x-hidden w-full flex flex-col min-h-screen relative z-30">
  
         <!-- 상단 고정형 (Sticky) 네비게이션 헤더 -->
@@ -235,16 +232,13 @@
             <div class="h-[1px] w-full bg-gradient-to-r from-blue-500/0 via-blue-500/30 to-blue-500/0"></div>
         </header>
      
-        <!-- 구역 1: [환영] 딥 퍼플 미드나잇 영역 (dot-grid 클래스 추가로 점선 도트가 무조건 선명히 레이어링되도록 전개) -->
-        <main id="intro" class="dot-grid bg-[#0a0f1d] max-w-full w-full mx-auto px-6 sm:px-10 lg:px-16 pt-8 lg:pt-16 pb-12 lg:pb-24 flex-grow relative z-30 scroll-mt-24 border-b border-blue-500/10 overflow-hidden">
+        <!-- 구역 1: [환영] 딥 퍼플 미드나잇 영역 (dot-grid 클래스 적용 완료) -->
+        <main id="intro" class="dot-grid bg-[#0a0f1d] max-w-full w-full mx-auto px-6 sm:px-10 lg:px-16 pt-8 lg:pt-16 pb-12 lg:pb-24 flex-grow relative z-30 scroll-mt-24 border-b border-blue-500/10">
             
-            <!-- 구역 1 전용 캔버스 (z-index 10으로 올려 배경과 텍스트 사이에 안착시킴) -->
-            <canvas class="section-spark-canvas absolute inset-0 w-full h-full pointer-events-none z-10"></canvas>
-
             <!-- 다크 테마를 아름답게 밝혀줄 은은하고 몽환적인 백그라운드 발광 레이아웃 -->
             <div class="absolute top-[10%] left-[-10%] w-[350px] sm:w-[500px] h-[350px] sm:h-[500px] bg-blue-900/15 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
             
-            <div class="max-w-[1300px] mx-auto flex flex-col lg:flex-row gap-12 lg:gap-16 xl:gap-24 items-center lg:items-stretch h-full relative z-20">
+            <div class="max-w-[1300px] mx-auto flex flex-col lg:flex-row gap-12 lg:gap-16 xl:gap-24 items-center lg:items-stretch h-full">
                 <!-- 왼쪽: 프로필 이미지 및 일러스트 데코 프레임 영역 (기존 효과 완벽 유지) -->
                 <div class="w-full lg:w-5/12 xl:w-[45%] reveal pt-0 lg:pt-6">
                     <div class="relative group">
@@ -280,9 +274,9 @@
                 </div>
      
                 <!-- 오른쪽: 텍스트 정보 및 콘텐츠 스트림 영역 -->
-                <div class="w-full lg:w-7/12 xl:w-[55%] flex flex-col justify-center py-4 lg:py-8 relative z-20">
+                <div class="w-full lg:w-7/12 xl:w-[55%] flex flex-col justify-center py-4 lg:py-8">
                     
-                    <!-- 1. 임팩트 있는 메인 문구 (요청사항 1: "당신을 사랑합니다!" 글자색을 흰색으로 변경) -->
+                    <!-- 1. 임팩트 있는 메인 문구 -->
                     <div class="reveal delay-100 mb-10">
                         <div class="relative inline-block pl-6 pr-6 md:pl-8 md:pr-12 py-2">
                             <span class="font-playfair italic text-5xl sm:text-6xl text-amber-400/20 absolute -top-4 left-0 select-none">“</span>
@@ -293,12 +287,12 @@
                         </div>
                     </div>
      
-                    <!-- 2. 그리스어 원어 구절 및 한국어 말씀 비주얼 카드 (요청사항 2: 완전히 투명한 글래스 모피즘으로 전면 구현) -->
+                    <!-- 2. 그리스어 원어 구절 및 한국어 말씀 비주얼 카드 -->
                     <div class="reveal delay-200 mb-10 glass-panel-dark p-6 sm:p-8 md:p-10 rounded-2xl shadow-[0_8px_32px_0_rgba(0,0,0,0.25)] relative">
                         <!-- 상단: 그리스어 원어 구절 (신비로운 실버골드 컬러) -->
                         <div class="mb-6">
                             <p class="font-serif text-base sm:text-lg md:text-2xl text-slate-300 leading-relaxed tracking-wide italic font-medium break-words font-playfair">
-                                Ἐντολὴν καινὴν δίδωμι ὑμῖν, ἵνα ἀγαπᾶτε ἀλλήλους, καθὼς ἠγάπησα ὑμᾶς ἵνα καὶ ὑ메ῖς ἀγαπᾶτε ἀλλήλους.
+                                Ἐντολὴν καινὴν δίδωμι ὑμῖν, ἵνα ἀγαπᾶτε ἀλλήλους, καθὼς ἠγάπησα ὑμᾶς ἵνα καὶ ὑμεῖς ἀγαπᾶτε ἀλλήλους.
                             </p>
                         </div>
                         
@@ -321,16 +315,15 @@
             </div>
         </main>
      
-        <!-- 구역 2: [여정] 에메랄드 딥 선교 테마 영역 (dot-grid 클래스를 생략하여 자연스러운 다크 오션 그라데이션 보존) -->
-        <section id="values" class="bg-gradient-to-b from-[#0a0f1d] via-[#0d2123] to-[#0a1e1f] py-24 border-b border-emerald-500/10 scroll-mt-24 w-full relative overflow-hidden">
+        <!-- 구역 2: [여정] 에메랄드 딥 선교 테마 영역 -->
+        <!-- 배경 그라데이션과 도트가 충돌하지 않도록 내부 별도 도트 레이어를 삽입하여 자연스럽게 전 영역에 도트 적용 -->
+        <section id="values" class="bg-gradient-to-b from-[#0a0f1d] via-[#0d2123] to-[#0a1e1f] py-24 border-b border-emerald-500/10 scroll-mt-24 w-full relative z-30">
+            <!-- 2구역 도트 레이어 추가 (방해되는 투명도/블렌드 클래스 제거하여 선명하게 적용) -->
+            <div class="absolute inset-0 dot-grid pointer-events-none z-0"></div>
             
-            <!-- 구역 2 전용 캔버스 (Z-index 10) -->
-            <canvas class="section-spark-canvas absolute inset-0 w-full h-full pointer-events-none z-10"></canvas>
-
             <!-- 신비로운 에메랄드 안개 발광 레이어 -->
-            <div class="absolute inset-0 bg-gradient-to-r from-emerald-950/20 via-transparent to-blue-950/20 pointer-events-none -z-10"></div>
-
-            <div class="max-w-[1300px] w-full mx-auto px-6 sm:px-10 lg:px-16 relative z-20">
+            <div class="absolute inset-0 bg-gradient-to-r from-emerald-950/20 via-transparent to-blue-950/20 pointer-events-none z-0"></div>
+            <div class="max-w-[1300px] w-full mx-auto px-6 sm:px-10 lg:px-16 relative z-10">
                 
                 <!-- 상단 헤더 텍스트 리뉴얼 적용 -->
                 <div class="text-center max-w-2xl mx-auto mb-16 reveal">
@@ -342,8 +335,8 @@
                     </p>
                 </div>
      
-                <!-- 핵심 가치 3대 카드 그리드 (★ 누르고 싶은 밝은 톤의 라이트 글래스모피즘 설계 - 호버 시 극상의 화이트 톤업 작동) -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-20">
+                <!-- 핵심 가치 3대 카드 그리드 -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <!-- 가치 1: 선교의 자취 -->
                     <a href="mission.html" class="block glass-panel-light p-8 rounded-2xl shadow-[0_10px_35px_rgba(255,255,255,0.05)] hover:-translate-y-2 hover:shadow-[0_20px_45px_rgba(59,130,246,0.2)] hover:border-blue-400/80 transition-all duration-500 ease-out group cursor-pointer reveal delay-100 relative">
                         <div class="w-14 h-14 rounded-full bg-blue-100/80 flex items-center justify-center text-blue-700 mb-6 shadow-sm border border-blue-200/50 group-hover:bg-gradient-to-tr group-hover:from-blue-500 group-hover:to-cyan-400 group-hover:text-white group-hover:scale-110 group-hover:shadow-[0_8px_20px_rgba(59,130,246,0.3)] transition-all duration-500 ease-out shrink-0">
@@ -399,16 +392,14 @@
             </div>
         </section>
      
-        <!-- 구역 3: [쇼츠] 따뜻한 루비 로즈 테마 영역 (dot-grid 클래스 생략) -->
-        <section id="media" class="bg-gradient-to-b from-[#0a1e1f] via-[#1c0f1b] to-[#120a1b] py-24 border-b border-rose-500/10 scroll-mt-24 w-full relative overflow-hidden">
+        <!-- 구역 3: [쇼츠] 따뜻한 루비 로즈 테마 영역 -->
+        <section id="media" class="bg-gradient-to-b from-[#0a1e1f] via-[#1c0f1b] to-[#120a1b] py-24 border-b border-rose-500/10 scroll-mt-24 w-full relative z-30">
+            <!-- 3구역 도트 레이어 추가 (방해되는 투명도/블렌드 클래스 제거하여 선명하게 적용) -->
+            <div class="absolute inset-0 dot-grid pointer-events-none z-0"></div>
             
-            <!-- 구역 3 전용 캔버스 (Z-index 10) -->
-            <canvas class="section-spark-canvas absolute inset-0 w-full h-full pointer-events-none z-10"></canvas>
-
             <!-- 둥근 공간 발광 이펙트 (웜 로즈) -->
             <div class="absolute top-[30%] right-[5%] w-[400px] h-[400px] bg-rose-950/15 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
-
-            <div class="max-w-[1300px] w-full mx-auto px-6 sm:px-10 lg:px-16 text-center lg:text-left relative z-20">
+            <div class="max-w-[1300px] w-full mx-auto px-6 sm:px-10 lg:px-16 text-center lg:text-left relative z-10">
                 <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
                     
                     <!-- 왼쪽 문구 -->
@@ -418,7 +409,7 @@
                             짧은 메시지와 생각의 세계로 초대합니다.
                         </p>
      
-                        <!-- 새로이 인서트된 끄적이는 생각들 (Scribbled Thoughts) 블록 영역 (다크 테마 최적화) -->
+                        <!-- 새로이 인서트된 끄적이는 생각들 (Scribbled Thoughts) 블록 영역 -->
                         <div class="mb-8 border-l-2 border-rose-500/30 pl-4 py-1 text-left relative">
                             <span class="text-[10px] font-bold text-slate-400 tracking-wider uppercase font-playfair block mb-1">Scribbled Thoughts</span>
                             <h4 class="font-serif-kr text-base font-bold text-slate-200 mb-2">끄적이는 생각들</h4>
@@ -427,7 +418,7 @@
                             </p>
                         </div>
      
-                        <!-- 밝은 톤의 시선을 사로잡는 박스 (글래스모피즘 터치 추가) -->
+                        <!-- 밝은 톤의 시선을 사로잡는 박스 -->
                         <div class="inline-flex items-center gap-4 bg-white/95 backdrop-blur-md hover:bg-white text-slate-800 px-6 py-4 rounded-xl shadow-lg shadow-black/25 max-w-full overflow-hidden transition-all duration-300">
                             <i class="fa-brands fa-youtube text-rose-600 text-2xl animate-pulse shrink-0"></i>
                             <div class="text-left min-w-0">
@@ -437,7 +428,7 @@
                         </div>
                     </div>
      
-                    <!-- 오른쪽 유튜브 플레이어 (글래스 프레임 극대화) -->
+                    <!-- 오른쪽 유튜브 플레이어 -->
                     <div class="w-full lg:w-1/2 flex justify-center reveal delay-200">
                         <div class="relative max-w-[340px] w-full px-4 sm:px-0">
                             
@@ -463,16 +454,14 @@
             </div>
         </section>
      
-        <!-- 구역 4: [소통] 깊은 우주 테마 영역 (dot-grid 클래스 생략) -->
-        <section id="profile" class="bg-gradient-to-b from-[#120a1b] via-[#0a0d18] to-[#04060d] py-24 scroll-mt-24 w-full relative overflow-hidden">
+        <!-- 구역 4: [소통] 깊은 우주 테마 영역 -->
+        <section id="profile" class="bg-gradient-to-b from-[#120a1b] via-[#0a0d18] to-[#04060d] py-24 scroll-mt-24 w-full relative z-30">
+            <!-- 4구역 도트 레이어 추가 (방해되는 투명도/블렌드 클래스 제거하여 선명하게 적용) -->
+            <div class="absolute inset-0 dot-grid pointer-events-none z-0"></div>
             
-            <!-- 구역 4 전용 캔버스 (Z-index 10) -->
-            <canvas class="section-spark-canvas absolute inset-0 w-full h-full pointer-events-none z-10"></canvas>
-
             <!-- 파란 우주선 발광 레이어 -->
             <div class="absolute bottom-0 left-[15%] w-[450px] h-[450px] bg-blue-950/10 rounded-full blur-[140px] -z-10 pointer-events-none"></div>
-
-            <div class="max-w-[1300px] w-full mx-auto px-6 sm:px-10 lg:px-16 relative z-20">
+            <div class="max-w-[1300px] w-full mx-auto px-6 sm:px-10 lg:px-16 relative z-10">
                 
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
                     
@@ -514,38 +503,38 @@
                             </ul>
                         </div>
      
-                        <!-- 연락처 정보 (지메일 위에 마우스 오버 시 웹/모바일 완벽 최적화 및 메일 아이콘 소거, 폰트크기 한 단계 축소 적용 완료) -->
+                        <!-- 연락처 정보 (아이콘 제거 완료) -->
                         <div class="reveal delay-400 md:col-span-2 pt-6 max-w-full">
                             <h3 class="text-xs font-bold text-slate-400 tracking-widest uppercase mb-3 font-sans">Contact</h3>
                             <div id="emailContainer" class="relative inline-flex items-center text-slate-300 hover:text-amber-300 cursor-pointer select-none transition-colors duration-300 group max-w-full">
-                                <!-- 앞에 있던 편지 아이콘을 완벽하게 제거하고 지적하신 대로 정확히 한 단계 다운된 폰트 크기 및 투명 언더라인 기용 -->
+                                <!-- 이메일 텍스트 -->
                                 <span class="text-[11px] sm:text-xs md:text-sm font-medium border-b border-dashed border-slate-500 hover:border-amber-300 truncate tracking-wide">koindori@gmail.com</span>
                                 
-                                <!-- 인터랙티브 복사 말풍선 (데스크톱 및 모바일 기기에 맞는 세련된 반응형 한줄 툴팁) -->
+                                <!-- 인터랙티브 복사 말풍선 (이모지 제거됨) -->
                                 <div id="emailTooltip" class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-3 px-3 py-2 bg-slate-800 text-white text-[10px] sm:text-xs rounded-xl opacity-0 pointer-events-none transition-all duration-300 shadow-xl whitespace-nowrap max-w-none text-center z-50 flex items-center gap-1.5 font-sans">
-                                    <span>📬 클릭하면 메일 주소가 복사됩니다</span>
+                                    <span>클릭하면 메일 주소가 복사됩니다</span>
                                     <div class="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-slate-800"></div>
                                 </div>
                             </div>
                         </div>
      
-                        <!-- 링크 버튼 영역 (마우스 오버 시 글자색은 불변, 외곽으로 아름다운 은은한 색번짐 광채 분출) -->
+                        <!-- 링크 버튼 영역 -->
                         <div class="reveal delay-500 md:col-span-2 flex flex-col sm:flex-row flex-wrap gap-4 pt-8 w-full">
-                            <!-- 새제천교회 홈페이지 버튼 (에메랄드 아우라 색번짐) -->
+                            <!-- 새제천교회 홈페이지 버튼 -->
                             <a href="https://saejecheon.com" target="_blank" rel="noopener noreferrer" 
                                class="btn-glow-emerald flex items-center justify-center glass-panel-light text-slate-800 px-6 sm:px-8 py-4 text-xs sm:text-sm font-bold tracking-wide rounded-xl w-full sm:w-auto shadow-md border border-white/60 group">
                                 <i class="fa-solid fa-church mr-3 text-emerald-600"></i>
                                 새제천교회 홈페이지
                             </a>
                             
-                            <!-- 고목사클라쓰 버튼 (로즈 레드 아우라 색번짐) -->
+                            <!-- 고목사클라쓰 버튼 -->
                             <a href="https://www.youtube.com/@koclass" target="_blank" rel="noopener noreferrer" 
                                class="btn-glow-rose flex items-center justify-center glass-panel-light text-slate-800 px-6 sm:px-8 py-4 text-xs sm:text-sm font-bold tracking-wide rounded-xl w-full sm:w-auto shadow-md border border-white/60 group">
                                 <i class="fa-brands fa-youtube mr-3 text-rose-600"></i>
                                 고목사클라쓰
                             </a>
      
-                            <!-- 고목사인스타그램 버튼 (핑크 아우라 색번짐) -->
+                            <!-- 고목사인스타그램 버튼 -->
                             <a href="https://www.instagram.com/koinkook/" target="_blank" rel="noopener noreferrer" 
                                class="btn-glow-pink flex items-center justify-center glass-panel-light text-slate-800 px-6 sm:px-8 py-4 text-xs sm:text-sm font-bold tracking-wide rounded-xl w-full sm:w-auto shadow-md border border-white/60 group">
                                 <i class="fa-brands fa-instagram mr-3 text-pink-600"></i>
@@ -560,7 +549,7 @@
         </section>
      
         <!-- 하단 저작권 문구 영역 -->
-        <footer class="w-full py-8 text-center bg-slate-950/90 border-t border-white/5 mt-auto">
+        <footer class="w-full py-8 text-center bg-slate-950/90 border-t border-white/5 mt-auto relative z-30">
             <p class="text-[10px] sm:text-xs text-slate-500 tracking-wider">
                 &copy; 2026 고인국목사. All rights reserved.
             </p>
@@ -590,7 +579,7 @@
                 revealOnScrollObserver.observe(el);
             });
  
-            // 2. 동적 이미지 중앙 분사 파티클 생성 엔진 (기존 효과 100% 보존)
+            // 2. 동적 이미지 중앙 분사 파티클 생성 엔진
             const particleOverlay = document.getElementById("particleOverlay");
             
             const particleShapes = [
@@ -645,105 +634,90 @@
                 setTimeout(spawnCenterParticle, i * 600);
             }
             setInterval(spawnCenterParticle, 1500);
-
-            // 3. 배경 영역별 '부유하는 스파크 파티클 효과' (Parallax 스크롤 정밀 물리 설계 및 성능최적화)
-            const sparkCanvases = document.querySelectorAll(".section-spark-canvas");
-
-            sparkCanvases.forEach(canvas => {
-                const ctx = canvas.getContext("2d");
-                let particlesArray = [];
-                let animationFrameId;
-                let isCurrentlyVisible = false;
-
-                // 캔버스 크기를 부모 영역의 넓이/높이에 완전히 대응시킴
-                function resizeSectionCanvas() {
-                    const parent = canvas.parentElement;
-                    canvas.width = parent.offsetWidth;
-                    canvas.height = parent.offsetHeight;
+            // 3. 배경전체 '부유하는 스파크 파티클 효과' (매우 우아하고 느리게 최적화 완료)
+            const canvas = document.getElementById("sparkParticlesCanvas");
+            const ctx = canvas.getContext("2d");
+            let particlesArray = [];
+            
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            window.addEventListener("resize", resizeCanvas);
+            resizeCanvas();
+            class SparkParticle {
+                constructor() {
+                    this.init();
                 }
-                window.addEventListener("resize", resizeSectionCanvas);
-                resizeSectionCanvas();
-
-                // 개별 영역 파티클 생성 클래스
-                class SectionSparkParticle {
-                    constructor() {
-                        this.init(true); // 최초 렌더링 시에는 Y축 전역에 랜덤 배치
-                    }
-
-                    init(randomY = false) {
+                init() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                    // 크기를 살짝 키워 시각적 인지도를 높임
+                    this.size = 1.0 + Math.random() * 2.0; 
+                    
+                    // 속도 재조정: 위로 천천히 올라가되, 좌우 움직임은 update()에서 곡선형으로 처리
+                    this.speedX = -0.1 + Math.random() * 0.2; 
+                    this.speedY = -0.15 - Math.random() * 0.15; 
+                    
+                    // 투명도를 높여 확실히 보이도록 (우아한 빛)
+                    this.baseOpacity = 0.15 + Math.random() * 0.35;
+                    this.opacity = this.baseOpacity;
+                    
+                    // 깜빡이는 페이드 속도
+                    this.fadeSpeed = 0.002 + Math.random() * 0.003; 
+                    this.fadeDirection = Math.random() > 0.5 ? 1 : -1;
+                    
+                    // 약간 따뜻한 금빛(스파크 느낌)이 감도는 화이트
+                    this.color = `rgba(255, 245, 220, `; 
+                    
+                    // 우아한 곡선(물결) 부유를 위한 각도 변수 추가
+                    this.angle = Math.random() * Math.PI * 2;
+                    this.angleSpeed = 0.01 + Math.random() * 0.02;
+                }
+                update() {
+                    // sin 함수를 이용해 좌우로 부드럽게 흔들리는 물결 효과 추가
+                    this.angle += this.angleSpeed;
+                    this.x += this.speedX + (Math.sin(this.angle) * 0.4);
+                    this.y += this.speedY;
+                    // 화면 밖으로 나가면 아래에서 다시 부드럽게 등장
+                    if (this.y < -10 || this.x < -10 || this.x > canvas.width + 10) {
+                        this.y = canvas.height + 10;
                         this.x = Math.random() * canvas.width;
-                        this.y = randomY ? (Math.random() * canvas.height) : (canvas.height + 10);
-                        this.size = 0.6 + Math.random() * 2.2; // 초미세 크기로 정갈하게 연출
-                        this.speedX = -0.015 + Math.random() * 0.03; // 수평 흔들림 최소화
-                        this.speedY = -(0.01 + Math.random() * 0.025); // 부드럽고 가벼운 시네마틱 초저속 상승무브
-                        this.baseOpacity = 0.12 + Math.random() * 0.35;
-                        this.opacity = this.baseOpacity;
-                        this.fadeSpeed = 0.0006 + Math.random() * 0.0015; // 고요한 깜빡임 주기
-                        this.fadeDirection = Math.random() > 0.5 ? 1 : -1;
-                        this.color = `rgba(255, 255, 255, `; 
+                        this.opacity = 0;
+                        this.fadeDirection = 1;
                     }
-
-                    update() {
-                        this.x += this.speedX;
-                        this.y += this.speedY;
-
-                        // 화면 꼭대기나 양 옆으로 나가면 하단에서 부드럽게 재출현
-                        if (this.y < -10 || this.x < -10 || this.x > canvas.width + 10) {
-                            this.init(false);
-                        }
-
-                        this.opacity += this.fadeSpeed * this.fadeDirection;
-                        if (this.opacity >= this.baseOpacity + 0.1 || this.opacity <= 0.05) {
-                            this.fadeDirection *= -1;
-                        }
-                        this.opacity = Math.max(0.04, Math.min(this.opacity, 0.65));
+                    this.opacity += this.fadeSpeed * this.fadeDirection;
+                    if (this.opacity >= this.baseOpacity + 0.3 || this.opacity <= 0.05) {
+                        this.fadeDirection *= -1;
                     }
-
-                    draw() {
-                        ctx.beginPath();
-                        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                        ctx.fillStyle = this.color + this.opacity + ')';
-                        ctx.shadowBlur = this.size * 1.5;
-                        ctx.shadowColor = 'rgba(255, 255, 255, 0.2)';
-                        ctx.fill();
-                    }
+                    this.opacity = Math.max(0, Math.min(this.opacity, 0.8));
                 }
-
-                // 영역 하나당 눈이 피로하지 않은 수량인 15~35개로 균형 유지 (모바일 15개, PC 35개)
-                const particlesCount = window.innerWidth < 768 ? 15 : 35;
-                for (let i = 0; i < particlesCount; i++) {
-                    particlesArray.push(new SectionSparkParticle());
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fillStyle = this.color + this.opacity + ')';
+                    // 빛 번짐 효과를 확실하게 주어 세련되게 표현
+                    ctx.shadowBlur = this.size * 3.0; 
+                    ctx.shadowColor = 'rgba(255, 245, 220, 0.6)';
+                    ctx.fill();
                 }
-
-                // 렌더링 루프
-                function animate() {
-                    if (!isCurrentlyVisible) return; // 화면 밖의 영역은 렌더링을 일시 정지하여 성능 보전
-                    ctx.clearRect(0, 0, canvas.width, canvas.height);
-                    ctx.shadowBlur = 0; 
-                    ctx.shadowColor = 'transparent';
-
-                    for (let i = 0; i < particlesArray.length; i++) {
-                        particlesArray[i].update();
-                        particlesArray[i].draw();
-                    }
-                    animationFrameId = requestAnimationFrame(animate);
+            }
+            // 공간을 채우기 위한 적절한 입자 수
+            const totalSparks = window.innerWidth < 768 ? 35 : 75;
+            for (let i = 0; i < totalSparks; i++) {
+                particlesArray.push(new SparkParticle());
+            }
+            function animateCanvas() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.shadowBlur = 0; 
+                ctx.shadowColor = 'transparent';
+                for (let i = 0; i < particlesArray.length; i++) {
+                    particlesArray[i].update();
+                    particlesArray[i].draw();
                 }
-
-                // IntersectionObserver를 이용해 화면 가시영역일때만 연산 루프를 구동 (스마트 전력 효율)
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            isCurrentlyVisible = true;
-                            animate();
-                        } else {
-                            isCurrentlyVisible = false;
-                            cancelAnimationFrame(animationFrameId);
-                        }
-                    });
-                }, { threshold: 0.01 });
-
-                observer.observe(canvas.parentElement);
-            });
+                requestAnimationFrame(animateCanvas);
+            }
+            animateCanvas();
  
             // 4. 이메일 클립보드 복사 & 상호작용 툴팁 엔진 구현
             const emailContainer = document.getElementById("emailContainer");
@@ -751,7 +725,8 @@
             
             if (emailContainer && emailTooltip) {
                 emailContainer.addEventListener("mouseenter", () => {
-                    emailTooltip.innerHTML = `📬 클릭하면 메일 주소가 복사됩니다 <div class="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-slate-800"></div>`;
+                    // 이모지 제거 적용 완료
+                    emailTooltip.innerHTML = `클릭하면 메일 주소가 복사됩니다 <div class="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-slate-800"></div>`;
                     emailTooltip.style.opacity = "1";
                     emailTooltip.style.transform = "translate(-50%, -4px)";
                 });
@@ -773,7 +748,8 @@
                     try {
                         const success = document.execCommand("copy");
                         if (success) {
-                            emailTooltip.innerHTML = `✨ 복사되었습니다! <div class="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-slate-800"></div>`;
+                            // 복사 완료 문구에서도 이모지 제거 적용 완료
+                            emailTooltip.innerHTML = `복사되었습니다! <div class="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-slate-800"></div>`;
                             emailTooltip.style.transform = "translate(-50%, -8px) scale(1.08)";
                             setTimeout(() => {
                                 emailTooltip.style.transform = "translate(-50%, -4px) scale(1)";
@@ -790,4 +766,3 @@
     </script>
 </body>
 </html>
-`
