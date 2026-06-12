@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IK Shorts - Shorts</title>
+    <title>IK Shorts</title>
     
     <!-- 브라우저 탭 아이콘 (파비콘) -->
     <link class="js-favicon" rel="icon" href="logo.png" type="image/png">
@@ -114,46 +114,8 @@
         <!-- 메인 컨텐츠 영역 -->
         <main class="max-w-[1200px] w-full mx-auto px-6 sm:px-10 lg:px-16 pt-16 md:pt-24 pb-24 flex-grow relative z-10 flex flex-col items-center">
             
-            <!-- 미래적 타이포그래피 섹션 (카드 제거, 심플하고 세련된 텍스트 연출) -->
-            <div class="relative w-full max-w-4xl mx-auto reveal mt-10 mb-16">
-                
-                <!-- 텍스트 배경에 경계 없이 은은하게 퍼지는 홀로그램 빛 번짐 -->
-                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[150%] bg-gradient-to-r from-cyan-500/0 via-cyan-500/10 to-violet-500/0 blur-3xl -z-10 pointer-events-none"></div>
-
-                <div class="text-center space-y-10 relative z-10 py-10">
-                    <!-- 타이틀 섹션 -->
-                    <div class="space-y-6">
-                        <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-[5rem] font-black text-transparent bg-clip-text bg-gradient-to-b from-white via-cyan-50 to-cyan-500 tracking-tighter font-playfair drop-shadow-[0_0_25px_rgba(34,211,238,0.25)] leading-tight">
-                            Scribbled
-                            <br class="sm:hidden" />
-                            Thoughts
-                        </h1>
-                        <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-[0.25em] mt-4 font-sans drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
-                            끄적이는 생각들
-                        </h2>
-                    </div>
-
-                    <!-- 미니멀 미래지향적 구분선 (다이아몬드 코어 레이저 라인) -->
-                    <div class="flex items-center justify-center gap-3 opacity-80">
-                        <div class="w-16 md:w-24 h-[1px] bg-gradient-to-r from-transparent to-cyan-400"></div>
-                        <div class="w-1.5 h-1.5 rotate-45 bg-cyan-300 shadow-[0_0_12px_rgba(34,211,238,1)]"></div>
-                        <div class="w-16 md:w-24 h-[1px] bg-gradient-to-l from-transparent to-cyan-400"></div>
-                    </div>
-
-                    <!-- 본문 텍스트 -->
-                    <div class="space-y-6 max-w-2xl mx-auto pt-2">
-                        <p class="text-lg sm:text-xl md:text-2xl text-cyan-100 font-medium tracking-widest font-serif-kr drop-shadow-md">
-                            "짧은 메시지와 생각의 세계로 초대합니다."
-                        </p>
-                        <p class="text-sm sm:text-base md:text-lg text-slate-300 font-light leading-relaxed tracking-widest break-keep">
-                            말씀 묵상하며 떠오른 잔잔한 지혜와 일상의 여정에서 만난<br class="hidden md:block"/> 생각의 조각들을 담백한 영상으로 담았습니다.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 유튜브 쇼츠 영상 패널 (미래적 플로팅 창 적용) -->
-            <div class="relative w-full max-w-[340px] sm:max-w-[380px] mx-auto reveal cyber-float">
+            <!-- 유튜브 쇼츠 영상 패널을 상단으로 이동 (미래적 플로팅 창 적용) -->
+            <div class="relative w-full max-w-[340px] sm:max-w-[380px] mx-auto reveal cyber-float mt-4">
                 
                 <!-- 재생 상태 뱃지를 영상 위로 이동 -->
                 <div class="absolute -top-4 left-1/2 -translate-x-1/2 z-30 inline-flex items-center gap-3 px-6 py-2 rounded-full border border-cyan-500/50 bg-[#030712]/90 shadow-[0_0_20px_rgba(34,211,238,0.4)] backdrop-blur-md">
@@ -189,8 +151,51 @@
                 </div>
             </div>
 
+            <!-- 영상과 텍스트 사이의 여백 -->
+            <div class="h-20 md:h-28 w-full"></div>
+            
+            <!-- 미래적 타이포그래피 섹션 (영상 아래로 이동 및 글자 크기 2단계 축소) -->
+            <div class="relative w-full max-w-4xl mx-auto reveal mb-8">
+                
+                <!-- 텍스트 배경에 경계 없이 은은하게 퍼지는 홀로그램 빛 번짐 -->
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[150%] bg-gradient-to-r from-cyan-500/0 via-cyan-500/10 to-violet-500/0 blur-3xl -z-10 pointer-events-none"></div>
+
+                <div class="text-center space-y-10 relative z-10 py-6">
+                    <!-- 타이틀 섹션 -->
+                    <div class="space-y-4 md:space-y-6">
+                        <!-- 글자 크기 2단계 축소 (text-5xl -> text-3xl 등) -->
+                        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white via-cyan-50 to-cyan-500 tracking-tighter font-playfair drop-shadow-[0_0_25px_rgba(34,211,238,0.25)] leading-tight">
+                            Scribbled
+                            <br class="sm:hidden" />
+                            Thoughts
+                        </h1>
+                        <!-- 한글 부제목 크기 1단계 축소하여 균형 맞춤 -->
+                        <h2 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-white tracking-[0.25em] mt-4 font-sans drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
+                            끄적이는 생각들
+                        </h2>
+                    </div>
+
+                    <!-- 미니멀 미래지향적 구분선 (다이아몬드 코어 레이저 라인) -->
+                    <div class="flex items-center justify-center gap-3 opacity-80 mt-8 mb-8">
+                        <div class="w-16 md:w-24 h-[1px] bg-gradient-to-r from-transparent to-cyan-400"></div>
+                        <div class="w-1.5 h-1.5 rotate-45 bg-cyan-300 shadow-[0_0_12px_rgba(34,211,238,1)]"></div>
+                        <div class="w-16 md:w-24 h-[1px] bg-gradient-to-l from-transparent to-cyan-400"></div>
+                    </div>
+
+                    <!-- 본문 텍스트 -->
+                    <div class="space-y-6 max-w-2xl mx-auto pt-2">
+                        <p class="text-lg sm:text-xl md:text-2xl text-cyan-100 font-medium tracking-widest font-serif-kr drop-shadow-md">
+                            "짧은 메시지와 생각의 세계로 초대합니다."
+                        </p>
+                        <p class="text-sm sm:text-base md:text-lg text-slate-300 font-light leading-relaxed tracking-widest break-keep">
+                            말씀 묵상하며 떠오른 잔잔한 지혜와 일상의 여정에서 만난<br class="hidden md:block"/> 생각의 조각들을 담백한 영상으로 담았습니다.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
             <!-- 하단 여백 스페이서 -->
-            <div class="h-24 md:h-32 w-full"></div>
+            <div class="h-16 md:h-24 w-full"></div>
 
             <!-- 하단 메인페이지 복귀 제안 섹션 -->
             <div class="w-full text-center reveal">
@@ -198,7 +203,7 @@
                     <i class="fa-solid fa-house-chimney-window text-cyan-400 text-2xl mb-5 transition-transform duration-300 group-hover:scale-110 drop-shadow-[0_0_10px_rgba(34,211,238,0.5)]"></i>
                     
                     <h3 class="text-base md:text-lg font-light text-slate-200 tracking-wide mb-8 leading-relaxed">
-                        쉼과 건강한 활동을 통해 새로운 힘을 얻으셨기를 바랍니다
+                        짧은 영상으로 상쾌하셨길 바랍니다
                     </h3>
                     
                     <div class="inline-flex items-center px-8 py-3.5 bg-cyan-950/50 text-cyan-50 border border-cyan-500/30 group-hover:bg-cyan-400 group-hover:text-cyan-950 group-hover:border-cyan-400 transition-all duration-400 rounded-full text-xs md:text-sm font-semibold tracking-wider group-hover:shadow-[0_0_25px_rgba(34,211,238,0.4)] shadow-md">
