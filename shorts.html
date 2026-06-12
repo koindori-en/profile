@@ -23,10 +23,10 @@
             color: #F8FAFC;
             font-family: 'Noto Sans KR', sans-serif; 
             overflow-x: hidden;
-            /* 핑크와 사이언이 교차하는 네온 매트릭스 배경 */
+            /* 핑크와 푸시아가 교차하는 네온 매트릭스 배경 (사이언 제거됨) */
             background-image: 
                 radial-gradient(rgba(236, 72, 153, 0.12) 1.5px, transparent 1.5px),
-                radial-gradient(rgba(34, 211, 238, 0.06) 1px, transparent 1px);
+                radial-gradient(rgba(217, 70, 239, 0.06) 1px, transparent 1px);
             background-size: 32px 32px, 16px 16px;
             background-position: 0 0, 8px 8px;
         }
@@ -55,7 +55,7 @@
             animation: cyberFloat 6s ease-in-out infinite;
         }
 
-        /* 핑크 & 사이언 듀얼 스파크 애니메이션 */
+        /* 핑크 & 푸시아 듀얼 스파크 애니메이션 */
         @keyframes sparkFloat {
             0%, 100% {
                 transform: translateY(0) rotate(0deg) scale(0.8);
@@ -80,9 +80,9 @@
     <!-- 모바일 환경에서 가로 스크롤 밀림 방지 -->
     <div class="relative w-full min-h-screen flex flex-col overflow-hidden">
 
-        <!-- 핑크 베이스에 사이언 포인트가 들어간 강렬한 우주 오라 -->
+        <!-- 핑크, 푸시아, 보라 계열로 통일된 강렬한 우주 오라 (사이언 제거됨) -->
         <div class="absolute top-[5%] left-[5%] w-[300px] h-[300px] sm:w-[600px] sm:h-[600px] bg-pink-600/20 rounded-full blur-[100px] sm:blur-[150px] -z-10 pointer-events-none"></div>
-        <div class="absolute top-[35%] right-[-5%] w-[350px] h-[350px] sm:w-[700px] sm:h-[700px] bg-cyan-500/10 rounded-full blur-[100px] sm:blur-[160px] -z-10 pointer-events-none"></div>
+        <div class="absolute top-[35%] right-[-5%] w-[350px] h-[350px] sm:w-[700px] sm:h-[700px] bg-purple-600/15 rounded-full blur-[100px] sm:blur-[160px] -z-10 pointer-events-none"></div>
         <div class="absolute bottom-[10%] left-[-10%] w-[300px] h-[300px] sm:w-[600px] sm:h-[600px] bg-rose-500/15 rounded-full blur-[90px] sm:blur-[140px] -z-10 pointer-events-none"></div>
         
         <!-- 실시간 빛나는 스파크 파티클 레이어 -->
@@ -91,9 +91,9 @@
         <header class="sticky top-0 z-50 bg-[#08030A]/80 backdrop-blur-lg border-b border-pink-500/20 transition-all duration-300 shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
             <div class="max-w-[1300px] mx-auto px-6 sm:px-10 lg:px-16 h-16 md:h-20 flex items-center justify-between">
                 
-                <!-- 왼쪽 상단: 핑크-사이언 그라데이션 로고 -->
+                <!-- 왼쪽 상단: 핑크-퍼플 그라데이션 로고 (크기를 HOME과 동일하게 text-xs) -->
                 <a href="index.html" class="flex items-center group">
-                    <span class="font-sans font-semibold text-xs tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-rose-300 to-cyan-300 uppercase transition-all duration-500 group-hover:drop-shadow-[0_0_15px_rgba(236,72,153,0.6)]">
+                    <span class="font-sans font-semibold text-xs tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-rose-300 to-purple-300 uppercase transition-all duration-500 group-hover:drop-shadow-[0_0_15px_rgba(236,72,153,0.6)]">
                         SHORTS
                     </span>
                 </a>
@@ -104,22 +104,22 @@
                     HOME
                 </a>
             </div>
-            <!-- 정교한 데코 라인 -->
-            <div class="h-[1px] w-full bg-gradient-to-r from-pink-500/0 via-cyan-400/30 to-pink-500/0"></div>
+            <!-- 정교한 데코 라인 (사이언 제거) -->
+            <div class="h-[1px] w-full bg-gradient-to-r from-pink-500/0 via-fuchsia-400/30 to-pink-500/0"></div>
         </header>
 
         <main class="max-w-[1200px] w-full mx-auto px-6 sm:px-10 lg:px-16 pt-16 md:pt-24 pb-24 flex-grow relative z-10 flex flex-col items-center">
             
-            <!-- 유튜브 쇼츠 영상 패널 (가장 먼저 배치, 핑크/사이언 테마 적용) -->
+            <!-- 유튜브 쇼츠 영상 패널 (가장 먼저 배치, 올 핑크/푸시아 테마 적용) -->
             <div class="relative w-full max-w-[340px] sm:max-w-[380px] mx-auto reveal cyber-float mt-4">
                 
-                <!-- 재생 상태 뱃지 (올 핑크 테마 적용) -->
+                <!-- 재생 상태 뱃지 (올 핑크 테마) -->
                 <div class="absolute -top-4 left-1/2 -translate-x-1/2 z-30 inline-flex items-center gap-3 px-6 py-2 rounded-full border border-pink-500/50 bg-[#08030A]/90 shadow-[0_0_20px_rgba(236,72,153,0.5)] backdrop-blur-md">
                     <span class="relative flex h-2 w-2">
                         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-400 opacity-75"></span>
                         <span class="relative inline-flex rounded-full h-2 w-2 bg-pink-500"></span>
                     </span>
-                    <span class="text-pink-300 text-[10px] font-bold tracking-[0.2em] uppercase font-sans">Now Playing</span>
+                    <span class="text-pink-400 text-[10px] font-bold tracking-[0.2em] uppercase font-sans">Now Playing</span>
                 </div>
 
                 <!-- HUD 모서리 (핫 핑크) -->
@@ -128,10 +128,11 @@
                 <div class="absolute -bottom-3 -left-3 w-8 h-8 border-b-2 border-l-2 border-pink-500/80 rounded-bl-lg z-20"></div>
                 <div class="absolute -bottom-3 -right-3 w-8 h-8 border-b-2 border-r-2 border-pink-500/80 rounded-br-lg z-20"></div>
                 
-                <div class="relative backdrop-blur-2xl bg-[#08030A]/50 border border-pink-500/40 rounded-2xl p-4 shadow-[0_0_80px_rgba(236,72,153,0.2)] overflow-hidden group hover:border-cyan-400/60 hover:shadow-[0_0_120px_rgba(34,211,238,0.3)] transition-all duration-700">
+                <!-- 비디오 컨테이너 호버 (사이언 제거됨, 푸시아 적용) -->
+                <div class="relative backdrop-blur-2xl bg-[#08030A]/50 border border-pink-500/40 rounded-2xl p-4 shadow-[0_0_80px_rgba(236,72,153,0.2)] overflow-hidden group hover:border-fuchsia-400/60 hover:shadow-[0_0_120px_rgba(217,70,239,0.3)] transition-all duration-700">
                     
-                    <!-- 내부 빛 번짐 (Pink to Cyan Hologram Glow) -->
-                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] bg-gradient-to-br from-pink-500/20 to-cyan-500/20 blur-3xl -z-10 group-hover:from-pink-500/30 group-hover:to-cyan-400/30 transition-all duration-700"></div>
+                    <!-- 내부 빛 번짐 (Pink to Purple Hologram Glow) -->
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] bg-gradient-to-br from-pink-500/20 to-purple-500/20 blur-3xl -z-10 group-hover:from-pink-500/30 group-hover:to-fuchsia-400/30 transition-all duration-700"></div>
 
                     <!-- 유튜브 쇼츠 iframe -->
                     <div class="relative aspect-[9/16] w-full rounded-xl overflow-hidden shadow-2xl bg-black">
@@ -153,35 +154,36 @@
             <!-- 텍스트 설명 영역 (카드 형태 제거, 타이포그래피 중심) -->
             <div class="relative w-full max-w-4xl mx-auto reveal mb-8">
                 
-                <!-- 텍스트 배경에 경계 없이 은은하게 퍼지는 핑크/사이언 홀로그램 빛 번짐 -->
-                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100%] h-[150%] bg-gradient-to-r from-pink-500/0 via-pink-500/10 to-cyan-500/0 blur-3xl -z-10 pointer-events-none"></div>
+                <!-- 텍스트 배경에 경계 없이 은은하게 퍼지는 핑크/퍼플 홀로그램 빛 번짐 (사이언 제거됨) -->
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100%] h-[150%] bg-gradient-to-r from-pink-500/0 via-pink-500/10 to-purple-500/0 blur-3xl -z-10 pointer-events-none"></div>
 
                 <div class="text-center space-y-8 relative z-10 py-6">
-                    <!-- 타이틀 섹션 -->
+                    <!-- 타이틀 섹션 (크기 두 단계 축소됨) -->
                     <div class="space-y-4">
-                        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white via-pink-100 to-pink-500 tracking-tighter font-playfair drop-shadow-[0_0_20px_rgba(236,72,153,0.4)] leading-tight">
+                        <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white via-pink-100 to-pink-500 tracking-tighter font-playfair drop-shadow-[0_0_20px_rgba(236,72,153,0.4)] leading-tight">
                             Scribbled
                             <br class="sm:hidden" />
                             Thoughts
                         </h1>
-                        <h2 class="text-lg sm:text-xl md:text-2xl font-bold text-white tracking-[0.2em] mt-3 font-serif-kr drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
+                        <!-- 부제목도 명조체 적용 및 크기 약간 축소 -->
+                        <h2 class="text-lg sm:text-xl font-bold text-white tracking-[0.2em] mt-3 font-serif-kr drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
                             끄적이는 생각들
                         </h2>
                     </div>
 
-                    <!-- 미니멀 미래지향적 구분선 (핑크 라인 & 사이언 다이아몬드 코어) -->
+                    <!-- 미니멀 미래지향적 구분선 (핑크 라인 & 푸시아 다이아몬드 코어 - 사이언 제거됨) -->
                     <div class="flex items-center justify-center gap-3 opacity-90 mt-8 mb-8">
                         <div class="w-16 md:w-24 h-[1px] bg-gradient-to-r from-transparent to-pink-400"></div>
-                        <div class="w-1.5 h-1.5 rotate-45 bg-cyan-300 shadow-[0_0_15px_rgba(34,211,238,1)]"></div>
+                        <div class="w-1.5 h-1.5 rotate-45 bg-fuchsia-300 shadow-[0_0_15px_rgba(240,171,252,1)]"></div>
                         <div class="w-16 md:w-24 h-[1px] bg-gradient-to-l from-transparent to-pink-400"></div>
                     </div>
 
                     <!-- 본문 텍스트 -->
                     <div class="space-y-6 max-w-2xl mx-auto pt-2">
-                        <p class="text-base sm:text-lg md:text-xl text-pink-100 font-medium tracking-widest font-serif-kr drop-shadow-md">
+                        <p class="text-base sm:text-lg text-pink-100 font-medium tracking-widest font-serif-kr drop-shadow-md">
                             "짧은 메시지와 생각의 세계로 초대합니다."
                         </p>
-                        <p class="text-sm sm:text-base md:text-lg text-slate-300 font-light leading-relaxed tracking-widest break-keep">
+                        <p class="text-sm sm:text-base text-slate-300 font-light leading-relaxed tracking-widest break-keep font-sans">
                             말씀 묵상하며 떠오른 잔잔한 지혜와 일상의 여정에서 만난<br class="hidden md:block"/> 생각의 조각들을 담백한 영상으로 담았습니다.
                         </p>
                     </div>
@@ -191,18 +193,18 @@
             <!-- 하단 여백 스페이서 -->
             <div class="h-16 md:h-24 w-full"></div>
 
-            <!-- 하단 메인페이지 복귀 카드 -->
+            <!-- 하단 메인페이지 복귀 카드 (사이언 제거, 푸시아/핑크 통일) -->
             <div class="w-full text-center reveal">
                 <a href="index.html" class="inline-block p-10 md:p-14 bg-gradient-to-b from-[#08030A]/80 to-[#0B0510]/95 backdrop-blur-2xl rounded-3xl border border-pink-500/20 shadow-[0_40px_100px_rgba(0,0,0,0.8)] hover:bg-[#08030A]/90 hover:border-pink-400/50 hover:shadow-[0_40px_100px_rgba(236,72,153,0.2)] hover:-translate-y-1.5 transition-all duration-500 max-w-xl w-full group cursor-pointer">
-                    <!-- 아이콘 (딥 핑크 컬러로 변경) -->
-                    <i class="fa-solid fa-house-chimney-window text-pink-600 text-2xl mb-5 transition-transform duration-300 group-hover:scale-110 drop-shadow-[0_0_15px_rgba(219,39,119,0.6)]"></i>
+                    <!-- 아이콘 (딥 핑크 컬러) -->
+                    <i class="fa-solid fa-house-chimney-window text-[#D81B60] text-2xl mb-5 transition-transform duration-300 group-hover:scale-110 drop-shadow-[0_0_15px_rgba(216,27,96,0.6)]"></i>
                     
                     <h3 class="text-base md:text-lg font-light text-slate-200 tracking-wide mb-8 leading-relaxed">
                         짧은 영상으로 상쾌하셨길 바랍니다
                     </h3>
                     
-                    <!-- 버튼 (핑크-사이언 호버 이펙트) -->
-                    <div class="inline-flex items-center px-8 py-3.5 bg-pink-950/40 text-pink-50 border border-pink-500/30 group-hover:bg-pink-500 group-hover:text-white group-hover:border-cyan-400 transition-all duration-400 rounded-full text-xs md:text-sm font-semibold tracking-wider group-hover:shadow-[0_0_25px_rgba(236,72,153,0.5)] shadow-md">
+                    <!-- 버튼 (푸시아/핑크 호버 이펙트 - 사이언 제거됨) -->
+                    <div class="inline-flex items-center px-8 py-3.5 bg-pink-950/40 text-pink-50 border border-pink-500/30 group-hover:bg-pink-500 group-hover:text-white group-hover:border-fuchsia-400 transition-all duration-400 rounded-full text-xs md:text-sm font-semibold tracking-wider group-hover:shadow-[0_0_25px_rgba(236,72,153,0.5)] shadow-md">
                         메인 홈으로 평온하게 돌아가기
                     </div>
                 </a>
@@ -240,7 +242,7 @@
                 revealOnScrollObserver.observe(el);
             });
 
-            // 2. 부유하는 핑크 & 사이언 빛 스파크 파티클 생성
+            // 2. 부유하는 핑크 & 푸시아 빛 스파크 파티클 생성 (사이언 제거됨)
             const sparkOverlay = document.getElementById("sparkOverlay");
             
             function spawnSpark() {
@@ -257,11 +259,11 @@
                 spark.style.left = `${Math.random() * 95}%`;
                 spark.style.top = `${Math.random() * 100}%`;
                 
-                // 색상 팔레트 (핫 핑크 & 일렉트릭 사이언)
-                const isCyan = Math.random() > 0.6; // 60% 핑크, 40% 사이언
-                if (isCyan) {
-                    spark.style.backgroundColor = 'rgba(34, 211, 238, 0.8)';
-                    spark.style.boxShadow = '0 0 12px rgba(34, 211, 238, 0.9), inset 0 0 4px rgba(255, 255, 255, 0.8)';
+                // 색상 팔레트 (핫 핑크 & 푸시아/마젠타 - 사이언 제거)
+                const isFuchsia = Math.random() > 0.5; // 50% 핑크, 50% 푸시아
+                if (isFuchsia) {
+                    spark.style.backgroundColor = 'rgba(217, 70, 239, 0.8)';
+                    spark.style.boxShadow = '0 0 12px rgba(217, 70, 239, 0.9), inset 0 0 4px rgba(255, 255, 255, 0.8)';
                 } else {
                     spark.style.backgroundColor = 'rgba(236, 72, 153, 0.8)';
                     spark.style.boxShadow = '0 0 12px rgba(236, 72, 153, 0.9), inset 0 0 4px rgba(255, 255, 255, 0.8)';
