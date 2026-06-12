@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" class="scroll-smooth">
+<html lang="ko" class="scroll-smooth overflow-x-hidden">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -18,11 +18,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     
     <style>
+        /* 모바일 가로 스크롤 및 여백 완벽 방지 */
+        html, body {
+            overflow-x: hidden;
+            max-width: 100vw;
+        }
+
         body {
             background-color: #0a0f1d; /* 프리미엄 미드나잇 오션 다크 테마 */
             color: #e2e8f0; /* 선명하고 고급스러운 실버그레이 */
             font-family: 'Noto Sans KR', sans-serif; 
-            overflow-x: hidden;
             width: 100%;
         }
 
@@ -156,7 +161,7 @@
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col antialiased overflow-x-hidden w-full bg-[#0a0f1d]">
+<body class="min-h-screen flex flex-col antialiased overflow-x-hidden max-w-[100vw] w-full bg-[#0a0f1d]">
     
     <!-- [Z-index 샌드위치 구조 1단계] 전체 공간에 영향을 미치는 파티클 캔버스 (도트 배경보다 위, 컨텐츠보다 아래) -->
     <canvas id="sparkParticlesCanvas" class="fixed inset-0 w-full h-full pointer-events-none mix-blend-screen" style="z-index: 10;"></canvas>
@@ -179,7 +184,7 @@
     </header>
 
     <!-- 구역 1: [환영] -->
-    <main id="intro" class="relative w-full pt-8 lg:pt-16 pb-12 lg:pb-24 border-b border-blue-500/10 scroll-mt-24">
+    <main id="intro" class="relative w-full overflow-x-hidden pt-8 lg:pt-16 pb-12 lg:pb-24 border-b border-blue-500/10 scroll-mt-24">
         <!-- [Z-index 샌드위치 구조 2단계] 섹션별 배경 (캔버스보다 낮은 z-0 설정) -->
         <div class="absolute inset-0 bg-[#0a0f1d] z-0 pointer-events-none"></div>
         <div class="absolute inset-0 dot-grid z-0 pointer-events-none"></div>
@@ -248,7 +253,7 @@
     </main>
 
     <!-- 구역 2: [여정] -->
-    <section id="values" class="relative w-full py-24 border-b border-emerald-500/10 scroll-mt-24">
+    <section id="values" class="relative w-full overflow-x-hidden py-24 border-b border-emerald-500/10 scroll-mt-24">
         <!-- 배경 -->
         <div class="absolute inset-0 bg-gradient-to-b from-[#0a0f1d] via-[#0d2123] to-[#0a1e1f] z-0 pointer-events-none"></div>
         <div class="absolute inset-0 dot-grid z-0 pointer-events-none"></div>
@@ -321,7 +326,7 @@
     </section>
 
     <!-- 구역 3: [NOW] 사이버네틱 네온 테마 영역 -->
-    <section id="now" class="relative w-full py-24 border-b border-cyan-500/10 scroll-mt-24">
+    <section id="now" class="relative w-full overflow-x-hidden py-24 border-b border-cyan-500/10 scroll-mt-24">
         <!-- 배경 -->
         <div class="absolute inset-0 bg-gradient-to-b from-[#0a1e1f] via-[#081221] to-[#120a1b] z-0 pointer-events-none"></div>
         <div class="absolute inset-0 dot-grid z-0 pointer-events-none"></div>
@@ -431,7 +436,7 @@
     </section>
 
     <!-- 구역 4: [소통] 깊은 우주 테마 영역 -->
-    <section id="profile" class="relative w-full py-24 scroll-mt-24">
+    <section id="profile" class="relative w-full overflow-x-hidden py-24 scroll-mt-24">
         <!-- 배경 -->
         <div class="absolute inset-0 bg-gradient-to-b from-[#120a1b] via-[#0a0d18] to-[#04060d] z-0 pointer-events-none"></div>
         <div class="absolute inset-0 dot-grid z-0 pointer-events-none"></div>
