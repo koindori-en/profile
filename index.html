@@ -331,7 +331,16 @@
         <div class="relative max-w-[1300px] mx-auto px-6 sm:px-10 lg:px-16 z-20">
             <div class="text-center max-w-2xl mx-auto mb-16 reveal">
                <p class="text-cyan-400 font-semibold tracking-wider text-xs uppercase mb-3 font-sans">Digital Archive</p>
-               <h2 class="font-playfair italic text-3xl sm:text-4xl md:text-5xl text-white mb-6">NOW</h2>
+               
+               <!-- [수정됨] 더욱 미래적이고 심미적인 네온 그라데이션 'NOW' 디자인 -->
+               <div class="relative inline-block mb-8">
+                   <h2 class="font-sans font-black italic text-5xl sm:text-6xl md:text-7xl text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-fuchsia-400 to-rose-400 tracking-[0.15em] relative z-10" style="text-shadow: 0 0 40px rgba(192, 132, 252, 0.4);">
+                       NOW
+                   </h2>
+                   <!-- 글자 뒤로 뿜어져 나오는 오로라 후광 효과 -->
+                   <div class="absolute inset-0 blur-2xl bg-gradient-to-r from-cyan-400 via-fuchsia-400 to-rose-400 opacity-40 -z-10"></div>
+               </div>
+               
                <div class="w-12 h-[1px] bg-slate-600 mx-auto mb-6"></div>
                <p class="text-slate-300 font-light text-xs sm:text-sm md:text-base leading-relaxed">
                    요즘 머리와 가슴에 담긴 마음의 소리와 여러 자료들을 아카이브로 제공합니다.
@@ -339,38 +348,80 @@
             </div>
 
             <!-- 미래지향적 심미성을 갖춘 카드 2개 -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-4xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16 max-w-5xl mx-auto">
                 
-                <!-- 쇼츠 카드 -->
-                <a href="https://koindori-en.github.io/profile/shorts.html" class="neon-glass-card neon-rose block p-8 sm:p-10 rounded-3xl reveal delay-100 group cursor-pointer relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-rose-500/10 rounded-full blur-2xl -mr-10 -mt-10 transition-all duration-500 group-hover:bg-rose-500/20"></div>
-                    <div class="relative z-10 flex flex-col items-center text-center">
-                        <div class="w-16 h-16 rounded-2xl bg-rose-500/10 border border-rose-500/30 flex items-center justify-center mb-6 text-rose-400 group-hover:bg-rose-500 group-hover:text-white transition-all duration-500">
-                            <i class="fa-solid fa-play text-2xl ml-1"></i>
+                <!-- 쇼츠 카드 (사이버네틱 루비 로즈 테마) -->
+                <a href="https://koindori-en.github.io/profile/shorts.html" class="group relative block reveal delay-100 cursor-pointer w-full outline-none">
+                    <!-- 네온 글로우 테두리 백그라운드 (미래적 발광) -->
+                    <div class="absolute -inset-[2px] rounded-[2rem] bg-gradient-to-r from-rose-500 via-pink-500 to-purple-600 opacity-40 group-hover:opacity-100 blur-sm group-hover:blur-md transition-all duration-700 ease-out z-0"></div>
+                    
+                    <!-- 메인 홀로그램 글래스 바디 -->
+                    <div class="relative z-10 h-full bg-[#060a14]/95 backdrop-blur-2xl rounded-[2rem] p-8 sm:p-12 overflow-hidden flex flex-col items-center text-center border border-white/5 transition-transform duration-500 group-hover:-translate-y-2">
+                        
+                        <!-- 내부 앰비언트 빛 구체 (Holographic Orbs) -->
+                        <div class="absolute -top-24 -right-24 w-64 h-64 bg-rose-600/20 rounded-full blur-[60px] group-hover:bg-rose-500/30 group-hover:scale-150 transition-all duration-700 ease-in-out pointer-events-none"></div>
+                        <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-purple-600/10 rounded-full blur-[60px] group-hover:bg-purple-500/20 group-hover:scale-150 transition-all duration-700 ease-in-out pointer-events-none"></div>
+                        
+                        <!-- 미래적 입체 회전 아이콘 컴포넌트 -->
+                        <div class="relative w-24 h-24 mb-8 flex items-center justify-center">
+                            <div class="absolute inset-0 bg-rose-500/20 rounded-2xl rotate-6 group-hover:rotate-12 group-hover:scale-110 transition-all duration-500"></div>
+                            <div class="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-rose-500/20 rounded-2xl -rotate-6 group-hover:-rotate-12 group-hover:scale-110 transition-all duration-500"></div>
+                            <div class="relative bg-slate-900 border border-rose-500/30 w-16 h-16 rounded-xl flex items-center justify-center shadow-[0_0_20px_rgba(244,63,94,0.2)] group-hover:border-rose-400 group-hover:shadow-[0_0_40px_rgba(244,63,94,0.6)] group-hover:bg-rose-500/10 transition-all duration-500 z-10">
+                                <i class="fa-solid fa-play text-2xl text-rose-400 group-hover:text-white transition-colors duration-300 ml-1"></i>
+                            </div>
                         </div>
-                        <h3 class="font-serif-kr text-xl sm:text-2xl font-bold text-white mb-3 tracking-wide">쇼츠 Shorts</h3>
-                        <p class="text-slate-400 text-xs sm:text-sm leading-relaxed group-hover:text-slate-300 transition-colors">
+                        
+                        <!-- [수정됨] 텍스트 영역: 색상 대비를 준 혼합 텍스트 배치 -->
+                        <h3 class="font-serif-kr text-2xl sm:text-3xl font-bold mb-4 tracking-wider transition-colors duration-300 flex items-end justify-center gap-2">
+                            <span class="text-rose-100 group-hover:text-white transition-colors duration-300">영상</span>
+                            <span class="text-rose-400 font-playfair italic font-light text-xl sm:text-2xl group-hover:text-rose-300 transition-colors duration-300">Video</span>
+                        </h3>
+                        <p class="text-slate-400 text-sm sm:text-base leading-relaxed mb-8 group-hover:text-slate-200 transition-colors duration-300">
                             삶의 지혜와 생각의 파편들을 모은 영상
                         </p>
-                        <div class="mt-6 flex items-center gap-2 text-rose-400 text-xs font-semibold tracking-wider uppercase opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
-                            Watch Now <i class="fa-solid fa-arrow-right"></i>
+                        
+                        <!-- 하단 사이버틱 액션 버튼 -->
+                        <div class="mt-auto flex items-center gap-3 px-6 py-3 rounded-full bg-rose-500/10 border border-rose-500/20 text-rose-400 text-xs font-bold tracking-widest uppercase group-hover:bg-rose-500 group-hover:text-white group-hover:border-rose-400 group-hover:shadow-[0_0_25px_rgba(244,63,94,0.5)] transition-all duration-500">
+                            <span>Watch Now</span>
+                            <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform duration-300"></i>
                         </div>
                     </div>
                 </a>
 
-                <!-- 자료 카드 -->
-                <a href="#now" class="neon-glass-card neon-cyan block p-8 sm:p-10 rounded-3xl reveal delay-200 group cursor-pointer relative overflow-hidden">
-                    <div class="absolute top-0 left-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-2xl -ml-10 -mt-10 transition-all duration-500 group-hover:bg-cyan-500/20"></div>
-                    <div class="relative z-10 flex flex-col items-center text-center">
-                        <div class="w-16 h-16 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center mb-6 text-cyan-400 group-hover:bg-cyan-500 group-hover:text-white transition-all duration-500">
-                            <i class="fa-solid fa-folder-open text-2xl"></i>
+                <!-- 자료 카드 (사이버네틱 네온 시안 테마) -->
+                <a href="#now" class="group relative block reveal delay-200 cursor-pointer w-full outline-none">
+                    <!-- 네온 글로우 테두리 백그라운드 (미래적 발광) -->
+                    <div class="absolute -inset-[2px] rounded-[2rem] bg-gradient-to-r from-cyan-500 via-blue-500 to-teal-400 opacity-40 group-hover:opacity-100 blur-sm group-hover:blur-md transition-all duration-700 ease-out z-0"></div>
+                    
+                    <!-- 메인 홀로그램 글래스 바디 -->
+                    <div class="relative z-10 h-full bg-[#060a14]/95 backdrop-blur-2xl rounded-[2rem] p-8 sm:p-12 overflow-hidden flex flex-col items-center text-center border border-white/5 transition-transform duration-500 group-hover:-translate-y-2">
+                        
+                        <!-- 내부 앰비언트 빛 구체 (Holographic Orbs) -->
+                        <div class="absolute -top-24 -left-24 w-64 h-64 bg-cyan-600/20 rounded-full blur-[60px] group-hover:bg-cyan-500/30 group-hover:scale-150 transition-all duration-700 ease-in-out pointer-events-none"></div>
+                        <div class="absolute -bottom-24 -right-24 w-64 h-64 bg-blue-600/10 rounded-full blur-[60px] group-hover:bg-blue-500/20 group-hover:scale-150 transition-all duration-700 ease-in-out pointer-events-none"></div>
+                        
+                        <!-- 미래적 입체 회전 아이콘 컴포넌트 -->
+                        <div class="relative w-24 h-24 mb-8 flex items-center justify-center">
+                            <div class="absolute inset-0 bg-cyan-500/20 rounded-2xl rotate-6 group-hover:rotate-12 group-hover:scale-110 transition-all duration-500"></div>
+                            <div class="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-2xl -rotate-6 group-hover:-rotate-12 group-hover:scale-110 transition-all duration-500"></div>
+                            <div class="relative bg-slate-900 border border-cyan-500/30 w-16 h-16 rounded-xl flex items-center justify-center shadow-[0_0_20px_rgba(6,182,212,0.2)] group-hover:border-cyan-400 group-hover:shadow-[0_0_40px_rgba(6,182,212,0.6)] group-hover:bg-cyan-500/10 transition-all duration-500 z-10">
+                                <i class="fa-solid fa-folder-open text-2xl text-cyan-400 group-hover:text-white transition-colors duration-300"></i>
+                            </div>
                         </div>
-                        <h3 class="font-serif-kr text-xl sm:text-2xl font-bold text-white mb-3 tracking-wide">자료 Data</h3>
-                        <p class="text-slate-400 text-xs sm:text-sm leading-relaxed group-hover:text-slate-300 transition-colors">
+                        
+                        <!-- [수정됨] 텍스트 영역: 색상 대비를 준 혼합 텍스트 배치 -->
+                        <h3 class="font-serif-kr text-2xl sm:text-3xl font-bold mb-4 tracking-wider transition-colors duration-300 flex items-end justify-center gap-2">
+                            <span class="text-cyan-100 group-hover:text-white transition-colors duration-300">자료</span>
+                            <span class="text-cyan-400 font-playfair italic font-light text-xl sm:text-2xl group-hover:text-cyan-300 transition-colors duration-300">Data</span>
+                        </h3>
+                        <p class="text-slate-400 text-sm sm:text-base leading-relaxed mb-8 group-hover:text-slate-200 transition-colors duration-300">
                             신학과 교회 교육 등 여러 디지털 파일을 공유
                         </p>
-                        <div class="mt-6 flex items-center gap-2 text-cyan-400 text-xs font-semibold tracking-wider uppercase opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
-                            Explore <i class="fa-solid fa-arrow-right"></i>
+                        
+                        <!-- 하단 사이버틱 액션 버튼 -->
+                        <div class="mt-auto flex items-center gap-3 px-6 py-3 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-bold tracking-widest uppercase group-hover:bg-cyan-500 group-hover:text-white group-hover:border-cyan-400 group-hover:shadow-[0_0_25px_rgba(6,182,212,0.5)] transition-all duration-500">
+                            <span>Explore</span>
+                            <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform duration-300"></i>
                         </div>
                     </div>
                 </a>
@@ -556,13 +607,16 @@
                    this.y = Math.random() * canvas.height;
                    this.size = 1.0 + Math.random() * 2.0; 
                    this.speedX = -0.05 + Math.random() * 0.1; 
-                   this.speedY = -0.05 - Math.random() * 0.05; 
+                   this.speedY = -0.1 - Math.random() * 0.1; // 살짝 위로 날아오르게 수정
                    
-                   this.baseOpacity = 0.15 + Math.random() * 0.35;
-                   this.opacity = 0; // 처음에 투명하게 시작하여 생명주기에 따라 페이드 인
+                   this.maxOpacity = 0.5 + Math.random() * 0.5; // 최대 밝기를 설정
                    
-                   this.fadeSpeed = 0.001 + Math.random() * 0.0015; 
-                   this.fadeDirection = 1;
+                   // [수정됨] 생명주기(Lifecycle) 변수 세팅. 0에서 시작하여 서서히 증가
+                   this.life = 0; 
+                   this.lifeSpeed = 0.0015 + Math.random() * 0.0025; // 태어나고 죽는 속도
+                   this.opacity = 0;
+                   this.currentSize = this.size;
+                   
                    this.color = `rgba(255, 245, 220, `;
                    
                    this.angle = Math.random() * Math.PI * 2;
@@ -573,37 +627,36 @@
                    this.x += this.speedX + (Math.sin(this.angle) * 0.2);
                    this.y += this.speedY;
 
-                   // 경계 초과 시 초기화
-                   if (this.y < -10 || this.x < -10 || this.x > canvas.width + 10) {
-                       this.y = canvas.height + 10;
-                       this.x = Math.random() * canvas.width;
-                       this.opacity = 0;
-                       this.fadeDirection = 1;
+                   // 생명주기 진행
+                   this.life += this.lifeSpeed;
+
+                   // 경계 초과 및 생명주기(Math.PI = 3.14...)가 끝나면 우아하게 재탄생
+                   if (this.life >= Math.PI || this.y < -10 || this.x < -10 || this.x > canvas.width + 10) {
+                       this.init();
+                       this.y = canvas.height + Math.random() * 50; // 아래쪽에서 새롭게 스폰
                    }
 
-                   // 부드러운 페이드인-아웃 로직
-                   this.opacity += this.fadeSpeed * this.fadeDirection;
-                   if (this.opacity >= this.baseOpacity + 0.3) {
-                       this.fadeDirection = -1; // 최대치 도달 시 서서히 꺼짐
-                   } else if (this.opacity <= 0.05 && this.fadeDirection === -1) {
-                       // 완전히 꺼지면 다시 새로운 위치에서 부활
-                       this.init();
-                       this.y = canvas.height + Math.random() * 20; 
-                   }
-                   this.opacity = Math.max(0, Math.min(this.opacity, 0.8));
+                   // [수정됨] 생명주기에 따른 완벽한 역동적 발광 효과 (사인파 곡선 이용)
+                   // 생애 중간 지점에서 가장 밝고, 시작과 끝은 서서히 어두워짐
+                   let sinLife = Math.sin(this.life);
+                   this.opacity = Math.pow(sinLife, 2) * this.maxOpacity;
+                   
+                   // 빛이 가장 밝을 때 크기도 입체적으로 커지는 역동성 구현
+                   this.currentSize = this.size + (this.opacity * 1.8);
                 }
                draw() {
                    ctx.beginPath();
-                   ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                   ctx.arc(this.x, this.y, this.currentSize, 0, Math.PI * 2);
                    ctx.fillStyle = this.color + this.opacity + ')';
-                   ctx.shadowBlur = this.size * 3.0; 
-                   ctx.shadowColor = 'rgba(255, 245, 220, 0.6)';
+                   ctx.shadowBlur = this.currentSize * 4.0; 
+                   // 빛 번짐의 그림자(glow) 농도도 투명도와 비례하게 설정하여 진짜 불빛처럼 연출
+                   ctx.shadowColor = `rgba(255, 245, 220, ${this.opacity})`;
                    ctx.fill();
                 }
             }
 
-            // 공간을 채우기 위한 입자 수 설정
-            const totalSparks = window.innerWidth < 768 ? 15 : 30;
+            // 공간을 채우기 위한 입자 수 설정 (우아함을 유지하기 위해 적절한 수치 유지)
+            const totalSparks = window.innerWidth < 768 ? 20 : 45;
             for (let i = 0; i < totalSparks; i++) {
                particlesArray.push(new SparkParticle());
             }
